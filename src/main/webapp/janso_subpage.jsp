@@ -26,6 +26,8 @@
 <body>
   <%
     PageInfo pageInfo = (PageInfo)request.getAttribute("pageInfo");
+  	PageSearch psearch = (PageSearch)request.getAttribute("search");
+  
 	int listCount=pageInfo.getListCount();
 	int nowPage=pageInfo.getPage();
 	int maxPage=pageInfo.getMaxPage();
@@ -409,17 +411,17 @@
 <a href="../html/heder.html" style=" text-decoration: none; box-sizing: border-box;">		
 <div class="box-0-2">
 	<div class="box-0-2_box">
-		<strong style="font-size: 18px;" >00스터디룸</strong>     
-		<span>(최소인원 1명/ </span>
-		<span>최대인원 8명) </span>
+    	<strong style="font-size: 18px;" ><%= articleList.get(i).getRoom_title() %>룸</strong> 
+        <span style="font-size: 12px;">(최소인원 <%=articleList.get(i).getMin_personnel() %>명/ </span>    
+        <span style="font-size: 12px;"> 최대인원 <%=articleList.get(i).getMax_personnel() %>명) </span>
 	</div>
 	<div class="box-0-2_box">
-	    <span style="float: left; font-size: 15px; color: blue">지역:</span>
-	    <span>부산</span>
+	    <span style="float: left; font-size: 15px; color: blue">지역: </span>&nbsp
+        <span style="font-size: 12px; position: absolute  ; line-height: 23.9px;"><%= articleList.get(i).getRoom_address() %></span>
 	</div>
 	<div class="box-0-2_box">
 	    <div style="float: left;">
-		    <strong>8,000</strong>
+		    <strong><%=articleList.get(i).getRoom_price() %></strong>
 		    <span>원/시간</span>
 	    </div> 
 		<div style="float: right; ">
@@ -457,7 +459,7 @@
 		          
 				<%for(int a=startPage; a<=endPage;a++){ %>
 						
-				   <li><a href="janso_subpage.learnup.com?page=<%=a%>&searchs="" "><%=a %></a></li>
+				   <li><a href="janso_subpage.learnup.com?page=<%=a%>&searchs=<%=psearch.getSearch()%> "><%=a %></a></li>
 					
 				<%} %>
 		    		

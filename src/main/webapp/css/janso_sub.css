@@ -408,11 +408,10 @@ list-style: none;
     border-bottom: 0.1px #607D8B;
     border-bottom-style:solid;
 }
-.link-box1.box-0-2_box
+.link-box1 .box-0-2_box
 {
    padding-top: 3px;
-   padding-left: 15px;
-   padding-right: 15px;
+  
   
 }
 

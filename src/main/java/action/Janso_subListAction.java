@@ -17,6 +17,7 @@ import svc.Janso_ListService;
 import svc.Janso_product_registrationService;
 import vo.Janso_product_registration;
 import vo.PageInfo;
+import vo.PageSearch;
 import vo.ActionForward;
 
 
@@ -36,18 +37,22 @@ public class Janso_subListAction implements jansoAction {
 		
 		System.out.println(page);
 		
-		String a = request.getParameter("searchs");
+		String searchs = request.getParameter("searchs");
 
 		Janso_ListService janso_ListService = new Janso_ListService();
 		int listCount = janso_ListService.getListCount();
 		
-		articleList = janso_ListService.getsubArticleList(a,page,pageSize);
+		articleList = janso_ListService.getsubArticleList(searchs,page,pageSize);
+		System.out.println(articleList.size()+"사이즈");
 		int maxPage=(int)((double)listCount/pageSize+0.95); 
    		//int startPage = (((int) ((double)page / 10 + 0.9)) - 1) * 10 + 1;
    	    int currentBlock = page % pageSize == 0 ? page / pageSize : (page / pageSize) + 1;
    	    int endPage =  currentBlock + pageSize - 1;
    	    
    	    if (endPage> maxPage) endPage= maxPage;
+   	    
+   	    PageSearch psearch = new PageSearch();
+   	    psearch.setSearch(searchs);
 
 		PageInfo pageInfo = new PageInfo();
 		pageInfo.setEndPage(endPage);
@@ -59,6 +64,7 @@ public class Janso_subListAction implements jansoAction {
 		request.setAttribute("directory", directory);
 		request.setAttribute("pageInfo", pageInfo);
 		request.setAttribute("articleList", articleList);
+		request.setAttribute("search", psearch);
 		ActionForward forward= new ActionForward();
    		forward.setPath("/janso_subpage.jsp");
    		return forward;
