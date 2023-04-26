@@ -78,7 +78,7 @@ public class Janso_product_registrationAction implements jansoAction {
 		String area1 = multi.getParameter("area1");
 		String area2 = multi.getParameter("area2");
 		String area3 = multi.getParameter("address2");
-		String totaladdress = area1 +" "+ area2 +" "+ area3;
+		String totaladdress = area1 +","+ area2 +","+ area3;
 		
 		registration = new Janso_product_registration();
 		registration.setEmail(multi.getParameter("email"));

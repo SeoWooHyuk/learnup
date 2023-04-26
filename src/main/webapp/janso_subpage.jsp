@@ -25,6 +25,7 @@
 
 <body>
   <%
+  	ArrayList<Janso_product_registration> articleList=(ArrayList<Janso_product_registration>)request.getAttribute("articleList");
     PageInfo pageInfo = (PageInfo)request.getAttribute("pageInfo");
   	PageSearch psearch = (PageSearch)request.getAttribute("search");
   
@@ -383,9 +384,7 @@
   <!-- 셀렉들어오는곳 -->
  <div class="link-box1">
  <!-- box-0 -->
-<%
-	ArrayList<Janso_product_registration> articleList=(ArrayList<Janso_product_registration>)request.getAttribute("articleList");
-%>
+
  <c:set var="pageInfo" value="${pageInfo}"/>
   <!--  
      현재 ${pageInfo.page}
@@ -403,15 +402,15 @@
 			<img src="image/heart1.png" alt="찜하기" style=" ">
 		</a>  
 	</span>	
-	<a href="../html/heder.html" style=" text-decoration: none; box-sizing: border-box;">		
+	<a href="janso_detail.learnup.com?roomnumber=<%=articleList.get(i).getRoom_number() %>" style=" text-decoration: none; box-sizing: border-box;">		
 		<img src="${pageContext.request.contextPath }/jansoproduct/<%= articleList.get(i).getMain_img() %>" alt="" style=" width: 100%; height: 250px;">   	
 	</a> 
 	</div>
 
-<a href="../html/heder.html" style=" text-decoration: none; box-sizing: border-box;">		
+<a href="janso_detail.learnup.com" style=" text-decoration: none; box-sizing: border-box;">		
 <div class="box-0-2">
 	<div class="box-0-2_box">
-    	<strong style="font-size: 18px;" ><%= articleList.get(i).getRoom_title() %>룸</strong> 
+    	<strong style="font-size: 15px;" ><%= articleList.get(i).getRoom_title() %>룸</strong> 
         <span style="font-size: 12px;">(최소인원 <%=articleList.get(i).getMin_personnel() %>명/ </span>    
         <span style="font-size: 12px;"> 최대인원 <%=articleList.get(i).getMax_personnel() %>명) </span>
 	</div>

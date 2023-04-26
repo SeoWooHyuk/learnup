@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import action.Janso_detailPageAction;
 import action.Janso_mainListAction;
 import action.Janso_product_registrationAction;
 import action.Janso_rental_registrationAction;
@@ -82,6 +83,17 @@ public class JansoFrontController extends javax.servlet.http.HttpServlet
 		else if(command.equals("/janso_subpage.learnup.com"))
 		{
 			action  = new Janso_subListAction();
+			try {
+				forward=action.execute(request, response );
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		//장소 디테일 페이지
+		else if(command.equals("/janso_detail.learnup.com"))
+		{
+			action  = new Janso_detailPageAction();
 			try {
 				forward=action.execute(request, response );
 			} catch (Exception e) {

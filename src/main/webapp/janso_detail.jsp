@@ -1,10 +1,20 @@
 <%@ page import="dao.*" %>
 <%@ page import="vo.*" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>  
 <% request.setCharacterEncoding("utf-8"); %>
 <%@page import="java.util.*" %>
-
-
+ <%
+  	ArrayList<String> categortList = (ArrayList<String>)request.getAttribute("Facility_categoriesArray");
+ 	String addres = (String)request.getAttribute("addres"); //js보낼 주소
+ %> 
+    <c:set var="addr" value="<%=addres%>"/>
+	<c:set var="room" value="${article}"/>
+  
+    
 <!DOCTYPE html>
 <head>
 	<meta charset="utf-8">
@@ -12,38 +22,45 @@
 	<title>상품 상세 페이지</title>
 	<link rel="stylesheet" type="text/css" href="css/janso_detail.css">
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400&display=swap" rel="stylesheet">
-	
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f1342a3ffd93979d7f9852ea40201756&libraries=services"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="js/janso_detail.js"> </script>
-	
+	<script language=JavaScript src="${common_context_path_url}/janso_detail.js"></script>
 
 </head>
+
+<script language=JavaScript>
+var chDate = '<c:out value="${addr}"/>';
+var rooms = '<c:out value="${room.room_title}"/>';
+</script>
+
 
 <style>
 @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 </style>
 
-
 <body>
-    
+
+ 
      <%@include file ="./header.jsp" %>
      
      
      
     <section class="section_main">
         <div class="main_left">
-            <div class="sub_name"> <h2>공부하기 정말 좋은 방</h2> </div>
+            <div class="sub_name"> <h2>${room.room_title} 방</h2> </div>
 
             <div class="img_box">
             	<div id="slider" class="slider" >
                     <a class="control_next">></a>
                     <a class="control_prev"><</a> 
                     <ul>	
-                   		<li class="slideli"><img src="image/lesson9.jpg" class="jansoimg"></li>
-	                    <li class="slideli"><img src="image/lesson7.jpg" class="jansoimg"></li>
-	                    <li class="slideli"><img src="image/lesson5.jpg" class="jansoimg"></li>
-	                    <li class="slideli"><img src="image/lesson8.jpg" class="jansoimg"></li>
-	                    <li class="slideli"><img src="image/lesson6.jpg" class="jansoimg"></li>
+                   
+	                    <li class="slideli"><img src="${pageContext.request.contextPath }/jansoproduct/${room.sub_img1}" class="jansoimg" "></li>
+	                    <li class="slideli"><img src="${pageContext.request.contextPath }/jansoproduct/${room.main_img}" class="jansoimg" "></li>
+	                    <li class="slideli"><img src="${pageContext.request.contextPath }/jansoproduct/${room.sub_img2}" class="jansoimg" "></li>
+	                    <li class="slideli"><img src="${pageContext.request.contextPath }/jansoproduct/${room.sub_img3}" class="jansoimg" "></li>
+	                    <li class="slideli"><img src="${pageContext.request.contextPath }/jansoproduct/${room.sub_img4}" class="jansoimg" "></li>
                   	</ul> 
                   </div>
 			</div>
@@ -84,7 +101,9 @@
                 
                 <div class="intro_boxs_0" >
                		<div id ="p_box" >                    
-                       <p style="white-space: pre-line;" class="p_box"></p> 
+                       <p style="white-space: pre-line;" class="p_box">
+                       ${room.room_introduction}
+                       </p> 
                     </div>
                 </div>
             </div>
@@ -93,7 +112,13 @@
                 <div id="intro2"><h1> 시설안내</h1></div>
                 <div class="intro_boxs_0" >
                     <div id ="p_box" >                    
-                       		<p style="white-space: pre-line;" class="p_box"></p> 
+                       		<p style="white-space: pre-line;" class="p_box">
+                       		<% for(String a : categortList ){%>
+                       		<%= a %>		
+                       				
+                       		<%} %>
+						                     			
+                       		</p> 
                     </div>
                     
                 </div>
@@ -104,7 +129,9 @@
                 <div id="intro3"><h1>유의사항</h1></div>
                 <div class="intro_boxs_0" >
                      <div id ="p_box" >                    
-                       		<p style="white-space: pre-line;" class="p_box"></p> 
+                       		<p style="white-space: pre-line;" class="p_box">
+                       		  ${room.room_precautions}
+                       		</p> 
                     </div>
                     
                 </div>
@@ -149,7 +176,10 @@
                 <div id="intro5"><h1>상세주소</h1></div>
                 <div class="intro_boxs_0" >
                     <div id ="p_box" >                    
-                       		<p style="white-space: pre-line;" class="p_box"></p> 
+                       		<p style="white-space: pre-line;">
+                       		주소: &nbsp ${room.room_address}
+                       		</p> 
+                       		<div id="map" style="width:100%;height:350px;"></div>
                      </div>
                     
                 </div>
@@ -188,10 +218,10 @@
             <div class="intro_boxs_right"> 
                 <div class="intro_boxs_0" >
                 	<ul>
-			        	<li><span class="tit">공간유형</span><span class="data">파티룸</span></li>
-			            <li><span class="tit">공간면적</span><span class="data">30㎡</span></li>
-			            <li><span class="tit">예약시간</span><span class="data">am 10:00~</span></li>
-			            <li><span class="tit">수용인원</span><span class="data">2명~10명</span></li>
+			        	<li><span class="tit">공간유형</span><span class="data">${room.room_categories}</span></li>
+			            <li><span class="tit">공간면적</span><span class="data">${room.room_area}㎡</span></li>
+			            <li><span class="tit">예약시간</span><span class="data">am ${room.open_time}:00~</span></li>
+			            <li><span class="tit">수용인원</span><span class="data">${room.max_personnel}명~${room.min_personnel}명</span></li>
 			        </ul>
                 </div>
             </div>

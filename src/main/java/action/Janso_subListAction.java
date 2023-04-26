@@ -63,8 +63,9 @@ public class Janso_subListAction implements jansoAction {
 		
 		request.setAttribute("directory", directory);
 		request.setAttribute("pageInfo", pageInfo);
-		request.setAttribute("articleList", articleList);
 		request.setAttribute("search", psearch);
+		request.setAttribute("articleList", articleList);
+		
 		ActionForward forward= new ActionForward();
    		forward.setPath("/janso_subpage.jsp");
    		return forward;

@@ -271,4 +271,75 @@ public class JansoDAO {
 					return articleList;
 
 				}
+				
+				
+				
+				public Janso_product_registration Janso_detailList(int room){
+					PreparedStatement pstmt = null;
+					ResultSet rs = null;
+					
+				
+					
+					String sql="select * from room_product_registration where room_number = ?";
+			
+					Janso_product_registration janso = null;
+
+					//System.out.println(startrow +"스타트 페이지");
+					//System.out.println(search +"스타트 페이지");
+					
+				    try{
+						pstmt = con.prepareStatement(sql);
+					    pstmt.setInt(1, room);
+
+						rs = pstmt.executeQuery();
+
+						if(rs.next()){
+							janso = new Janso_product_registration();
+							
+							janso.setEmail(rs.getString("email"));
+							janso.setRoom_number(rs.getInt("room_number")); 
+						
+							janso.setRoom_title(rs.getString("room_title"));
+							janso.setRoom_categories(rs.getString("room_categories"));
+							janso.setRoom_area(rs.getString("room_area"));
+							janso.setFacility_categories(rs.getString("facility_categories"));
+							janso.setRoom_address(rs.getString("room_address"));
+							janso.setReservationtime(rs.getString("reservationtime"));
+							
+							janso.setMin_personnel(rs.getString("min_personnel"));
+							janso.setMax_personnel(rs.getString("max_personnel"));
+							
+							janso.setOpen_time(rs.getString("open_time"));
+							janso.setClose_time(rs.getString("close_time"));
+							
+							janso.setHoliday(rs.getString("holiday"));
+							
+							janso.setRoom_price(rs.getString("room_price"));
+							
+							janso.setPersonnel_price(rs.getString("personnel_price"));
+							janso.setRoom_introduction(rs.getString("room_introduction"));
+							janso.setRoom_precautions(rs.getString("room_precautions"));
+							
+							janso.setMain_img(rs.getString("main_img"));
+							janso.setSub_img1(rs.getString("sub_img1"));
+							janso.setSub_img2(rs.getString("sub_img2"));
+							janso.setSub_img3(rs.getString("sub_img3"));
+							janso.setSub_img4(rs.getString("sub_img4"));
+
+
+						}
+
+					}catch(Exception ex){
+					}finally{
+						close(rs);
+						close(pstmt);
+					}
+				   
+
+					return janso;
+
+				}
+				
+				
+				
 }
