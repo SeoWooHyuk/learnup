@@ -90,6 +90,7 @@ $(document).ready(function(){
 });	
 
 
+
 $(document).ready(function(){
 
 
@@ -100,15 +101,22 @@ rightButton = document.querySelector(".right_button"),
 calendar = document.querySelector(".calendar");
 // dateUpdate = document.querySelector(".date_update");
 
+let monthmonster;
+let yearmonster;
+let firstSelectedDay = 0;
+let lastSelectedDay = 0;
+let dddday = 0;
+
 
 class Calendar {
 	constructor(year, month) {
 	    this.today = new Date(year, month);
 	    this.year = this.today.getFullYear(),
-	        this.month = this.today.getMonth(),
-	        this.date = this.today.getDate(),
-	        this.day = this.today.getDay()
+	    this.month = this.today.getMonth(),
+	    this.date = this.today.getDate(),
+	    this.day = this.today.getDay()
 	}
+
 	
 	
 	getFirstDay() {
@@ -132,13 +140,29 @@ class Calendar {
 	    const firstDay = this.getFirstDay();
 	    const lastDay = this.getLastDay();
 	    let day = 1;
+	    
+	    yearmonster = this.year;
+	    monthmonster = this.month+1
+	 
+	 
+		let days = 	 new Date();   
+	    alert(days.getDate());
+	    
 	    for (let i = firstDay; i < calendarDays.length; i++) {
-	        if (day <= lastDay) {
+	       
+	        if( days > day)
+	        {
+				   calendarDays[i].innerHTML = `<button class = "day_button">예약불가</button>`;
+			}
+			else if (day <= lastDay) {
 	            calendarDays[i].innerHTML = `<button class = "day_button">${day}</button>`;
 	            day++;
 	        }
-	
+	        
+	        
 	    }
+	    
+	  
 	}
 	
 	initCalendar() {
@@ -158,9 +182,11 @@ class Calendar {
 	    leftButton.addEventListener("click", (e) => {
 	        e.stopPropagation();
 	        change--;
+
 	        calendarInstance = new Calendar(today.getFullYear(), today.getMonth() + change);
 	        calendarInstance.fillCalendar();
 	        this.updateCalendarStyle();
+	       	       
 	    });
 	    rightButton.addEventListener("click", (e) => {
 	        e.stopPropagation();
@@ -174,8 +200,7 @@ class Calendar {
 	
 	updateCalendarStyle() {
 	    const dayButtons = document.querySelectorAll(".day_button");
-	    let firstSelectedDay = 0;
-	    let lastSelectedDay = 0;
+	  
 	    let clickCount = 0;
 	
 	    // 달력 스타일 초기화
@@ -209,7 +234,7 @@ class Calendar {
 	                    lastSelectedDay = 0;
 	                });
 	            }
-	
+	            
 	            // 선택 일자 사이에 회색 배경 적용
 	            if (firstSelectedDay !== 0 && lastSelectedDay !== 0) {
 	                dayButtons.forEach((e) => {
@@ -226,6 +251,32 @@ class Calendar {
 	                    e.parentNode.classList.remove("gray");
 	                });
 	            }
+	           
+	            if(clickCount == 2)
+	            {
+				console.log(yearmonster);
+	   			console.log(monthmonster);
+	            console.log(firstSelectedDay);  //내가고른 예약 시작 일수
+	            console.log(lastSelectedDay);   //내가고른 예약 시작 끝날
+	          	console.log(roomsnums);
+	          	
+	          	var yearobj = $("#yearsmonster");
+	          	yearobj.val(yearmonster);
+	          	
+          	 	var monthobj = $("#monthsmonster");
+          		monthobj.val(monthmonster);
+          			
+          	 	var firstobj = $("#firstmonster");
+          		firstobj.val(firstSelectedDay);
+          	
+          	 	var lastobj = $("#lastsmonster");
+	          	lastobj.val(lastSelectedDay);
+	          	
+	          	 //var URL = "페이지 주소.jsp?name= "+name +"&year=" + year
+	          	//learnup/janso_detail.learnup.com?roomnumber=47
+	         	//var URL = "janso_detail.learnup.com?roomnumber=47"
+				//var rtnVal = window.showModalDialog(URL, "", "dialogWidth:0; dialogHeight:0; help:no; status:no;");
+	          	}
 	        });
 	    });
 	
@@ -257,6 +308,8 @@ const cal = new Calendar();
 cal.handleEvents();
 
 });
+
+
 
 
 

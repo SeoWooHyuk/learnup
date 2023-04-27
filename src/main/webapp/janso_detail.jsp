@@ -32,11 +32,13 @@
 <script language=JavaScript>
 var chDate = '<c:out value="${addr}"/>';
 var rooms = '<c:out value="${room.room_title}"/>';
+var roomsnums = '<c:out value="${room.room_number}"/>';
 </script>
 
 
 <style>
 @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+ .pastDay{ background-color: lightgray; }
 </style>
 
 <body>
@@ -324,6 +326,14 @@ var rooms = '<c:out value="${room.room_title}"/>';
 	               </div>
 	            </div>
             
+            
+				<input type="hidden" id= "yearsmonster" name =yearsmonster value="">	
+				<input type="hidden" id= "monthsmonster" name =yearsmonster value="">	 
+				<input type="hidden" id= "firstmonster" name =yearsmonster value="">	 
+				<input type="hidden" id= "lastsmonster" name =yearsmonster value="">	  
+				
+				
+				            
 	            <h3 class="righth3" id="righth3">결제 후 바로 예약확정</h3>
 	            <span class="righth3_de" >빠르고 확실한 예약을 위해 </span>
 	            <span class="righth3_de">런업에서 온라인 결제를 진행해주세요</span>
