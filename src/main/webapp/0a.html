@@ -61,7 +61,7 @@
                 tbody_Calendar.deleteRow(tbody_Calendar.rows.length - 1);
             }
 
-            let nowRow = tbody_Calendar.insertRow();        // 첫번째 행 추가           
+            let nowRow = tbody_Calendar.insertRow();        // 첫번번째 행 추가           
 
             for (let j = 0; j < firstDate.getDay(); j++) {  // 이번달 1일의 요일만큼
                 let nowColumn = nowRow.insertCell();        // 열 추가
@@ -80,8 +80,9 @@
                     nowColumn.style.color = "#0000CD";
                     nowRow = tbody_Calendar.insertRow();    // 새로운 행 추가
                 }
-
-
+				
+                
+				
                 if (nowDay < today) {                       // 지난날인 경우
                     nowColumn.className = "pastDay";
                 }
