@@ -109,7 +109,9 @@ let lastSelectedDay = 0;
 
 
 
-const UNAVAILABLE_DATES = [new Date(2023, 4, 26), new Date(2023, 5, 27), new Date(2023, 4, 30)]; // 예약 불가 날짜
+//const UNAVAILABLE_DATES = [new Date(2023, 4, 26), new Date(2023, 5, 27), new Date(2023, 4, 30)]; // 예약 불가 날짜
+let UNAVAILABLE_DATES = [];
+//let selectedDate = null;
 
 class Calendar {
 	constructor(year, month) {
@@ -120,7 +122,6 @@ class Calendar {
 	    this.day = this.today.getDay()
 	}
 
-	
 	
 	getFirstDay() {
 	    const firstDate = new Date(this.year, this.month);
@@ -139,31 +140,44 @@ class Calendar {
 	
 	fillCalendar() {
 	    this.initCalendar();
-	    calendarTitle.innerHTML = `${this.year}년 ${this.month + 1}월`
+	    calendarTitle.innerHTML = `${this.year}년 ${this.month + 1}월`;
+	    yearmonster = this.year;
+	    monthmonster = this.month+1;
+	    
+	    
+    	const today = new Date();
 	    const firstDay = this.getFirstDay();
 	    const lastDay = this.getLastDay();
 	    let day = 1;
 	    
-	    yearmonster = this.year;
-	    monthmonster = this.month+1
-	  	  
+
 	    for (let i = firstDay; i < calendarDays.length; i++) {
 	
 			if (day <= lastDay) {
-	          const date = new Date(this.year, this.month, day);
-	          const isUnavailable = UNAVAILABLE_DATES.some((d) => {
-	            return date.getTime() === d.getTime();
-	          });
+	        const date = new Date(this.year, this.month, day);
+            const button = document.createElement('button');
+            button.classList.add('day_button');
+            
+        
+	         const isUnavailable = UNAVAILABLE_DATES.some((d) => {
+	         return date.getTime() === d.getTime();
+	         });
+	         
 	          
-	          if(isUnavailable) {
-	            calendarDays[i].innerHTML = `<button class="day_button unavailable">예약불가</button>`;
-	          } else {
-	            calendarDays[i].innerHTML = `<button class="day_button">${day}</button>`;
-	          }
-	          day++;
-	        }
-	    }
-	 
+	         if (date < today) {
+             button.disabled = true;  // 현재 날짜보다 이전인 경우 버튼 비활성화
+            }
+            
+          	if(isUnavailable) {
+            calendarDays[i].innerHTML = `<button class="day_button unavailable"  disabled=true>예약불가</button>`;
+          	} else {
+            button.innerText = day;
+            calendarDays[i].appendChild(button);
+         	}
+            day++;
+        	}
+	         	  
+   	 } 
 	}
 	
 	initCalendar() {
@@ -175,9 +189,10 @@ class Calendar {
 	
 	drawCalendar() {
 	    let change = 0;
+	   
 	    const today = new Date();
 	    let calendarInstance = new Calendar(today.getFullYear(), today.getMonth() + change);
-	    
+
 	    calendarInstance.fillCalendar();
 	
 	    leftButton.addEventListener("click", (e) => {
@@ -260,6 +275,7 @@ class Calendar {
 	            console.log(firstSelectedDay);  //내가고른 예약 시작 일수
 	            console.log(lastSelectedDay);   //내가고른 예약 시작 끝날
 	          	console.log(roomsnums);
+	          	
 	          	
 	          	var yearobj = $("#yearsmonster");
 	          	yearobj.val(yearmonster);

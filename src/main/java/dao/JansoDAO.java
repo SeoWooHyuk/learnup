@@ -205,23 +205,28 @@ public class JansoDAO {
 		
 		//장소대여자 상품셀렉 서브페이지
 		//장소 대여자 상품 셀렉
-				public ArrayList<Janso_product_registration> Janso_subpageList(String search, int startpage,int pageSize){
+				public ArrayList<Janso_product_registration> Janso_subpageList(String search, int startpage,int pageSize , String[]  keword){
 					PreparedStatement pstmt = null;
 					ResultSet rs = null;
 					
-					
-					String sql="select * from room_product_registration  where room_title like ? order by room_number ASC  limit ?,?";
+					System.out.println(keword);
+					String sql="select * from room_product_registration  where room_title like ? and room_categories like ? and room_categories like ?  order by room_number ASC  limit ?,?";
 					ArrayList<Janso_product_registration> articleList = new ArrayList<Janso_product_registration>();
 					Janso_product_registration janso = null;
 					int startrow=(startpage-1)*9; 
 					//System.out.println(startrow +"스타트 페이지");
 					//System.out.println(search +"스타트 페이지");
 					
+					
+					
 				    try{
 						pstmt = con.prepareStatement(sql);
 					    pstmt.setString(1, "%"+search+"%"); //시작행-1 (시작 row 인덱스 번호)
-						pstmt.setInt(2, startrow); //시작행-1 (시작 row 인덱스 번호)
-						pstmt.setInt(3, pageSize); // 페이지크기 (한번에 출력되는 수)
+						pstmt.setString(2, "%"+keword[0]+"%"); // 키워드 검색
+						pstmt.setString(3, "%"+keword[1]+"%"); // 키워드 검색2
+						pstmt.setInt(4, startrow); //시작행-1 (시작 row 인덱스 번호)
+						pstmt.setInt(5, pageSize); // 페이지크기 (한번에 출력되는 수)
+					
 						rs = pstmt.executeQuery();
 
 						while(rs.next()){
@@ -274,7 +279,7 @@ public class JansoDAO {
 				
 				
 				
-				public Janso_product_registration Janso_detailList(int room){
+				public Janso_product_registration Janso_detailList(int room){ //디테일페이지
 					PreparedStatement pstmt = null;
 					ResultSet rs = null;
 					

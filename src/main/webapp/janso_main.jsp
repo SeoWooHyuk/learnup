@@ -94,7 +94,7 @@
     <div class="bt-boxs">
 
         <div  class="bt-box">
-            <a href="../html/heder.html" style=" text-decoration: none; box-sizing: border-box;">
+            <a href="janso_subpage.learnup.com?page=1&searchs=&keworld=강의실" style=" text-decoration: none; box-sizing: border-box;">
                 <img src="./image//lecture.svg" alt="">
                 <div class="keyword" style="font-size: 20px;">
                     강의실
@@ -103,7 +103,7 @@
         </div>
 
         <div  class="bt-box">
-            <a href="../html/heder.html" style=" text-decoration: none; box-sizing: border-box;">
+            <a href="janso_subpage.learnup.com?page=1&searchs="" " style=" text-decoration: none; box-sizing: border-box;">
                 <img src="./image//study.svg" alt="">
                 <div class="keyword" style="font-size: 20px;">
                     스터디룸
@@ -111,7 +111,7 @@
             </a>
         </div>
         <div  class="bt-box">
-            <a href="../html/heder.html" style=" text-decoration: none; box-sizing: border-box;">
+            <a href="janso_subpage.learnup.com?page=1&searchs="" "style=" text-decoration: none; box-sizing: border-box;">
                 <img src="./image//shooting.svg" alt="">
                 <div class="keyword" style="font-size: 20px;">
                     촬영스튜디오
@@ -120,7 +120,7 @@
         </div>
 
         <div  class="bt-box">
-            <a href="../html/heder.html" style=" text-decoration: none; box-sizing: border-box;">
+            <a href="janso_subpage.learnup.com?page=1&searchs="" " style=" text-decoration: none; box-sizing: border-box;">
                 <img src="./image//vocal_studio.svg" alt="">
                 <div class="keyword" style="font-size: 20px;">
                     보컬연습실
@@ -128,7 +128,7 @@
             </a>
         </div>
         <div  class="bt-box">
-            <a href="../html/heder.html" style=" text-decoration: none; box-sizing: border-box;">
+            <a href="janso_subpage.learnup.com?page=1&searchs="" " style=" text-decoration: none; box-sizing: border-box;">
                 <img src="./image//instrumental_room.svg" alt="">
                 <div class="keyword" style="font-size: 20px;">
                     악기연습실
@@ -137,7 +137,7 @@
         </div>
 
         <div  class="bt-box">
-            <a href="../html/heder.html" style=" text-decoration: none; box-sizing: border-box;">
+            <a href="janso_subpage.learnup.com?page=1&searchs="" " style=" text-decoration: none; box-sizing: border-box;">
                 <img src="./image//kitchen.svg" alt="">
                 <div class="keyword" style="font-size: 20px;">
                     공유주방
@@ -147,7 +147,7 @@
 
 
         <div  class="bt-box">
-            <a href="../html/heder.html" style=" text-decoration: none; box-sizing: border-box;">
+            <a href=janso_subpage.learnup.com?page=1&searchs="" " style=" text-decoration: none; box-sizing: border-box;">
                 <img src="./image//gathering.svg" alt="">
                 <div class="keyword" style="font-size: 20px;">
                     파티룸
@@ -157,7 +157,7 @@
 
 
         <div  class="bt-box">
-            <a href="../html/heder.html" style=" text-decoration: none; box-sizing: border-box;">
+            <a href=janso_subpage.learnup.com?page=1&searchs="" " style=" text-decoration: none; box-sizing: border-box;">
                 <img src="./image//workingout.svg" alt="">
                 <div class="keyword" style="font-size: 20px;">
                     운동시설

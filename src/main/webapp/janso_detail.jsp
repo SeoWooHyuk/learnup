@@ -192,7 +192,7 @@ var roomsnums = '<c:out value="${room.room_number}"/>';
                 <div class="intro_boxs_0" >  
                     <div id ="p_box" >                    
                        		<p style="white-space: pre-line;" class="p_box">
-                       		
+                       			
                        		
                        		
                        		
@@ -305,6 +305,17 @@ var roomsnums = '<c:out value="${room.room_number}"/>';
 		        <button class = "right_button"> > </button>
 		        
 		    </div>
+		    
+		    
+	        <div class="addperson">
+           	<div><span class="addperson_title">예약시간</span><span class="addperson_note">(최대20명, 10명 초과시 10,000원/1인)</span></div>
+           	<div class="addperson_text_wrap">
+            	<span class="plusbtn">-</span>
+            	<span><input type="text" class="addperson_text" placeholder="10" value=""></span>
+            	<span class="minusbtn">+</span>
+           	</div>
+            </div>
+        
 			           
             
             <div class="addperson">

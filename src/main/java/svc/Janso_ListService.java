@@ -35,13 +35,14 @@ public class Janso_ListService {
 		
 	}
 	
-	public ArrayList<Janso_product_registration> getsubArticleList(String a, int startpage,int pageSize) throws Exception{
+	public ArrayList<Janso_product_registration> getsubArticleList(String a, int startpage,int pageSize, String[] keyword ) throws Exception{
 		
 		ArrayList<Janso_product_registration> articleList = null;
 		Connection con = getConnection();
 		JansoDAO jansoDAO = JansoDAO.getInstance();
 		jansoDAO.setConnection(con);
-		articleList = jansoDAO.Janso_subpageList(a,startpage,pageSize);
+	
+		articleList = jansoDAO.Janso_subpageList(a,startpage,pageSize,keyword);
 		close(con);
 		return articleList;
 		

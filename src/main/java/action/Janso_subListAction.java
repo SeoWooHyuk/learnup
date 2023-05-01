@@ -30,20 +30,31 @@ public class Janso_subListAction implements jansoAction {
 	
 		int page=1;
 		int pageSize=9;
+		
+
 	
 		if(request.getParameter("page")!=null){
 			page=Integer.parseInt(request.getParameter("page"));
 		}
 		
-		System.out.println(page);
-		
 		String searchs = request.getParameter("searchs");
-
+		
+		String[] keyword  = new String[8];
+		keyword[0] = request.getParameter("keworld");
+		keyword[1] = request.getParameter("keworld1");
+		keyword[2] = request.getParameter("keworld2");
+		keyword[3] = request.getParameter("keworld3");
+		keyword[4] = request.getParameter("keworld4");
+		keyword[5] = request.getParameter("keworld5");
+		keyword[6] = request.getParameter("keworld6");
+		keyword[7] = request.getParameter("keworld7");
+		
+	
+		
 		Janso_ListService janso_ListService = new Janso_ListService();
 		int listCount = janso_ListService.getListCount();
 		
-		articleList = janso_ListService.getsubArticleList(searchs,page,pageSize);
-		System.out.println(articleList.size()+"사이즈");
+		articleList = janso_ListService.getsubArticleList(searchs,page,pageSize,keyword);
 		int maxPage=(int)((double)listCount/pageSize+0.95); 
    		//int startPage = (((int) ((double)page / 10 + 0.9)) - 1) * 10 + 1;
    	    int currentBlock = page % pageSize == 0 ? page / pageSize : (page / pageSize) + 1;
