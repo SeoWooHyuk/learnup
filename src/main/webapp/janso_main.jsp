@@ -26,9 +26,9 @@
 function getvalue(){
 
 	$.ajax({
-	    url: 'jangso.learnup.com?addp=서울',
+	    url: 'jangso.learnup.com',
 	    type: 'get',
-	    data: '서울',
+	    data: {addp : '서울'},
 	    success: function (data) {
 	            alert("데이터 전송이 성공적으로 끝났을 때 실행");
 	        }
@@ -40,9 +40,9 @@ function getvalue(){
 function getvalue1(){
 
 	$.ajax({
-	    url: 'jangso.learnup.com?addp=경기',
+	    url: 'jangso.learnup.com',
 	    type: 'get',
-	    data: '경기',
+	    data: {addp : '경기'},
 	    success: function (data) {
 	            alert("데이터 전송이 성공적으로 끝났을 때 실행");
 	     
@@ -55,9 +55,9 @@ function getvalue1(){
 function getvalue2(){
 
 	$.ajax({
-	    url: 'jangso.learnup.com?addp=강원도',
+	    url: 'jangso.learnup.com',
 	    type: 'get',
-	    data: '강원도',
+	    data: {addp : '강원도'},
 	    success: function (data) {
 	            alert("데이터 전송이 성공적으로 끝났을 때 실행");
 	        }
@@ -69,9 +69,9 @@ function getvalue2(){
 function getvalue3(){
 
 	$.ajax({
-	    url: 'jangso.learnup.com?addp=충청도',
+	    url: 'jangso.learnup.com',
 	    type: 'get',
-	    data: '충청도',
+	    data: {addp : '충청도'},
 	    success: function (data) {
 	            alert("데이터 전송이 성공적으로 끝났을 때 실행");
 	        }
@@ -83,9 +83,9 @@ function getvalue3(){
 function getvalue4(){
 
 	$.ajax({
-	    url: 'jangso.learnup.com?addp=전남북',
+	    url: 'jangso.learnup.com',
 	    type: 'get',
-	    data: '전남북',
+	    data: {addp : '전남북'},
 	    success: function (data) {
 	            alert("데이터 전송이 성공적으로 끝났을 때 실행");
 	        }
@@ -97,9 +97,9 @@ function getvalue4(){
 function getvalue5(){
 
 	$.ajax({
-	    url: 'jangso.learnup.com?addp=경상도',
+	    url: 'jangso.learnup.com',
 	    type: 'get',
-	    data: '경상도',
+	    data: {addp : '경상도'},
 	    success: function (data) {
 	            alert("데이터 전송이 성공적으로 끝났을 때 실행");
 	        }
@@ -111,9 +111,9 @@ function getvalue5(){
 function getvalue6(){
 
 	$.ajax({
-	    url: 'jangso.learnup.com?addp=제주도',
+	    url: 'jangso.learnup.com',
 	    type: 'get',
-	    data: '제주도',
+	    data: {addp : '제주도'},
 	    success: function (data) {
 	            alert("데이터 전송이 성공적으로 끝났을 때 실행");
 	        }
