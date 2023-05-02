@@ -5,7 +5,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.sql.DataSource;
 import vo.*;
@@ -141,17 +143,90 @@ public class JansoDAO {
 
 		}
 		
-		//장소 대여자 상품 셀렉
-		public ArrayList<Janso_product_registration> Janso_product_registrationList(){
+		
+		//장소 대여자 상품 셀렉 전채 셀렉
+		public ArrayList<Janso_product_registration> Janso_product_registrationListall(){
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
-			String board_list_sql="select * from room_product_registration ";
+			String board_list_sql="select * from room_product_registration";
+			
+			
 			ArrayList<Janso_product_registration> articleList = new ArrayList<Janso_product_registration>();
 			Janso_product_registration janso = null;
 	
 
 			try{
 				pstmt = con.prepareStatement(board_list_sql);
+				rs = pstmt.executeQuery();
+
+				while(rs.next()){
+					janso = new Janso_product_registration();
+					
+					janso.setEmail(rs.getString("email"));
+					janso.setRoom_number(rs.getInt("room_number")); 
+				
+					janso.setRoom_title(rs.getString("room_title"));
+					janso.setRoom_categories(rs.getString("room_categories"));
+					janso.setRoom_area(rs.getString("room_area"));
+					janso.setFacility_categories(rs.getString("facility_categories"));
+					janso.setRoom_address(rs.getString("room_address"));
+					janso.setReservationtime(rs.getString("reservationtime"));
+					
+					janso.setMin_personnel(rs.getString("min_personnel"));
+					janso.setMax_personnel(rs.getString("max_personnel"));
+					
+					janso.setOpen_time(rs.getString("open_time"));
+					janso.setClose_time(rs.getString("close_time"));
+					
+					janso.setHoliday(rs.getString("holiday"));
+					
+					janso.setRoom_price(rs.getString("room_price"));
+					
+					janso.setPersonnel_price(rs.getString("personnel_price"));
+					janso.setRoom_introduction(rs.getString("room_introduction"));
+					janso.setRoom_precautions(rs.getString("room_precautions"));
+					
+					janso.setMain_img(rs.getString("main_img"));
+					janso.setSub_img1(rs.getString("sub_img1"));
+					janso.setSub_img2(rs.getString("sub_img2"));
+					janso.setSub_img3(rs.getString("sub_img3"));
+					janso.setSub_img4(rs.getString("sub_img4"));
+
+
+				
+					articleList.add(janso);
+				}
+
+			}catch(Exception ex){
+			}finally{
+				close(rs);
+				close(pstmt);
+			}
+
+			return articleList;
+
+		}
+		
+		
+		
+		
+		
+		//장소 대여자 상품 셀렉 지역별 셀렉
+		public ArrayList<Janso_product_registration> Janso_product_registrationList(String addp){
+			
+			System.out.println(addp+"dao임");
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String board_list_sql="select * from room_product_registration where room_address like ? ";
+			
+			
+			ArrayList<Janso_product_registration> articleList = new ArrayList<Janso_product_registration>();
+			Janso_product_registration janso = null;
+	
+
+			try{
+				pstmt = con.prepareStatement(board_list_sql);
+				pstmt.setString(1, "%"+addp+"%"); //시작행-1 (시작 row 인덱스 번호)
 				rs = pstmt.executeQuery();
 
 				while(rs.next()){
@@ -209,25 +284,41 @@ public class JansoDAO {
 					PreparedStatement pstmt = null;
 					ResultSet rs = null;
 					
-					System.out.println(keword);
-					String sql="select * from room_product_registration  where room_title like ? and room_categories like ? and room_categories like ?  order by room_number ASC  limit ?,?";
+			String	sql2 ="select * from room_product_registration where "
+			+ "if( '"+search +"' != '' , room_title like'%"+search+"%',"
+			+ " room_categories like '%"+keword[0]+"%' or room_categories like '%"+keword[1]+"%' or room_categories like '%"+keword[2]+"%' or room_categories like '%"+keword[3]+"%' or room_categories like '%"+keword[4]+"%' or room_categories like '%"+keword[5]+"%' or room_categories like '%"+keword[6]+"%' or room_categories like '%"+keword[7]+"%') "
+			+ " order by room_number ASC  limit 0,9";
+					
+					
+					String sql="select * from room_product_registration  where room_title like ? and "
+							+ "( room_categories like ? or room_categories like ? ) "
+							+ "order by room_number ASC  limit ?,?";
+					
 					ArrayList<Janso_product_registration> articleList = new ArrayList<Janso_product_registration>();
 					Janso_product_registration janso = null;
 					int startrow=(startpage-1)*9; 
 					//System.out.println(startrow +"스타트 페이지");
-					//System.out.println(search +"스타트 페이지");
+					System.out.println(search +"스타트 페이지");
+					for(int i = 0; i < keword.length; i++ )
+					{
+						System.out.println(keword[i]);
+					}
 					
 					
 					
 				    try{
-						pstmt = con.prepareStatement(sql);
-					    pstmt.setString(1, "%"+search+"%"); //시작행-1 (시작 row 인덱스 번호)
-						pstmt.setString(2, "%"+keword[0]+"%"); // 키워드 검색
-						pstmt.setString(3, "%"+keword[1]+"%"); // 키워드 검색2
-						pstmt.setInt(4, startrow); //시작행-1 (시작 row 인덱스 번호)
-						pstmt.setInt(5, pageSize); // 페이지크기 (한번에 출력되는 수)
+				    	
+				    	Statement stmt = null;
+				    	stmt = con.prepareStatement(sql2);
+						//pstmt = con.prepareStatement(sql);
+//					    pstmt.setString(1, "%"+search+"%"); //시작행-1 (시작 row 인덱스 번호)
+//						pstmt.setString(2, "%"+keword[0]+"%"); // 키워드 검색
+//						pstmt.setString(3, "%"+keword[1]+"%"); // 키워드 검색2
+//						pstmt.setInt(4, startrow); //시작행-1 (시작 row 인덱스 번호)
+//						pstmt.setInt(5, pageSize); // 페이지크기 (한번에 출력되는 수)
 					
-						rs = pstmt.executeQuery();
+						//rs = pstmt.executeQuery();
+						rs = stmt.executeQuery(sql2);
 
 						while(rs.next()){
 							janso = new Janso_product_registration();

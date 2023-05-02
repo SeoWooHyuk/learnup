@@ -32,22 +32,60 @@ public class Janso_subListAction implements jansoAction {
 		int pageSize=9;
 		
 
+		String searchs = request.getParameter("searchs");
 	
 		if(request.getParameter("page")!=null){
 			page=Integer.parseInt(request.getParameter("page"));
 		}
 		
-		String searchs = request.getParameter("searchs");
-		
 		String[] keyword  = new String[8];
-		keyword[0] = request.getParameter("keworld");
-		keyword[1] = request.getParameter("keworld1");
-		keyword[2] = request.getParameter("keworld2");
-		keyword[3] = request.getParameter("keworld3");
-		keyword[4] = request.getParameter("keworld4");
-		keyword[5] = request.getParameter("keworld5");
-		keyword[6] = request.getParameter("keworld6");
-		keyword[7] = request.getParameter("keworld7");
+		keyword[0] = " ";
+		keyword[1] = " ";
+		keyword[2] = " ";
+		keyword[3] = " "; 
+		keyword[4] = " ";
+		keyword[5] = " ";
+		keyword[6] = " ";
+		keyword[7] = " ";
+		
+		if(request.getParameter("keworld")!=null){
+			keyword[0] = request.getParameter("keworld");
+		}
+		
+		if(request.getParameter("keworld1")!=null){
+			keyword[1] = request.getParameter("keworld1");
+		}
+		
+		if(request.getParameter("keworld2")!=null){
+			keyword[2] = request.getParameter("keworld2");
+		}
+		
+		if(request.getParameter("keworld3")!=null){
+			keyword[3] = request.getParameter("keworld3");
+		}
+		
+		if(request.getParameter("keworld4")!=null){
+			keyword[4] = request.getParameter("keworld4");
+		}
+		
+		if(request.getParameter("keworld5")!=null){
+			keyword[5] = request.getParameter("keworld5");
+		}
+		
+		if(request.getParameter("keworld6")!=null){
+			keyword[6] = request.getParameter("keworld6");
+		}
+		
+		if(request.getParameter("keworld7")!=null){
+			keyword[7] = request.getParameter("keworld7");
+		}
+		
+		
+	
+		
+		
+		
+	
 		
 	
 		

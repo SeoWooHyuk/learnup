@@ -356,6 +356,7 @@
                 <div  action="board_select" class="search_form"style="float :left;">
                   <form action="janso_subpage.learnup.com?page=<%=nowPage%>">
                 	 <input type="hidden"  name="page" value="<%=nowPage%>" ">
+                	  <input type="hidden"  name="keworld" value="" ">
 					<input class="searchTerm" placeholder="   검색하세여"  name = "searchs" /><input class="searchButton" type="submit" />
 					
 				  </form>
@@ -410,7 +411,7 @@
 <a href="janso_detail.learnup.com" style=" text-decoration: none; box-sizing: border-box;">		
 <div class="box-0-2">
 	<div class="box-0-2_box">
-    	<strong style="font-size: 15px;" ><%= articleList.get(i).getRoom_title() %>룸</strong> 
+    	<strong style="font-size: 15px;" ><%= articleList.get(i).getRoom_categories() %>룸</strong> 
         <span style="font-size: 12px;">(최소인원 <%=articleList.get(i).getMin_personnel() %>명/ </span>    
         <span style="font-size: 12px;"> 최대인원 <%=articleList.get(i).getMax_personnel() %>명) </span>
 	</div>
