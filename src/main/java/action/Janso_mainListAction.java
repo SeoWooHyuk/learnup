@@ -47,9 +47,21 @@ public class Janso_mainListAction implements jansoAction {
 		
 		ServletContext context = request.getServletContext();
 		String directory = context.getRealPath("/jansoproduct"); 
-
-		
 		request.setAttribute("directory", directory);
+		
+	/*	
+		StringBuilder sb = new StringBuilder("[");  //[{"key" : value, "key" : "value"}, {"key" : value, "key" : "value"},.........]
+		
+		for(int i = 0 ; i < articleList.size();i++ ){
+			sb.append("{");
+			sb.append("\"a\" : "+int+",");
+			sb.append("\"b\" : \""++"\"");
+			
+		}
+		
+		*/
+		
+		
 		request.setAttribute("articleList", articleList);
 		request.setAttribute("articleList2", articleList2);
 		ActionForward forward= new ActionForward();

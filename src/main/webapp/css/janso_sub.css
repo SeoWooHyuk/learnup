@@ -21,6 +21,8 @@ list-style: none;
     height: 100%;
     border-style: solid;
     border-radius: 10px;
+    background: url(../image/aaaaaaaaaaaa.png);
+    background-size: cover;
     
 }
 /*광고1  중간몸통 이미지라인*/

@@ -170,7 +170,7 @@
                                     <div class="checkbox_1_label">
                                         지역선택
                                     </div>
-                                    <button type="button" class="buttons" id="chbu2">^</button>
+                                    <button type="button" class="buttons" id="chbu2">▼</button>
                                 </div>
                             </div>
 
@@ -182,7 +182,7 @@
                                         <div class="checkbox_1_label">
                                             서울
                                         </div>
-                                        <button type="button" class="buttons">^</button>
+                                        <button type="button" class="buttons"></button>
                                     </div>
                                 </div>
 
@@ -190,20 +190,9 @@
                                     <div class="subcategory1-0">
                                         <input type="checkbox" name="" id="" class="checkbox_1">
                                         <div class="checkbox_1_label">
-                                            부산
+                                            경기도
                                         </div>
-                                        <button type="button" class="buttons">^</button>
-                                    </div>
-                                </div>
-
-                                
-                                <div class="togle_list_wrap">
-                                    <div class="subcategory1-0">
-                                        <input type="checkbox" name="" id="" class="checkbox_1">
-                                        <div class="checkbox_1_label">
-                                            대구
-                                        </div>
-                                        <button type="button" class="buttons">^</button>
+                                        <button type="button" class="buttons"></button>
                                     </div>
                                 </div>
 
@@ -212,9 +201,9 @@
                                     <div class="subcategory1-0">
                                         <input type="checkbox" name="" id="" class="checkbox_1">
                                         <div class="checkbox_1_label">
-                                            인천
+                                            강원도
                                         </div>
-                                        <button type="button" class="buttons">^</button>
+                                        <button type="button" class="buttons"></button>
                                     </div>
                                 </div>
 
@@ -223,9 +212,20 @@
                                     <div class="subcategory1-0">
                                         <input type="checkbox" name="" id="" class="checkbox_1">
                                         <div class="checkbox_1_label">
-                                            광주
+                                            충청도
                                         </div>
-                                        <button type="button" class="buttons">^</button>
+                                        <button type="button" class="buttons"></button>
+                                    </div>
+                                </div>
+
+                                
+                                <div class="togle_list_wrap">
+                                    <div class="subcategory1-0">
+                                        <input type="checkbox" name="" id="" class="checkbox_1">
+                                        <div class="checkbox_1_label">
+                                            전라도
+                                        </div>
+                                        <button type="button" class="buttons"></button>
                                     </div>
                                 </div>
 
@@ -233,9 +233,9 @@
                                     <div class="subcategory1-0">
                                         <input type="checkbox" name="" id="" class="checkbox_1">
                                         <div class="checkbox_1_label">
-                                            대전
+                                            경상도
                                         </div>
-                                        <button type="button" class="buttons">^</button>
+                                        <button type="button" class="buttons"></button>
                                     </div>
                                 </div>
 
@@ -243,101 +243,13 @@
                                     <div class="subcategory1-0">
                                         <input type="checkbox" name="" id="" class="checkbox_1">
                                         <div class="checkbox_1_label">
-                                            울산
+                                            제주도
                                         </div>
-                                        <button type="button" class="buttons">^</button>
+                                        <button type="button" class="buttons"></button>
                                     </div>
                                 </div>
 
-                                <div class="togle_list_wrap">
-                                    <div class="subcategory1-0">
-                                        <input type="checkbox" name="" id="" class="checkbox_1">
-                                        <div class="checkbox_1_label">
-                                            경기
-                                        </div>
-                                        <button type="button" class="buttons">^</button>
-                                    </div>
-                                </div>
-
-                                <div class="togle_list_wrap">
-                                    <div class="subcategory1-0">
-                                        <input type="checkbox" name="" id="" class="checkbox_1">
-                                        <div class="checkbox_1_label">
-                                            강원
-                                        </div>
-                                        <button type="button" class="buttons">^</button>
-                                    </div>
-                                </div>
-
-                                <div class="togle_list_wrap">
-                                    <div class="subcategory1-0">
-                                        <input type="checkbox" name="" id="" class="checkbox_1">
-                                        <div class="checkbox_1_label">
-                                            충북
-                                        </div>
-                                        <button type="button" class="buttons">^</button>
-                                    </div>
-                                </div>
-
-                                <div class="togle_list_wrap">
-                                    <div class="subcategory1-0">
-                                        <input type="checkbox" name="" id="" class="checkbox_1">
-                                        <div class="checkbox_1_label">
-                                            충남
-                                        </div>
-                                        <button type="button" class="buttons">^</button>
-                                    </div>
-                                </div>
-
-                                <div class="togle_list_wrap">
-                                    <div class="subcategory1-0">
-                                        <input type="checkbox" name="" id="" class="checkbox_1">
-                                        <div class="checkbox_1_label">
-                                            전북
-                                        </div>
-                                        <button type="button" class="buttons">^</button>
-                                    </div>
-                                </div>
-
-                                <div class="togle_list_wrap">
-                                    <div class="subcategory1-0">
-                                        <input type="checkbox" name="" id="" class="checkbox_1">
-                                        <div class="checkbox_1_label">
-                                            전남
-                                        </div>
-                                        <button type="button" class="buttons">^</button>
-                                    </div>
-                                </div>
-
-                                <div class="togle_list_wrap">
-                                    <div class="subcategory1-0">
-                                        <input type="checkbox" name="" id="" class="checkbox_1">
-                                        <div class="checkbox_1_label">
-                                            경북
-                                        </div>
-                                        <button type="button" class="buttons">^</button>
-                                    </div>
-                                </div>
-
-                                <div class="togle_list_wrap">
-                                    <div class="subcategory1-0">
-                                        <input type="checkbox" name="" id="" class="checkbox_1">
-                                        <div class="checkbox_1_label">
-                                            경남
-                                        </div>
-                                        <button type="button" class="buttons">^</button>
-                                    </div>
-                                </div>
-
-                                <div class="togle_list_wrap">
-                                    <div class="subcategory1-0">
-                                        <input type="checkbox" name="" id="" class="checkbox_1">
-                                        <div class="checkbox_1_label">
-                                            제주
-                                        </div>
-                                        <button type="button" class="buttons">^</button>
-                                    </div>
-                                </div>
+                                
 
 
                             </div>
@@ -411,7 +323,7 @@
 <a href="janso_detail.learnup.com" style=" text-decoration: none; box-sizing: border-box;">		
 <div class="box-0-2">
 	<div class="box-0-2_box">
-    	<strong style="font-size: 15px;" ><%= articleList.get(i).getRoom_categories() %>룸</strong> 
+    	<strong style="font-size: 15px;" ><%= articleList.get(i).getRoom_title() %>룸</strong> 
         <span style="font-size: 12px;">(최소인원 <%=articleList.get(i).getMin_personnel() %>명/ </span>    
         <span style="font-size: 12px;"> 최대인원 <%=articleList.get(i).getMax_personnel() %>명) </span>
 	</div>
@@ -454,12 +366,12 @@
        			 <%if(nowPage<=1){ %>
        			  <li><a href=""></a></li>
        			 <%}else{ %>
-		          <li><a href="janso_subpage.learnup.com?page=<%=nowPage-1 %>"><</a></li>
+		          <li><a href="janso_subpage.learnup.com?&keworld=&page=<%=nowPage-1 %>&searchs="><</a></li>
 		          <%} %>
 		          
 				<%for(int a=startPage; a<=endPage;a++){ %>
 						
-				   <li><a href="janso_subpage.learnup.com?page=<%=a%>&searchs=<%=psearch.getSearch()%> "><%=a %></a></li>
+				   <li><a href="janso_subpage.learnup.com?&keworld=&page=<%=a%>&searchs=<%=psearch.getSearch()%> "><%=a %></a></li>
 					
 				<%} %>
 		    		
@@ -467,7 +379,7 @@
 		    		<%if(nowPage>=maxPage){ %>
 					 <li><a href=""></a></li>
 					<%}else{ %>
-		          <li><a href="janso_subpage.learnup.com?page=<%=nowPage+1 %>&searchs="" ">></a></li>
+		          <li><a href="janso_subpage.learnup.com?keworld=&page=<%=nowPage+1 %>&searchs=">></a></li>
 		          <%} %>
 		          
         		</ul>

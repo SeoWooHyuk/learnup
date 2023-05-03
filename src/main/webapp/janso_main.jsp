@@ -31,6 +31,7 @@ function getvalue(){
 	    data: {addp : '서울'},
 	    success: function (data) {
 	            alert("데이터 전송이 성공적으로 끝났을 때 실행");
+	            
 	        }
 	});
 	
@@ -45,7 +46,7 @@ function getvalue1(){
 	    data: {addp : '경기'},
 	    success: function (data) {
 	            alert("데이터 전송이 성공적으로 끝났을 때 실행");
-	     
+	    
 	        }
 	});
 	
@@ -309,8 +310,9 @@ function getvalue6(){
                     <a  class="control_prev"><</a>
                     <ul>	
                    
-                      <li><img src="${pageContext.request.contextPath }/jansoproduct/<%=articleList2.get(i).getMain_img()%>" style=" width:100%; height:100%; "></li>
-                   	  <li><img src="${pageContext.request.contextPath }/jansoproduct/<%=articleList2.get(i).getSub_img1()%>" style=" width:100%; height:100%; "></li>  
+                    
+                   	  <li><img src="${pageContext.request.contextPath }/jansoproduct/<%=articleList2.get(i).getSub_img1()%>" style=" width:100%; height:100%; "></li> 
+                   	    <li><img src="${pageContext.request.contextPath }/jansoproduct/<%=articleList2.get(i).getMain_img()%>" style=" width:100%; height:100%; "></li> 
                    	  <li><img src="${pageContext.request.contextPath }/jansoproduct/<%=articleList2.get(i).getSub_img2()%>" style=" width:100%; height:100%; "></li>  
                    	  <li><img src="${pageContext.request.contextPath }/jansoproduct/<%=articleList2.get(i).getSub_img3()%>" style=" width:100%; height:100%; "></li>  
                    	  <li><img src="${pageContext.request.contextPath }/jansoproduct/<%=articleList2.get(i).getSub_img4()%>" style=" width:100%; height:100%; "></li>  

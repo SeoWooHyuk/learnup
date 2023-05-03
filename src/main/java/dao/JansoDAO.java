@@ -283,21 +283,25 @@ public class JansoDAO {
 				public ArrayList<Janso_product_registration> Janso_subpageList(String search, int startpage,int pageSize , String[]  keword){
 					PreparedStatement pstmt = null;
 					ResultSet rs = null;
+					ArrayList<Janso_product_registration> articleList = new ArrayList<Janso_product_registration>();
+					Janso_product_registration janso = null;
+					int startrow=(startpage-1)*9; 
+					System.out.println(startrow);
 					
-			String	sql2 ="select * from room_product_registration where "
-			+ "if( '"+search +"' != '' , room_title like'%"+search+"%',"
-			+ " room_categories like '%"+keword[0]+"%' or room_categories like '%"+keword[1]+"%' or room_categories like '%"+keword[2]+"%' or room_categories like '%"+keword[3]+"%' or room_categories like '%"+keword[4]+"%' or room_categories like '%"+keword[5]+"%' or room_categories like '%"+keword[6]+"%' or room_categories like '%"+keword[7]+"%') "
-			+ " order by room_number ASC  limit 0,9";
+					String	sql2 ="select * from room_product_registration where "
+					+ "if( '"+search +"' != '' , room_title like'%"+search+"%',"
+					+ " room_categories like '%"+keword[0]+"%' or room_categories like '%"+keword[1]+"%' or room_categories like '%"+keword[2]+"%' or room_categories like '%"+keword[3]+"%' or room_categories like '%"+keword[4]+"%' or room_categories like '%"+keword[5]+"%' or room_categories like '%"+keword[6]+"%' or room_categories like '%"+keword[7]+"%') "
+					+ "and max_personnel between 0 and 999"
+					+ " order by room_number ASC  limit "+startrow+", "+pageSize +" ";
 					
 					
 					String sql="select * from room_product_registration  where room_title like ? and "
 							+ "( room_categories like ? or room_categories like ? ) "
 							+ "order by room_number ASC  limit ?,?";
 					
-					ArrayList<Janso_product_registration> articleList = new ArrayList<Janso_product_registration>();
-					Janso_product_registration janso = null;
-					int startrow=(startpage-1)*9; 
-					//System.out.println(startrow +"스타트 페이지");
+					
+					
+				
 					System.out.println(search +"스타트 페이지");
 					for(int i = 0; i < keword.length; i++ )
 					{

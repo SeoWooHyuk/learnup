@@ -68,7 +68,7 @@ var roomsnums = '<c:out value="${room.room_number}"/>';
 			</div>
 
             <div class="star_junsu">
-            	<div class="star_junsu_title">평점을 작성해주세요.</div>
+            	<div class="star_junsu_title">평점 4.5</div>
                 <fieldset class="rating">
 				    <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
 				    <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
@@ -306,7 +306,7 @@ var roomsnums = '<c:out value="${room.room_number}"/>';
 		        
 		    </div>
 		    
-		    
+		 <!-- 
 	        <div class="addperson">
            	<div><span class="addperson_title">예약시간</span><span class="addperson_note">(최대20명, 10명 초과시 10,000원/1인)</span></div>
            	<div class="addperson_text_wrap">
@@ -315,6 +315,8 @@ var roomsnums = '<c:out value="${room.room_number}"/>';
             	<span class="minusbtn">+</span>
            	</div>
             </div>
+            -->   
+     
         
 			           
             

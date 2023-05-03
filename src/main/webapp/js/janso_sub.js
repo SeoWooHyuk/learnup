@@ -2,7 +2,7 @@
 $(function(){
     var tt = 0;
     var tb = 0;
-//    늘어라  
+// 카테고리   늘어라  
      $('#ch').click(function()
      {   
         //[prop]: 속성 상태
@@ -20,6 +20,10 @@ $(function(){
           tt = 0;
         }
      });
+     
+     
+     
+     
     $("#to1").hide();
     $("#chbu").click(function()
     {
@@ -38,7 +42,15 @@ $(function(){
         }
        
     });
-//    줄어라  
+    
+    
+    
+    
+    
+    
+    
+    
+// 지역별 늘어라
     $('#ch2').click(function()
      {   
         //[prop]: 속성 상태
@@ -48,7 +60,7 @@ $(function(){
           $('input:checkbox[name=cho]').prop("checked",true);
           $("#to1").show();
             tt = 1
-            $('#chbu').html("▲")
+            $('#chbu2').html("▲")
         }
         else
         {
@@ -63,11 +75,13 @@ $(function(){
     {
         if(tb == 0)
         {
+			$('#chbu2').html("▲")
             $("#to2").show();
             tb = 1;
         }
         else
         {
+			 $('#chbu2').html("▼")
             $("#to2").hide();
             tb = 0;
         }
@@ -85,6 +99,7 @@ $(function(){
       this.min = this.$el.attr("min") || false;
       this.max = this.$el.attr("max") || false;
       this.init();
+
     }
 
     InputNumber.prototype = {
