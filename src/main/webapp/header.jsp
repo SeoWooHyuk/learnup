@@ -61,7 +61,7 @@
 			<%}else{ %>
 			<a href="janso_regipage.learnup.com"><nav style="width:110px; height:40px; float: right; margin-top:10px; text-align:center; background-color: #D1B2FF; border-radius:5px; line-height:40px;"><div id="tm5">마이런업</div></nav></a>
 			<a href="logout.jsp"><nav style="width:110px; height:40px; float: right; margin-top:10px; margin-right: 10px; text-align: center; line-height: 40px;"><div id="tm6">로그아웃</div></nav></a>
-			<a href="offsellerregi.off"><nav style="width:110px; height:40px; float: right; margin-top:10px; margin-right: 10px; text-align: center; line-height: 40px;"><div id="tm7">전문가등록</div></nav></a>
+			<a href="jangso_Register.learnup.com"><nav style="width:110px; height:40px; float: right; margin-top:10px; margin-right: 10px; text-align: center; line-height: 40px;"><div id="tm7">전문가등록</div></nav></a>
 						
 			<nav method="get" action="/search" id="search" style="margin-top:10px; float:right; margin-right:40px;" >
 				<input type="text" size="40" placeholder="검색어를 입력해주세요." / style="font-size:10pt;">
