@@ -27,7 +27,7 @@ function check(){
 	<div id="dd"><a href="index.jsp"><img src="image/widthlearn.png" id="whs"></a></div>
 	<section>
 		<!-- 재능판매, 장소대여, 강의판매(vod), 강의판매에 대한 a태그 걸어야함.-->
-		<h2>전문가 등록</h2>
+		<h2>장소대여자 등록</h2>
 		<div>본인 명의의 핸드폰 번호 인증 후에</div>
 		<div>판매자 등록이 가능합니다.</div>
 		<br>

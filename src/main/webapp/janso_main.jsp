@@ -138,13 +138,10 @@ function getvalue6(){
 	ArrayList<Janso_product_registration> articleList=(ArrayList<Janso_product_registration>)request.getAttribute("articleList");  //지역별
 	ArrayList<Janso_product_registration> articleList2=(ArrayList<Janso_product_registration>)request.getAttribute("articleList2"); //전체
  	String directory = (String)request.getAttribute("directory");
- 	String files[] = new File(directory).list();
- 	
- 	
-	
+ 	String files[] = new File(directory).list();	
  %> 
  
- <%= articleList.size()  %>	
+
  
  
 

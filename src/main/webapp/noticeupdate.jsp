@@ -1,7 +1,4 @@
-<!--  
-<%@page import="com.sun.webkit.ContextMenu.ShowContext"%>
-<%@page import="com.sun.corba.se.impl.protocol.giopmsgheaders.Message"%>
--->
+
 <%@ page language="java" contentType="text/html;charset=utf-8" pageEncoding="utf-8" %>
 <% request.setCharacterEncoding("utf-8"); %>
 <!DOCTYPE html>

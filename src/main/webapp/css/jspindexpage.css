@@ -109,13 +109,11 @@ header div#head2 li{
 }
 div#lo2{
 	width: 1280px;
-	height: 3000px;
 	margin-left: auto;
 	margin-right: auto;
 }
 section#s1{
 	width: 200px;
-	height: 2600px;
 	float: left;
 }
 section#s1 ul{
@@ -140,16 +138,17 @@ section#s1 li:hover{
 }
 section#s2{
 	width: 1060px;
-	height: 2450px;
 	margin-left: 220px;
 	margin-right: auto;
 }
 section#s3{
 	width: 1060px;
-    height: 150px;
     margin-left: 220px;
     margin-right: auto;
     text-align: center;
+    display: inline-block;
+    margin-bottom: 100px;
+    margin-top: 50px;
 }
 section#s3 a{
 	padding: 10px;
@@ -206,6 +205,7 @@ div.title{
 	height: 60px;
 	font-weight: bold;
 	color: rgb(48, 52, 65);
+	cursor : pointer;
 }
 div.money{
 	font-size: 20px;
@@ -219,15 +219,14 @@ div.review{
 	color: rgb(154, 155, 167);
 	font-weight: bold;
 }
-section div img{
-	width: 240px;
-	height: 180px;
-	position: relative;
-	z-index: 0;
-}
 img.cl{
 	border: 1px solid white;
-	border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+    width: 240px;
+    height: 180px;
+    position: relative;
+    z-index: 0;
+    cursor : pointer;
 }
 div#lo3{
 	width: 1280px;
@@ -250,10 +249,6 @@ div#foottt div.ftd{
 	float: left;
 	position: relative;
 }
-div#foottt img{
-	width: 240px;
-	height: 180px;
-}
 h3{
 	font-size: 22px;
 	color: rgb(48, 52, 65);
@@ -271,30 +266,25 @@ span.star{
 	color : rgb(255, 212, 0);
 	font-size: 15px;
 }
-article:hover, div.com:hover{
-	scale: 1.05;
-}
 a{
   text-decoration:none; color:inherit; cursor: pointer;
 }
 .icon{
 	position: absolute;
-	top: 8px;
- 	right: 8px;
+    z-index: 5;
+    top: 8px;
+    right: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    border: solid 2px #eaeaea;
-    background-color: #fff;
-    z-index: 0;
+    width: calc(55vw * (45 / 1920));
+    height: calc(55vw * (45 / 1920));
 }
 
-div#foottt .icon.heart img, .icon.heart img{
-    width: 15px;
-    height: 15px;
+.icon.heart img{
+    width: 40px;
+    height: 40px;
+    position: relative;
 }
 
 .icon.heart.fas{

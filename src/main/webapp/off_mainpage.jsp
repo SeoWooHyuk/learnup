@@ -23,7 +23,7 @@
 		<link href="css/slick-theme.css" rel="stylesheet" type="text/css">
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-		<script src="js/off_mainpage_js.js"></script>
+		<script src="js/off_mainpage_js.js"></script> 
 		<script src="js/slick.js"></script>
 		<script>
 			$.noConflict();
@@ -49,7 +49,7 @@
 						<div class="banner_sec1">
 								<h1>강의마켓 NO.1 런업에서<br>원하는 강의를 찾아보세요.</h1>
 								<div method="get" action="/search" id="search2">
-									<input type="text" size="20" placeholder="검색해주세요">
+									<input type="text" size="20" placeholder="검색해주세요" class="main-search input-lg">
 								</div>
 								<ul>
 									<a href="#self"><li>#피트니스</li></a>
@@ -104,14 +104,74 @@
 						<div class="product">
 							<a href="#self">
 								<div class="product_image imgList">
-									<span style="position : absolute;" class="imgC">
-										<img src="image/green.jfif" style="width: 240px; height:160px; border-radius: 10px;">
-									</span>
-									<span style="position : absolute; margin-left: 200px;">
-										<a href="javascript:;" class="icon heart" style="text-decoration:none; color:inherit; cursor:pointer;">
-											<img src="image/heart1.png" alt="찜하기">
-										</a>
-									</span>
+								
+									<div id="slider1" class="slider1" >
+										<span style="position:absolute; margin-left: 200px; z-index:9;">
+											<a href="javascript:;" class="icon heart" style="text-decoration:none; color:inherit; cursor:pointer;">
+												<img src="image/heart1.png" alt="찜하기">
+											</a>
+										</span> 
+										
+					                    <a  class="control_next">></a>
+					                    <a  class="control_prev"><</a>
+					                 
+					                    <ul>
+					                      <li class="imgC"><img src="image/lesson2.jpg" alt="cover1"></li>
+					                      <li class="imgC"><img src="image/lesson3.jpg" alt="cover2"></li>
+					                      <li class="imgC"><img src="image/lesson4.jpg" alt="cover3"></li>
+					                      <li class="imgC"><img src="image/lesson5.jpg" alt="cover4"></li>
+					                      <li class="imgC"><img src="image/lesson6.jpg" alt="cover5"></li>
+					                    </ul>
+					                </div>
+									
+								</div>
+							</a>
+							
+							<a href="#self">
+								<div class="product_detail">
+									<div class="area">강남구</div>
+									<div class="lesson">그린컴퓨터아카데미 풀스텍(java, database, css, javascript)</div>
+									<div class="seller">판매자명</div>
+									<div class="price">
+										<div>10,000원</div>
+									</div>
+									<div class="jjre">
+										<div class="jjim">
+											<img src="image/heart2.png" style="width:15px; height: 15px; float: left;">
+											<div style="width:30px; height: 15px; font-weight:bold; font-size:9pt; float:left; margin-left: 5px;line-height:15px;">1,000+</div>
+										</div>
+										<div class="review">
+											<div style="width:25px; height: 15px; float:left; font-weight:bold;">리뷰</div>
+											<div style="width:30px; height: 15px; font-weight:bold; font-size:9pt; float:left; line-height:15px;">1,000+
+											</div>
+										</div>
+									</div>
+								</div>
+							</a>
+						</div>
+						<div class="product">
+							<a href="#self">
+								<div class="product_image imgList">
+									
+									<div id="slider2" class="slider1" >
+										<span style="position:absolute; margin-left: 200px; z-index:9;">
+											<a href="javascript:;" class="icon heart" style="text-decoration:none; color:inherit; cursor:pointer;">
+												<img src="image/heart1.png" alt="찜하기">
+											</a>
+										</span> 
+										
+					                    <a  class="control_next">></a>
+					                    <a  class="control_prev"><</a>
+					                 
+					                    <ul>
+					                      <li class="imgC"><img src="image/lesson3.jpg" alt="cover1"></li>
+					                      <li class="imgC"><img src="image/lesson4.jpg" alt="cover2"></li>
+					                      <li class="imgC"><img src="image/lesson5.jpg" alt="cover3"></li>
+					                      <li class="imgC"><img src="image/lesson6.jpg" alt="cover4"></li>
+					                      <li class="imgC"><img src="image/lesson7.jpg" alt="cover5"></li>
+					                    </ul>
+					                </div>
+									
 								</div>
 							</a>
 							<a href="#self">
@@ -139,49 +199,26 @@
 						<div class="product">
 							<a href="#self">
 								<div class="product_image imgList">
-									<span style="position : absolute;" class="imgC">
-										<img src="image/lesson2.jpg" style="width: 240px; height:160px; border-radius: 10px;">
-									</span>
-									<span style="position : absolute; margin-left: 200px;">
-										<a href="javascript:;" class="icon heart" style="text-decoration:none; color:inherit; cursor:pointer;">
-											<img src="image/heart1.png" alt="찜하기">
-										</a>
-									</span>
-								</div>
-							</a>
-							<a href="#self">
-								<div class="product_detail">
-									<div class="area">강남구</div>
-									<div class="lesson">그린컴퓨터아카데미 풀스텍(java, database, css, javascript)</div>
-									<div class="seller">판매자명</div>
-									<div class="price">
-										<div>10,000원</div>
-									</div>
-									<div class="jjre">
-										<div class="jjim">
-											<img src="image/heart2.png" style="width:15px; height: 15px; float: left;">
-											<div style="width:30px; height: 15px; font-weight:bold; font-size:9pt; float:left; margin-left: 5px;line-height:15px;">1,000+</div>
-										</div>
-										<div class="review">
-											<div style="width:25px; height: 15px; float:left; font-weight:bold;">리뷰</div>
-											<div style="width:30px; height: 15px; font-weight:bold; font-size:9pt; float:left; line-height:15px;">1,000+
-											</div>
-										</div>
-									</div>
-								</div>
-							</a>
-						</div>
-						<div class="product">
-							<a href="#self">
-								<div class="product_image imgList">
-									<span style="position : absolute;" class="imgC">
-										<img src="image/lesson3.jpg" style="width: 240px; height:160px; border-radius: 10px;">
-									</span>
-									<span style="position : absolute; margin-left: 200px;">
-										<a href="javascript:;" class="icon heart" style="text-decoration:none; color:inherit; cursor:pointer;">
-											<img src="image/heart1.png" alt="찜하기">
-										</a>
-									</span>
+									
+									<div id="slider3" class="slider1" >
+										<span style="position:absolute; margin-left: 200px; z-index:9;">
+											<a href="javascript:;" class="icon heart" style="text-decoration:none; color:inherit; cursor:pointer;">
+												<img src="image/heart1.png" alt="찜하기">
+											</a>
+										</span> 
+										
+					                    <a  class="control_next">></a>
+					                    <a  class="control_prev"><</a>
+					                 
+					                    <ul>
+					                      <li class="imgC"><img src="image/lesson4.jpg" alt="cover1"></li>
+					                      <li class="imgC"><img src="image/lesson5.jpg" alt="cover2"></li>
+					                      <li class="imgC"><img src="image/lesson6.jpg" alt="cover3"></li>
+					                      <li class="imgC"><img src="image/lesson7.jpg" alt="cover4"></li>
+					                      <li class="imgC"><img src="image/lesson8.jpg" alt="cover5"></li>
+					                    </ul>
+					                </div>
+									
 								</div>
 							</a>
 							<a href="#self">
@@ -209,14 +246,26 @@
 						<div class="product">
 							<a href="#self">
 								<div class="product_image imgList">
-									<span style="position : absolute;" class="imgC">
-										<img src="image/lesson4.jpg" style="width: 240px; height:160px; border-radius: 10px;">
-									</span>
-									<span style="position : absolute; margin-left: 200px;">
-										<a href="javascript:;" class="icon heart" style="text-decoration:none; color:inherit; cursor:pointer;">
-											<img src="image/heart1.png" alt="찜하기">
-										</a>
-									</span>
+									
+									<div id="slider4" class="slider1" >
+										<span style="position:absolute; margin-left: 200px; z-index:9;">
+											<a href="javascript:;" class="icon heart" style="text-decoration:none; color:inherit; cursor:pointer;">
+												<img src="image/heart1.png" alt="찜하기">
+											</a>
+										</span> 
+										
+					                    <a  class="control_next">></a>
+					                    <a  class="control_prev"><</a>
+					                 
+					                    <ul>
+					                      <li class="imgC"><img src="image/lesson5.jpg" alt="cover1"></li>
+					                      <li class="imgC"><img src="image/lesson6.jpg" alt="cover2"></li>
+					                      <li class="imgC"><img src="image/lesson7.jpg" alt="cover3"></li>
+					                      <li class="imgC"><img src="image/lesson8.jpg" alt="cover4"></li>
+					                      <li class="imgC"><img src="image/lesson9.jpg" alt="cover5"></li>
+					                    </ul>
+					                </div>
+									
 								</div>
 							</a>
 							<a href="#self">
@@ -241,111 +290,7 @@
 								</div>
 							</a>
 						</div>
-						<div class="product">
-							<a href="#self">
-								<div class="product_image imgList">
-									<span style="position : absolute;" class="imgC">
-										<img src="image/lesson13.jpg" style="width: 240px; height:160px; border-radius: 10px;">
-									</span>
-									<span style="position : absolute; margin-left: 200px;">
-										<a href="javascript:;" class="icon heart" style="text-decoration:none; color:inherit; cursor:pointer;">
-											<img src="image/heart1.png" alt="찜하기">
-										</a>
-									</span>
-								</div>
-							</a>
-							<a href="#self">
-								<div class="product_detail">
-									<div class="area">강남구</div>
-									<div class="lesson">그린컴퓨터아카데미 풀스텍(java, database, css, javascript)</div>
-									<div class="seller">판매자명</div>
-									<div class="price">
-										<div>10,000원</div>
-									</div>
-									<div class="jjre">
-										<div class="jjim">
-											<img src="image/heart2.png" style="width:15px; height: 15px; float: left;">
-											<div style="width:30px; height: 15px; font-weight:bold; font-size:9pt; float:left; margin-left: 5px;line-height:15px;">1,000+</div>
-										</div>
-										<div class="review">
-											<div style="width:25px; height: 15px; float:left; font-weight:bold;">리뷰</div>
-											<div style="width:30px; height: 15px; font-weight:bold; font-size:9pt; float:left; line-height:15px;">1,000+
-											</div>
-										</div>
-									</div>
-								</div>
-							</a>
-						</div>
-						<div class="product">
-							<a href="#self">
-								<div class="product_image imgList">
-									<span style="position : absolute;" class="imgC">
-										<img src="image/lesson2.jpg" style="width: 240px; height:160px; border-radius: 10px;">
-									</span>
-									<span style="position : absolute; margin-left: 200px;">
-										<a href="javascript:;" class="icon heart" style="text-decoration:none; color:inherit; cursor:pointer;">
-											<img src="image/heart1.png" alt="찜하기">
-										</a>
-									</span>
-								</div>
-							</a>
-							<a href="#self">
-								<div class="product_detail">
-									<div class="area">강남구</div>
-									<div class="lesson">그린컴퓨터아카데미 풀스텍(java, database, css, javascript)</div>
-									<div class="seller">판매자명</div>
-									<div class="price">
-										<div>10,000원</div>
-									</div>
-									<div class="jjre">
-										<div class="jjim">
-											<img src="image/heart2.png" style="width:15px; height: 15px; float: left;">
-											<div style="width:30px; height: 15px; font-weight:bold; font-size:9pt; float:left; margin-left: 5px;line-height:15px;">1,000+</div>
-										</div>
-										<div class="review">
-											<div style="width:25px; height: 15px; float:left; font-weight:bold;">리뷰</div>
-											<div style="width:30px; height: 15px; font-weight:bold; font-size:9pt; float:left; line-height:15px;">1,000+
-											</div>
-										</div>
-									</div>
-								</div>
-							</a>
-						</div>
-						<div class="product">
-							<a href="#self">
-								<div class="product_image imgList">
-									<span style="position : absolute;" class="imgC">
-										<img src="image/lesson3.jpg" style="width: 240px; height:160px; border-radius: 10px;">
-									</span>
-									<span style="position : absolute; margin-left: 200px;">
-										<a href="javascript:;" class="icon heart" style="text-decoration:none; color:inherit; cursor:pointer;">
-											<img src="image/heart1.png" alt="찜하기">
-										</a>
-									</span>
-								</div>
-							</a>
-							<a href="#self">
-								<div class="product_detail">
-									<div class="area">강남구</div>
-									<div class="lesson">그린컴퓨터아카데미 풀스텍(java, database, css, javascript)</div>
-									<div class="seller">판매자명</div>
-									<div class="price">
-										<div>10,000원</div>
-									</div>
-									<div class="jjre">
-										<div class="jjim">
-											<img src="image/heart2.png" style="width:15px; height: 15px; float: left;">
-											<div style="width:30px; height: 15px; font-weight:bold; font-size:9pt; float:left; margin-left: 5px;line-height:15px;">1,000+</div>
-										</div>
-										<div class="review">
-											<div style="width:25px; height: 15px; float:left; font-weight:bold;">리뷰</div>
-											<div style="width:30px; height: 15px; font-weight:bold; font-size:9pt; float:left; line-height:15px;">1,000+
-											</div>
-										</div>
-									</div>
-								</div>
-							</a>
-						</div>
+						
 					</div>
 					</div>
 					<div class="title_sec">
@@ -356,14 +301,26 @@
 						<div class="product">
 							<a href="#self">
 								<div class="product_image imgList">
-									<span style="position : absolute;" class="imgC">
-										<img src="image/lesson5.jpg" style="width: 240px; height:160px; border-radius: 10px;">
-									</span>
-									<span style="position : absolute; margin-left: 200px;">
-										<a href="javascript:;" class="icon heart" style="text-decoration:none; color:inherit; cursor:pointer;">
-											<img src="image/heart1.png" alt="찜하기">
-										</a>
-									</span>
+									
+									<div id="slider5" class="slider1" >
+										<span style="position:absolute; margin-left: 200px; z-index:9;">
+											<a href="javascript:;" class="icon heart" style="text-decoration:none; color:inherit; cursor:pointer;">
+												<img src="image/heart1.png" alt="찜하기">
+											</a>
+										</span> 
+										
+					                    <a  class="control_next">></a>
+					                    <a  class="control_prev"><</a>
+					                 
+					                    <ul>
+					                      <li class="imgC"><img src="image/lesson6.jpg" alt="cover1"></li>
+					                      <li class="imgC"><img src="image/lesson7.jpg" alt="cover2"></li>
+					                      <li class="imgC"><img src="image/lesson8.jpg" alt="cover3"></li>
+					                      <li class="imgC"><img src="image/lesson9.jpg" alt="cover4"></li>
+					                      <li class="imgC"><img src="image/lesson10.jpg" alt="cover5"></li>
+					                    </ul>
+					                </div>
+									
 								</div>
 							</a>
 							<a href="#self">
@@ -391,14 +348,26 @@
 						<div class="product">
 							<a href="#self">
 								<div class="product_image imgList">
-									<span style="position : absolute;" class="imgC">
-										<img src="image/lesson6.jpg" style="width: 240px; height:160px; border-radius: 10px;">
-									</span>
-									<span style="position : absolute; margin-left: 200px;">
-										<a href="javascript:;" class="icon heart" style="text-decoration:none; color:inherit; cursor:pointer;">
-											<img src="image/heart1.png" alt="찜하기">
-										</a>
-									</span>
+									
+									<div id="slider6" class="slider1" >
+										<span style="position:absolute; margin-left: 200px; z-index:9;">
+											<a href="javascript:;" class="icon heart" style="text-decoration:none; color:inherit; cursor:pointer;">
+												<img src="image/heart1.png" alt="찜하기">
+											</a>
+										</span> 
+										
+					                    <a  class="control_next">></a>
+					                    <a  class="control_prev"><</a>
+					                 
+					                    <ul>
+					                      <li class="imgC"><img src="image/lesson7.jpg" alt="cover1"></li>
+					                      <li class="imgC"><img src="image/lesson8.jpg" alt="cover2"></li>
+					                      <li class="imgC"><img src="image/lesson9.jpg" alt="cover3"></li>
+					                      <li class="imgC"><img src="image/lesson10.jpg" alt="cover4"></li>
+					                      <li class="imgC"><img src="image/lesson11.jpg" alt="cover5"></li>
+					                    </ul>
+					                </div>
+									
 								</div>
 							</a>
 							<a href="#self">
@@ -426,14 +395,26 @@
 						<div class="product">
 							<a href="#self">
 								<div class="product_image imgList">
-									<span style="position : absolute;" class="imgC">
-										<img src="image/lesson7.jpg" style="width: 240px; height:160px; border-radius: 10px;">
-									</span>
-									<span style="position : absolute; margin-left: 200px;">
-										<a href="javascript:;" class="icon heart" style="text-decoration:none; color:inherit; cursor:pointer;">
-											<img src="image/heart1.png" alt="찜하기">
-										</a>
-									</span>
+									
+									<div id="slider7" class="slider1" >
+										<span style="position:absolute; margin-left: 200px; z-index:9;">
+											<a href="javascript:;" class="icon heart" style="text-decoration:none; color:inherit; cursor:pointer;">
+												<img src="image/heart1.png" alt="찜하기">
+											</a>
+										</span> 
+										
+					                    <a  class="control_next">></a>
+					                    <a  class="control_prev"><</a>
+					                 
+					                    <ul>
+					                      <li class="imgC"><img src="image/lesson8.jpg" alt="cover1"></li>
+					                      <li class="imgC"><img src="image/lesson9.jpg" alt="cover2"></li>
+					                      <li class="imgC"><img src="image/lesson10.jpg" alt="cover3"></li>
+					                      <li class="imgC"><img src="image/lesson11.jpg" alt="cover4"></li>
+					                      <li class="imgC"><img src="image/lesson12.jpg" alt="cover5"></li>
+					                    </ul>
+					                </div>
+									
 								</div>
 							</a>
 							<a href="#self">
@@ -461,14 +442,26 @@
 						<div class="product">
 							<a href="#self">
 								<div class="product_image imgList">
-									<span style="position : absolute;" class="imgC">
-										<img src="image/lesson8.jpg" style="width: 240px; height:160px; border-radius: 10px;">
-									</span>
-									<span style="position : absolute; margin-left: 200px;">
-										<a href="javascript:;" class="icon heart" style="text-decoration:none; color:inherit; cursor:pointer;">
-											<img src="image/heart1.png" alt="찜하기">
-										</a>
-									</span>
+									
+									<div id="slider8" class="slider1" >
+										<span style="position:absolute; margin-left: 200px; z-index:9;">
+											<a href="javascript:;" class="icon heart" style="text-decoration:none; color:inherit; cursor:pointer;">
+												<img src="image/heart1.png" alt="찜하기">
+											</a>
+										</span> 
+										
+					                    <a  class="control_next">></a>
+					                    <a  class="control_prev"><</a>
+					                 
+					                    <ul>
+					                      <li class="imgC"><img src="image/lesson9.jpg" alt="cover1"></li>
+					                      <li class="imgC"><img src="image/lesson10.jpg" alt="cover2"></li>
+					                      <li class="imgC"><img src="image/lesson11.jpg" alt="cover3"></li>
+					                      <li class="imgC"><img src="image/lesson12.jpg" alt="cover4"></li>
+					                      <li class="imgC"><img src="image/lesson13.jpg" alt="cover5"></li>
+					                    </ul>
+					                </div>
+									
 								</div>
 							</a>
 							<a href="#self">
@@ -504,14 +497,26 @@
 						<div class="product">
 							<a href="#self">
 								<div class="product_image imgList">
-									<span style="position : absolute;" class="imgC">
-										<img src="image/lesson9.jpg" style="width: 240px; height:160px; border-radius: 10px;">
-									</span>
-									<span style="position : absolute; margin-left: 200px;">
-										<a href="javascript:;" class="icon heart" style="text-decoration:none; color:inherit; cursor:pointer;">
-											<img src="image/heart1.png" alt="찜하기">
-										</a>
-									</span>
+									
+									<div id="slider9" class="slider1" >
+										<span style="position:absolute; margin-left: 200px; z-index:9;">
+											<a href="javascript:;" class="icon heart" style="text-decoration:none; color:inherit; cursor:pointer;">
+												<img src="image/heart1.png" alt="찜하기">
+											</a>
+										</span> 
+										
+					                    <a  class="control_next">></a>
+					                    <a  class="control_prev"><</a>
+					                 
+					                    <ul>
+					                      <li class="imgC"><img src="image/lesson10.jpg" alt="cover1"></li>
+					                      <li class="imgC"><img src="image/lesson11.jpg" alt="cover2"></li>
+					                      <li class="imgC"><img src="image/lesson12.jpg" alt="cover3"></li>
+					                      <li class="imgC"><img src="image/lesson13.jpg" alt="cover4"></li>
+					                      <li class="imgC"><img src="image/lesson14.jpg" alt="cover5"></li>
+					                    </ul>
+					                </div>
+									
 								</div>
 							</a>
 							<a href="#self">
@@ -539,14 +544,26 @@
 						<div class="product">
 							<a href="#self">
 								<div class="product_image imgList">
-									<span style="position : absolute;" class="imgC">
-										<img src="image/lesson10.jpg" style="width: 240px; height:160px; border-radius: 10px;">
-									</span>
-									<span style="position : absolute; margin-left: 200px;">
-										<a href="javascript:;" class="icon heart" style="text-decoration:none; color:inherit; cursor:pointer;">
-											<img src="image/heart1.png" alt="찜하기">
-										</a>
-									</span>
+									
+									<div id="slider10" class="slider1" >
+										<span style="position:absolute; margin-left: 200px; z-index:9;">
+											<a href="javascript:;" class="icon heart" style="text-decoration:none; color:inherit; cursor:pointer;">
+												<img src="image/heart1.png" alt="찜하기">
+											</a>
+										</span> 
+										
+					                    <a  class="control_next">></a>
+					                    <a  class="control_prev"><</a>
+					                 
+					                    <ul>
+					                      <li class="imgC"><img src="image/lesson11.jpg" alt="cover1"></li>
+					                      <li class="imgC"><img src="image/lesson12.jpg" alt="cover2"></li>
+					                      <li class="imgC"><img src="image/lesson13.jpg" alt="cover3"></li>
+					                      <li class="imgC"><img src="image/lesson14.jpg" alt="cover4"></li>
+					                      <li class="imgC"><img src="image/lesson15.jpg" alt="cover5"></li>
+					                    </ul>
+					                </div>
+									
 								</div>
 							</a>
 							<a href="#self">
@@ -574,14 +591,26 @@
 						<div class="product">
 							<a href="#self">
 								<div class="product_image imgList">
-									<span style="position : absolute;" class="imgC">
-										<img src="image/lesson11.jpg" style="width: 240px; height:160px; border-radius: 10px;">
-									</span>
-									<span style="position : absolute; margin-left: 200px;">
-										<a href="javascript:;" class="icon heart" style="text-decoration:none; color:inherit; cursor:pointer;">
-											<img src="image/heart1.png" alt="찜하기">
-										</a>
-									</span>
+									
+									<div id="slider11" class="slider1" >
+										<span style="position:absolute; margin-left: 200px; z-index:9;">
+											<a href="javascript:;" class="icon heart" style="text-decoration:none; color:inherit; cursor:pointer;">
+												<img src="image/heart1.png" alt="찜하기">
+											</a>
+										</span> 
+										
+					                    <a  class="control_next">></a>
+					                    <a  class="control_prev"><</a>
+					                 
+					                    <ul>
+					                      <li class="imgC"><img src="image/lesson12.jpg" alt="cover1"></li>
+					                      <li class="imgC"><img src="image/lesson13.jpg" alt="cover2"></li>
+					                      <li class="imgC"><img src="image/lesson14.jpg" alt="cover3"></li>
+					                      <li class="imgC"><img src="image/lesson15.jpg" alt="cover4"></li>
+					                      <li class="imgC"><img src="image/lesson16.jpg" alt="cover5"></li>
+					                    </ul>
+					                </div>
+									
 								</div>
 							</a>
 							<a href="#self">
@@ -609,14 +638,26 @@
 						<div class="product">
 							<a href="#self">
 								<div class="product_image imgList">
-									<span style="position : absolute;" class="imgC">
-										<img src="image/lesson12.jpg" style="width: 240px; height:160px; border-radius: 10px;">
-									</span>
-									<span style="position : absolute; margin-left: 200px;">
-										<a href="javascript:;" class="icon heart" style="text-decoration:none; color:inherit; cursor:pointer;">
-											<img src="image/heart1.png" alt="찜하기">
-										</a>
-									</span>
+									
+									<div id="slider12" class="slider1" >
+										<span style="position:absolute; margin-left: 200px; z-index:9;">
+											<a href="javascript:;" class="icon heart" style="text-decoration:none; color:inherit; cursor:pointer;">
+												<img src="image/heart1.png" alt="찜하기">
+											</a>
+										</span> 
+										
+					                    <a  class="control_next">></a>
+					                    <a  class="control_prev"><</a>
+					                 
+					                    <ul>
+					                      <li class="imgC"><img src="image/lesson13.jpg" alt="cover1"></li>
+					                      <li class="imgC"><img src="image/lesson14.jpg" alt="cover2"></li>
+					                      <li class="imgC"><img src="image/lesson15.jpg" alt="cover3"></li>
+					                      <li class="imgC"><img src="image/lesson16.jpg" alt="cover4"></li>
+					                      <li class="imgC"><img src="image/lesson2.jpg" alt="cover5"></li>
+					                    </ul>
+					                </div>
+									
 								</div>
 							</a>
 							<a href="#self">
@@ -652,14 +693,26 @@
 						<div class="product">
 							<a href="#self">
 								<div class="product_image imgList">
-									<span style="position : absolute;" class="imgC">
-										<img src="image/lesson13.jpg" style="width: 240px; height:160px; border-radius: 10px;">
-									</span>
-									<span style="position : absolute; margin-left: 200px;">
-										<a href="javascript:;" class="icon heart" style="text-decoration:none; color:inherit; cursor:pointer;">
-											<img src="image/heart1.png" alt="찜하기">
-										</a>
-									</span>
+									
+									<div id="slider13" class="slider1" >
+										<span style="position:absolute; margin-left: 200px; z-index:9;">
+											<a href="javascript:;" class="icon heart" style="text-decoration:none; color:inherit; cursor:pointer;">
+												<img src="image/heart1.png" alt="찜하기">
+											</a>
+										</span> 
+										
+					                    <a  class="control_next">></a>
+					                    <a  class="control_prev"><</a>
+					                 
+					                    <ul>
+					                      <li class="imgC"><img src="image/lesson14.jpg" alt="cover1"></li>
+					                      <li class="imgC"><img src="image/lesson15.jpg" alt="cover2"></li>
+					                      <li class="imgC"><img src="image/lesson16.jpg" alt="cover3"></li>
+					                      <li class="imgC"><img src="image/lesson2.jpg" alt="cover4"></li>
+					                      <li class="imgC"><img src="image/lesson3.jpg" alt="cover5"></li>
+					                    </ul>
+					                </div>
+									
 								</div>
 							</a>
 							<a href="#self">
@@ -687,14 +740,26 @@
 						<div class="product">
 							<a href="#self">
 								<div class="product_image imgList">
-									<span style="position : absolute;" class="imgC">
-										<img src="image/lesson14.jpg" style="width: 240px; height:160px; border-radius: 10px;">
-									</span>
-									<span style="position : absolute; margin-left: 200px;">
-										<a href="javascript:;" class="icon heart" style="text-decoration:none; color:inherit; cursor:pointer;">
-											<img src="image/heart1.png" alt="찜하기">
-										</a>
-									</span>
+									
+									<div id="slider14" class="slider1" >
+										<span style="position:absolute; margin-left: 200px; z-index:9;">
+											<a href="javascript:;" class="icon heart" style="text-decoration:none; color:inherit; cursor:pointer;">
+												<img src="image/heart1.png" alt="찜하기">
+											</a>
+										</span> 
+										
+					                    <a  class="control_next">></a>
+					                    <a  class="control_prev"><</a>
+					                 
+					                    <ul>
+					                      <li class="imgC"><img src="image/lesson15.jpg" alt="cover1"></li>
+					                      <li class="imgC"><img src="image/lesson16.jpg" alt="cover2"></li>
+					                      <li class="imgC"><img src="image/lesson2.jpg" alt="cover3"></li>
+					                      <li class="imgC"><img src="image/lesson3.jpg" alt="cover4"></li>
+					                      <li class="imgC"><img src="image/lesson4.jpg" alt="cover5"></li>
+					                    </ul>
+					                </div>									
+									
 								</div>
 							</a>
 							<a href="#self">
@@ -722,14 +787,24 @@
 						<div class="product">
 							<a href="#self">
 								<div class="product_image imgList">
-									<span style="position : absolute;" class="imgC">
-										<img src="image/lesson15.jpg" style="width: 240px; height:160px; border-radius: 10px;">
-									</span>
-									<span style="position : absolute; margin-left: 200px;">
-										<a href="javascript:;" class="icon heart" style="text-decoration:none; color:inherit; cursor:pointer;">
-											<img src="image/heart1.png" alt="찜하기">
-										</a>
-									</span>
+									<div id="slider15" class="slider1" >
+										<span style="position:absolute; margin-left: 200px; z-index:9;">
+											<a href="javascript:;" class="icon heart" style="text-decoration:none; color:inherit; cursor:pointer;">
+												<img src="image/heart1.png" alt="찜하기">
+											</a>
+										</span> 
+										
+					                    <a  class="control_next">></a>
+					                    <a  class="control_prev"><</a>
+					                 
+					                    <ul>
+					                      <li class="imgC"><img src="image/lesson16.jpg" alt="cover1"></li>
+					                      <li class="imgC"><img src="image/lesson2.jpg" alt="cover2"></li>
+					                      <li class="imgC"><img src="image/lesson3.jpg" alt="cover3"></li>
+					                      <li class="imgC"><img src="image/lesson4.jpg" alt="cover4"></li>
+					                      <li class="imgC"><img src="image/lesson5.jpg" alt="cover5"></li>
+					                    </ul>
+					                </div>
 								</div>
 							</a>
 							<a href="#self">
@@ -757,14 +832,26 @@
 						<div class="product">
 							<a href="#self">
 								<div class="product_image imgList">
-									<span style="position : absolute;" class="imgC">
-										<img src="image/lesson16.jpg" style="width: 240px; height:160px; border-radius: 10px;">
-									</span>
-									<span style="position : absolute; margin-left: 200px;">
-										<a href="javascript:;" class="icon heart" style="text-decoration:none; color:inherit; cursor:pointer;">
-											<img src="image/heart1.png" alt="찜하기">
-										</a>
-									</span>
+									
+									<div id="slider16" class="slider1" >
+										<span style="position:absolute; margin-left: 200px; z-index:9;">
+											<a href="javascript:;" class="icon heart" style="text-decoration:none; color:inherit; cursor:pointer;">
+												<img src="image/heart1.png" alt="찜하기">
+											</a>
+										</span> 
+										
+					                    <a  class="control_next">></a>
+					                    <a  class="control_prev"><</a>
+					                 
+					                    <ul>
+					                      <li class="imgC"><img src="image/green.jfif" alt="cover1"></li>
+					                      <li class="imgC"><img src="image/lesson5.jpg" alt="cover2"></li>
+					                      <li class="imgC"><img src="image/lesson6.jpg" alt="cover3"></li>
+					                      <li class="imgC"><img src="image/lesson7.jpg" alt="cover4"></li>
+					                      <li class="imgC"><img src="image/lesson8.jpg" alt="cover5"></li>
+					                    </ul>
+					                </div>
+																	
 								</div>
 							</a>
 							<a href="#self">
