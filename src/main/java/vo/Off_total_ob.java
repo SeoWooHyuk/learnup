@@ -1,8 +1,9 @@
 package vo;
 
-public class OffClassRegipageob {
+public class Off_total_ob {
+	String email, offseller_image, offseller_intro, offseller_insta, offseller_blog, offseller_youtube, offseller_history, offseller_historyimage;
+	
 	int off_product_num;
-	String email;
 	String offlineclass_category;
 	int entry;
 	int offclass_count;
@@ -13,7 +14,6 @@ public class OffClassRegipageob {
 	String offclass_exp2;
 	String offclass_exp3;
 	String offclass_exp3_image1;
-	
 	String offclass_notice;
 	String offclass_exp4;
 	String offclass_exp4_image1;
@@ -26,17 +26,59 @@ public class OffClassRegipageob {
 	String cover_image3;
 	String cover_image4;
 	String cover_image5;
-	public int getOff_product_num() {
-		return off_product_num;
-	}
-	public void setOff_product_num(int off_product_num) {
-		this.off_product_num = off_product_num;
-	}
 	public String getEmail() {
 		return email;
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public String getOffseller_image() {
+		return offseller_image;
+	}
+	public void setOffseller_image(String offseller_image) {
+		this.offseller_image = offseller_image;
+	}
+	public String getOffseller_intro() {
+		return offseller_intro;
+	}
+	public void setOffseller_intro(String offseller_intro) {
+		this.offseller_intro = offseller_intro;
+	}
+	public String getOffseller_insta() {
+		return offseller_insta;
+	}
+	public void setOffseller_insta(String offseller_insta) {
+		this.offseller_insta = offseller_insta;
+	}
+	public String getOffseller_blog() {
+		return offseller_blog;
+	}
+	public void setOffseller_blog(String offseller_blog) {
+		this.offseller_blog = offseller_blog;
+	}
+	public String getOffseller_youtube() {
+		return offseller_youtube;
+	}
+	public void setOffseller_youtube(String offseller_youtube) {
+		this.offseller_youtube = offseller_youtube;
+	}
+	public String getOffseller_history() {
+		return offseller_history;
+	}
+	public void setOffseller_history(String offseller_history) {
+		this.offseller_history = offseller_history;
+	}
+	public String getOffseller_historyimage() {
+		return offseller_historyimage;
+	}
+	public void setOffseller_historyimage(String offseller_historyimage) {
+		this.offseller_historyimage = offseller_historyimage;
+	}
+	public int getOff_product_num() {
+		return off_product_num;
+	}
+	public void setOff_product_num(int off_product_num) {
+		this.off_product_num = off_product_num;
 	}
 	public String getOfflineclass_category() {
 		return offlineclass_category;
@@ -171,6 +213,7 @@ public class OffClassRegipageob {
 		this.cover_image5 = cover_image5;
 	}
 	
+
 	
 	
 	

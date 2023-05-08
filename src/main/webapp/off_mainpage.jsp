@@ -1,9 +1,12 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import ="java.sql.*" %>
 <%@ page import ="dao.*" %>
 <%@ page import ="vo.*" %>
 <%@ page import ="java.util.ArrayList" %>
+<%@ page import="java.text.SimpleDateFormat"%>
+<%@ page import= "java.io.File"%>
 <% request.setCharacterEncoding("UTF-8"); %>
 
 <!DOCTYPE html>
@@ -38,6 +41,10 @@
 	<style type="text/css">
 	</style>
 	<body style="margin : 0; overflow-x: hidden;">
+	 <%
+		ArrayList<Off_total_ob> articleList = (ArrayList<Off_total_ob>)request.getAttribute("totalList");
+		DecimalFormat jari = new DecimalFormat("###,###");
+ 	 %> 	
 		<form name="main">
 		
 			<jsp:include page = "header.jsp"/>
@@ -93,6 +100,9 @@
 						<a href="#self"><nav>경영자문·운영지원</nav></a>
 						<a href="#self"><nav>주문제작</nav></a>
 						<a href="#self"><nav>세무·법인·노무</nav></a>
+						<br>
+						<a href="off_seller_regipage.jsp"><nav>강의 등록하기</nav></a>
+						<a href="off_seller_mypage.jsp"><nav>일정&장소 등록하기</nav></a>
 					</article>
 				</div>
 				<div class="product_allsec">
@@ -101,11 +111,14 @@
 					</div>
 					<div class="product_secwrap">
 					<div class="slides">
+					
+						<%int i = 0; %>
+    					<%for(i = 0; i < articleList.size(); i++) {%>
 						<div class="product">
 							<a href="#self">
 								<div class="product_image imgList">
 								
-									<div id="slider1" class="slider1" >
+									<div id="slider<%=i%>" class="slider1" >
 										<span style="position:absolute; margin-left: 200px; z-index:9;">
 											<a href="javascript:;" class="icon heart" style="text-decoration:none; color:inherit; cursor:pointer;">
 												<img src="image/heart1.png" alt="찜하기">
@@ -114,26 +127,25 @@
 										
 					                    <a  class="control_next">></a>
 					                    <a  class="control_prev"><</a>
-					                 
+					                 	
 					                    <ul>
-					                      <li class="imgC"><img src="image/lesson2.jpg" alt="cover1"></li>
-					                      <li class="imgC"><img src="image/lesson3.jpg" alt="cover2"></li>
-					                      <li class="imgC"><img src="image/lesson4.jpg" alt="cover3"></li>
-					                      <li class="imgC"><img src="image/lesson5.jpg" alt="cover4"></li>
-					                      <li class="imgC"><img src="image/lesson6.jpg" alt="cover5"></li>
+					      				  <li class="imgC"><img src="${pageContext.request.contextPath }/offclassup/<%=articleList.get(i).getCover_image1()%>" alt="cover1"></li>
+					                      <li class="imgC"><img src="${pageContext.request.contextPath }/offclassup/<%=articleList.get(i).getCover_image2()%>" alt="cover2"></li>
+					                      <li class="imgC"><img src="${pageContext.request.contextPath }/offclassup/<%=articleList.get(i).getCover_image3()%>" alt="cover3"></li>
+					                      <li class="imgC"><img src="${pageContext.request.contextPath }/offclassup/<%=articleList.get(i).getCover_image4()%>" alt="cover4"></li>
+					                      <li class="imgC"><img src="${pageContext.request.contextPath }/offclassup/<%=articleList.get(i).getCover_image5()%>" alt="cover5"></li>
 					                    </ul>
 					                </div>
 									
 								</div>
 							</a>
-							
-							<a href="#self">
+							<a href="off_class_detailpage.jsp">
 								<div class="product_detail">
 									<div class="area">강남구</div>
-									<div class="lesson">그린컴퓨터아카데미 풀스텍(java, database, css, javascript)</div>
+									<div class="lesson"><%=articleList.get(i).getOffclass_title()%></div>
 									<div class="seller">판매자명</div>
 									<div class="price">
-										<div>10,000원</div>
+										<div><%=jari.format(articleList.get(i).getOffclass_price()) %>원</div>
 									</div>
 									<div class="jjre">
 										<div class="jjim">
@@ -149,147 +161,8 @@
 								</div>
 							</a>
 						</div>
-						<div class="product">
-							<a href="#self">
-								<div class="product_image imgList">
-									
-									<div id="slider2" class="slider1" >
-										<span style="position:absolute; margin-left: 200px; z-index:9;">
-											<a href="javascript:;" class="icon heart" style="text-decoration:none; color:inherit; cursor:pointer;">
-												<img src="image/heart1.png" alt="찜하기">
-											</a>
-										</span> 
-										
-					                    <a  class="control_next">></a>
-					                    <a  class="control_prev"><</a>
-					                 
-					                    <ul>
-					                      <li class="imgC"><img src="image/lesson3.jpg" alt="cover1"></li>
-					                      <li class="imgC"><img src="image/lesson4.jpg" alt="cover2"></li>
-					                      <li class="imgC"><img src="image/lesson5.jpg" alt="cover3"></li>
-					                      <li class="imgC"><img src="image/lesson6.jpg" alt="cover4"></li>
-					                      <li class="imgC"><img src="image/lesson7.jpg" alt="cover5"></li>
-					                    </ul>
-					                </div>
-									
-								</div>
-							</a>
-							<a href="#self">
-								<div class="product_detail">
-									<div class="area">강남구</div>
-									<div class="lesson">그린컴퓨터아카데미 풀스텍(java, database, css, javascript)</div>
-									<div class="seller">판매자명</div>
-									<div class="price">
-										<div>10,000원</div>
-									</div>
-									<div class="jjre">
-										<div class="jjim">
-											<img src="image/heart2.png" style="width:15px; height: 15px; float: left;">
-											<div style="width:30px; height: 15px; font-weight:bold; font-size:9pt; float:left; margin-left: 5px;line-height:15px;">1,000+</div>
-										</div>
-										<div class="review">
-											<div style="width:25px; height: 15px; float:left; font-weight:bold;">리뷰</div>
-											<div style="width:30px; height: 15px; font-weight:bold; font-size:9pt; float:left; line-height:15px;">1,000+
-											</div>
-										</div>
-									</div>
-								</div>
-							</a>
-						</div>
-						<div class="product">
-							<a href="#self">
-								<div class="product_image imgList">
-									
-									<div id="slider3" class="slider1" >
-										<span style="position:absolute; margin-left: 200px; z-index:9;">
-											<a href="javascript:;" class="icon heart" style="text-decoration:none; color:inherit; cursor:pointer;">
-												<img src="image/heart1.png" alt="찜하기">
-											</a>
-										</span> 
-										
-					                    <a  class="control_next">></a>
-					                    <a  class="control_prev"><</a>
-					                 
-					                    <ul>
-					                      <li class="imgC"><img src="image/lesson4.jpg" alt="cover1"></li>
-					                      <li class="imgC"><img src="image/lesson5.jpg" alt="cover2"></li>
-					                      <li class="imgC"><img src="image/lesson6.jpg" alt="cover3"></li>
-					                      <li class="imgC"><img src="image/lesson7.jpg" alt="cover4"></li>
-					                      <li class="imgC"><img src="image/lesson8.jpg" alt="cover5"></li>
-					                    </ul>
-					                </div>
-									
-								</div>
-							</a>
-							<a href="#self">
-								<div class="product_detail">
-									<div class="area">마포구</div>
-									<div class="lesson">그린컴퓨터아카데미 풀스텍(java, database, css, javascript)</div>
-									<div class="seller">판매자명</div>
-									<div class="price">
-										<div>10,000원</div>
-									</div>
-									<div class="jjre">
-										<div class="jjim">
-											<img src="image/heart2.png" style="width:15px; height: 15px; float: left;">
-											<div style="width:30px; height: 15px; font-weight:bold; font-size:9pt; float:left; margin-left: 5px;line-height:15px;">1,000+</div>
-										</div>
-										<div class="review">
-											<div style="width:25px; height: 15px; float:left; font-weight:bold;">리뷰</div>
-											<div style="width:30px; height: 15px; font-weight:bold; font-size:9pt; float:left; line-height:15px;">1,000+
-											</div>
-										</div>
-									</div>
-								</div>
-							</a>
-						</div>
-						<div class="product">
-							<a href="#self">
-								<div class="product_image imgList">
-									
-									<div id="slider4" class="slider1" >
-										<span style="position:absolute; margin-left: 200px; z-index:9;">
-											<a href="javascript:;" class="icon heart" style="text-decoration:none; color:inherit; cursor:pointer;">
-												<img src="image/heart1.png" alt="찜하기">
-											</a>
-										</span> 
-										
-					                    <a  class="control_next">></a>
-					                    <a  class="control_prev"><</a>
-					                 
-					                    <ul>
-					                      <li class="imgC"><img src="image/lesson5.jpg" alt="cover1"></li>
-					                      <li class="imgC"><img src="image/lesson6.jpg" alt="cover2"></li>
-					                      <li class="imgC"><img src="image/lesson7.jpg" alt="cover3"></li>
-					                      <li class="imgC"><img src="image/lesson8.jpg" alt="cover4"></li>
-					                      <li class="imgC"><img src="image/lesson9.jpg" alt="cover5"></li>
-					                    </ul>
-					                </div>
-									
-								</div>
-							</a>
-							<a href="#self">
-								<div class="product_detail">
-									<div class="area">강남구</div>
-									<div class="lesson">그린컴퓨터아카데미 풀스텍(java, database, css, javascript)</div>
-									<div class="seller">판매자명</div>
-									<div class="price">
-										<div>10,000원</div>
-									</div>
-									<div class="jjre">
-										<div class="jjim">
-											<img src="image/heart2.png" style="width:15px; height: 15px; float: left;">
-											<div style="width:30px; height: 15px; font-weight:bold; font-size:9pt; float:left; margin-left: 5px;line-height:15px;">1,000+</div>
-										</div>
-										<div class="review">
-											<div style="width:25px; height: 15px; float:left; font-weight:bold;">리뷰</div>
-											<div style="width:30px; height: 15px; font-weight:bold; font-size:9pt; float:left; line-height:15px;">1,000+
-											</div>
-										</div>
-									</div>
-								</div>
-							</a>
-						</div>
+					 	<%} %>
+					
 						
 					</div>
 					</div>

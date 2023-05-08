@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.OffSellerRegiAction;
+import action.OffTotalListAction;
 import action.OffAction;
 import action.OffClassRegiAction;
 import vo.ActionForward;
@@ -47,8 +48,17 @@ public class Off_FrontController extends javax.servlet.http.HttpServlet
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}else if(command.equals("/off_total_main.off")){
+			offregipageaction  = new OffTotalListAction() ;
+			try {
+				forward=offregipageaction.execute(request, response );
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 				
+		
+		
 		if(forward != null){
 			
 			if(forward.isRedirect()){

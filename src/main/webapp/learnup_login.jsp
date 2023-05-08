@@ -4,7 +4,7 @@
 <% Cookie[] cookies = request.getCookies(); %>  
 <%
 	String prevPage = request.getHeader("Referer");
-	System.out.print(" 리퀘스트 겟헤더 : " + prevPage);
+    out.println(" 리퀘스트 겟헤더 : " + prevPage);
 %>
 
 <html>

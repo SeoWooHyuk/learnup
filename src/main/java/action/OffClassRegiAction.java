@@ -31,7 +31,7 @@ public class OffClassRegiAction implements OffAction {
 		
 		ServletContext context = request.getServletContext();
 		String directory = context.getRealPath("/offclassup"); 
-		File dir = new File(directory);  //upload 폴더가 없는 경우 폴더를 만들어라
+		File dir = new File(directory);  //upload �뤃�뜑媛� �뾾�뒗 寃쎌슦 �뤃�뜑瑜� 留뚮뱾�뼱�씪
 		if (!dir.exists()) dir.mkdirs();
 		
 		int fileSize=10*1024*1024;
@@ -80,7 +80,11 @@ public class OffClassRegiAction implements OffAction {
 		
 		offclassregipageob.setOffclass_title(multi.getParameter("classTitle"));
 		
-		offclassregipageob.setCover_image(multi.getFilesystemName("coverimage0"));
+		offclassregipageob.setCover_image1(multi.getFilesystemName("coverimage0"));
+		offclassregipageob.setCover_image2(multi.getFilesystemName("coverimage1"));
+		offclassregipageob.setCover_image3(multi.getFilesystemName("coverimage2"));
+		offclassregipageob.setCover_image4(multi.getFilesystemName("coverimage3"));
+		offclassregipageob.setCover_image5(multi.getFilesystemName("coverimage4"));
 		
 		offclassregipageob.setOffseller_notice(multi.getParameter("notice"));
 		offclassregipageob.setOffclass_exp1(multi.getParameter("exp1"));
@@ -98,7 +102,7 @@ public class OffClassRegiAction implements OffAction {
 		offclassregipageob.setOffclass_url(multi.getParameter("video0"));
 		
 		offclassregipageob.setOffclass_message(multi.getParameter("mg"));
-		offclassregipageob.setOffclass_price(Integer.parseInt(multi.getParameter("pp")));
+		offclassregipageob.setOffclass_price(Integer.parseInt(multi.getParameter("pp").replace(",", "")));
 		offclassregipageob.setOffclass_time(Integer.parseInt(multi.getParameter("ppin")));
 		
 		

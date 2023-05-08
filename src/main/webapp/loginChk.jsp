@@ -1,7 +1,7 @@
 <%@page import="vo.Login_chk"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-	System.out.print(request.getParameter("urldirect"));
+	out.println(request.getParameter("urldirect"));
 %>
 <!DOCTYPE html>
 <html>

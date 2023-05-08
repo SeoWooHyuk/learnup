@@ -29,8 +29,8 @@ public class OffSellerRegiAction implements OffAction {
 		String saveFolder="/offsellerup";
 		
 		ServletContext context = request.getServletContext();
-		String directory = context.getRealPath("/offsellerup"); 
-		File dir = new File(directory);  //upload 폴더가 없는 경우 폴더를 만들어라
+		String directory = context.getRealPath("/offclassup"); 
+		File dir = new File(directory);  //upload �뤃�뜑媛� �뾾�뒗 寃쎌슦 �뤃�뜑瑜� 留뚮뱾�뼱�씪
 		if (!dir.exists()) dir.mkdirs();
 		
 		int fileSize=10*1024*1024;

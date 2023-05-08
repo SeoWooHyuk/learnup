@@ -78,9 +78,6 @@ $(document).ready(function(){
 		var title7 =  $('#writes2').val(); //유의사항
 		
 		
-	
-		
-	
 		if(title == "") //강의실 제목
 		{
 			$('input[name=roomtitle]').on("propertychange change paste input",function()
@@ -588,3 +585,85 @@ $(document).ready(function() {
     $('.class_category').text(category2 + ' · ');
   });
 });
+
+
+
+//대여료 설정 영역
+/*클래스 시간 입력란에 입력값이 24보다 크면 24로 자동으로 설정*/
+$(document).ready(function() {
+  // 1회당 클래스 시간 입력란에 입력값이 24보다 크면 24로 자동으로 설정
+  // 시간당 가격이나 최종 수강료가 입력될 때, 세자리마다 콤마를 찍는 함수 호출
+  $('#hourprice, #totalprice, #classtime').on('input', function() {
+    addComma($(this));
+  });
+});
+function addComma($input) {
+  var num = $input.val().replace(/[^0-9]/g, '');
+  var regex = /(\d)(?=(\d{3})+(?!\d))/g;
+  $input.val(num.toString().replace(regex, '$1,'));
+}
+
+/*최종 수강료 및 최종 정산금 계산*/
+function calculateTotalPrice() {
+  var hourPrice = parseInt($('#hourprice').val().replace(/,/g, '')); // 시간당 가격, 쉼표 제거
+  var classTime = parseFloat($('#classtime').val().replace(/,/g, ''));
+  var totalClassCount = parseInt($('#totalclasscount').val());
+ 
+  var totalPrice = hourPrice + (classTime * totalClassCount);
+  
+  var vat = Math.round(totalPrice * 0.1); // 부가세 10%
+  var commission = Math.round(totalPrice * 0.1); // 수수료 10%
+  var incomeTax = Math.round((totalPrice - vat - commission) * 0.033); // 소득세 3.3%
+  var finalSettlement = totalPrice - vat - incomeTax - commission; // 최종 정산금
+
+  $('#totalprice').val(numberWithCommas(totalPrice)); // 최종 수강료에 쉼표 추가
+  $('#totalprice2').val(numberWithCommas(totalPrice)); // 두번째 최종 수강료에도 계산값 자동으로 기입
+  $('#tax10').val(numberWithCommas(vat)); // 부가세
+  $('#fee33').val(numberWithCommas(incomeTax)); // 소득세
+  $('#fee10').val(numberWithCommas(commission)); // 수수료
+  $('#grandtotalprice').val(numberWithCommas(finalSettlement)); // 최종 정산금
+}
+
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+$(document).ready(function() {
+
+  // 클래스 횟수가 변경될 때, 선택한 값을 총 클래스 횟수 텍스트 창에 자동으로 입력
+  $('input[name="count_type"], select[name="count_num"]').change(function() {
+    var totalClassCount = 1; // 초기값은 1
+    if ($('#multiday').is(':checked')) { // 다회차 클래스 선택 시
+      totalClassCount = $('#countselect').val();
+    }
+
+    // 선택한 클래스 횟수에 따라 총 클래스 횟수 설정
+    $('#totalclasscount').val(totalClassCount);
+    calculateTotalPrice(); // 수강료 계산
+  });
+
+  // 시간당 가격, 1회당 클래스 시간 입력시 수강료 계산
+  $('#hourprice, #classtime').keyup(function() {
+    calculateTotalPrice();
+    $(this).val(numberWithCommas($(this).val())); // 쉼표 추가
+  });
+  
+    $('#totalclasscount').keyup(function() {
+    calculateTotalPrice();
+  });
+
+  // 총 클래스 횟수 초기값 설정
+  $('#totalclasscount').val(1);
+});
+
+
+
+
+
+
+
+
+
+
+
+

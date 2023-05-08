@@ -29,10 +29,12 @@
 		
 		<title></title>
 	</head>
+     <%  String email_section = (String)session.getAttribute("Email");%>
 	<style type="text/css">
 	</style>
 	<body style="margin : 0; overflow-x: hidden;">
-		<form name="main" >
+<form name="main" action="off_class_regipage.off" method="post" enctype="multipart/form-data">
+<input type="hidden" name="email" value="<%= email_section %>">
 		
 			<jsp:include page = "header.jsp"/>
 			
@@ -41,11 +43,14 @@
 			<div class="secwrap">
 				<div class="leftsec">
 					<ul>
-						<a href="off_seller_regipage.jsp"><li>판매자소개</li></a>
-						<a href="off_class_regipage.jsp"><li>클래스소개</li></a>
+						<a href="offsellerregi.off"><li>판매자소개</li></a>
+						<a href="offclassregi.off"><li>클래스소개</li></a>
 					</ul>
 				</div>
+				
+				
 				<div class="rightsec">
+			
 					<div class="toptext">안녕하세요, 판매자님<br>어떤 유형의 클래스를 열고싶으신가요?</div>
 					<div class="category">
 						<div style="font-weight:bold;">카테고리 선택</div>
@@ -68,11 +73,14 @@
 						</div>
 					</div>
 
+
+
+<!-- one , group -->
 					<div class="joinmember">
 						<div style="font-weight:bold;">참여인원</div>
 						<div class="radio_wrap">
-							<input type="radio" name="class_type" value="one" checked="checked"><label style="padding-left:10px;">1:1 클래스</label>
-							<input type="radio" name="class_type" value="group" style="margin-left:50px;" ><label style="padding-left:10px;">그룹 클래스</label>
+							<input type="radio" name="class_type" value="1" checked="checked"><label style="padding-left:10px;">1:1 클래스</label>
+							<input type="radio" name="class_type" value="0" style="margin-left:50px;" ><label style="padding-left:10px;">그룹 클래스</label>
 						</div>
 					</div>
 
@@ -151,7 +159,7 @@
 					<div class="sellernotice">
 						<div style="font-weight:bold;">판매자 공지</div>
 						<div class="sellernotice_text">
-							<textarea maxlength="200" onkeyup="sellernotice(this)" placeholder="클래스 전 숙지해야 할 사항을 적어주세요.&#13;&#10;스터디룸, 준비물 등 추가 비용이 있는 경우 반드시 적어주세요.&#13;&#10;(ex. 시간당 1,000원 ~ 1,500원 정도의 스터디룸 비용은 별도입니다.)"></textarea>
+							<textarea maxlength="200" name="notice" onkeyup="sellernotice(this)" placeholder="클래스 전 숙지해야 할 사항을 적어주세요.&#13;&#10;스터디룸, 준비물 등 추가 비용이 있는 경우 반드시 적어주세요.&#13;&#10;(ex. 시간당 1,000원 ~ 1,500원 정도의 스터디룸 비용은 별도입니다.)"></textarea>
 							<div id="sellernotice_count">(0/200)</div>
 						</div>
 					</div>
@@ -159,7 +167,7 @@
 					<div class="summary">
 						<div style="font-weight:bold;">클래스 요약</div>
 						<div class="summary_text">
-							<textarea maxlength="200" onkeyup="summary(this)" placeholder="수업 목표(key lessons 결과물 중심 1~3가지 -최대3줄)&#13;&#10;*무엇을 배울 수 있나요, 무엇을 얻을 수 있나요&#13;&#10;&#13;&#10;해당 클래스의 차별점(1~3가지 -최대3줄)&#13;&#10;:해당 카테고리의 다른 클래스들과 어떻게 다른가요"></textarea>
+							<textarea maxlength="200" name="exp1" onkeyup="summary(this)" placeholder="수업 목표(key lessons 결과물 중심 1~3가지 -최대3줄)&#13;&#10;*무엇을 배울 수 있나요, 무엇을 얻을 수 있나요&#13;&#10;&#13;&#10;해당 클래스의 차별점(1~3가지 -최대3줄)&#13;&#10;:해당 카테고리의 다른 클래스들과 어떻게 다른가요"></textarea>
 							<div id="summary_count">(0/200)</div>
 						</div>
 					</div>
@@ -167,7 +175,7 @@
 					<div class="target">
 						<div style="font-weight:bold;">이런 분들이 들으면 좋아요.</div>
 						<div class="target_text">
-							<textarea maxlength="500" onkeyup="targetting(this)" placeholder="추천 대상 / 비추천 대상&#13;&#10;*이런 문제나 고민이 있는 사람이 들으면 좋아요&#13;&#10;*이런 능력을 갖춰 이런 사람이 되고 싶은 사람이 들으면 좋아요."></textarea>
+							<textarea maxlength="500" name="exp2"  onkeyup="targetting(this)" placeholder="추천 대상 / 비추천 대상&#13;&#10;*이런 문제나 고민이 있는 사람이 들으면 좋아요&#13;&#10;*이런 능력을 갖춰 이런 사람이 되고 싶은 사람이 들으면 좋아요."></textarea>
 							<div id="targetting_count">(0/500)</div>
 						</div>
 					</div>
@@ -175,12 +183,12 @@
 					<div class="classintro">
 						<div style="font-weight:bold;">어떤 클래스 인가요?</div>
 						<div class="classintro_text">
-							<textarea maxlength="500" onkeyup="classintro(this)" placeholder="*전반적인 클래스를 소개해주세요"></textarea>
+							<textarea maxlength="500" name="exp3" onkeyup="classintro(this)" placeholder="*전반적인 클래스를 소개해주세요"></textarea>
 							<div id="classintro_count">(0/500)</div>
 						</div>
 						<div class="classintro_image">
 							<p></p>
-							<input type="file" id="classintro" class="input_hide" accept=".gif, .jpg, .png">
+							<input type="file" name="classintroimg" id="classintro" class="input_hide" accept=".gif, .jpg, .png">
 							<button type="button" class="btn_del dn"><span class="blind">삭제</span></button>
 						</div>
 					</div>
@@ -188,7 +196,7 @@
 					<div class="guide">
 						<div style="font-weight:bold;">유의사항</div>
 						<div class="guide_text">
-							<textarea maxlength="500" onkeyup="guide(this)" placeholder="준비물&#13;&#10;*클래스 진행에 필요한 준비사항들을 적어주세요&#13;&#10;&#13;&#10;유의사항&#13;&#10;*그외 기타 안내사항을 적어주세요"></textarea>
+							<textarea maxlength="500" name="notice2" onkeyup="guide(this)" placeholder="준비물&#13;&#10;*클래스 진행에 필요한 준비사항들을 적어주세요&#13;&#10;&#13;&#10;유의사항&#13;&#10;*그외 기타 안내사항을 적어주세요"></textarea>
 							<div id="guide_count">(0/500)</div>
 						</div>
 					</div>
@@ -196,12 +204,12 @@
 					<div class="classprocess">
 						<div style="font-weight:bold;">클래스는 이렇게 진행됩니다</div>
 						<div class="classprocess_text">
-							<textarea maxlength="2500" onkeyup="classprocess(this)" placeholder="#진행방식&#13;&#10;*클래스 형태와 내용은 어떤 식으로 진행되나요&#13;&#10;*자세한 클래스내용은 커리큘럽에 적어주세요 (중복 기재X)&#13;&#10;&#13;&#10;#프로젝트&#13;&#10;*클래스에서 함께 만들어보는 게 있나요&#13;&#10;(예: 영상편집 클래스 들으면서 바로 실습→3시간 클래스동안 약2~3분 가량의 Vlog를 만들 수 있어요)&#13;&#10;&#13;&#10;#프로젝트 성과(결과물)&#13;&#10;*과거 클래스에서 만든 결과물이 있다면 올려주세요(이미지)&#13;&#10;&#13;&#10;#지난 클래스들 성과&#13;&#10;*월별/기수별 수강생 수 등"></textarea>
+							<textarea maxlength="2500" name="exp4" nameonkeyup="classprocess(this)" placeholder="#진행방식&#13;&#10;*클래스 형태와 내용은 어떤 식으로 진행되나요&#13;&#10;*자세한 클래스내용은 커리큘럽에 적어주세요 (중복 기재X)&#13;&#10;&#13;&#10;#프로젝트&#13;&#10;*클래스에서 함께 만들어보는 게 있나요&#13;&#10;(예: 영상편집 클래스 들으면서 바로 실습→3시간 클래스동안 약2~3분 가량의 Vlog를 만들 수 있어요)&#13;&#10;&#13;&#10;#프로젝트 성과(결과물)&#13;&#10;*과거 클래스에서 만든 결과물이 있다면 올려주세요(이미지)&#13;&#10;&#13;&#10;#지난 클래스들 성과&#13;&#10;*월별/기수별 수강생 수 등"></textarea>
 							<div id="classprocess_count">(0/2500)</div>
 						</div>
 						<div class="classprocess_image">
 							<p></p>
-							<input type="file" id="classprocess" class="input_hide" accept=".gif, .jpg, .png">
+							<input type="file" name="exp4file" id="classprocess" class="input_hide" accept=".gif, .jpg, .png">
 							<button type="button" class="btn_del dn"><span class="blind">삭제</span></button>
 						</div>
 					</div>
@@ -209,7 +217,7 @@
 					<div class="inputtag">
 						<div style="font-weight:bold;">태그 입력</div>
 						<div class="inputtagtext_wrap">
-							<input type="text" placeholder="클래스 태그를 최대10개 입력해 주세요.">
+							<input type="text" name="tag" placeholder="클래스 태그를 최대10개 입력해 주세요.">
 						</div>
 						<button type="button" id="addTagBtn">추가</button>
 						<ul class="tag_list">	
@@ -219,14 +227,14 @@
 					<div class="vidioregi">
 						<div style="font-weight:bold;">영상 등록</div>
 						<div class="vidioregitext_wrap">
-							<input type="text" placeholder="유튜브 영상 URL을 입력해주세요.">
+							<input type="text" name="video0" placeholder="유튜브 영상 URL을 입력해주세요.">
 						</div>
 					</div>
 
 					<div class="sellermessage">
 						<div style="font-weight:bold;">판매자 승인 메세지</div>
 						<div class="sellermessage_text">
-							<textarea maxlength="500" onkeyup="sellermessage(this)" placeholder="구매자와 클래스 연결시에 메세지가 전달됩니다."></textarea>
+							<textarea maxlength="500" name="mg" onkeyup="sellermessage(this)" placeholder="구매자와 클래스 연결시에 메세지가 전달됩니다."></textarea>
 							<div id="sellermessage_count">(0/500)</div>
 						</div>
 					</div>
@@ -237,7 +245,7 @@
 						<div class="price_area">
 							<div class="price_detail">
 								<div class="price_title">시간당 가격</div>
-								<input type="text" class="price_input" id="hourprice" maxlength="9" name="priceperhour">
+								<input type="text" name="pp" class="price_input" id="hourprice" maxlength="9" name="priceperhour">
 								<span class="unit">원</span>
 							</div>
 							<span class="math_symbol">
@@ -245,7 +253,7 @@
 							</span>
 							<div class="price_detail">
 								<div class="price_title">1회당 클래스 시간</div>
-								<input type="text" class="price_input" id="classtime" name="timeperonce">
+								<input type="text" name="ppin" class="price_input" id="classtime" name="timeperonce">
 								<span class="unit">시간</span>
 							</div>
 							<span class="math_symbol">
@@ -310,13 +318,12 @@
 				
 					<div class="regibtn_sec">
 						<div style="margin-right: 120px;">
-							<button type="button" value="" class="regibtn">등록</button>
+							<button type="submit" value="" class="regibtn">등록</button>
 							<button type="button" value="" class="regibtn">임시저장</button>
 						</div>
 					</div>
-
 				</div>
-			
+		
 			</div>	
 		</section>
 	</div>

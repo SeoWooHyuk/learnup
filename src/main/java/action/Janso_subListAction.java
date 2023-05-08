@@ -81,14 +81,6 @@ public class Janso_subListAction implements jansoAction {
 		}
 		
 		
-	
-		
-		
-		
-	
-		
-	
-		
 		Janso_ListService janso_ListService = new Janso_ListService();
 		int listCount = janso_ListService.getListCount();
 		
