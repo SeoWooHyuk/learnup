@@ -15,6 +15,11 @@ import vo.TalentPageInfo;
 		 
 		ArrayList<TalentDataType> articleList=new ArrayList<TalentDataType>();
 		int category = Integer.parseInt(request.getParameter("category"));
+		if(category < 1) {
+			category = 1; 
+		}else if(category > 9) {
+			category = 9;
+		}
 	  	int page=1;
 		int limit=24;
 		
@@ -22,10 +27,10 @@ import vo.TalentPageInfo;
 			page=Integer.parseInt(request.getParameter("page"));
 		}
 
-		System.out.println("¾×¼Ç ÆäÀÌÁö : "+page);
+		System.out.println("ï¿½×¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ : "+page);
 		TalentListService talentListService = new TalentListService();
 		int listCount=talentListService.getListCount();
-		articleList = talentListService.getArticleList(category, page,limit);
+		articleList = talentListService.getArticleList(category, page, limit);
    		int maxPage=(int)((double)listCount/limit+0.95); 
    		int startPage = (((int) ((double)page / 10 + 0.9)) - 1) * 10 + 1;
    	    int endPage = startPage+10-1;

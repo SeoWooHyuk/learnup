@@ -211,8 +211,9 @@ var roomsnums = '<c:out value="${room.room_number}"/>';
         <div style="float: left; width: 80px;"></div>
     <!--중간여백-->
 
-
+		
         <div class="main_right">
+       
         <p style="height: 135px;"></p>
         
             <div class="sevu">세부 옵션</div>
@@ -227,7 +228,7 @@ var roomsnums = '<c:out value="${room.room_number}"/>';
 			        </ul>
                 </div>
             </div>
-            
+             
 			<div class="reserv">예약일을 지정해 주세요</div>
 		    <div class = "calendar_container"> 
 		        
@@ -318,7 +319,7 @@ var roomsnums = '<c:out value="${room.room_number}"/>';
             -->   
      
         
-			           
+			 <form action="janso_detailinsert.learnup.com">      
             
             <div class="addperson">
             	<div><span class="addperson_title">총 예약인원</span><span class="addperson_note">(최대20명, 10명 초과시 10,000원/1인)</span></div>
@@ -339,11 +340,12 @@ var roomsnums = '<c:out value="${room.room_number}"/>';
 	               </div>
 	            </div>
             
-            
-				<input type="hidden" id= "yearsmonster" name =yearsmonster value="">	
-				<input type="hidden" id= "monthsmonster" name =yearsmonster value="">	 
-				<input type="hidden" id= "firstmonster" name =yearsmonster value="">	 
-				<input type="hidden" id= "lastsmonster" name =yearsmonster value="">	  
+            	
+            	<input type="hidden" id= "" name =roomnumber value="${room.room_number}" >
+				<input type="hidden" id= "yearsmonster" name =yearsmonster >	
+				<input type="hidden" id= "monthsmonster" name =monthsmonster >	 
+				<input type="hidden" id= "firstmonster" name =firstmonster >	 
+				<input type="hidden" id= "lastsmonster" name =lastsmonster >	  
 				
 				
 				            
@@ -351,11 +353,12 @@ var roomsnums = '<c:out value="${room.room_number}"/>';
 	            <span class="righth3_de" >빠르고 확실한 예약을 위해 </span>
 	            <span class="righth3_de">런업에서 온라인 결제를 진행해주세요</span>
              	
-             	<button type="button" class="paybtn">결제하기</button>     
+             	<button type="submit" id="sub" class="paybtn">결제하기</button>     
+                </form>
             </div>
+         
             
         </div>
-
         <br>
     </section>
  

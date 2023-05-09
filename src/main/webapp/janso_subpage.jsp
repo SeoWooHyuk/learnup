@@ -19,9 +19,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="./js/janso_sub.js"> </script>
-     <script src="./js/janso_sub.slide.js"> </script>
+ <!--      <script src="./js/janso_sub.slide.js"> </script> -->
 
 </head>
+<script type="text/javascript">
+
+
+
+</script>
+
 
 <body>
   <%
@@ -35,11 +41,12 @@
 	int startPage=pageInfo.getStartPage();
 	int endPage=pageInfo.getEndPage();
  %> 
-   	 <%@include file ="./header.jsp" %>
-   <section class="image-section">
-    <div class="image-section-0">
-        
-    </div>
+ 
+ 
+<%@include file ="./header.jsp" %>
+  
+<section class="image-section">
+    <div class="image-section-0"></div>
 </section>
 <!--광고1 -->
 
@@ -48,21 +55,23 @@
 </section>
 
 <section class="section_janso1">
-    <div style="margin-top: 20px !important;;  display: block;">
+    <div style="margin-top: 20px !important;;  display: block;"></div>
     
-    </div>
     <div class="flex">
         <div class="left_menu" style="flex-basis: 184px;">
 
             <div class="left_menu_wrap0">
                 <h4 class="left_menu_wrap_title">카테고리</h4>
 
+				<form action="janso_subpage.learnup.com" id="frm">
+					 <input type="hidden"  name="page" value="<%=nowPage%>" ">
+					  <input type="hidden"  name="searchs" value="" ">
                 <div class="flex-1">
                     <ul style="margin: 0; padding-left: 0; list-style: none;">
                         <li style="padding: 7px 0; color: #222; padding-bottom: 0px !important; list-style: none;">   
                             <div class="subcategory1">
                                 <div class="subcategory1-0">
-                                    <input type="checkbox" name="" id="ch" class="checkbox_1">
+                                    <input type="checkbox" name="" id="ch" class="checkbox_1" >
 
                                     <div class="checkbox_1_label">
                                         공간선택
@@ -76,7 +85,7 @@
                             <div class="togle_list" id="to1">
                                 <div class="togle_list_wrap">
                                     <div class="subcategory1-0">
-                                        <input type="checkbox" name="cho" id="" class="checkbox_1">
+                                        <input type="checkbox" name="keworld" id="" class="checkbox_1" value="강의실">
                                         <div class="checkbox_1_label">
                                             강의실
                                         </div>
@@ -85,7 +94,7 @@
 
                                 <div class="togle_list_wrap">
                                     <div class="subcategory1-0">
-                                        <input type="checkbox" name="cho" id="" class="checkbox_1">
+                                        <input type="checkbox" name="keworld1" id="" class="checkbox_1" value="스터디룸">
                                         <div class="checkbox_1_label">
                                             스터디룸
                                         </div>
@@ -95,7 +104,7 @@
                                 
                                 <div class="togle_list_wrap">
                                     <div class="subcategory1-0">
-                                        <input type="checkbox" name="cho" id="" class="checkbox_1">
+                                        <input type="checkbox" name="keworld2" id="" class="checkbox_1" value="촬영스튜디오">
                                         <div class="checkbox_1_label">
                                             촬영스튜디오
                                         </div>
@@ -105,7 +114,7 @@
                                 
                                 <div class="togle_list_wrap">
                                     <div class="subcategory1-0">
-                                        <input type="checkbox" name="cho" id="" class="checkbox_1">
+                                        <input type="checkbox" name="keworld3" id="" class="checkbox_1" value="보컬연습실">
                                         <div class="checkbox_1_label">
                                             보컬연습실
                                         </div>
@@ -115,7 +124,7 @@
                                 
                                 <div class="togle_list_wrap">
                                     <div class="subcategory1-0">
-                                        <input type="checkbox" name="cho" id="" class="checkbox_1">
+                                        <input type="checkbox" name="keworld4" id="" class="checkbox_1" value="악기연습실">
                                         <div class="checkbox_1_label">
                                             악기연습실
                                         </div>
@@ -124,7 +133,7 @@
 
                                 <div class="togle_list_wrap">
                                     <div class="subcategory1-0">
-                                        <input type="checkbox" name="cho" id="" class="checkbox_1">
+                                        <input type="checkbox" name="keworld5" id="" class="checkbox_1 " value="공유주방">
                                         <div class="checkbox_1_label">
                                             공유주방
                                         </div>
@@ -133,7 +142,7 @@
 
                                 <div class="togle_list_wrap">
                                     <div class="subcategory1-0">
-                                        <input type="checkbox" name="cho" id="" class="checkbox_1">
+                                        <input type="checkbox" name="keworld6" id="" class="checkbox_1" value="파티룸">
                                         <div class="checkbox_1_label">
                                             파티룸
                                         </div>
@@ -142,7 +151,7 @@
 
                                 <div class="togle_list_wrap">
                                     <div class="subcategory1-0">
-                                        <input type="checkbox" name="cho" id="" class="checkbox_1">
+                                        <input type="checkbox" name="keworld7" id="" class="checkbox_1" value="운동시설"">
                                         <div class="checkbox_1_label">
                                             운동시설
                                         </div>
@@ -160,14 +169,15 @@
 
             <div class="left_menu_wrap1">
                 <h4 class="left_menu_wrap_title">지역선택</h4>
-
+                
+				
                 <div class="flex-1">
                     <ul style="margin: 0; padding-left: 0; list-style: none;">
                         <li style="padding: 7px 0; color: #222; padding-bottom: 0px !important; list-style: none;">   
                             <div class="subcategory1">
                                 <div class="subcategory1-0">
-                                    <input type="checkbox" name="" id="ch2" class="checkbox_1">
-                                    <div class="checkbox_1_label">
+                                    <input type="checkbox" name="cho2" id="ch2" class="checkbox_2">
+                                    <div class="checkbox_2_label">
                                         지역선택
                                     </div>
                                     <button type="button" class="buttons" id="chbu2">▼</button>
@@ -178,7 +188,7 @@
                             <div class="togle_list" id="to2">
                                 <div class="togle_list_wrap">
                                     <div class="subcategory1-0">
-                                        <input type="checkbox" name="" id="" class="checkbox_1">
+                                        <input type="checkbox" name="cho2" id="" class="checkbox_2">
                                         <div class="checkbox_1_label">
                                             서울
                                         </div>
@@ -188,7 +198,7 @@
 
                                 <div class="togle_list_wrap">
                                     <div class="subcategory1-0">
-                                        <input type="checkbox" name="" id="" class="checkbox_1">
+                                        <input type="checkbox" name="cho2" id="" class="checkbox_2">
                                         <div class="checkbox_1_label">
                                             경기도
                                         </div>
@@ -199,7 +209,7 @@
                                 
                                 <div class="togle_list_wrap">
                                     <div class="subcategory1-0">
-                                        <input type="checkbox" name="" id="" class="checkbox_1">
+                                        <input type="checkbox" name="cho2" id="" class="checkbox_2">
                                         <div class="checkbox_1_label">
                                             강원도
                                         </div>
@@ -210,7 +220,7 @@
                                 
                                 <div class="togle_list_wrap">
                                     <div class="subcategory1-0">
-                                        <input type="checkbox" name="" id="" class="checkbox_1">
+                                        <input type="checkbox" name="cho2" id="" class="checkbox_2">
                                         <div class="checkbox_1_label">
                                             충청도
                                         </div>
@@ -221,7 +231,7 @@
                                 
                                 <div class="togle_list_wrap">
                                     <div class="subcategory1-0">
-                                        <input type="checkbox" name="" id="" class="checkbox_1">
+                                        <input type="checkbox" name="cho2" id="" class="checkbox_2">
                                         <div class="checkbox_1_label">
                                             전라도
                                         </div>
@@ -231,7 +241,7 @@
 
                                 <div class="togle_list_wrap">
                                     <div class="subcategory1-0">
-                                        <input type="checkbox" name="" id="" class="checkbox_1">
+                                        <input type="checkbox" name="cho2" id="" class="checkbox_2">
                                         <div class="checkbox_1_label">
                                             경상도
                                         </div>
@@ -241,7 +251,7 @@
 
                                 <div class="togle_list_wrap">
                                     <div class="subcategory1-0">
-                                        <input type="checkbox" name="" id="" class="checkbox_1">
+                                        <input type="checkbox" name="cho2" id="" class="checkbox_2">
                                         <div class="checkbox_1_label">
                                             제주도
                                         </div>
@@ -259,6 +269,9 @@
 
                     </ul>
                 </div>
+                <input type="submit" id="btn" value="전송" >
+             </form>
+                
             </div>
         </div>
             <!-- 지역선택 옆 메인   -->

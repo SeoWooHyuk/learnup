@@ -289,6 +289,9 @@ class Calendar {
           	 	var lastobj = $("#lastsmonster");
 	          	lastobj.val(lastSelectedDay);
 	          	
+	          	var da =document.getElementById("sub");
+	        
+	          	
 	          	 //var URL = "페이지 주소.jsp?name= "+name +"&year=" + year
 	          	//learnup/janso_detail.learnup.com?roomnumber=47
 	         	//var URL = "janso_detail.learnup.com?roomnumber=47"

@@ -73,7 +73,7 @@ public class Janso_product_registrationAction implements jansoAction {
 		String addCommaString = StringUtils.join(list, ",");
 		
 		String addCommaString2 = StringUtils.join(list2, ",");
-		System.out.println(addCommaString);
+		//System.out.println(addCommaString);
 	
 		String area1 = multi.getParameter("area1");
 		String area2 = multi.getParameter("area2");
@@ -82,7 +82,7 @@ public class Janso_product_registrationAction implements jansoAction {
 		
 		registration = new Janso_product_registration();
 		registration.setEmail(multi.getParameter("email"));
-		System.out.println(multi.getParameter("email"));
+		//System.out.println(multi.getParameter("email"));
 		
 		registration.setRoom_title(multi.getParameter("roomtitle"));
 		registration.setRoom_categories(multi.getParameter("select-box0")); //시설물선택

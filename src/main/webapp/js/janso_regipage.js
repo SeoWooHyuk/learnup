@@ -2,15 +2,6 @@
             
 $(document).ready(function(){
   // 탭바 스크립트
-  $('ul.tabs li').click(function(){
-    var tab_id = $(this).attr('data-tab');
-    console.log(tab_id);
-    $('ul.tabs li').removeClass('current');
-    $('.tab-content').removeClass('current');
-
-    $(this).addClass('current');
-    $("#"+tab_id).addClass('current');
-  })
 
  
 //우편번호
@@ -38,14 +29,24 @@ function sample6_execDaumPostcode() {
         }
     }).open();
 }
-
-//스크립트 끝부분
 })
 
 
+
+//탭바 스크립트
 $(document).ready(function(){
+	 var tab_id;
+	 
+	 $('ul.tabs li').click(function(){
+ 	 tab_id = $(this).attr('data-tab');
+	  
+	    $('ul.tabs li').removeClass('current');
+	    $('.tab-content').removeClass('current');
 	
-	
+	    $(this).addClass('current');
+	    $("#"+tab_id).addClass('current');
+  	 })
+
 	
 	var height = $("#eachtt").offset(); //강의실제목
 	var height1 = $("#eachtitle1").offset();  //공간유형
@@ -58,6 +59,10 @@ $(document).ready(function(){
 	var height8 = $("#eachtitle8").offset(); //예약시간 선택
 	var height9 = $("#eachtitle9").offset(); //공간소개
 	var height10 = $("#eachtitle10").offset(); //유의사항
+	
+	
+	
+	
 
 	
 	$('#daum').click(function(){
@@ -207,6 +212,7 @@ $(document).ready(function(){
 		}
 		
 		else{
+			
 			$('#bsd').click(function(){
 				$('ul.tabs li').removeClass('current');
 				$('.tab-content').removeClass('current');
@@ -257,6 +263,7 @@ $('#daum2').click(function(){
 			
 		}else
 		{
+			daum1check = "tab-2";
 			$('#csd').click(function(){
 			$('ul.tabs li').removeClass('current');
 			$('.tab-content').removeClass('current');
@@ -264,6 +271,7 @@ $('#daum2').click(function(){
 			$(this).addClass('current');
 			$("#tab-3").addClass('current');
 			}).click();
+			
 		}
 		
 })
@@ -331,6 +339,57 @@ $('#dropatag').click(function()
 	 }
 	
 });
+
+var mainse = document.querySelector('#select-box1'); //인원
+
+
+mainse.onchange = function () {
+    var subse = document.querySelector('#select-box2');
+
+    var mainOption = mainse.options[mainse.selectedIndex].innerText;
+    // var mainOption =  mainCity.options[mainCity.selectedIndex].value;로 해도 동일합니다. 
+ 		$( '#select-box2' ).empty();
+          $( '#select-box2' ).append( '<option value="" class="op" hidden></option>' );
+        for ( var i = mainse.value; i <= 20; i++ ) {
+          $( '#select-box2' ).append( '<option value="'+i+'" class="op">' +  i+"명"+ '</option>' );
+        }
+}
+
+
+var mainse2 = document.querySelector('#select-box4');  //오픈시간
+var subse2;
+mainse2.onchange = function () {
+  
+	subse2 = document.querySelector('#select-box5');
+
+    var mainOption2 = mainse2.options[mainse2.selectedIndex].innerText;
+    // var mainOption =  mainCity.options[mainCity.selectedIndex].value;로 해도 동일합니다. 
+		$( '#select-box5' ).empty();
+        for ( var i = mainse2.value; i <= 24; i++ ) {
+          $( '#select-box5' ).append( '<option  value="'+i+'" class="op">' +  i+"시"+  '</option>' );
+        }
+}
+
+
+
+var mainse3 = document.querySelector('#select-box5');  //오픈시간
+
+mainse3.onchange = function () {
+
+	var times;
+	var time1 =   mainse2.value;
+	var time2 =   subse2.value;
+	
+	times =((time2) - (time1));
+
+    // var mainOption =  mainCity.options[mainCity.selectedIndex].value;로 해도 동일합니다. 
+      $( '#select-box6' ).empty();
+        for ( var i = 1; i <= times; i++ ) {
+          $( '#select-box6' ).append( '<option  value="'+i+'" class="op">' +  i+"시간"+  '</option>' );
+        }
+}
+
+
 
 
 

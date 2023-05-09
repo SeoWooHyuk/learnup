@@ -23,7 +23,7 @@ import vo.Janso_product_registration;
 import vo.ActionForward;
 
 
-public class Janso_detailPageAction implements jansoAction {
+public class Janso_detailPageinsertAction implements jansoAction {
 	public ActionForward execute(HttpServletRequest request,HttpServletResponse response) throws Exception{
 
 		Janso_product_registration article = new Janso_product_registration();
@@ -72,7 +72,7 @@ public class Janso_detailPageAction implements jansoAction {
 		
 
 		ActionForward forward= new ActionForward();
-   		forward.setPath("/janso_detail.jsp");
+   		forward.setPath("/janso_detail.learnup.com");
    		return forward;
    		
    		

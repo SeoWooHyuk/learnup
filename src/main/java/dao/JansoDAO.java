@@ -214,7 +214,7 @@ public class JansoDAO {
 		//장소 대여자 상품 셀렉 지역별 셀렉 서울
 		public ArrayList<Janso_product_registration> Janso_product_registrationListSeoul(String addp){
 			
-			System.out.println(addp+"dao임");
+			//System.out.println(addp+"dao임");
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
 			String board_list_sql="select * from room_product_registration where room_address like ? ";
@@ -280,7 +280,7 @@ public class JansoDAO {
 		//장소 대여자 상품 셀렉 지역별 셀렉 경기
 		public ArrayList<Janso_product_registration> Janso_product_registrationList2(String addp){
 			
-			System.out.println(addp+"dao임");
+			//System.out.println(addp+"dao임");
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
 			String board_list_sql="select * from room_product_registration where room_address like ? ";
@@ -346,7 +346,7 @@ public class JansoDAO {
 		//장소 대여자 상품 셀렉 지역별 셀렉 강원도
 				public ArrayList<Janso_product_registration> Janso_product_registrationList3(String addp){
 					
-					System.out.println(addp+"dao임");
+					//System.out.println(addp+"dao임");
 					PreparedStatement pstmt = null;
 					ResultSet rs = null;
 					String board_list_sql="select * from room_product_registration where room_address like ? ";
@@ -411,7 +411,7 @@ public class JansoDAO {
 				
 				//장소 대여자 상품 셀렉 지역별 셀렉 충청
 				public ArrayList<Janso_product_registration> Janso_product_registrationList4(String addp,String addp2){
-					System.out.println(addp+"dao임");
+					//System.out.println(addp+"dao임");
 					PreparedStatement pstmt = null;
 					ResultSet rs = null;
 					String board_list_sql="select * from room_product_registration where room_address like ? OR room_address like ? ";
@@ -478,7 +478,7 @@ public class JansoDAO {
 				//장소 대여자 상품 셀렉 지역별 셀렉 전라
 				public ArrayList<Janso_product_registration> Janso_product_registrationList5(String addp, String addp2){
 				
-					System.out.println(addp+"dao임");
+					//System.out.println(addp+"dao임");
 					PreparedStatement pstmt = null;
 					ResultSet rs = null;
 					String board_list_sql="select * from room_product_registration where room_address like ? OR room_address like ? ";
@@ -545,7 +545,7 @@ public class JansoDAO {
 				//장소 대여자 상품 셀렉 지역별 셀렉 경상
 				public ArrayList<Janso_product_registration> Janso_product_registrationList6(String addp, String addp2){
 					
-					System.out.println(addp+"dao임");
+					//System.out.println(addp+"dao임");
 					PreparedStatement pstmt = null;
 					ResultSet rs = null;
 					String board_list_sql="select * from room_product_registration where room_address like ? or room_address like ?";
@@ -612,7 +612,7 @@ public class JansoDAO {
 				//장소 대여자 상품 셀렉 지역별 셀렉 제주
 				public ArrayList<Janso_product_registration> Janso_product_registrationList7(String addp){
 					
-					System.out.println(addp+"dao임");
+					//System.out.println(addp+"dao임");
 					PreparedStatement pstmt = null;
 					ResultSet rs = null;
 					String board_list_sql="select * from room_product_registration where room_address like ? ";
@@ -684,7 +684,7 @@ public class JansoDAO {
 					ArrayList<Janso_product_registration> articleList = new ArrayList<Janso_product_registration>();
 					Janso_product_registration janso = null;
 					int startrow=(startpage-1)*9; 
-					System.out.println(startrow);
+					//System.out.println(startrow);
 					
 					String	sql2 ="select * from room_product_registration where "
 					+ "if( '"+search +"' != '' , room_title like'%"+search+"%',"
@@ -700,10 +700,10 @@ public class JansoDAO {
 					
 					
 				
-					System.out.println(search +"스타트 페이지");
+					//System.out.println(search +"스타트 페이지");
 					for(int i = 0; i < keword.length; i++ )
 					{
-						System.out.println(keword[i]);
+						//System.out.println(keword[i]);
 					}
 					
 					
@@ -718,7 +718,6 @@ public class JansoDAO {
 //						pstmt.setString(3, "%"+keword[1]+"%"); // 키워드 검색2
 //						pstmt.setInt(4, startrow); //시작행-1 (시작 row 인덱스 번호)
 //						pstmt.setInt(5, pageSize); // 페이지크기 (한번에 출력되는 수)
-					
 						//rs = pstmt.executeQuery();
 						rs = stmt.executeQuery(sql2);
 

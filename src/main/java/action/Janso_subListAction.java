@@ -3,12 +3,16 @@ package action;
 import java.io.File;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.json.JSONObject;
+
 import javax.servlet.ServletContext;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -47,6 +51,7 @@ public class Janso_subListAction implements jansoAction {
 		keyword[5] = " ";
 		keyword[6] = " ";
 		keyword[7] = " ";
+		
 		
 		if(request.getParameter("keworld")!=null){
 			keyword[0] = request.getParameter("keworld");
