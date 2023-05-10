@@ -74,11 +74,6 @@ $(function(){
     
     
     
-    
-    
-    
-    
-    
 // 지역별 늘어라
     $('#ch2').click(function()
      {   

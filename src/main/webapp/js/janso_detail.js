@@ -1,5 +1,111 @@
+$(document).ready(function(){
+	
+var selectedDate = ['2023-05-16']; // 선택한 날짜를 저장할 변수
+var disabledDays = [0,1]; // 비활성화할 특정 요일 (0: 일요일, 1: 월요일, ..., 6: 토요일)	
+//두개짜리 제어 연결된거 만들어주는 함수
+datePickerSet($("#datepicker1"), $("#datepicker2"), true); //다중은 시작하는 달력 먼저, 끝달력 2번째
+function datePickerSet(sDate, eDate, flag) {
+
+    //시작 ~ 종료 2개 짜리 달력 datepicker	
+    if (!isValidStr(sDate) && !isValidStr(eDate) && sDate.length > 0 && eDate.length > 0) {
+        var sDay = sDate.val();
+        var eDay = eDate.val();
+
+        if (flag && !isValidStr(sDay) && !isValidStr(eDay)) { //처음 입력 날짜 설정, update...			
+            var sdp = sDate.datepicker().data("datepicker");
+            sdp.selectDate(new Date(sDay.replace(/-/g, "/")));  //익스에서는 그냥 new Date하면 -을 인식못함 replace필요
+
+            var edp = eDate.datepicker().data("datepicker");
+            edp.selectDate(new Date(eDay.replace(/-/g, "/")));  //익스에서는 그냥 new Date하면 -을 인식못함 replace필요
+        }
+
+        //시작일자 세팅하기 날짜가 없는경우엔 제한을 걸지 않음
+        if (!isValidStr(eDay)) {
+            sDate.datepicker({
+                maxDate: new Date(eDay.replace(/-/g, "/"))
+            });
+        }
+        sDate.datepicker({
+            language: 'ko',
+            dateFormat: 'yy-mm-dd',
+            minDate: new Date(),
+           
+            autoClose: true,
+            onSelect: function () {
+            datePickerSet(sDate, eDate);
+            },
+            onRenderCell: function(date, cellType) {
+		      if (cellType === 'day') {
+		        var day = date.getDate();
+		        var month = date.getMonth() + 1;
+		        var year = date.getFullYear();
+		        var formattedDate = year + '-' + month + '-' + day;
+		
+		        // 선택한 날짜와 비활성화할 특정 요일을 동시에 체크
+		        if (formattedDate === '2023-05-16' || disabledDays.indexOf(date.getDay()) !== -1) {
+		          return {
+		            disabled: true
+		          };
+		        }
+		      }
+		    },
+		    
+
+	    
+        });
+
+        //종료일자 세팅하기 날짜가 없는경우엔 제한을 걸지 않음
+        if (!isValidStr(sDay)) {
+            eDate.datepicker({
+                minDate: new Date(sDay.replace(/-/g, "/"))
+            });
+        }
+        eDate.datepicker({
+           language: 'ko',
+            minDate: new Date(),
+              timepicker: true,
+   		 timeFormat: "hh:ii AA",
+            autoClose: true,
+            onSelect: function () {
+            datePickerSet(sDate, eDate);
+            },
+            onRenderCell: function(date, cellType) {
+		      if (cellType === 'day') {
+		        var day = date.getDate();
+		        var month = date.getMonth() + 1;
+		        var year = date.getFullYear();
+		        var formattedDate = year + '-' + month + '-' + day;
+		
+		        // 선택한 날짜와 비활성화할 특정 요일을 동시에 체크
+		        if (selectedDate.indexOf(formattedDate) !== -1 || disabledDays.indexOf(date.getDay()) !== -1) {
+		          return {
+		            disabled: true
+		          };
+		        }
+		      }
+		    },
+		    onSelect: function(formattedDate, date, inst) {
+		      selectedDate = formattedDate; // 선택한 날짜를 저장
+		    }
+
+	    
+        });
+
+    }
 
 
+    function isValidStr(str) {
+        if (str == null || str == undefined || str == "")
+            return true;
+        else
+            return false;
+    }
+}
+
+});
+//달력
+
+//오토슬라이드
 $(document).ready(function(){
 
 	$(function(){        
@@ -91,248 +197,6 @@ $(document).ready(function(){
 
 
 
-$(document).ready(function(){
-
-
-const calendarDays = document.querySelectorAll(".calendar_days"),
-calendarTitle = document.querySelector(".ctitle"),
-leftButton = document.querySelector(".left_button"),
-rightButton = document.querySelector(".right_button"),
-calendar = document.querySelector(".calendar");
-// dateUpdate = document.querySelector(".date_update");
-
-let monthmonster;
-let yearmonster;
-let firstSelectedDay = 0;
-let lastSelectedDay = 0;
- 
-
-
-
-//const UNAVAILABLE_DATES = [new Date(2023, 4, 26), new Date(2023, 5, 27), new Date(2023, 4, 30)]; // 예약 불가 날짜
-let UNAVAILABLE_DATES = [];
-//let selectedDate = null;
-
-class Calendar {
-	constructor(year, month) {
-	    this.today = new Date(year, month);
-	    this.year = this.today.getFullYear(),
-	    this.month = this.today.getMonth(),
-	    this.date = this.today.getDate(),
-	    this.day = this.today.getDay()
-	}
-
-	
-	getFirstDay() {
-	    const firstDate = new Date(this.year, this.month);
-	    return firstDate.getDay();
-	}
-	alert
-	getLastDay() {
-	    let wholeDays = [];
-	    if ((this.year % 4 === 0 && this.year % 100 !== 0) || (this.year % 400 === 0)) {
-	        wholeDays = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-	    } else {
-	        wholeDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-	    }
-	    return wholeDays[this.month];
-	}
-	
-	fillCalendar() {
-	    this.initCalendar();
-	    calendarTitle.innerHTML = `${this.year}년 ${this.month + 1}월`;
-	    yearmonster = this.year;
-	    monthmonster = this.month+1;
-	    
-	    
-    	const today = new Date();
-	    const firstDay = this.getFirstDay();
-	    const lastDay = this.getLastDay();
-	    let day = 1;
-	    
-
-	    for (let i = firstDay; i < calendarDays.length; i++) {
-	
-			if (day <= lastDay) {
-	        const date = new Date(this.year, this.month, day);
-            const button = document.createElement('button');
-            button.classList.add('day_button');
-            
-        
-	         const isUnavailable = UNAVAILABLE_DATES.some((d) => {
-	         return date.getTime() === d.getTime();
-	         });
-	         
-	          
-	         if (date < today) {
-             button.disabled = true;  // 현재 날짜보다 이전인 경우 버튼 비활성화
-            }
-            
-          	if(isUnavailable) {
-            calendarDays[i].innerHTML = `<button class="day_button unavailable"  disabled=true>예약불가</button>`;
-          	} else {
-            button.innerText = day;
-            calendarDays[i].appendChild(button);
-         	}
-            day++;
-        	}
-	         	  
-   	 } 
-	}
-	
-	initCalendar() {
-	    calendarDays.forEach((e) => {
-	        e.innerHTML = "";
-	    });
-	}
-	
-	
-	drawCalendar() {
-	    let change = 0;
-	   
-	    const today = new Date();
-	    let calendarInstance = new Calendar(today.getFullYear(), today.getMonth() + change);
-
-	    calendarInstance.fillCalendar();
-	
-	    leftButton.addEventListener("click", (e) => {
-	        e.stopPropagation();
-	        change--;
-
-	        calendarInstance = new Calendar(today.getFullYear(), today.getMonth() + change);
-	        calendarInstance.fillCalendar();
-	        this.updateCalendarStyle();
-	       	       
-	    });
-	    rightButton.addEventListener("click", (e) => {
-	        e.stopPropagation();
-	        change++;
-	        calendarInstance = new Calendar(today.getFullYear(), today.getMonth() + change);
-	        calendarInstance.fillCalendar();
-	        this.updateCalendarStyle();
-	    });
-	}
-	
-	
-	updateCalendarStyle() {
-	    const dayButtons = document.querySelectorAll(".day_button");
-	  
-	    let clickCount = 0;
-	
-	    // 달력 스타일 초기화
-	    dayButtons.forEach((element) => {
-	        element.classList.remove("day_selected");
-	        calendarDays.forEach((e) => e.classList.remove("gray"));
-	    })
-	
-	
-	    // 달력 날짜들에 클릭 이벤트 추가
-	    dayButtons.forEach((element) => {
-	        element.addEventListener("click", (event) => {
-	            event.target.classList.toggle("day_selected");
-	
-	            clickCount++;
-	
-	            // 선택 일자 타입 변환
-	            if (firstSelectedDay === 0) {
-	                firstSelectedDay = Number(event.target.innerText);
-	            } else {
-	                lastSelectedDay = Number(event.target.innerText);
-	            }
-	
-	            // 클릭 횟수 2회 넘어가면 달력 스타일 초기화
-	            if (clickCount > 2) {
-	                dayButtons.forEach((e) => {
-	                    e.parentNode.classList.remove("gray");
-	                    e.classList.remove("day_selected");
-	                    clickCount = 0;
-	                    firstSelectedDay = 0;
-	                    lastSelectedDay = 0;
-	                });
-	            }
-	            
-	            // 선택 일자 사이에 회색 배경 적용
-	            if (firstSelectedDay !== 0 && lastSelectedDay !== 0) {
-	                dayButtons.forEach((e) => {
-	                    const day = Number(e.innerText);
-	                    if (day >= firstSelectedDay && day <= lastSelectedDay) {
-	                        e.parentNode.classList.toggle("gray");
-	                    }
-	                });
-	            }
-	
-	            // 선택 일자 중 왼쪽값이 오른쪽 값보다 크면 회색 배경 삭제 
-	            if (firstSelectedDay > lastSelectedDay) {
-	                dayButtons.forEach((e) => {
-	                    e.parentNode.classList.remove("gray");
-	                });
-	            }
-	           
-	            if(clickCount == 2)
-	            {
-				console.log(yearmonster);
-	   			console.log(monthmonster);
-	            console.log(firstSelectedDay);  //내가고른 예약 시작 일수
-	            console.log(lastSelectedDay);   //내가고른 예약 시작 끝날
-	          	console.log(roomsnums);
-	          	
-	          	
-	          	var yearobj = $("#yearsmonster");
-	          	yearobj.val(yearmonster);
-	          	
-          	 	var monthobj = $("#monthsmonster");
-          		monthobj.val(monthmonster);
-          			
-          	 	var firstobj = $("#firstmonster");
-          		firstobj.val(firstSelectedDay);
-          	
-          	 	var lastobj = $("#lastsmonster");
-	          	lastobj.val(lastSelectedDay);
-	          	
-	          	var da =document.getElementById("sub");
-	        
-	          	
-	          	 //var URL = "페이지 주소.jsp?name= "+name +"&year=" + year
-	          	//learnup/janso_detail.learnup.com?roomnumber=47
-	         	//var URL = "janso_detail.learnup.com?roomnumber=47"
-				//var rtnVal = window.showModalDialog(URL, "", "dialogWidth:0; dialogHeight:0; help:no; status:no;");
-	          	}
-	        });
-	    });
-	
-	
-	    // 달력 날짜들에 호버링 이벤트 추가
-	    dayButtons.forEach((element) => {
-	        element.addEventListener("mouseenter", (event) => {
-	            event.target.classList.add("day_hover")
-	        });
-	    });
-	
-	    dayButtons.forEach((element) => {
-	        element.addEventListener("mouseleave", (event) => {
-	            event.target.classList.remove("day_hover")
-	        });
-	    });
-	}
-	
-	 
-	
-	handleEvents() {
-	    this.drawCalendar();
-	    this.updateCalendarStyle();
-	}
-
-}
-
-const cal = new Calendar();
-cal.handleEvents();
-
-});
-
-
-
-
-
 /*결제 후 바로 예약확정 빨간불 영역 */
 $(document).ready(function() {
 	setInterval(function() {
@@ -383,6 +247,91 @@ geocoder.addressSearch(chDate, function(result, status) {
         map.setCenter(coords);
     } 
 });    
+
+
+
+//인원수 체크
+  $(document).ready(function() {
+    function InputNumber(element) {
+      this.$el = $(element);
+      this.$input = this.$el.find("[type=text]");
+      this.$inc = this.$el.find("[data-increment]");
+      this.$dec = this.$el.find("[data-decrement]");
+      this.min = this.$el.attr("min") || false;
+      this.max = this.$el.attr("max") || false;
+      this.init();
+
+    }
+
+    InputNumber.prototype = {
+      init: function () {
+        this.$dec.on("click", $.proxy(this.decrement, this));
+        this.$inc.on("click", $.proxy(this.increment, this));
+      },
+
+      increment: function (e) {
+        var value = this.$input[0].value;
+        value++;
+        if (!this.max || value <= this.max) {
+          this.$input[0].value = value++;
+        }
+      },
+
+      decrement: function (e) {
+        var value = this.$input[0].value;
+        value--;
+        if (!this.min || value >= this.min) {
+          this.$input[0].value = value;
+        }
+      }
+    };
+
+    $.fn.inputNumber = function (option) {
+      return this.each(function () {
+        var $this = $(this),
+          data = $this.data("inputNumber");
+
+        if (!data) {
+          $this.data("inputNumber", (data = new InputNumber(this)));
+        }
+      });
+    };
+
+    $.fn.inputNumber.Constructor = InputNumber;
+
+    $(".input-number").inputNumber();
+  });
+  
+  
+$(document).ready(function() {
+  var persons;
+  
+$('#input-number-decrement, #input-number-increment').on('click', function() {
+    persons = $('#person').val(); 
+     
+    var pprice =  personnel_price.replace(",", "");  
+    var rprice =  room_price.replace(",", "")*1;  
+    var totalPriced1 =  rprice + pprice * persons;
+
+    $("#priceto").empty();
+    $('#priceto').append(totalPriced1);
+  });
+  
+
+});
+  
+  
+  function calculateTotalPrice() {
+  var hourPrice = parseInt($('#hourprice').val().replace(/,/g, '')); // 시간당 가격, 쉼표 제거
+  var classTime = parseFloat($('#classtime').val().replace(/,/g, ''));
+  var totalClassCount = parseInt($('#totalclasscount').val());
+ 
+  var totalPrice = hourPrice + (classTime * totalClassCount);
+ 
+
+  $('#totalprice').val(numberWithCommas(totalPrice)); // 최종 수강료에 쉼표 추가
+
+}
 
 
 

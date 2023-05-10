@@ -22,6 +22,9 @@
 		<!-- JS -->
 		<script type="text/javascript"></script>
 		<script src="js/slick.js"></script>
+		
+	    <script src="js/datepicker.min.js"></script>
+	    <script src="js/datepicker.ko.js"></script>
 		<title>footer</title>
 </head>
 

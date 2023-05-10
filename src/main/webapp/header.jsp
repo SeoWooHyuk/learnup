@@ -23,6 +23,8 @@
 		<script type="text/javascript"></script>
 		<script src="js/header.js"></script>
 		<script src="js/slick.js"></script>
+		<script src="js/datepicker.min.js"></script>
+    	<script src="js/datepicker.ko.js"></script>
 <title></title>
 </head>
 		<%

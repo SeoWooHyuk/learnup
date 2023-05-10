@@ -40,6 +40,9 @@ public class Janso_detailPageinsertAction implements jansoAction {
 		
 		
 		
+		
+		
+		
 		Janso_detailListService janso_detailListService = new Janso_detailListService();
 		article = janso_detailListService.getdetailArticle(room_number);
 		

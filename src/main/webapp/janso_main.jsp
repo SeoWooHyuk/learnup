@@ -517,7 +517,7 @@
    <a href="../html/heder.html" style=" text-decoration: none; box-sizing: border-box;">		
                 <div class="box-0-2">
                     <div class="box-0-2_box">
-                   <strong style="font-size: 18px;" ><%= articleList2.get(b).getRoom_title() %>룸</strong> 
+                   <strong style="font-size: 18px;" ><%= articleList5.get(b).getRoom_title() %>룸</strong> 
                    <span>(최소인원 <%=articleList5.get(b).getMin_personnel() %>명/ </span>    
                    <span> 최대인원 <%=articleList5.get(b).getMax_personnel() %>명) </span>
                 </div>

@@ -91,6 +91,40 @@ public class JansoDAO {
 
 	}
 	
+	//구매자 상품 구매
+	public int janso_mypage_buy(Janso_mypage_buy buy){
+		
+
+		ResultSet rs = null;
+		PreparedStatement pstmt = null;
+		int insertCount=0;
+		int num =0;
+		String SQL = "insert into mypage_buy values(?,?,?,?,?,?)";
+		
+		try{
+			pstmt = con.prepareStatement(SQL);
+	
+			pstmt.setInt(1, buy.getRoom_number());
+			pstmt.setString(2, buy.getEmail());
+			pstmt.setString(3, buy.getMy_date());
+			pstmt.setString(4, buy.getMy_time());
+			pstmt.setString(5, buy.getMy_person());
+			pstmt.setString(6, buy.getMy_sell());
+	
+			insertCount = pstmt.executeUpdate();	
+			
+			return insertCount;
+		}catch(Exception ex){
+			System.out.println(ex+"인설트 안됨");
+		}finally{
+			close(pstmt);
+		}
+
+		return insertCount;
+
+	}
+	
+	
 	//장소 대여자 상품 등록
 		public int janso_product_registration(Janso_product_registration rental){
 			
@@ -478,7 +512,8 @@ public class JansoDAO {
 				//장소 대여자 상품 셀렉 지역별 셀렉 전라
 				public ArrayList<Janso_product_registration> Janso_product_registrationList5(String addp, String addp2){
 				
-					//System.out.println(addp+"dao임");
+					System.out.println(addp+"dao임");
+					System.out.println(addp2+"dao임");
 					PreparedStatement pstmt = null;
 					ResultSet rs = null;
 					String board_list_sql="select * from room_product_registration where room_address like ? OR room_address like ? ";

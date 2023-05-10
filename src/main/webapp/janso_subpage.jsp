@@ -278,8 +278,8 @@
         <div class="right_main">
             <div class="filter_wrap">
                 <div style="flex-basis: 675px; height: 60px; float: left;">  
-                <div  action="board_select" class="search_form"style="float :left;">
-                  <form action="janso_subpage.learnup.com?page=<%=nowPage%>">
+                <div  action="janso_subpage.learnup.com?page=<%=nowPage%>" class="search_form"style="float :left;">
+                    <form class="search">
                 	 <input type="hidden"  name="page" value="<%=nowPage%>" ">
                 	  <input type="hidden"  name="keworld" value="" ">
 					<input class="searchTerm" placeholder="   검색하세여"  name = "searchs" /><input class="searchButton" type="submit" />
@@ -329,7 +329,7 @@
 		</a>  
 	</span>	
 	<a href="janso_detail.learnup.com?roomnumber=<%=articleList.get(i).getRoom_number() %>" style=" text-decoration: none; box-sizing: border-box;">		
-		<img src="${pageContext.request.contextPath }/jansoproduct/<%= articleList.get(i).getMain_img() %>" alt="" style=" width: 100%; height: 250px;">   	
+		<img src="${pageContext.request.contextPath }/jansoproduct/<%= articleList.get(i).getMain_img() %>" alt="" style=" width: 100%; height: 200px;">   	
 	</a> 
 	</div>
 
@@ -340,11 +340,15 @@
         <span style="font-size: 12px;">(최소인원 <%=articleList.get(i).getMin_personnel() %>명/ </span>    
         <span style="font-size: 12px;"> 최대인원 <%=articleList.get(i).getMax_personnel() %>명) </span>
 	</div>
+		<div class="box-0-2_box">
+	    <span style="float: left; font-size: 15px; color: black">공간: </span>&nbsp
+        <span style="font-size: 15px; position: absolute  ; line-height: 23.9px;"><%= articleList.get(i).getRoom_categories() %></span>
+	</div>
 	<div class="box-0-2_box">
 	    <span style="float: left; font-size: 15px; color: blue">지역: </span>&nbsp
         <span style="font-size: 12px; position: absolute  ; line-height: 23.9px;"><%= articleList.get(i).getRoom_address() %></span>
 	</div>
-	<div class="box-0-2_box">
+	<div class="box-0-2_box" style="height: auto; ">
 	    <div style="float: left;">
 		    <strong><%=articleList.get(i).getRoom_price() %></strong>
 		    <span>원/시간</span>
@@ -363,6 +367,8 @@
 
      
 </div> <!-- 링크박스 닫기 -->
+
+
 </div>  	
   <!-- 셀렉들어오는곳 -->
  </div>
