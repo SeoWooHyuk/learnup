@@ -22,15 +22,25 @@
 	
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script language=JavaScript src="${common_context_path_url}js/janso_detail.js"></script>
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f1342a3ffd93979d7f9852ea40201756&libraries=services"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="js/datepicker.min.js"></script>
-    <script src="js/datepicker.ko.js"></script>
-	
-	
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400&display=swap" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="css/janso_detail.css">
-	<link rel="stylesheet" href="css/datepicker.min.css">
+    <link rel="stylesheet" type="text/css" href="css/janso_detail.css">
+
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f1342a3ffd93979d7f9852ea40201756&libraries=services"></script>
+   
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+	
+	
+	
+	<script src="js/datepicker.min.js"></script>
+    <script src="js/datepicker.ko.js"></script>
+    <link rel="stylesheet" href="css/datepicker.min.css">
+    
+
+
+	 
+	 
 	
 	
 
@@ -48,6 +58,13 @@ var rooms = '<c:out value="${room.room_title}"/>';
 var roomsnums = '<c:out value="${room.room_number}"/>';
 var personnel_price = '<c:out value="${room.personnel_price}"/>';
 var room_price = '<c:out value="${room.room_price}"/>';
+
+var time1 = '<c:out value="${room.open_time}"/>';
+var time2 = '<c:out value="${room.close_time}"/>';
+
+var time3 = '<c:out value="${room.reservationtime}"/>';
+
+
 </script>
 
 
@@ -245,8 +262,26 @@ var room_price = '<c:out value="${room.room_price}"/>';
 		        <input id="datepicker1" type="text"> -
 		        <input id="datepicker2" type="text">
 			   </div>
+			   
 		        
 		    </div>
+		    
+		    <div class="reserv">예약시간을 지정해 주세요</div>
+		    <div class = "calendar_container"> 
+		      
+		      <div id="main">
+			        <div>
+			            <input id="timepicker" class="timepicker" multiple/>
+			        </div>
+			    </div>
+			      
+		    </div>
+		    
+		    
+		    
+		    
+		    
+		      
 		    
 		    
 		    <!-- 장소구매 인설트 -->

@@ -11,7 +11,11 @@
     <script src="js/datepicker.min.js"></script>
     <script src="js/datepicker.ko.js"></script>
 
-    	
+	
+	
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.13.18/jquery.timepicker.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.13.18/jquery.timepicker.min.js"></script>
+
     <style>
         * {
             margin: 0;
@@ -40,10 +44,30 @@
         <h1>2개가 연결된거!</h1>
         <input id="datepicker1" type="text"> -
         <input id="datepicker2" type="text">
+        
+       
+
+</div>
+    <div id="main">
+        <div>
+           <input type="text" id="timepicker">
+        </div>
     </div>
 
 
     <script>
+    
+    $('#timepicker').timepicker({
+    	 timeFormat: 'H:mm',  // 24시간 형식으로 시간 표시 (예: 10:30)
+    	    interval: 60,
+    	    minTime: '1:00',  // 최소 시간 설정
+    	    maxTime: '24:00',  // 최대 시간 설정
+    	    dynamic: false,
+    	    dropdown: true,
+    	    scrollbar: true,
+    	  disableTimeRanges: [['1:00pm', '2:00pm'], ['3:00pm', '4:00pm']]
+    	});
+    
         //한개만 단순하게 만들때
 $("#datepicker").datepicker({
     language: 'ko',

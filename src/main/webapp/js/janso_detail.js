@@ -1,4 +1,28 @@
 $(document).ready(function(){
+
+var time1s =  time1 + ":00";
+var time2s =  time2 + ":00";
+var time3s =  time3 *60;
+
+
+$('.timepicker').timepicker({
+    timeFormat: 'H:mm',  // 24시간 형식으로 시간 표시 (예: 10:30)
+    interval: 60,
+    minTime: time1s,  // 최소 시간 설정
+    maxTime: time2s,  // 최대 시간 설정
+    defaultTime: time1s,  // 기본 시간 설정
+    startTime: time1s,
+    dynamic: false,
+    dropdown: true,
+    scrollbar: true,
+    
+}).on('changeTime', function() {
+  // Handle the event here
+  var selectedTime = $(this).val();
+  console.log('Selected time: ' + selectedTime);
+});
+	
+	
 	
 var selectedDate = ['2023-05-16']; // 선택한 날짜를 저장할 변수
 var disabledDays = [0,1]; // 비활성화할 특정 요일 (0: 일요일, 1: 월요일, ..., 6: 토요일)	
@@ -27,9 +51,7 @@ function datePickerSet(sDate, eDate, flag) {
         }
         sDate.datepicker({
             language: 'ko',
-            dateFormat: 'yy-mm-dd',
             minDate: new Date(),
-           
             autoClose: true,
             onSelect: function () {
             datePickerSet(sDate, eDate);
@@ -42,13 +64,16 @@ function datePickerSet(sDate, eDate, flag) {
 		        var formattedDate = year + '-' + month + '-' + day;
 		
 		        // 선택한 날짜와 비활성화할 특정 요일을 동시에 체크
-		        if (formattedDate === '2023-05-16' || disabledDays.indexOf(date.getDay()) !== -1) {
+		        if (selectedDate.indexOf(formattedDate) !== -1 || disabledDays.indexOf(date.getDay()) !== -1) {
 		          return {
 		            disabled: true
 		          };
 		        }
 		      }
 		    },
+		    onSelect: function(formattedDate, date, inst) {
+		      selectedDate = formattedDate; // 선택한 날짜를 저장
+		    }
 		    
 
 	    
@@ -63,8 +88,6 @@ function datePickerSet(sDate, eDate, flag) {
         eDate.datepicker({
            language: 'ko',
             minDate: new Date(),
-              timepicker: true,
-   		 timeFormat: "hh:ii AA",
             autoClose: true,
             onSelect: function () {
             datePickerSet(sDate, eDate);
