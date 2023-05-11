@@ -100,7 +100,7 @@ public ArrayList<Janso_product_registration> getArticleListall() throws Exceptio
 	public ArrayList<Janso_product_registration> getArticleList6(String addp , String addp2 ) throws Exception{ //지역별 셀렉
 		
 		
-		System.out.println(addp);
+		//System.out.println(addp);
 		ArrayList<Janso_product_registration> articleList = null;
 		Connection con = getConnection();
 		JansoDAO jansoDAO = JansoDAO.getInstance();

@@ -372,7 +372,7 @@ mainse2.onchange = function () {
 
 
 
-var mainse3 = document.querySelector('#select-box5');  //오픈시간
+var mainse3 = document.querySelector('#select-box5');  //마감시간
 
 mainse3.onchange = function () {
 

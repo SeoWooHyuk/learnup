@@ -422,6 +422,91 @@ label {
  .input-number-decrement:before {
    border-top: 5px solid #0ca6f2;
  }
+ 
+ 
+ /*우측 예약시간*/
+ .timenumber
+{
+    position: relative;
+  
+}
+
+ .group {
+   padding: 2em;
+ }
+
+ .input-number2 {
+   border: 1px solid rgba(0,0,0,0.1);
+   border-radius: 4px;
+   overflow: hidden;
+   position: relative;
+   height: 50px;
+   width: 100%;
+ }
+
+ .input-number2 input {
+   border: none;
+   display: inline-block;
+   height: 100%;
+    padding: 0 10px;
+   outline: none;
+   position: relative;
+   /*
+  
+   width: calc(100% - 40px);
+   */
+ }
+
+ .input-number-increment2,
+ .input-number-decrement2 {
+   background-color: white;
+   border: 0;
+   border-left: 1px solid #e6ebee;
+   cursor: pointer;
+   display: block;
+   outline: none;
+   position: absolute;
+   width: 55px;
+   height: 25px;
+   text-align: center;
+   right: 0;
+ }
+
+ .input-number-increment2:hover:before {
+   border-bottom-color: #0073ba;
+ }
+
+ .input-number-decrement2:hover:before {
+   border-top-color: #0073ba;
+ }
+
+ .input-number-increment2 {
+   border-bottom: 1px solid #e6ebee;
+   top: 0;
+ }
+
+ .input-number-decrement2 {
+   bottom: 0;
+ }
+
+ .input-number-increment2:before,
+ .input-number-decrement2:before {
+   content: '';
+   display: inline-block;
+   vertical-align: super;
+   width: 0; 
+   height: 0; 
+   border-left: 5px solid transparent;
+   border-right: 5px solid transparent;
+ }
+
+ .input-number-increment2:before {
+   border-bottom: 5px solid #0ca6f2;
+ }
+
+ .input-number-decrement2:before {
+   border-top: 5px solid #0ca6f2;
+ }
 
 
 

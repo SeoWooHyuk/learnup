@@ -213,7 +213,7 @@
                   
                   </div>
             </div>
-            <a href="../html/heder.html" style=" text-decoration: none; box-sizing: border-box;">
+            <a href="janso_detail.learnup.com?roomnumber=<%=articleListall.get(i).getRoom_number()%>" style=" text-decoration: none; box-sizing: border-box;">
             <div class="box-0-2">
                 <div class="box-0-2_box">
                   <strong style="font-size: 18px;" ><%= articleListall.get(i).getRoom_title() %>룸</strong> 
@@ -285,12 +285,12 @@
 					<img src="image/heart1.png" alt="찜하기" style=" ">
 					</a>  
 			 		</span>	
-			 		 <a href="../html/heder.html" style=" text-decoration: none; box-sizing: border-box;">		
+			 		 <a href="janso_detail.learnup.com?roomnumber=<%=articleList.get(b).getRoom_number()%>" style=" text-decoration: none; box-sizing: border-box;">		
 			 		<img src="${pageContext.request.contextPath }/jansoproduct/<%=articleList.get(b).getMain_img()%>" style=" width:100%; height:100%; ">
 			 		 </a> 
                 </div>
    
-   <a href="../html/heder.html" style=" text-decoration: none; box-sizing: border-box;">		
+   <a href="janso_detail.learnup.com?roomnumber=<%=articleList.get(b).getRoom_number()%>" style=" text-decoration: none; box-sizing: border-box;">		
                 <div class="box-0-2">
                     <div class="box-0-2_box">
                    <strong style="font-size: 18px;" ><%= articleList.get(b).getRoom_title() %>룸</strong> 
@@ -340,12 +340,12 @@
 					<img src="image/heart1.png" alt="찜하기" style=" ">
 					</a>  
 			 		</span>	
-			 		 <a href="../html/heder.html" style=" text-decoration: none; box-sizing: border-box;">		
+			 		 <a href="janso_detail.learnup.com?roomnumber=<%=articleList2.get(b).getRoom_number()%>" style=" text-decoration: none; box-sizing: border-box;">		
 			 		<img src="${pageContext.request.contextPath }/jansoproduct/<%=articleList2.get(b).getMain_img()%>" style=" width:100%; height:100%; ">
 			 		 </a> 
                 </div>
    
-   <a href="../html/heder.html" style=" text-decoration: none; box-sizing: border-box;">		
+   <a href="janso_detail.learnup.com?roomnumber=<%=articleList2.get(b).getRoom_number()%>" style=" text-decoration: none; box-sizing: border-box;">		
                 <div class="box-0-2">
                     <div class="box-0-2_box">
                    <strong style="font-size: 18px;" ><%= articleList2.get(b).getRoom_title() %>룸</strong> 
@@ -395,12 +395,12 @@
 					<img src="image/heart1.png" alt="찜하기" style=" ">
 					</a>  
 			 		</span>	
-			 		 <a href="../html/heder.html" style=" text-decoration: none; box-sizing: border-box;">		
+			 		 <a href="janso_detail.learnup.com?roomnumber=<%=articleList3.get(b).getRoom_number()%>" style=" text-decoration: none; box-sizing: border-box;">		
 			 		<img src="${pageContext.request.contextPath }/jansoproduct/<%=articleList3.get(b).getMain_img()%>" style=" width:100%; height:100%; ">
 			 		 </a> 
                 </div>
    
-   <a href="../html/heder.html" style=" text-decoration: none; box-sizing: border-box;">		
+   <a href="janso_detail.learnup.com?roomnumber=<%=articleList3.get(b).getRoom_number()%>" style=" text-decoration: none; box-sizing: border-box;">		
                 <div class="box-0-2">
                     <div class="box-0-2_box">
                    <strong style="font-size: 18px;" ><%= articleList3.get(b).getRoom_title() %>룸</strong> 
@@ -452,12 +452,12 @@
 					<img src="image/heart1.png" alt="찜하기" style=" ">
 					</a>  
 			 		</span>	
-			 		 <a href="../html/heder.html" style=" text-decoration: none; box-sizing: border-box;">		
+			 		 <a href="janso_detail.learnup.com?roomnumber=<%=articleList4.get(b).getRoom_number()%>" style=" text-decoration: none; box-sizing: border-box;">		
 			 		<img src="${pageContext.request.contextPath }/jansoproduct/<%=articleList4.get(b).getMain_img()%>" style=" width:100%; height:100%; ">
 			 		 </a> 
                 </div>
    
-   <a href="../html/heder.html" style=" text-decoration: none; box-sizing: border-box;">		
+   <a href="janso_detail.learnup.com?roomnumber=<%=articleList4.get(b).getRoom_number()%>" style=" text-decoration: none; box-sizing: border-box;">		
                 <div class="box-0-2">
                     <div class="box-0-2_box">
                    <strong style="font-size: 18px;" ><%= articleList4.get(b).getRoom_title() %>룸</strong> 
@@ -509,12 +509,12 @@
 					<img src="image/heart1.png" alt="찜하기" style=" ">
 					</a>  
 			 		</span>	
-			 		 <a href="../html/heder.html" style=" text-decoration: none; box-sizing: border-box;">		
+			 		 <a href="janso_detail.learnup.com?roomnumber=<%=articleList5.get(b).getRoom_number()%>" style=" text-decoration: none; box-sizing: border-box;">		
 			 		<img src="${pageContext.request.contextPath }/jansoproduct/<%=articleList5.get(b).getMain_img()%>" style=" width:100%; height:100%; ">
 			 		 </a> 
                 </div>
    
-   <a href="../html/heder.html" style=" text-decoration: none; box-sizing: border-box;">		
+   <a href="janso_detail.learnup.com?roomnumber=<%=articleList5.get(b).getRoom_number()%>" style=" text-decoration: none; box-sizing: border-box;">		
                 <div class="box-0-2">
                     <div class="box-0-2_box">
                    <strong style="font-size: 18px;" ><%= articleList5.get(b).getRoom_title() %>룸</strong> 
@@ -568,12 +568,12 @@
 					<img src="image/heart1.png" alt="찜하기" style=" ">
 					</a>  
 			 		</span>	
-			 		 <a href="../html/heder.html" style=" text-decoration: none; box-sizing: border-box;">		
+			 		 <a href="janso_detail.learnup.com?roomnumber=<%=articleList6.get(b).getRoom_number()%>" style=" text-decoration: none; box-sizing: border-box;">		
 			 		<img src="${pageContext.request.contextPath }/jansoproduct/<%=articleList6.get(b).getMain_img()%>" style=" width:100%; height:100%; ">
 			 		 </a> 
                 </div>
    
-   <a href="../html/heder.html" style=" text-decoration: none; box-sizing: border-box;">		
+   <a href="janso_detail.learnup.com?roomnumber=<%=articleList6.get(b).getRoom_number()%>" style=" text-decoration: none; box-sizing: border-box;">		
                 <div class="box-0-2">
                     <div class="box-0-2_box">
                    <strong style="font-size: 18px;" ><%= articleList6.get(b).getRoom_title() %>룸</strong> 
@@ -626,12 +626,12 @@
 					<img src="image/heart1.png" alt="찜하기" style=" ">
 					</a>  
 			 		</span>	
-			 		 <a href="../html/heder.html" style=" text-decoration: none; box-sizing: border-box;">		
+			 		 <a href="janso_detail.learnup.com?roomnumber=<%=articleList7.get(b).getRoom_number()%>" style=" text-decoration: none; box-sizing: border-box;">		
 			 		<img src="${pageContext.request.contextPath }/jansoproduct/<%=articleList7.get(b).getMain_img()%>" style=" width:100%; height:100%; ">
 			 		 </a> 
                 </div>
    
-   <a href="../html/heder.html" style=" text-decoration: none; box-sizing: border-box;">		
+   <a href="janso_detail.learnup.com?roomnumber=<%=articleList7.get(b).getRoom_number()%>" style=" text-decoration: none; box-sizing: border-box;">		
                 <div class="box-0-2">
                     <div class="box-0-2_box">
                    <strong style="font-size: 18px;" ><%= articleList7.get(b).getRoom_title() %>룸</strong> 

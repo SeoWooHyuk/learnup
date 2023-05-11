@@ -7,9 +7,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>  
 <% request.setCharacterEncoding("utf-8"); %>
 <%@page import="java.util.*" %>
+
  <%
   	ArrayList<String> categortList = (ArrayList<String>)request.getAttribute("Facility_categoriesArray");
  	String addres = (String)request.getAttribute("addres"); //js보낼 주소
+ 	
  %> 
     <c:set var="addr" value="<%=addres%>"/>
 	<c:set var="room" value="${article}"/>
@@ -61,8 +63,9 @@ var room_price = '<c:out value="${room.room_price}"/>';
 
 var time1 = '<c:out value="${room.open_time}"/>';
 var time2 = '<c:out value="${room.close_time}"/>';
-
 var time3 = '<c:out value="${room.reservationtime}"/>';
+
+var holiday = '<c:out value="${room.holiday}"/>';
 
 
 </script>
@@ -251,41 +254,53 @@ var time3 = '<c:out value="${room.reservationtime}"/>';
 			            <li><span class="tit">공간면적</span><span class="data">${room.room_area}㎡</span></li>
 			            <li><span class="tit">예약시간</span><span class="data">am ${room.open_time}:00~</span></li>
 			            <li><span class="tit">수용인원</span><span class="data">${room.min_personnel}명~${room.max_personnel}명</span></li>
+			           
 			        </ul>
                 </div>
             </div>
-             
+            <form action="janso_detail.learnup.com">     
+              <input type="hidden" id= "" name ="roomnumber" value="${room.room_number}" >
+              <input type="hidden" id= "ppp" name ="ppp"  >
 			<div class="reserv">예약일을 지정해 주세요</div>
 		    <div class = "calendar_container"> 
 		      
 		       <div class="double">
-		        <input id="datepicker1" type="text"> -
-		        <input id="datepicker2" type="text">
+		        <input id="datepicker1" name="datepicker1" type="text"> -
+		        <input id="datepicker2" name="datepicker2" type="text">
 			   </div>
 			   
+
 		        
 		    </div>
+	
 		    
 		    <div class="reserv">예약시간을 지정해 주세요</div>
 		    <div class = "calendar_container"> 
 		      
 		      <div id="main">
 			        <div>
-			            <input id="timepicker" class="timepicker" multiple/>
+			            <input id="timepicker" name="timepicker" class="timepicker" multiple/>
 			        </div>
 			    </div>
 			      
 		    </div>
 		    
+		 <!--  
+		      <div class= timenumber">
+             <div><span class="addperson_title">추가 예약시간</span><span class="addperson_note">(${room.room_price}원/${room.reservationtime}시간) 최대가능 예약시간 ${room.close_time - room.open_time + 1}시간</span></div>
+            	 <div class="input-number2" min="0" max="${room.close_time - room.open_time + 1} ">
+            	   <button  id="input-number-decrement2" class="input-number-decrement2" type="button" data-decrement2></button>
+				    <input id="timez" name="timez" type="text" value="0">
+				   <button id="input-number-increment2" class="input-number-increment2" type="button" data-increment2></button>
+				  </div>
+            </div>
 		    
+		-->         
 		    
-		    
-		    
-		      
 		    
 		    
 		    <!-- 장소구매 인설트 -->
-			 <form action="janso_detailinsert.learnup.com">      
+			   
              <div class="personnumber">
              <div><span class="addperson_title">총 예약인원</span><span class="addperson_note">(최대${room.max_personnel}명, 인원 추가당 ${room.personnel_price}원/1인)</span></div>
           
@@ -312,11 +327,12 @@ var time3 = '<c:out value="${room.reservationtime}"/>';
             <div>
             	<div>
 	               <div class="totalprice">
-	          	     <span id="priceto" style="color:red; font-size:25pt; font-weight:bold;">${room.room_price}</span><span style="font-size:12pt; font-weight:bold;"> 원/ 시간(인)</span>
+	          	     <span id="priceto" style="color:red; font-size:25pt; font-weight:bold;">  ${room.room_price } </span><span style="font-size:12pt; font-weight:bold;"> 원/ 시간(인)</span>
 	               </div>
-	               
-	            </div>
-            
+	         <!--  
+	            <fmt:formatNumber type="number" maxFractionDigits="3" value= "111111" var="commaPrice" />
+	             ${commaPrice} 
+            -->
             	<!--  
             	<input type="hidden" id= "" name =roomnumber value="${room.room_number}" >
 				<input type="hidden" id= "yearsmonster" name =yearsmonster >	
@@ -330,8 +346,10 @@ var time3 = '<c:out value="${room.reservationtime}"/>';
 	            <span class="righth3_de" >빠르고 확실한 예약을 위해 </span>
 	            <span class="righth3_de">런업에서 온라인 결제를 진행해주세요</span>
              	
-             	<button type="submit" id="sub" class="paybtn">결제하기</button>     
-                </form>
+             	<button type="submit" id="sub" class="paybtn">결제하기</button> 
+             	
+             	    
+    			 </form> 
             </div>
          
             

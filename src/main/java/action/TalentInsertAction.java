@@ -31,8 +31,9 @@ public class TalentInsertAction implements TalentAction {
 		int fileSize=5*1024*1024;
 		ServletContext context = request.getServletContext();
 		realFolder=context.getRealPath(saveFolder);
-		File dir = new File(realFolder);  //upload ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-	      if (!dir.exists()) dir.mkdirs();
+		File dir = new File(realFolder);  //upload Æú´õ°¡ ¾ø´Â °æ¿ì Æú´õ¸¦ ¸¸µé¾î¶ó
+	    if (!dir.exists()) 
+	    	dir.mkdirs();
 		MultipartRequest multi=new MultipartRequest(request,realFolder,fileSize,
 				"UTF-8",
 				new DefaultFileRenamePolicy());
@@ -41,7 +42,7 @@ public class TalentInsertAction implements TalentAction {
 		
 		
 		talent.setEmail(multi.getParameter("email"));
-		System.out.println("ï¿½Ì¸ï¿½ï¿½ï¿½ : " + multi.getParameter("email"));
+		System.out.println("ÀÌ¸ÞÀÏ : " + multi.getParameter("email"));
 		talent.setTitle(multi.getParameter("servicetitle"));
 		talent.setCategory(Integer.parseInt(multi.getParameter("category")));
 		if(multi.getParameter("keyword1") != null) {
@@ -69,17 +70,17 @@ public class TalentInsertAction implements TalentAction {
 		
 		if(multi.getParameter("service_descript") != null) {
 			talent.setService_descript(multi.getParameter("service_descript"));
-			System.out.println("ï¿½ï¿½ï¿½ñ½º¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
+			System.out.println("¼­ºñ½º¼³¸í µé¾î¿È");
 		}if(multi.getParameter("service_text") != null) {
 			talent.setService_text(multi.getParameter("service_text"));
-			System.out.println("ï¿½ï¿½ï¿½ï¿½ ï¿½Ø½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½.");
+			System.out.println("¼­ºñ½º ÅØ½ºÆ® µé¾î¿È.");
 		}if(multi.getParameter("recruit") != null) {
 			talent.setRecruit(multi.getParameter("recruit"));
-			System.out.println("ï¿½ï¿½Å©ï¿½ï¿½");
+			System.out.println("¸®Å©¸´");
 		}
 		
-		if(multi.getFilesystemName("image") != null) {
-			talent.setImage((String)multi.getFilesystemName("image"));
+		if(multi.getFilesystemName("img") != null) {
+			talent.setImage((String)multi.getFilesystemName("img"));
 		}if(multi.getFilesystemName("image1") != null) {
 			talent.setImage_1((String)multi.getFilesystemName("image1"));
 		}if(multi.getFilesystemName("image2") != null) {
@@ -113,7 +114,7 @@ public class TalentInsertAction implements TalentAction {
 //		}
 //
 //		for(String file : fileList) {
-//		    System.out.println("ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ : " + file);
+//		    System.out.println("ÆÄÀÏ ÀÌ¸§ : " + file);
 //		}
 //
 //		int size = fileList.size();

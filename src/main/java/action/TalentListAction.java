@@ -27,7 +27,7 @@ import vo.TalentPageInfo;
 			page=Integer.parseInt(request.getParameter("page"));
 		}
 
-		System.out.println("ï¿½×¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ : "+page);
+		System.out.println("¾×¼Ç ÆäÀÌÁö : "+page);
 		TalentListService talentListService = new TalentListService();
 		int listCount=talentListService.getListCount();
 		articleList = talentListService.getArticleList(category, page, limit);

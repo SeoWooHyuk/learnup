@@ -7,7 +7,7 @@ var time3s =  time3 *60;
 
 $('.timepicker').timepicker({
     timeFormat: 'H:mm',  // 24시간 형식으로 시간 표시 (예: 10:30)
-    interval: 60,
+    interval: time3s,
     minTime: time1s,  // 최소 시간 설정
     maxTime: time2s,  // 최대 시간 설정
     defaultTime: time1s,  // 기본 시간 설정
@@ -22,10 +22,69 @@ $('.timepicker').timepicker({
   console.log('Selected time: ' + selectedTime);
 });
 	
+const str = holiday;
+const arr = str.split(',');
+
+var array = new Array();
+
+// 쉼표(콤마)로 구분된 문자열을, 배열로 분리
+array = str.split(',');
+
+
+var array2 = new Array();
+for (i = 0; i < array.length; i++)
+{
+	if(array[i] == '월')
+	{
+		array2.push(1);
+		
+	}
+	else if(array[i] == '화')
+	{
+		array2.push(2);
+		
+	}
+	else if(array[i] == '수')
+	{
+		array2.push(3);
+		
+	}
+	else if(array[i] == '목')
+	{
+		array2.push(4);
+		
+	}
+	else if(array[i] == '금')
+	{
+		array2.push(5);
+		
+	}
+	else if(array[i] == '토')
+	{
+		array2.push(6);
+
+	}
+	else if(array[i] == '일')
+	{
+		array2.push(0);
+		
+	}
+	else if(array[i] == '휴일없음')
+	{
+		
+	}
+	
+	console.log(array2[i])
+}
+
+
+
+	
+	
 	
 	
 var selectedDate = ['2023-05-16']; // 선택한 날짜를 저장할 변수
-var disabledDays = [0,1]; // 비활성화할 특정 요일 (0: 일요일, 1: 월요일, ..., 6: 토요일)	
+var disabledDays = array2; // 비활성화할 특정 요일 (0: 일요일, 1: 월요일, ..., 6: 토요일)	
 //두개짜리 제어 연결된거 만들어주는 함수
 datePickerSet($("#datepicker1"), $("#datepicker2"), true); //다중은 시작하는 달력 먼저, 끝달력 2번째
 function datePickerSet(sDate, eDate, flag) {
@@ -332,9 +391,82 @@ $(document).ready(function() {
 $('#input-number-decrement, #input-number-increment').on('click', function() {
     persons = $('#person').val(); 
      
-    var pprice =  personnel_price.replace(",", "");  
+    var pprice =  personnel_price.replace(",", "")*1;  
     var rprice =  room_price.replace(",", "")*1;  
     var totalPriced1 =  rprice + pprice * persons;
+
+	 var lastobj = $("#ppp");
+	 
+    $("#priceto").empty();
+    $('#priceto').append(totalPriced1);
+    lastobj.val(totalPriced1);
+  });
+  
+
+});
+  
+/* 예약시간 체크*/  
+ $(document).ready(function() {
+    function InputNumber2(element) {
+      this.$el = $(element);
+      this.$input = this.$el.find("[type=text]");
+      this.$inc = this.$el.find("[data-increment2]");
+      this.$dec = this.$el.find("[data-decrement2]");
+      this.min = this.$el.attr("min") || false;
+      this.max = this.$el.attr("max") || false;
+      this.init();
+
+    }
+
+    InputNumber2.prototype = {
+      init: function () {
+        this.$dec.on("click", $.proxy(this.decrement2, this));
+        this.$inc.on("click", $.proxy(this.increment2, this));
+      },
+
+      increment2: function (e) {
+        var value = this.$input[0].value;
+        value++;
+        if (!this.max || value <= this.max) {
+          this.$input[0].value = value + (time3*1)-1;
+        }
+      },
+
+      decrement2: function (e) {
+        var value = this.$input[0].value;
+        value--;
+        if (!this.min || value >= this.min) {
+          this.$input[0].value = value - (time3*1)+1;
+        }
+      }
+    };
+
+    $.fn.inputNumber2 = function (option) {
+      return this.each(function () {
+        var $this = $(this),
+          data = $this.data("inputNumber2");
+
+        if (!data) {
+          $this.data("inputNumber2", (data = new InputNumber2(this)));
+        }
+      });
+    };
+
+    $.fn.inputNumber2.Constructor = InputNumber2;
+
+    $(".input-number2").inputNumber2();
+  });
+  
+  
+$(document).ready(function() {
+   var pprice =  personnel_price.replace(",", "")*1;  
+    var rprice =  room_price.replace(",", "")*1;  
+    var totalPriced1 =  rprice + pprice * persons;
+    
+$('#input-number-decrement2, #input-number-increment2').on('click', function() {
+    timez = $('#timez').val(); 
+     
+    
 
     $("#priceto").empty();
     $('#priceto').append(totalPriced1);
@@ -342,20 +474,6 @@ $('#input-number-decrement, #input-number-increment').on('click', function() {
   
 
 });
-  
-  
-  function calculateTotalPrice() {
-  var hourPrice = parseInt($('#hourprice').val().replace(/,/g, '')); // 시간당 가격, 쉼표 제거
-  var classTime = parseFloat($('#classtime').val().replace(/,/g, ''));
-  var totalClassCount = parseInt($('#totalclasscount').val());
- 
-  var totalPrice = hourPrice + (classTime * totalClassCount);
- 
-
-  $('#totalprice').val(numberWithCommas(totalPrice)); // 최종 수강료에 쉼표 추가
-
-}
-
 
 
 

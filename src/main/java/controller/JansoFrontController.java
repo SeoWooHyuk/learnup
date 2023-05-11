@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Janso_detailPageAction;
+import action.Janso_detailPageinsertAction;
 import action.Janso_mainListAction;
 import action.Janso_product_registrationAction;
 import action.Janso_rental_registrationAction;
@@ -90,7 +91,7 @@ public class JansoFrontController extends javax.servlet.http.HttpServlet
 			}
 		}
 		
-		//장소 디테일 페이지
+		//장소 디테일 페이지 및 구입
 		else if(command.equals("/janso_detail.learnup.com"))
 		{
 			action  = new Janso_detailPageAction();
@@ -101,19 +102,8 @@ public class JansoFrontController extends javax.servlet.http.HttpServlet
 			}
 		}
 		
-		//장소 디테일 페이지 구입
-		else if(command.equals("/janso_detailinsert.learnup.com"))
-		{
-			action  = new Janso_detailPageAction();
-			try {
-				forward=action.execute(request, response );
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		
-		
-		
+	
+			
 		
 		if(forward != null){
 			

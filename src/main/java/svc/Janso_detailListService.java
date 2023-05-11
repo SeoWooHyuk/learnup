@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 import dao.JansoDAO;
+import vo.Janso_mypage_buy;
 import vo.Janso_product_registration;
 import static db.JdbcUtil.*;
 
@@ -44,6 +45,28 @@ public class Janso_detailListService {
 		article = jansoDAO.Janso_detailList(room);
 		close(con);
 		return article;
+		
+	}
+	
+
+	public boolean jansomyArticle(Janso_mypage_buy buy) throws Exception{
+		
+		boolean isWriteSuccess = false;
+		Connection con = getConnection();
+		JansoDAO jansoDAO = JansoDAO.getInstance();
+		jansoDAO.setConnection(con);
+		int insertCount = jansoDAO.janso_mypage_buy(buy);
+		System.out.println(insertCount);
+		if(insertCount > 0){
+			commit(con);
+			isWriteSuccess = true;
+		}
+		else{
+			rollback(con);
+		}
+		
+		close(con);
+		return isWriteSuccess;
 		
 	}
 }  	

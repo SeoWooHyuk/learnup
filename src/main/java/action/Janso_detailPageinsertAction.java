@@ -38,9 +38,11 @@ public class Janso_detailPageinsertAction implements jansoAction {
 			nowpage=Integer.parseInt(request.getParameter("page"));
 		}
 		
+		String datepicker1 = request.getParameter("datepicker1");
+		String datepicker2 = request.getParameter("datepicker2");
 		
-		
-		
+		System.out.println(datepicker1);
+		System.out.println(datepicker2);
 		
 		
 		Janso_detailListService janso_detailListService = new Janso_detailListService();

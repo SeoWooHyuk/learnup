@@ -512,8 +512,8 @@ public class JansoDAO {
 				//장소 대여자 상품 셀렉 지역별 셀렉 전라
 				public ArrayList<Janso_product_registration> Janso_product_registrationList5(String addp, String addp2){
 				
-					System.out.println(addp+"dao임");
-					System.out.println(addp2+"dao임");
+					//System.out.println(addp+"dao임");
+					//System.out.println(addp2+"dao임");
 					PreparedStatement pstmt = null;
 					ResultSet rs = null;
 					String board_list_sql="select * from room_product_registration where room_address like ? OR room_address like ? ";
