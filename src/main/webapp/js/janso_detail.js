@@ -83,7 +83,7 @@ for (i = 0; i < array.length; i++)
 	
 	
 	
-var selectedDate = ['2023-05-16']; // 선택한 날짜를 저장할 변수
+var selectedDate = ['2023-05-20']; // 선택한 날짜를 저장할 변수
 var disabledDays = array2; // 비활성화할 특정 요일 (0: 일요일, 1: 월요일, ..., 6: 토요일)	
 //두개짜리 제어 연결된거 만들어주는 함수
 datePickerSet($("#datepicker1"), $("#datepicker2"), true); //다중은 시작하는 달력 먼저, 끝달력 2번째
@@ -393,19 +393,21 @@ $('#input-number-decrement, #input-number-increment').on('click', function() {
      
     var pprice =  personnel_price.replace(",", "")*1;  
     var rprice =  room_price.replace(",", "")*1;  
-    var totalPriced1 =  rprice + pprice * persons;
+    var totalPriced =  rprice + pprice * persons;
 
 	 var lastobj = $("#ppp");
 	 
     $("#priceto").empty();
-    $('#priceto').append(totalPriced1);
-    lastobj.val(totalPriced1);
+    $('#priceto').append(totalPriced.toLocaleString());  //컴마생성까지
+    lastobj.val(totalPriced);
   });
-  
+ 
 
 });
-  
+
 /* 예약시간 체크*/  
+/*  
+
  $(document).ready(function() {
     function InputNumber2(element) {
       this.$el = $(element);
@@ -461,7 +463,7 @@ $('#input-number-decrement, #input-number-increment').on('click', function() {
 $(document).ready(function() {
    var pprice =  personnel_price.replace(",", "")*1;  
     var rprice =  room_price.replace(",", "")*1;  
-    var totalPriced1 =  rprice + pprice * persons;
+    var totalPriced =  rprice + pprice * persons;
     
 $('#input-number-decrement2, #input-number-increment2').on('click', function() {
     timez = $('#timez').val(); 
@@ -469,13 +471,13 @@ $('#input-number-decrement2, #input-number-increment2').on('click', function() {
     
 
     $("#priceto").empty();
-    $('#priceto').append(totalPriced1);
+    $('#priceto').append(totalPriced);
   });
   
 
 });
 
-
+*/
 
 });
 

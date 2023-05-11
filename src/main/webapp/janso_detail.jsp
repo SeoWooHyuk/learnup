@@ -302,7 +302,7 @@ var holiday = '<c:out value="${room.holiday}"/>';
 		    <!-- 장소구매 인설트 -->
 			   
              <div class="personnumber">
-             <div><span class="addperson_title">총 예약인원</span><span class="addperson_note">(최대${room.max_personnel}명, 인원 추가당 ${room.personnel_price}원/1인)</span></div>
+             <div><span class="addperson_title">추가 예약인원</span><span class="addperson_note">(최대${room.max_personnel}명, 인원 추가당 ${room.personnel_price}원/1인)</span></div>
           
             	 <div class="input-number" min="${room.min_personnel}" max="${room.max_personnel}">
             	   <button  id="input-number-decrement" class="input-number-decrement" type="button" data-decrement></button>
@@ -326,8 +326,12 @@ var holiday = '<c:out value="${room.holiday}"/>';
         
             <div>
             	<div>
+            	 <fmt:formatNumber var="priceWithComma" value="${room.room_price + room.personnel_price * room.min_personnel}" pattern="#,##0" />
 	               <div class="totalprice">
-	          	     <span id="priceto" style="color:red; font-size:25pt; font-weight:bold;">  ${room.room_price } </span><span style="font-size:12pt; font-weight:bold;"> 원/ 시간(인)</span>
+	          	     <span id="priceto" style="color:red; font-size:25pt; font-weight:bold;"> ${priceWithComma}  </span><span style="font-size:12pt; font-weight:bold;"> 원/ 시간(인)</span>
+	         
+
+	               
 	               </div>
 	         <!--  
 	            <fmt:formatNumber type="number" maxFractionDigits="3" value= "111111" var="commaPrice" />

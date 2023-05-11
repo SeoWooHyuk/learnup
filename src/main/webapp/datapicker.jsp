@@ -5,10 +5,13 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>air datepicker</title>
-    <link rel="stylesheet" href="css/datepicker.min.css">
+  
      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	
-    <script src="js/datepicker.min.js"></script>
+	 <script src="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/js/datepicker.min.js"></script>
+	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/css/datepicker.min.css">
+	
+ 
     <script src="js/datepicker.ko.js"></script>
 
 	
@@ -35,7 +38,7 @@
 
  <div class="single">
         <h1>1개 짜리</h1>
-        <input id="datepicker" type="text">
+        <input id="datepicker"  type="text"   data-multiple-dates="3"/>
     </div>
 
 
@@ -56,6 +59,32 @@
 
 
     <script>
+  var a =  new Date()
+    console.log(a.toLocaleDateString('ko-KR', { timeZone: 'Asia/Seoul' }).replace(/\s/g, '').replace(/\./g, '-').slice(0, 9));
+  console.log(a.toISOString().slice(0, 10));
+  console.log(a.toLocaleDateString('ko-KR', { timeZone: 'Asia/Seoul' }));
+    
+    $(document).ready(function() {
+    	  var disabledDates = ['2023-05-14', '2023-08-25', '2023-09-30'];
+    	  $("#datepicker").datepicker({
+    	    language: 'ko',
+    	    dateFormat: 'yyyy-m-dd', // 날짜 형식 설정
+    	    minDate: new Date(),
+    	    autoClose: true,
+    	    onRenderCell: function(date, cellType) {
+    	      var formattedDate = date.toISOString().slice(0, 10);
+    	      if (cellType === 'day' && disabledDates.includes(formattedDate)) {
+    	        return {
+    	          disabled: true,
+    	          class: 'disabled',
+    	          tooltip: '클릭할 수 없습니다.'
+    	        };
+    	      }
+    	    }
+    	  });
+    	});
+    
+    
     
     $('#timepicker').timepicker({
     	 timeFormat: 'H:mm',  // 24시간 형식으로 시간 표시 (예: 10:30)
@@ -65,32 +94,58 @@
     	    dynamic: false,
     	    dropdown: true,
     	    scrollbar: true,
-    	  disableTimeRanges: [['1:00pm', '2:00pm'], ['3:00pm', '4:00pm']]
+    	 
     	});
     
+    
+    
+    var availableDates = ["2015-01-01", "2015-01-13"];
+
+	
+
+	function available(date) {
+
+		
+
+		var thismonth = date.getMonth()+1;
+
+		var thisday = date.getDate();
+
+		
+
+		if(thismonth<10){
+
+			thismonth = "0"+thismonth;
+
+		}
+
+		
+
+		if(thisday<10){
+
+			thisday = "0"+thisday;
+
+		}
+
+	    ymd = date.getFullYear() + "-" + thismonth + "-" + thisday;
+
+
+
+	    if ($.inArray(ymd, availableDates) >= 0) {
+
+	        return [true,"",""];
+
+	    } else {
+
+	        return [false,"",""];
+
+	    }
+
+	}
+    
         //한개만 단순하게 만들때
-$("#datepicker").datepicker({
-    language: 'ko',
-    dateFormat: 'yy-mm-dd',
-    onSelect: function(formattedDate, date, inst) {
-        var selectedDate = date.getTime(); // 선택한 날짜를 밀리초로 변환
 
-        // 시간 선택기를 표시
-        $('.timepicker').timepicker({
-          onSelect: function(time) {
-            // 선택한 날짜와 시간을 결합
-            var selectedDateTime = new Date(selectedDate);
-            var timeParts = time.split(':');
-            selectedDateTime.setHours(timeParts[0]);
-            selectedDateTime.setMinutes(timeParts[1]);
-
-            // 선택된 날짜와 시간을 필요에 따라 사용
-            console.log('선택된 날짜와 시간:', selectedDateTime);
-          }
-        });
-      }
-    	
-});
+        
 
 
 
