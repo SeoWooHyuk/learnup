@@ -38,7 +38,7 @@
 
  <div class="single">
         <h1>1개 짜리</h1>
-        <input id="datepicker"  type="text"   data-multiple-dates="3"/>
+        <input id="datepicker"  type="text"   data-multiple-dates="31"/>
     </div>
 
 
@@ -60,29 +60,38 @@
 
     <script>
   var a =  new Date()
-    console.log(a.toLocaleDateString('ko-KR', { timeZone: 'Asia/Seoul' }).replace(/\s/g, '').replace(/\./g, '-').slice(0, 9));
+  
+    console.log(a.toLocaleDateString('en-CA', { timeZone: 'Asia/Seoul' }).replace(/\s/g, '').replace(/\./g, '-').slice(0, 10));
   console.log(a.toISOString().slice(0, 10));
   console.log(a.toLocaleDateString('ko-KR', { timeZone: 'Asia/Seoul' }));
     
-    $(document).ready(function() {
-    	  var disabledDates = ['2023-05-14', '2023-08-25', '2023-09-30'];
-    	  $("#datepicker").datepicker({
-    	    language: 'ko',
-    	    dateFormat: 'yyyy-m-dd', // 날짜 형식 설정
-    	    minDate: new Date(),
-    	    autoClose: true,
-    	    onRenderCell: function(date, cellType) {
-    	      var formattedDate = date.toISOString().slice(0, 10);
-    	      if (cellType === 'day' && disabledDates.includes(formattedDate)) {
-    	        return {
-    	          disabled: true,
-    	          class: 'disabled',
-    	          tooltip: '클릭할 수 없습니다.'
-    	        };
-    	      }
-    	    }
-    	  });
-    	});
+  $(document).ready(function() {
+	  var disabledDates = ['2023-05-15', '2023-05-16', '2023-05-17'];
+	  var disabledDays =[0,1];
+	  $("#datepicker").datepicker({
+	    language: 'ko',
+	    dateFormat: 'yyyy-m-dd', // 날짜 형식 설정
+	    minDate: new Date(),
+	    autoClose: true,
+	    onRenderCell: function(date, cellType) {
+	      var formattedDate = date.toLocaleDateString('en-CA', { timeZone: 'Asia/Seoul' }).replace(/\s/g, '').replace(/\./g, '-').slice(0, 10);
+	      if (cellType === 'day') {
+	        // 휴무일 비활성화
+	        if (disabledDates.includes(formattedDate)) {
+	          return {
+	            disabled: true,
+	          };
+	        }
+	        // 월요일과 금요일 비활성화
+	        if (disabledDays.indexOf(date.getDay()) !== -1) {
+	          return {
+	            disabled: true,
+	          };
+	        }
+	      }
+	    }
+	  });
+	});
     
     
     

@@ -23,16 +23,13 @@ $('.timepicker').timepicker({
 });
 	
 const str = holiday;
-
+const arr = str.split(',');
 
 var array = new Array();
-var arraybuy = new Array();
 
 // 쉼표(콤마)로 구분된 문자열을, 배열로 분리
 array = str.split(',');
 
-arraybuy = roombuydate.split(',');
-console.log(arraybuy)
 
 var array2 = new Array();
 for (i = 0; i < array.length; i++)
@@ -77,27 +74,45 @@ for (i = 0; i < array.length; i++)
 		
 	}
 	
-	
+	console.log(array2[i])
 }
 
 
 
-
-
-
-
-
-//두개짜리 제어 연결된거 만들어주는 함수
-
+	
 var disabledDates = ['2023-05-18','2023-05-16','2023-05-17']; // 선택한 날짜를 저장할 변수
 var disabledDays = array2; // 비활성화할 특정 요일 (0: 일요일, 1: 월요일, ..., 6: 토요일)	
-	  $("#datepicker1").datepicker({
-	    language: 'ko',
-	    dateFormat: 'yyyy-mm-dd', // 날짜 형식 설정
-	    minDate: new Date(),
-	    autoClose: true,
-	    inline: true,
-	    onRenderCell: function(date, cellType) {
+//두개짜리 제어 연결된거 만들어주는 함수
+datePickerSet($("#datepicker1"), $("#datepicker2"), true); //다중은 시작하는 달력 먼저, 끝달력 2번째
+function datePickerSet(sDate, eDate, flag) {
+
+    //시작 ~ 종료 2개 짜리 달력 datepicker	
+    if (!isValidStr(sDate) && !isValidStr(eDate) && sDate.length > 0 && eDate.length > 0) {
+        var sDay = sDate.val();
+        var eDay = eDate.val();
+
+        if (flag && !isValidStr(sDay) && !isValidStr(eDay)) { //처음 입력 날짜 설정, update...			
+            var sdp = sDate.datepicker().data("datepicker");
+            sdp.selectDate(new Date(sDay.replace(/-/g, "/")));  //익스에서는 그냥 new Date하면 -을 인식못함 replace필요
+
+            var edp = eDate.datepicker().data("datepicker");
+            edp.selectDate(new Date(eDay.replace(/-/g, "/")));  //익스에서는 그냥 new Date하면 -을 인식못함 replace필요
+        }
+
+        //시작일자 세팅하기 날짜가 없는경우엔 제한을 걸지 않음
+        if (!isValidStr(eDay)) {
+            sDate.datepicker({
+                maxDate: new Date(eDay.replace(/-/g, "/"))
+            });
+        }
+        sDate.datepicker({
+            language: 'ko',
+            minDate: new Date(),
+            autoClose: true,
+            onSelect: function () {
+            datePickerSet(sDate, eDate);
+            },
+             onRenderCell: function(date, cellType) {
 	      var formattedDate = date.toLocaleDateString('en-CA', { timeZone: 'Asia/Seoul' }).replace(/\s/g, '').replace(/\./g, '-').slice(0, 10);
 	      if (cellType === 'day') {
 	        // 휴무일 비활성화
@@ -114,9 +129,58 @@ var disabledDays = array2; // 비활성화할 특정 요일 (0: 일요일, 1: �
 	        }
 	      }
 	    }
-	  });
-});
+		  
 
+	    
+        });
+
+        //종료일자 세팅하기 날짜가 없는경우엔 제한을 걸지 않음
+        if (!isValidStr(sDay)) {
+            eDate.datepicker({
+                minDate: new Date(sDay.replace(/-/g, "/"))
+            });
+        }
+        eDate.datepicker({
+           language: 'ko',
+            minDate: new Date(),
+            autoClose: true,
+            onSelect: function () {
+            datePickerSet(sDate, eDate);
+            },
+            onRenderCell: function(date, cellType) {
+		      if (cellType === 'day') {
+		        var day = date.getDate();
+		        var month = date.getMonth() + 1;
+		        var year = date.getFullYear();
+		        var formattedDate = year + '-' + month + '-' + day;
+		
+		        // 선택한 날짜와 비활성화할 특정 요일을 동시에 체크
+		        if (disabledDates.indexOf(formattedDate) !== -1 ||  disabledDays.indexOf(date.getDay()) !== -1) {
+		          return {
+		            disabled: true
+		          };
+		        }
+		      }
+		    },
+		    onSelect: function(formattedDate, date, inst) {
+		      selectedDate = formattedDate; // 선택한 날짜를 저장
+		    }
+
+	    
+        });
+
+    }
+
+
+    function isValidStr(str) {
+        if (str == null || str == undefined || str == "")
+            return true;
+        else
+            return false;
+    }
+}
+
+});
 //달력
 
 //오토슬라이드

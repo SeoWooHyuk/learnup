@@ -125,6 +125,42 @@ public class JansoDAO {
 	}
 	
 	
+	//장소 구매 페이지
+	public ArrayList<Janso_mypage_buy> mypage_buy(int room){
+		
+
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String board_list_sql="select * from mypage_buy where room_number = ?";
+		
+		
+		ArrayList<Janso_mypage_buy> articleList = new ArrayList<Janso_mypage_buy>();
+		Janso_mypage_buy janso = null;
+
+			
+		try{
+			pstmt = con.prepareStatement(board_list_sql);
+			pstmt.setInt(1, room); //시작행-1 (시작 row 인덱스 번호)
+			rs = pstmt.executeQuery();
+
+			while(rs.next()){
+				janso = new Janso_mypage_buy();
+				janso.setMy_date(rs.getString("my_date"));
+				janso.setMy_time(rs.getString("my_time"));
+				articleList.add(janso);
+			}
+
+		}catch(Exception ex){
+		}finally{
+			close(rs);
+			close(pstmt);
+		}
+
+		return articleList;
+
+	}
+	
+	
 	//장소 대여자 상품 등록
 		public int janso_product_registration(Janso_product_registration rental){
 			

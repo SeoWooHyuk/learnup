@@ -35,7 +35,23 @@ public class Janso_detailListService {
 //		return listCount;
 //		
 //	}
+	//구매자 정보 달력 기능
+	public ArrayList<Janso_mypage_buy> getdetailArticle2(int room) throws Exception{
+		
+
+		ArrayList<Janso_mypage_buy> articleList = null;
+		Connection con = getConnection();
+		JansoDAO jansoDAO = JansoDAO.getInstance();
+		jansoDAO.setConnection(con);
+		articleList = jansoDAO.mypage_buy(room);
+		close(con);
+		return articleList;
+		
+	}
 	
+	
+	
+	//장소 리스트 셀렉 
 	public Janso_product_registration getdetailArticle(int room) throws Exception{
 		
 		Janso_product_registration article = null;

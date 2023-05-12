@@ -15,6 +15,11 @@
  %> 
     <c:set var="addr" value="<%=addres%>"/>
 	<c:set var="room" value="${article}"/>
+	<c:set var="roombuy" value="${articlelist}"/>
+	
+	<c:forEach var="roombuy2" items="${articleList}"/>
+	<c:set var="roombuy" value="${roombuy2.my_date}"/>
+	
 <!DOCTYPE html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -67,6 +72,8 @@ var time3 = '<c:out value="${room.reservationtime}"/>';
 
 var holiday = '<c:out value="${room.holiday}"/>';
 
+var roombuydate  = '<c:out value="${roombuy}"/>';
+alert(roombuydate);
 
 </script>
 
@@ -254,23 +261,20 @@ var holiday = '<c:out value="${room.holiday}"/>';
 			            <li><span class="tit">공간면적</span><span class="data">${room.room_area}㎡</span></li>
 			            <li><span class="tit">예약시간</span><span class="data">am ${room.open_time}:00~</span></li>
 			            <li><span class="tit">수용인원</span><span class="data">${room.min_personnel}명~${room.max_personnel}명</span></li>
+			            <li><span class="tit">휴&nbsp   &nbsp &nbsp &nbsp일</span><span class="data">${room.holiday}</span></li>
 			           
 			        </ul>
                 </div>
             </div>
-            <form action="janso_detail.learnup.com">     
+            <form action="janso_detailIn.learnup.com">     
               <input type="hidden" id= "" name ="roomnumber" value="${room.room_number}" >
               <input type="hidden" id= "ppp" name ="ppp"  >
 			<div class="reserv">예약일을 지정해 주세요</div>
 		    <div class = "calendar_container"> 
-		      
-		       <div class="double">
-		        <input id="datepicker1" name="datepicker1" type="text"> -
-		        <input id="datepicker2" name="datepicker2" type="text">
+	
+		       <div class="single">
+		     	   <input id="datepicker1" name="datepicker1"  type="text"   data-multiple-dates="31" hidden=""/>
 			   </div>
-			   
-
-		        
 		    </div>
 	
 		    
@@ -329,9 +333,7 @@ var holiday = '<c:out value="${room.holiday}"/>';
             	 <fmt:formatNumber var="priceWithComma" value="${room.room_price + room.personnel_price * room.min_personnel}" pattern="#,##0" />
 	               <div class="totalprice">
 	          	     <span id="priceto" style="color:red; font-size:25pt; font-weight:bold;"> ${priceWithComma}  </span><span style="font-size:12pt; font-weight:bold;"> 원/ 시간(인)</span>
-	         
-
-	               
+	                    
 	               </div>
 	         <!--  
 	            <fmt:formatNumber type="number" maxFractionDigits="3" value= "111111" var="commaPrice" />

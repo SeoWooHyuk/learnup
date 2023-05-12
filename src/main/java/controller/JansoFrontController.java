@@ -91,7 +91,7 @@ public class JansoFrontController extends javax.servlet.http.HttpServlet
 			}
 		}
 		
-		//장소 디테일 페이지 및 구입
+		//장소 디테일 페이지 
 		else if(command.equals("/janso_detail.learnup.com"))
 		{
 			action  = new Janso_detailPageAction();
@@ -101,6 +101,18 @@ public class JansoFrontController extends javax.servlet.http.HttpServlet
 				e.printStackTrace();
 			}
 		}
+		
+		//장소 디테일 페이지  구입
+				else if(command.equals("/janso_detailIn.learnup.com"))
+				{
+				
+					action  = new Janso_detailPageinsertAction();
+					try {
+						forward=action.execute(request, response );
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
 		
 	
 			
