@@ -101,7 +101,7 @@ public class Janso_detailPageAction implements jansoAction {
 		}
 	
 
-		System.out.println(articleList.get(0).getMy_date());
+	
 		
 		
 		

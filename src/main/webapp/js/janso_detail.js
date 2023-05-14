@@ -1,5 +1,30 @@
 $(document).ready(function(){
+	
+var datetsp = 0;
+console.log(datetsp);
+$('#myForm').submit(function(event) {
+    event.preventDefault(); // 기본 제출 동작 막기
+  
+   var selectedDate = $('#datepicker1').val(); // 선택된 날짜 필드의 id를 사용하여 값을 가져옵니다.
+    if (!selectedDate) {
+      alert("날짜를 선택해야 합니다.");
+      return; // 폼 제출 중지
+    }
+	
+	 // 선택된 시간 가져오기
+  var selectedTime = $('.timepicker').val();
 
+  // 시간이 선택되지 않았을 경우 경고 표시 및 폼 제출 중지
+  if (!selectedTime) {
+    alert("시간을 선택해야 합니다.");
+    return;
+  }
+  
+   alert("결제가 완료되었습니다.");
+  $(this).unbind('submit').submit(); // 이 줄의 주석을 해제하여 폼 제출 진행
+  
+});
+ 
 var time1s =  time1 + ":00";
 var time2s =  time2 + ":00";
 var time3s =  time3 *60;
@@ -10,29 +35,29 @@ $('.timepicker').timepicker({
     interval: time3s,
     minTime: time1s,  // 최소 시간 설정
     maxTime: time2s,  // 최대 시간 설정
-    defaultTime: time1s,  // 기본 시간 설정
     startTime: time1s,
-    dynamic: false,
-    dropdown: true,
-    scrollbar: true,
-    
-}).on('changeTime', function() {
-  // Handle the event here
-  var selectedTime = $(this).val();
-  console.log('Selected time: ' + selectedTime);
+    step: time3s, 
+     disableTimeRanges: [
+            ['3:00','6:00'],
+        ],
 });
 	
+	
+//달력부	
 const str = holiday;
-
-
 var array = new Array();
 var arraybuy = new Array();
-
 // 쉼표(콤마)로 구분된 문자열을, 배열로 분리
 array = str.split(',');
 
-arraybuy = roombuydate.split(',');
-console.log(arraybuy)
+arraybuy = articleList;
+var myDateCombined = ''; // 결과를 저장할 빈 문자열
+
+for (var i = 0; i < arraybuy.length; i++) {
+  myDateCombined += arraybuy[i].my_date; // 각 요소의 my_date 값을 빈 문자열에 추가
+}
+console.log(myDateCombined); // 10개 요소의 my_date 값이 합쳐진 문자열 출력
+
 
 var array2 = new Array();
 for (i = 0; i < array.length; i++)
@@ -80,16 +105,9 @@ for (i = 0; i < array.length; i++)
 	
 }
 
-
-
-
-
-
-
-
 //두개짜리 제어 연결된거 만들어주는 함수
 
-var disabledDates = ['2023-05-18','2023-05-16','2023-05-17']; // 선택한 날짜를 저장할 변수
+var disabledDates = myDateCombined // 선택한 날짜를 저장할 변수
 var disabledDays = array2; // 비활성화할 특정 요일 (0: 일요일, 1: 월요일, ..., 6: 토요일)	
 	  $("#datepicker1").datepicker({
 	    language: 'ko',
@@ -113,9 +131,11 @@ var disabledDays = array2; // 비활성화할 특정 요일 (0: 일요일, 1: �
 	          };
 	        }
 	      }
-	    }
-	  });
+	    }	
+  });  
 });
+
+
 
 //달력
 

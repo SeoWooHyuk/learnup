@@ -104,8 +104,8 @@ public class Janso_product_registrationAction implements jansoAction {
 		
 		registration.setHoliday(addCommaString2);  //휴일선택
 		
-		registration.setRoom_price(multi.getParameter("priceperhour")); //가격
-		registration.setPersonnel_price(multi.getParameter("timeperonce"));
+		registration.setRoom_price(multi.getParameter("priceperhour").replace(",", "")); //가격
+		registration.setPersonnel_price(multi.getParameter("timeperonce").replace(",", ""));
 	
 		registration.setMain_img(multi.getFilesystemName("coverimage0"));
 		registration.setSub_img1(multi.getFilesystemName("coverimage1"));

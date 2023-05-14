@@ -7,6 +7,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>  
 <% request.setCharacterEncoding("utf-8"); %>
 <%@page import="java.util.*" %>
+<%@ page import="com.google.gson.Gson" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.List" %>
 
  <%
   	ArrayList<String> categortList = (ArrayList<String>)request.getAttribute("Facility_categoriesArray");
@@ -35,8 +38,8 @@
 
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f1342a3ffd93979d7f9852ea40201756&libraries=services"></script>
    
-	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.13.18/jquery.timepicker.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.13.18/jquery.timepicker.min.js"></script>
 	
 	
 	
@@ -72,8 +75,7 @@ var time3 = '<c:out value="${room.reservationtime}"/>';
 
 var holiday = '<c:out value="${room.holiday}"/>';
 
-var roombuydate  = '<c:out value="${roombuy}"/>';
-alert(roombuydate);
+var articleList = <%= new Gson().toJson(request.getAttribute("articleList")) %>;
 
 </script>
 
@@ -266,14 +268,14 @@ alert(roombuydate);
 			        </ul>
                 </div>
             </div>
-            <form action="janso_detailIn.learnup.com">     
+            <form action="janso_detailIn.learnup.com" method="post" id="myForm" >     
               <input type="hidden" id= "" name ="roomnumber" value="${room.room_number}" >
               <input type="hidden" id= "ppp" name ="ppp"  >
 			<div class="reserv">예약일을 지정해 주세요</div>
 		    <div class = "calendar_container"> 
 	
 		       <div class="single">
-		     	   <input id="datepicker1" name="datepicker1"  type="text"   data-multiple-dates="31" hidden=""/>
+		     	   <input id="datepicker1" name="datepicker1"  type="text"  hidden="" data-multiple-dates="31"/>
 			   </div>
 		    </div>
 	
@@ -283,7 +285,7 @@ alert(roombuydate);
 		      
 		      <div id="main">
 			        <div>
-			            <input id="timepicker" name="timepicker" class="timepicker" multiple/>
+			            <input id="timepicker" name="timepicker" class="timepicker"  multiple/>
 			        </div>
 			    </div>
 			      
@@ -352,7 +354,7 @@ alert(roombuydate);
 	            <span class="righth3_de" >빠르고 확실한 예약을 위해 </span>
 	            <span class="righth3_de">런업에서 온라인 결제를 진행해주세요</span>
              	
-             	<button type="submit" id="sub" class="paybtn">결제하기</button> 
+             	<button type="submit" id="sub" class="paybtn"  >결제하기</button> 
              	
              	    
     			 </form> 
