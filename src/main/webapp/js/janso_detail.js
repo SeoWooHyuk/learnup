@@ -124,7 +124,7 @@ var disabledDays = array2; // 비활성화할 특정 요일 (0: 일요일, 1: �
 	            disabled: true,
 	          };
 	        }
-	        // 월요일과 금요일 비활성화
+	        // 휴무일 설정
 	        if (disabledDays.indexOf(date.getDay()) !== -1) {
 	          return {
 	            disabled: true,
@@ -430,6 +430,23 @@ $('#input-number-decrement2, #input-number-increment2').on('click', function() {
 });
 
 */
+
+});
+
+$(document).ready(function(){
+$.ajax({
+  url: "janso_detailreview.learnup.com",
+  type: "GET",
+  success: function(response) {
+    // 요청이 성공한 경우에 대한 처리
+    // response 변수에 응답으로 받은 내용이 들어 있습니다.
+    // 여기서는 해당 내용을 원하는 방식으로 처리할 수 있습니다.
+    $("#review_box").html(response);
+  },
+  error: function(xhr, status, error) {
+    // 요청이 실패한 경우에 대한 처리
+  }
+});
 
 });
 

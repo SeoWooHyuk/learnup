@@ -143,6 +143,7 @@ h1{
 
 
  /*평점*/
+ /*
 .star_junsu{
    
     text-align: center;
@@ -160,7 +161,7 @@ label {
 }
 
 /****** Style Star Rating Widget *****/
-
+/*
 .rating {
   position :relative;
   border: none;
@@ -284,9 +285,9 @@ label {
 
 
 
-/*怨듦컙�냼媛�*/
+/*글쓰는 박스*/ 
 .p_box{
-  height: 400px;
+ /* height: 400px;*/
   border-radius:5px;
   /*background-color:#EAEAEA;
   border: 1px solid #BDBDBD;*/
@@ -298,6 +299,20 @@ label {
   /*background-color:#EAEAEA;
   border: 1px solid #BDBDBD;*/
 }
+
+/*리뷰 공간*/
+.dot
+{
+	display: inline-block;
+    width: 3px;
+    height: 3px;
+    margin: 0 2px;
+    border-radius: 50%;
+    background-color: #949494;
+    vertical-align: middle;
+}
+
+
 
 
 /*우측 세부옵션 영역*/

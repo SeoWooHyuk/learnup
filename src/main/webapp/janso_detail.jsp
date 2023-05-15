@@ -104,7 +104,7 @@ var articleList = <%= new Gson().toJson(request.getAttribute("articleList")) %>;
                   	</ul> 
                   </div>
 			</div>
-
+<!--  
             <div class="star_junsu">
             	<div class="star_junsu_title">평점 4.5</div>
                 <fieldset class="rating">
@@ -121,7 +121,7 @@ var articleList = <%= new Gson().toJson(request.getAttribute("articleList")) %>;
 				</fieldset>	
 						
             </div>
-
+-->
             <div class="move_left">
                 <div class="move_wrap">
                     <ul>
@@ -219,7 +219,7 @@ var articleList = <%= new Gson().toJson(request.getAttribute("articleList")) %>;
                        		<p style="white-space: pre-line;">
                        		주소: &nbsp ${room.room_address}
                        		</p> 
-                       		<div id="map" style="width:100%;height:350px;"></div>
+                       		<div id="map" style="width:100%;height:350px; z-index: -1"></div>
                      </div>
                     
                 </div>
@@ -228,14 +228,9 @@ var articleList = <%= new Gson().toJson(request.getAttribute("articleList")) %>;
             <div class="intro_boxs"> 
                 <div id="intro6"><h1>이용후기</h1></div>
                 <div class="intro_boxs_0" >  
-                    <div id ="p_box" >                    
-                       		<p style="white-space: pre-line;" class="p_box">
-                       			
-                       		
-                       		
-                       		
-                       		
-                       		</p> 
+                    <div id ="p_box" >  
+                  
+              			<div id="review_box"> </div>
                      </div>
                 </div>
             </div>

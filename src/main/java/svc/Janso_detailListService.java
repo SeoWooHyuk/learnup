@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import dao.JansoDAO;
 import vo.Janso_mypage_buy;
 import vo.Janso_product_registration;
+import vo.Janso_review;
+
 import static db.JdbcUtil.*;
 
 
@@ -63,6 +65,22 @@ public class Janso_detailListService {
 		return article;
 		
 	}
+	
+	//장소 리뷰 셀렉
+//	public ArrayList<Janso_review> getdetailReviewArticle(int room) throws Exception{
+//		
+//
+//		ArrayList<Janso_review> articleList = null;
+//		Connection con = getConnection();
+//		JansoDAO jansoDAO = JansoDAO.getInstance();
+//		jansoDAO.setConnection(con);
+//		articleList = jansoDAO.Janso_review(room);
+//		close(con);
+//		return articleList;
+//		
+//	}
+	
+	
 	
 
 	public boolean jansomyArticle(Janso_mypage_buy buy) throws Exception{

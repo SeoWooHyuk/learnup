@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Janso_detailPageAction;
+import action.Janso_detailPageReviewAction;
+import action.Janso_detailPageReviewInAction;
 import action.Janso_detailPageinsertAction;
 import action.Janso_mainListAction;
 import action.Janso_product_registrationAction;
@@ -103,17 +105,47 @@ public class JansoFrontController extends javax.servlet.http.HttpServlet
 		}
 		
 		//장소 디테일 페이지  구입
-				else if(command.equals("/janso_detailIn.learnup.com"))
-				{
-				
-					action  = new Janso_detailPageinsertAction();
-					try {
-						forward=action.execute(request, response );
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-				}
+		else if(command.equals("/janso_detailIn.learnup.com"))
+		{
 		
+			action  = new Janso_detailPageinsertAction();
+			try {
+				forward=action.execute(request, response );
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		//장소 디테일 페이지  리뷰 ajax 사용
+		else if(command.equals("/janso_detailreview.learnup.com"))
+		{
+		
+			action  = new Janso_detailPageReviewAction();
+			try {
+				forward=action.execute(request, response );
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		//장소 디테일 페이지  리뷰 글 등록 사용
+		else if(command.equals("/janso_detailreviewin.learnup.com"))
+		{
+			forward= new ActionForward(); 
+			forward.setPath("/janso_detailReviewiN.jsp");
+		}
+		
+		else if(command.equals("/janso_detailreviewinsert.learnup.com"))
+		{
+		
+			action  = new Janso_detailPageReviewAction();
+			try {
+				forward=action.execute(request, response );
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
 	
 			
 		
