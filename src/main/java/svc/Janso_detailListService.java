@@ -80,9 +80,30 @@ public class Janso_detailListService {
 //		
 //	}
 	
+//장소 리뷰 인설트
+	public boolean detailreviewinArticle(Janso_review janso_review) throws Exception{
+		
+		boolean isWriteSuccess = false;
+		Connection con = getConnection();
+		JansoDAO jansoDAO = JansoDAO.getInstance();
+		jansoDAO.setConnection(con);
+		int insertCount = jansoDAO.Janso_review(janso_review);
+		
+		if(insertCount > 0){
+			commit(con);
+			isWriteSuccess = true;
+		}
+		else{
+			rollback(con);
+		}
+		
+		close(con);
+		return isWriteSuccess;
+		
+	}
 	
 	
-
+	//장소 구매자
 	public boolean jansomyArticle(Janso_mypage_buy buy) throws Exception{
 		
 		boolean isWriteSuccess = false;

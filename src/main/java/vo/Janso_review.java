@@ -8,12 +8,11 @@ public class Janso_review {
 	private String review_write;
 	private double review_Evaluation;
 	private Date review_date;
-	private int BOARD_RE_REF;
-	private int BOARD_RE_LEV;
-	private int BOARD_RE_SEQ;
+	private int review_re_ref;
+	private int review_re_lev;
+	private int review_re_seq;
 
-	
-	
+
 	public int getRoom_number() {
 		return room_number;
 	}
@@ -44,24 +43,25 @@ public class Janso_review {
 	public void setReview_date(Date review_date) {
 		this.review_date = review_date;
 	}
-	public int getBOARD_RE_REF() {
-		return BOARD_RE_REF;
+	public int getReview_re_ref() {
+		return review_re_ref;
 	}
-	public void setBOARD_RE_REF(int bOARD_RE_REF) {
-		BOARD_RE_REF = bOARD_RE_REF;
+	public void setReview_re_ref(int review_re_ref) {
+		this.review_re_ref = review_re_ref;
 	}
-	public int getBOARD_RE_LEV() {
-		return BOARD_RE_LEV;
+	public int getReview_re_lev() {
+		return review_re_lev;
 	}
-	public void setBOARD_RE_LEV(int bOARD_RE_LEV) {
-		BOARD_RE_LEV = bOARD_RE_LEV;
+	public void setReview_re_lev(int review_re_lev) {
+		this.review_re_lev = review_re_lev;
 	}
-	public int getBOARD_RE_SEQ() {
-		return BOARD_RE_SEQ;
+	public int getReview_re_seq() {
+		return review_re_seq;
 	}
-	public void setBOARD_RE_SEQ(int bOARD_RE_SEQ) {
-		BOARD_RE_SEQ = bOARD_RE_SEQ;
+	public void setReview_re_seq(int review_re_seq) {
+		this.review_re_seq = review_re_seq;
 	}
+
 
 	
 	

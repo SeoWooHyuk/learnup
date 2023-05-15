@@ -30,8 +30,22 @@ public class Janso_detailPageReviewInAction implements jansoAction {
 		ActionForward forward=null;
 		Janso_review  janso_review= null;
 		
+		String nickname =  request.getParameter("nickname");
+		int room_number =  Integer.parseInt(request.getParameter("room_number")) ;
+		String write =  request.getParameter("writes");
+		Double rating = Double.parseDouble(request.getParameter("rating"));
+		System.out.println(nickname);
+		System.out.println(room_number);
+		System.out.println(write);
+		System.out.println(rating);
+		janso_review = new Janso_review(); 
+		janso_review.setRoom_number(room_number);
+		janso_review.setNickname(nickname);
+		janso_review.setReview_write(write);
+		janso_review.setReview_Evaluation(rating);
+		
 		Janso_detailListService janso_detailListService2 = new Janso_detailListService();
-		boolean isWriteSuccess = janso_detailListService2.jansomyArticle(janso_review);
+		boolean isWriteSuccess = janso_detailListService2.detailreviewinArticle(janso_review);
 		System.out.println(isWriteSuccess);
 	
 		if(!isWriteSuccess){
@@ -45,7 +59,7 @@ public class Janso_detailPageReviewInAction implements jansoAction {
 		else{
 			forward = new ActionForward();
 			forward.setRedirect(true);
-			forward.setPath("");
+			forward.setPath("janso_detail.learnup.com?roomnumber="+room_number);
 		}
 
 		return forward;

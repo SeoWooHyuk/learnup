@@ -138,7 +138,7 @@ public class JansoFrontController extends javax.servlet.http.HttpServlet
 		else if(command.equals("/janso_detailreviewinsert.learnup.com"))
 		{
 		
-			action  = new Janso_detailPageReviewAction();
+			action  = new Janso_detailPageReviewInAction();
 			try {
 				forward=action.execute(request, response );
 			} catch (Exception e) {

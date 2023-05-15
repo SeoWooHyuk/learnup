@@ -916,26 +916,32 @@ public class JansoDAO {
 					//System.out.println(rental.getFileName());
 					ResultSet rs = null;
 					PreparedStatement pstmt = null;
+					String SQL="";
 					int insertCount=0;
 					int num =0;
-					String SQL="";
 					
 					
 					try{
+						
+						pstmt=con.prepareStatement("select max(room_number) from room_review");
+						rs = pstmt.executeQuery();
+
+						if(rs.next())
+							num =rs.getInt(1)+1;
+						else
+							num=1;
 						
 						SQL="insert into room_review (room_number,nickname,review_write,review_Evaluation,review_re_ref,review_re_lev,review_re_seq) values(?,?,?,?,?,?,?)";
 						pstmt = con.prepareStatement(SQL);
 				
 						pstmt.setInt(1, review.getRoom_number());
-						pstmt.setString(2, review.getBOARD_NAME());
-						pstmt.setString(3, review.getBOARD_PASS());
-						pstmt.setString(4, review.getBOARD_SUBJECT());
-						pstmt.setString(5, review.getBOARD_CONTENT());
-						pstmt.setString(6, review.getBOARD_FILE());
-						pstmt.setInt(7, num);
-						pstmt.setInt(8, 0);
-						pstmt.setInt(9, 0);
-						pstmt.setInt(10, 0);
+						pstmt.setString(2, review.getNickname());
+						pstmt.setString(3, review.getReview_write());
+						pstmt.setDouble(4, review.getReview_Evaluation());
+						pstmt.setInt(5, num);
+						pstmt.setInt(6, 0);
+						pstmt.setInt(7, 0);
+				
 						insertCount = pstmt.executeUpdate();	
 						
 						return insertCount;

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-
-
+<%@ page import="vo.Janso_product_registration" %>
+<%@ page import="java.util.ArrayList" %>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -64,19 +64,27 @@ label {
 </style>
 </head>
 <body>
+<%
+ArrayList<Janso_product_registration> articleListall=(ArrayList<Janso_product_registration>)request.getAttribute("articleListall"); //전체
+String nickasd = (String)request.getAttribute("sdasd");
+String nick = request.getParameter("nick");
+String roomnssd = request.getParameter("roomnssd");
+out.println(nick); // 전송된 변수 값 출력
+out.println(roomnssd);
+out.println(articleListall.get(0).getRoom_address()); //테스트용
+
+%>
 <section id="writeForm">
   
 		<form action="janso_detailreviewin.learnup.com" method="post" name="boardform">
-		<div class="star_junsu_title">이용후기<span style="color: blue">5</span>개 <span class="dot"></span> 평균평점<span style="color: blue">5</span>점 <input type="submit" value="답변글등록" style="float: right;"/></div>  
-			<input type="hidden" name="page" value="" />
-			<input type="hidden" name="BOARD_NUM" value="">
-			<input type="hidden" name="BOARD_RE_REF" value=""> 
-			<input type="hidden" name="BOARD_RE_LEV" value="">
-			<input type="hidden" name="BOARD_RE_SEQ" value="">
-			
+		<div class="star_junsu_title">이용후기<span style="color: blue">5</span>개 <span class="dot"></span> 평균평점<span style="color: blue">5</span>점 <input type="submit" value="답글쓰기" style="float: right;"/></div>  
+			<input type="hidden" name="nickname" value="<%=nick %>" />
+			<input type="hidden" name="room_number" value="<%=roomnssd%>">
+			<input type="hidden" name="review_re_ref" value=""> 
+			<input type="hidden" name="review_re_lev" value="">
+			<input type="hidden" name="review_re_seq" value="">
+		
 			<table border="1">
-			
-			
 			<thead>
 			<tr>
 			<td colspan="2" rowspan="2">  <img src="${pageContext.request.contextPath }/jansoproduct/${room.sub_img1}" " style="width: 150px; height: 150px"></td>

@@ -27,7 +27,13 @@ import vo.Janso_mypage_buy;
 public class Janso_detailPageReviewAction implements jansoAction {
 	public ActionForward execute(HttpServletRequest request,HttpServletResponse response) throws Exception{
 
-
+		ArrayList<Janso_product_registration> articleListall=new ArrayList<Janso_product_registration>();
+		Janso_ListService janso_mainListService = new Janso_ListService();
+		articleListall = janso_mainListService.getArticleListall();
+		
+		request.setAttribute("articleListall", articleListall);
+		request.setAttribute("sdasd", "fwafawfwafawf");
+		
 		ActionForward forward= new ActionForward();
    		forward.setPath("/janso_detailReview.jsp");
    		return forward;

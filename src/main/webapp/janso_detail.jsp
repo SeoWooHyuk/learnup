@@ -22,6 +22,8 @@
 	
 	<c:forEach var="roombuy2" items="${articleList}"/>
 	<c:set var="roombuy" value="${roombuy2.my_date}"/>
+	<c:set var="nickname" value="${Nickname}"/>
+
 	
 <!DOCTYPE html>
 <head>
@@ -74,6 +76,7 @@ var time2 = '<c:out value="${room.close_time}"/>';
 var time3 = '<c:out value="${room.reservationtime}"/>';
 
 var holiday = '<c:out value="${room.holiday}"/>';
+var nickname = '<c:out value="${nickname}"/>';
 
 var articleList = <%= new Gson().toJson(request.getAttribute("articleList")) %>;
 
@@ -229,7 +232,6 @@ var articleList = <%= new Gson().toJson(request.getAttribute("articleList")) %>;
                 <div id="intro6"><h1>이용후기</h1></div>
                 <div class="intro_boxs_0" >  
                     <div id ="p_box" >  
-                  
               			<div id="review_box"> </div>
                      </div>
                 </div>
