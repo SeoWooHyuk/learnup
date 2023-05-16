@@ -952,7 +952,49 @@ public class JansoDAO {
 					}
 
 					return insertCount;
+				}
+				
+				//장소 리뷰 셀렉
+				public ArrayList<Janso_review> selectreviewArticleList(int roomnum){
+					
+			
+					PreparedStatement pstmt = null;
+					ResultSet rs = null;
+					String SQL="select * from room_review where room_number = ?";
+					ArrayList<Janso_review> articleList = new ArrayList<Janso_review>();
+					Janso_review janso_review = null;
+					
+
+					try{
+						pstmt = con.prepareStatement(SQL);
+						pstmt.setInt(1, roomnum);
+						rs = pstmt.executeQuery();
+
+						while(rs.next()){
+							janso_review = new Janso_review();
+							janso_review.setRoom_number(rs.getInt("room_number"));
+							janso_review.setNickname(rs.getString("nickname"));
+							janso_review.setReview_Evaluation(rs.getDouble("review_Evaluation"));
+							janso_review.setReview_write(rs.getString("review_write"));
+							janso_review.setReview_date(rs.getDate("review_date"));
+//							janso_review.setReview_re_lev(0);
+//							janso_review.setReview_re_ref(0);
+//							janso_review.setReview_re_seq(0);
+							articleList.add(janso_review);
+						}
+						
+						
+						
+					}catch(Exception ex){
+						System.out.println("안됌");
+					}finally{
+						close(rs);
+						close(pstmt);
+					}
+
+					return articleList;
 
 				}
+
 				
 }

@@ -33,7 +33,13 @@ public class Janso_detailPageReviewInAction implements jansoAction {
 		String nickname =  request.getParameter("nickname");
 		int room_number =  Integer.parseInt(request.getParameter("room_number")) ;
 		String write =  request.getParameter("writes");
-		Double rating = Double.parseDouble(request.getParameter("rating"));
+		double rating  = 0.0;
+		
+		if(request.getParameter("rating") != null){
+			rating = Double.parseDouble(request.getParameter("rating"));
+		}
+		
+		
 		System.out.println(nickname);
 		System.out.println(room_number);
 		System.out.println(write);

@@ -19,7 +19,7 @@ import svc.Janso_ListService;
 import svc.Janso_detailListService;
 import svc.Janso_product_registrationService;
 import vo.Janso_product_registration;
-
+import vo.Janso_review;
 import vo.ActionForward;
 import vo.Janso_mypage_buy;
 
@@ -27,12 +27,43 @@ import vo.Janso_mypage_buy;
 public class Janso_detailPageReviewAction implements jansoAction {
 	public ActionForward execute(HttpServletRequest request,HttpServletResponse response) throws Exception{
 
-		ArrayList<Janso_product_registration> articleListall=new ArrayList<Janso_product_registration>();
-		Janso_ListService janso_mainListService = new Janso_ListService();
-		articleListall = janso_mainListService.getArticleListall();
 		
-		request.setAttribute("articleListall", articleListall);
-		request.setAttribute("sdasd", "fwafawfwafawf");
+		int roomnum = Integer.parseInt(request.getParameter("roomnssd")) ;
+	
+		
+		ArrayList<Janso_review> reviewall=new ArrayList<Janso_review>();
+		Janso_detailListService janso_detailListService = new Janso_detailListService();
+		reviewall = janso_detailListService.getdetailReviewArticle(roomnum);
+			
+		double star = 0;
+		double avgstar = 0;
+		double size = reviewall.size();
+		
+		for(int i=0; i< reviewall.size(); i++)
+		{
+			
+//			System.out.println(reviewall.get(i).getReview_Evaluation());
+			star += reviewall.get(i).getReview_Evaluation();
+		}
+		
+		if(size == 0.0)
+		{
+			size = 1;
+		}
+	
+//		System.out.println(star);
+//		System.out.println(size);
+		
+		
+		
+		avgstar = Double.parseDouble(String.format("%.2f", star / size));     
+	
+
+		//avgstar = star / size;
+	
+		
+		request.setAttribute("reviewall", reviewall);
+		request.setAttribute("avgstar", avgstar);
 		
 		ActionForward forward= new ActionForward();
    		forward.setPath("/janso_detailReview.jsp");

@@ -68,7 +68,7 @@ public class Janso_detailPageAction implements jansoAction {
 		Janso_detailListService janso_detailListService2 = new Janso_detailListService();
 		articleList = janso_detailListService2.getdetailArticle2(room_number);
 		
-		System.out.println(articleList.size());
+//		System.out.println(articleList.size());
 		
 //		Janso_detailListService janso_detailListService2 = new Janso_detailListService();
 //	
