@@ -8,7 +8,7 @@
      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
-<style>
+<style type="text/css">
 
 @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 	 .pastDay{ background-color: lightgray; }
@@ -85,12 +85,12 @@ label {
 </head>
 <body>
 <%
-String nick = request.getParameter("nickname");
-String roomnssd = request.getParameter("room_number");
+String nick = request.getParameter("nick1");
+String roomnssd = request.getParameter("roomnssd1");
 out.println(nick); // 전송된 변수 값 출력
 out.println(roomnssd);
 %>
-<section id="writeForm">
+		<section id="writeForm">
 		<form action="janso_detailreviewinsert.learnup.com" method="post" name="boardform">
 		<input type="hidden" name="nickname" value="<%=nick %>" />
 			<input type="hidden" name="room_number" value="<%=roomnssd%>">

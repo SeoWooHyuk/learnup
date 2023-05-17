@@ -437,7 +437,7 @@ var roomnssd = roomsnums;
 console.log(roomnssd);
 console.log(nick);
 	
-	
+//리뷰 뷰
 $.ajax({
   url: "janso_detailreview.learnup.com",
   type: "GET",
@@ -450,6 +450,35 @@ $.ajax({
     // response 변수에 응답으로 받은 내용이 들어 있습니다.
     // 여기서는 해당 내용을 원하는 방식으로 처리할 수 있습니다.
     $("#review_box").html(response);
+  
+  },
+  error: function(xhr, status, error) {
+    // 요청이 실패한 경우에 대한 처리
+  }
+});
+
+});
+
+//리뷰 인설트 
+$(document).ready(function(){
+var nick1 =nickname;
+var roomnssd1 = roomsnums;
+
+
+	
+	
+$.ajax({
+  url: "janso_detailreviewin.learnup.com",
+  type: "GET",
+  data: {
+    nick1: nick1,
+    roomnssd1: roomnssd1
+  }, // 전송할 데이터 설정
+  success: function(response) {
+    // 요청이 성공한 경우에 대한 처리
+    // response 변수에 응답으로 받은 내용이 들어 있습니다.
+    // 여기서는 해당 내용을 원하는 방식으로 처리할 수 있습니다.
+    $("#review_box2").html(response);
   
   },
   error: function(xhr, status, error) {

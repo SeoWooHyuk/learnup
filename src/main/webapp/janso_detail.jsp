@@ -234,6 +234,7 @@ var articleList = <%= new Gson().toJson(request.getAttribute("articleList")) %>;
                 <div id="intro6"><h1>이용후기</h1></div>
                 <div class="intro_boxs_0" >  
                     <div id ="p_box" >  
+                    	<div id="review_box2"> </div>
               			<div id="review_box"> </div>
                      </div>
                 </div>

@@ -65,7 +65,8 @@ public class Janso_detailPageReviewInAction implements jansoAction {
 		else{
 			forward = new ActionForward();
 			forward.setRedirect(true);
-			forward.setPath("janso_detail.learnup.com?roomnumber="+room_number);
+			//forward.setPath("janso_detail.learnup.com?roomnumber="+room_number);
+			forward.setPath("janso_detailreview.learnup.com");
 		}
 
 		return forward;
