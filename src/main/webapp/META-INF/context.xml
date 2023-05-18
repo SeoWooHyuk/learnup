@@ -4,11 +4,11 @@
   name="jdbc/MySQLD" 
   auth="Container"
 		type="javax.sql.DataSource"
-		username="root"
-		password="tjdngur123"
-		driverClassName="com.mysql.jsjdbc.Driver"
+		username="mybatis"
+		password="mybatis1234"
+		driverClassName="com.mysql.cj.jdbc.Driver"
 		factory="org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory"
-		url="jdbc:mysql://localhost:3306/learnup?useUnicode=true&amp;characterEncoding=utf8"
+		url="jdbc:mysql://13.209.8.123:3306/learnup?useUnicode=true&amp;characterEncoding=utf8"
 		maxActive="500"/>
 </Context>
 

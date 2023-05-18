@@ -20,6 +20,8 @@
 	<jsp:useBean id ="co" class ="dao.Co_Controller">		
   
 <section class="board">
+
+
 	
      <%
      	int i = 1;

@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html;charset=utf-8" pageEncoding="utf-8" %>
 <% request.setCharacterEncoding("UTF-8"); %>
 <%@page import="java.sql.*" %>
+<%@page import="vo.*" %>
+<%
+JspfileIp jip = new JspfileIp();
+String ip = jip.ipcheck();
+String id = jip.id();
+String pw = jip.pw();
+%>
 <%
     String email = request.getParameter("email");
     String nickname = request.getParameter("nickname");

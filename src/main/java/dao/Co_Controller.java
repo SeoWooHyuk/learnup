@@ -23,12 +23,14 @@ public class Co_Controller {
 	Statement stmt = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs;
+	
+	String forname = "com.mysql.cj.jdbc.Driver";
 
 	public void conn()
 	{
 		try
 		{
-		  conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/learnup?useUnicode=true&characterEncoding=utf8","root","tjdngur123");
+		  conn = DriverManager.getConnection("jdbc:mysql://13.209.8.123:3306/learnup?useUnicode=true&characterEncoding=utf8","mybatis","mybatis1234");
 		}catch (Exception s) {
 			// TODO: handle exception
 		}
@@ -60,7 +62,7 @@ public class Co_Controller {
 
 		
 		try{
-		Class.forName("com.mysql.jdbc.Driver");
+		Class.forName(forname);
 		conn();
 	    if(conn == null)
 	    {
@@ -96,7 +98,7 @@ public class Co_Controller {
 		
 		try{
 
-			Class.forName("com.mysql.jdbc.Driver"); //�븘臾닿쾬�룄�뾾�씠 �뾾�씠�븯硫� �씠寃� �뿉�윭媛��궃�떎 �꽕�젙�씠 �븘�슂
+			Class.forName(forname); //�븘臾닿쾬�룄�뾾�씠 �뾾�씠�븯硫� �씠寃� �뿉�윭媛��궃�떎 �꽕�젙�씠 �븘�슂
 			conn();
 			System.out.println("mysql connection success");
 			String s = String.format("insert into boards(title,writes,email,open_check,fileName,fileRealName)values('%s','%s','%s','%s','%s','%s')",titles,writes,emails,check,fileName,fileRealName);
@@ -125,7 +127,7 @@ public class Co_Controller {
 
 		try{
 
-			Class.forName("com.mysql.jdbc.Driver"); //�븘臾닿쾬�룄�뾾�씠 �뾾�씠�븯硫� �씠寃� �뿉�윭媛��궃�떎 �꽕�젙�씠 �븘�슂
+			Class.forName(forname); //�븘臾닿쾬�룄�뾾�씠 �뾾�씠�븯硫� �씠寃� �뿉�윭媛��궃�떎 �꽕�젙�씠 �븘�슂
 			conn();
 			System.out.println("mysql connection success");
 			String s = "delete from boards where board_id='"+a+"';";
@@ -153,7 +155,7 @@ public class Co_Controller {
 
 			try{
 
-				Class.forName("com.mysql.jdbc.Driver"); //�븘臾닿쾬�룄�뾾�씠 �뾾�씠�븯硫� �씠寃� �뿉�윭媛��궃�떎 �꽕�젙�씠 �븘�슂
+				Class.forName(forname); //�븘臾닿쾬�룄�뾾�씠 �뾾�씠�븯硫� �씠寃� �뿉�윭媛��궃�떎 �꽕�젙�씠 �븘�슂
 				conn();
 				System.out.println("mysql connection success");
 				String s = "update boards set title ='"+title+"', writes ='"+wirites+"'  where board_id='"+num+"';";
@@ -184,7 +186,7 @@ public class Co_Controller {
 		int startrow=(startpage-1)*10; 
 		
 		try{
-		Class.forName("com.mysql.jdbc.Driver");
+		Class.forName(forname);
 		conn();
 	    if(conn == null)
 	    {
@@ -234,7 +236,7 @@ public class Co_Controller {
 			Janso_Boards vo = new Janso_Boards();
 			int a = Integer.parseInt(board_id);
 			try{
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName(forname);
 			conn();
 		    if(conn == null)
 		    {
@@ -275,7 +277,7 @@ public class Co_Controller {
 		ArrayList<Janso_Boards> list = new ArrayList<Janso_Boards>();
 		System.out.println(search);
 		try{
-		Class.forName("com.mysql.jdbc.Driver");
+		Class.forName(forname);
 		conn();
 	    if(conn == null)
 	    {

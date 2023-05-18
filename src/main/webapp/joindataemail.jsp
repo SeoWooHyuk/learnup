@@ -9,8 +9,8 @@
 	ResultSet rs = null;
 	try{
 		String email = request.getParameter("email");
-		Class.forName("com.mysql.jdbc.Driver");
-		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/learnup", "root", "1324");
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		conn = DriverManager.getConnection("jdbc:mysql://13.209.8.123:3306/learnup", "mybatis", "mybatis1234");
 		if(conn == null){
 			throw new Exception("데이터베이스에 연결할 수 없습니다.");
 		}

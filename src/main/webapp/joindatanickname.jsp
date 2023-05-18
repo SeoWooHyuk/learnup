@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html;charset=utf-8" pageEncoding="utf-8" %>
 <% request.setCharacterEncoding("UTF-8"); %>
 <%@page import="java.sql.*" %>
+<%@page import="vo.*" %>
 <%
 	Connection conn = null;
 	Statement stmt = null;

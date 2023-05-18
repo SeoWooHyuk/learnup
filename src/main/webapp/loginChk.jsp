@@ -1,4 +1,6 @@
 <%@page import="vo.Login_chk"%>
+<%@page import="vo.JspfileIp"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 out.print(request.getParameter("urldirect"));
