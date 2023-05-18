@@ -36,6 +36,9 @@ public class Janso_rental_registrationAction implements jansoAction {
 		
 		registration = new Janso_rental_registration();
 		
+		System.out.println(multi.getParameter("email"));
+		
+		
 		registration.setEmail(multi.getParameter("email"));
 		registration.setBusiness_name(multi.getParameter("liname"));
 		registration.setBusiness_phonenumber(multi.getParameter("pnum"));

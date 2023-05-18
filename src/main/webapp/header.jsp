@@ -23,11 +23,14 @@
 		<script type="text/javascript"></script>
 		<script src="js/header.js"></script>
 		<script src="js/slick.js"></script>
+		
+		
 		<script src="js/datepicker.min.js"></script>
     	<script src="js/datepicker.ko.js"></script>
     	
     	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
 		<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+		
 <title></title>
 </head>
 		<%
@@ -41,7 +44,7 @@
 	<header>
 		<div style="width: 1280px; height:45px; float:left; margin-top: 20px;">
 			<nav style="width:150px; height:45px; float:left;">
-				<a href="index.jsp"><img src="image/widthlearn.png" style="width:155px; height:50px;"></a>
+				<a href="/learnuped"><img src="image/widthlearn.png" style="width:155px; height:50px;"></a>
 			</nav>
 			<%if(email == null){ %>
 			<a href="learnjoin.html"><nav style="width:110px; height:40px; float: right; margin-top:10px; text-align:center; background-color: #D1B2FF; border-radius:5px; line-height:40px;"><div id="tm5">회원가입</div></nav></a>

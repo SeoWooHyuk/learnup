@@ -37,9 +37,9 @@ $('.timepicker').timepicker({
     maxTime: time2s,  // 최대 시간 설정
     startTime: time1s,
     step: time3s, 
-     disableTimeRanges: [
-            ['3:00','6:00'],
-        ],
+	  dynamic: false,
+	    dropdown: true,
+	    scrollbar: true,
 });
 	
 	

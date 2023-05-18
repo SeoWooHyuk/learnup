@@ -25,7 +25,6 @@ a{
 }
 .productSection{
 	width:500px;
-	height:160px;
 	margin-left:20px;
 	float:left;
 }
@@ -151,15 +150,16 @@ a.control_next:focus {
 	display: -webkit-box;
 }
 .classPrice{
-	font-size:10pt;
+	font-size:14pt;
 	font-weight:bold;
 	color:red;
+	padding-top:10px;
 }
 .classArea{
 	font-size:10pt;
 	font-weight:bold;
 	color:#3F0099;
-	margin-top:2px;
+	padding-top:10px;
 	
 }
 .classAddress{
@@ -168,28 +168,45 @@ a.control_next:focus {
 	font-size:10pt;
 	overflow: hidden;
 	display: -webkit-box;
-	margin-top:3px;
+	padding-top:10px;
 }
 .classSchedule{
 	font-size:10pt;
 	font-weight:bold;
+	padding-top:8px;
 }
 
 /*공통 - 일정 및 등록 버튼*/
 .regibtn{
-	width:100px;
-	height:35px;
+	width:240px;
+	height:40px;
 	border:none;
 	border-radius:5px;
 	background-color:#D1B2FF;
-	margin-top:5px;
-	margin-left:15px;
+	margin-top:20px;
 	cursor:pointer;
+	
+	font-size:10pt;
+	font-weight:bold;
 }
 .regibtn:hover{
 	background-color:#A566FF;
 }
-
+.reviewbtn{
+	width:500px;
+	height:40px;
+	border:none;
+	border-radius:5px;
+	background-color:#FAED7D;
+	margin-top:20px;
+	cursor:pointer;
+	
+	font-size:10pt;
+	font-weight:bold;
+}
+.reviewbtn:hover{
+	background-color:#FFE400;
+}
 
 /*섹션 영역*/
 .section_sec{
@@ -200,9 +217,9 @@ a.control_next:focus {
 }
 section{
 	width: 100%;
-	height: 100%;
 	margin-left: auto;
 	margin-right: auto;
+	margin-bottom: 200px;
 }
 .secwrap{
 	width: 1280px;
@@ -217,11 +234,11 @@ section{
 	width:1280px;
 	font-size:20pt;
 	font-weight:bold;
+	margin-top:100px;
 }
 .toptitle span{
 	display:inline-block;
 	padding-left:20px;
-	margin:30px auto 30px auto;
 }
 
 /*각각 두번째 타이틀 영역*/
@@ -233,7 +250,160 @@ section{
 .secondtitle span{
 	display:inline-block;
 	padding-left:20px;
-	margin:20px auto 20px auto;
+	margin-bottom:40px;
+}
+
+
+
+/*팝업영역*/
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.9);
+  display: none;
+  z-index: 9999;
+}
+
+.popmenu {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 550px;
+  height: 750px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  overflow-y: auto;
+}
+
+/*팝업 제목 영역*/
+.poptitle{
+	text-align:center;
+	height:50px;
+	background-color:#8041D9;
+	color:white;
+	font-size:15pt;
+	font-weight:bold;
+	line-height:50px;
+}
+.popwrap{
+	width:500px;
+	margin-left:auto;
+	margin-right:auto;
+}
+.popsectitle{
+	width:500px;
+	margin-top:30px;
+	font-weight:bold;
+}
+/*팝업 달력 영역*/
+.datepick{
+	width:500px;
+	height:35px;
+	border-radius:5px;
+	border: solid 1px #BDBDBD;
+	outline:none;
+	margin-top:10px;
+}
+/*팝업 시간등록 영역*/
+.timepick{
+	width:500px;
+	height:35px;
+	border-radius:5px;
+	border: solid 1px #BDBDBD;
+	outline:none;
+	margin-top:5px;
+}
+.timesec{
+	width:500px;
+	height:300px;
+	background-color:#EAEAEA;
+}
+.timesec li{
+	width:65px;
+	height:30px;
+	border:none;
+	border-radius:20px;
+	float:left;
+	background-color:#BDBDBD;
+	text-align:center;
+	line-height:30px;
+	cursor:pointer;
+	margin-top:10px;
+	margin-left:15px;
+	font-size:10pt;
+}
+
+/*팝업 중간 텍스트 영역*/
+.pop_mid_tit{
+	font-weight:bold;
+	font-size:10pt;
+}
+
+/*팝업 장소등록 영역*/
+.areaselect{
+	width:245px;
+	height:35px;
+	border-radius:5px;
+	border: solid 1px #BDBDBD;
+	outline:none;
+	margin-top:10px;
+	cursor:pointer;
+	color:#747474;
+}
+.placeselect{
+	width:245px;
+	height:35px;
+	border-radius:5px;
+	border: solid 1px #BDBDBD;
+	outline:none;
+	margin-top:10px;
+	margin-left:6px;
+	cursor:pointer;
+	color:#747474;
+}
+.address{
+	width:500px;
+	height:35px;
+	border-radius:5px;
+	border: solid 1px #BDBDBD;
+	outline:none;
+	margin-top:5px;
+}
+
+/*팝업 버튼 영역*/
+.regibtn{
+	width:240px;
+	height:40px;
+	background-color:#D1B2FF;
+	font-weight:bold;
+	border:none;
+	border-radius:10px;
+	cursor:pointer;
+	margin-top:70px;
+	margin-bottom:30px;
+}
+.regibtn:hover{
+	background-color:#A566FF;
+}
+.closebtn{
+	width:240px;
+	height:40px;
+	background-color:#D1B2FF;
+	font-weight:bold;
+	border:none;
+	border-radius:10px;
+	cursor:pointer;
+	margin-top:70px;
+	margin-bottom:30px;
+	margin-left:16px;
+}
+.closebtn:hover{
+	background-color:#A566FF;
 }
 
 

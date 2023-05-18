@@ -19,6 +19,10 @@
 	<script src="js/notice.js"></script>
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400&display=swap" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	
+	
+	
+	
 </head>
 <body>
 <script>

@@ -36,17 +36,17 @@ label {
 
 /****** Style Star Rating Widget *****/
 
-.rating {
+.rating1 {
   border: none;
   left : -260px;
   text-align: center;
   margin-top:0px;
 }
 
-.rating > input {
+.rating1 > input {
   display: none;
 }
-.rating > label:before {
+.rating1 > label:before {
   margin: 5px;
   font-size: 1.75em;
   font-family: FontAwesome;
@@ -54,12 +54,12 @@ label {
   content: "\f005";
 }
 
-.rating > .half:before {
+.rating1 > .half:before {
   content: "\f089";
   position: absolute;
 }
 
-.rating > label {
+.rating1 > label {
   color: #ddd;
   float: right;
   cursor:pointer;
@@ -67,16 +67,16 @@ label {
 
 /***** CSS Magic to Highlight Stars on Hover *****/
 
-.rating > input:checked ~ label, /* show gold star when clicked */
-.rating:not(:checked) > label:hover, /* hover current star */
-.rating:not(:checked) > label:hover ~ label {
+.rating1 > input:checked ~ label, /* show gold star when clicked */
+.rating1:not(:checked) > label:hover, /* hover current star */
+.rating1:not(:checked) > label:hover ~ label {
   color: #ffd700;
 } /* hover previous stars in list */
 
-.rating > input:checked + label:hover, /* hover current star when changing rating */
-.rating > input:checked ~ label:hover,
-.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
-.rating > input:checked ~ label:hover ~ label {
+.rating1 > input:checked + label:hover, /* hover current star when changing rating */
+.rating1 > input:checked ~ label:hover,
+.rating1 > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating1 > input:checked ~ label:hover ~ label {
   color: #ffed85;
 }
 
@@ -105,7 +105,7 @@ out.println(roomnssd);
 			<td colspan="2" style="width: 150px; height: 50px;">평점</td>
 			<td style="width: 400px">
 			    <div class="star_junsu">
-                <fieldset class="rating">
+                <fieldset class="rating1">
 				    <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
 				    <input type="radio" id="star4half" name="rating" value="4.5" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
 				    <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>

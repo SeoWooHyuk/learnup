@@ -23,12 +23,11 @@
 		<script type="text/javascript"></script>
 		<script src="js/slick.js"></script>
 		
-	    <script src="js/datepicker.min.js"></script>
-	    <script src="js/datepicker.ko.js"></script>
-	    
-	    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+		<script src="js/datepicker.min.js"></script>
+    	<script src="js/datepicker.ko.js"></script>
+    	
+    	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
 		<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
-		
 		<title>footer</title>
 </head>
 

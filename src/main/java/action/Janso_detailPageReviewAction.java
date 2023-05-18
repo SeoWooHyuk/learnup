@@ -29,7 +29,18 @@ public class Janso_detailPageReviewAction implements jansoAction {
 
 		
 		int roomnum = Integer.parseInt(request.getParameter("roomnssd")) ;
+		
+		
 	
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		ArrayList<Janso_review> reviewall=new ArrayList<Janso_review>();
 		Janso_detailListService janso_detailListService = new Janso_detailListService();

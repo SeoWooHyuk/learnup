@@ -41,8 +41,11 @@
 
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f1342a3ffd93979d7f9852ea40201756&libraries=services"></script>
    
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.13.18/jquery.timepicker.min.css">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.13.18/jquery.timepicker.min.js"></script>
+		<script src="js/datepicker.min.js"></script>
+    	<script src="js/datepicker.ko.js"></script>
+    	
+    	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+		<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>	
 	
 	
 	
