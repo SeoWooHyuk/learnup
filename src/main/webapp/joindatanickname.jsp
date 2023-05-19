@@ -2,14 +2,21 @@
 <% request.setCharacterEncoding("UTF-8"); %>
 <%@page import="java.sql.*" %>
 <%@page import="vo.*" %>
+
+<%
+JspfileIp jip = new JspfileIp();
+String ip = jip.ipcheck();
+String id = jip.id();
+String pw = jip.pw();
+%>
 <%
 	Connection conn = null;
 	Statement stmt = null;
 	String nick = null;
 	try{
 		String nickname = request.getParameter("nickname");
-		Class.forName("com.mysql.jdbc.Driver");
-		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/learnup", "root", "1324");
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		conn = DriverManager.getConnection("jdbc:mysql://"+ip+"/learnup?useUnicode=true&characterEncoding=utf8",id,pw);
 		if(conn == null){
 			throw new Exception("데이터베이스에 연결할 수 없습니다.");
 		}

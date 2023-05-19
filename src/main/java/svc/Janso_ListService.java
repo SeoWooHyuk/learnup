@@ -126,25 +126,29 @@ public ArrayList<Janso_product_registration> getArticleListall() throws Exceptio
 	}
 		
 		
-	public int getListCount() throws Exception{
+	public int getListCount(String searchs, int pnum) throws Exception{
 		int listCount = 0;
 		Connection con = getConnection();
 		JansoDAO jansoDAO = JansoDAO.getInstance();
 		jansoDAO.setConnection(con);
-		listCount = jansoDAO.selectListCount();
+		listCount = jansoDAO.selectListCount(searchs , pnum);
 		close(con);
+		System.out.println(searchs + "서브리스트 기본");
 		return listCount;
 		
 	}
 	
-	public ArrayList<Janso_product_registration> getsubArticleList(String a, int startpage,int pageSize, String[] keyword ) throws Exception{ //서브리스트 셀렉
+	public ArrayList<Janso_product_registration> getsubArticleList(String searchs, int pnum ,  int startpage,int pageSize, String[] keyword ) throws Exception{ //서브리스트 셀렉
+	
 		
+		System.out.println(searchs + "서브리스트 페이지검색키워드");
 		ArrayList<Janso_product_registration> articleList = null;
 		Connection con = getConnection();
 		JansoDAO jansoDAO = JansoDAO.getInstance();
 		jansoDAO.setConnection(con);
 	
-		articleList = jansoDAO.Janso_subpageList(a,startpage,pageSize,keyword);
+		//articleList = jansoDAO.Janso_subpageList(a,startpage,pageSize,keyword);
+		articleList = jansoDAO.Janso_subpageList(searchs,pnum,startpage,pageSize,keyword);
 		close(con);
 		return articleList;
 		

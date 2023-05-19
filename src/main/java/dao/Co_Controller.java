@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import javax.sql.DataSource;
 import vo.Janso_Boards;
-
+import vo.JspfileIp;
 
 import java.sql.PreparedStatement;
 
@@ -17,6 +17,12 @@ import java.sql.PreparedStatement;
 
 
 public class Co_Controller {
+	
+	
+	JspfileIp jip = new JspfileIp();
+	String ip = jip.ipcheck();
+	String id = jip.id();
+	String pw = jip.pw();
 	
 	DataSource ds;
 	Connection conn = null;
@@ -30,7 +36,7 @@ public class Co_Controller {
 	{
 		try
 		{
-		  conn = DriverManager.getConnection("jdbc:mysql://13.209.8.123:3306/learnup?useUnicode=true&characterEncoding=utf8","mybatis","mybatis1234");
+		  conn = DriverManager.getConnection("jdbc:mysql://"+ip+":3306/learnup?useUnicode=true&characterEncoding=utf8",id,pw);
 		}catch (Exception s) {
 			// TODO: handle exception
 		}

@@ -19,7 +19,7 @@ import svc.Janso_ListService;
 import svc.Janso_detailListService;
 import svc.Janso_product_registrationService;
 import vo.Janso_product_registration;
-
+import vo.Janso_review;
 import vo.ActionForward;
 import vo.Janso_mypage_buy;
 
@@ -28,6 +28,17 @@ public class Janso_detailPageAction implements jansoAction {
 	public ActionForward execute(HttpServletRequest request,HttpServletResponse response) throws Exception{
 
 //		Janso_mypage_buy  janso_mypage_buy= null;
+		
+		
+		
+		
+		
+			
+
+
+	
+		
+	
 		
 		ArrayList<Janso_mypage_buy> articleList=new ArrayList<Janso_mypage_buy>();  //장소 구매 페이지
 		Janso_product_registration article = new Janso_product_registration(); //장소 기본 설명 넘버당
@@ -59,6 +70,7 @@ public class Janso_detailPageAction implements jansoAction {
 //		System.out.println(ppp + "총가격");
 		
 
+
 		
 	
 		
@@ -67,6 +79,33 @@ public class Janso_detailPageAction implements jansoAction {
 		
 		Janso_detailListService janso_detailListService2 = new Janso_detailListService();
 		articleList = janso_detailListService2.getdetailArticle2(room_number);
+		
+		ArrayList<Janso_review> reviewall=new ArrayList<Janso_review>();
+		Janso_detailListService janso_detailListService3 = new Janso_detailListService();
+		reviewall = janso_detailListService3.getdetailReviewArticle(room_number);
+		double star = 0;
+		double avgstar = 0;
+		double size = reviewall.size();
+		
+		for(int i=0; i< reviewall.size(); i++)
+		{
+			
+//			System.out.println(reviewall.get(i).getReview_Evaluation());
+			star += reviewall.get(i).getReview_Evaluation();
+		}
+		
+		if(size == 0.0)
+		{
+			size = 1;
+		}
+	
+//		System.out.println(star);
+//		System.out.println(size);
+		
+		
+		
+		avgstar = Double.parseDouble(String.format("%.2f", star / size));     
+		
 		
 //		System.out.println(articleList.size());
 		
@@ -103,8 +142,8 @@ public class Janso_detailPageAction implements jansoAction {
 
 	
 		
-		
-		
+		request.setAttribute("avgstar", avgstar);
+		request.setAttribute("reviewall", reviewall);
 		request.setAttribute("nowpage", nowpage);
 		request.setAttribute("article", article);
 		request.setAttribute("articleList", articleList);

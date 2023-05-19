@@ -30,14 +30,24 @@ public class Janso_subListAction implements jansoAction {
 
 		ArrayList<Janso_product_registration> articleList=new ArrayList<Janso_product_registration>();
 		ServletContext context = request.getServletContext();
-		String directory = context.getRealPath("/jansoproduct"); 
 	
 		int page=1;
 		int pageSize=9;
 		
 
-		String searchs = request.getParameter("searchs");
-	
+		String searchs = "";
+		
+		if(request.getParameter("searchs")!=null){
+			searchs=( request.getParameter("searchs"));
+		}
+		
+		int pnum = 30;
+
+		if(request.getParameter("pernums")!=null){
+			pnum = Integer.parseInt(request.getParameter("pernums"));
+		}
+		
+		
 		if(request.getParameter("page")!=null){
 			page=Integer.parseInt(request.getParameter("page"));
 		}
@@ -87,13 +97,13 @@ public class Janso_subListAction implements jansoAction {
 		
 		
 		Janso_ListService janso_ListService = new Janso_ListService();
-		int listCount = janso_ListService.getListCount();
+		int listCount = janso_ListService.getListCount(searchs , pnum);
 		
-		articleList = janso_ListService.getsubArticleList(searchs,page,pageSize,keyword);
+		articleList = janso_ListService.getsubArticleList(searchs ,pnum ,   page , pageSize , keyword);
 		int maxPage=(int)((double)listCount/pageSize+0.95); 
    		//int startPage = (((int) ((double)page / 10 + 0.9)) - 1) * 10 + 1;
-   	    int currentBlock = page % pageSize == 0 ? page / pageSize : (page / pageSize) + 1;
-   	    int endPage =  currentBlock + pageSize - 1;
+   	    int startPage = page % pageSize == 0 ? page / pageSize : (page / pageSize) + 1;
+   	    int endPage =  startPage + pageSize - 1;
    	    
    	    if (endPage> maxPage) endPage= maxPage;
    	    
@@ -105,9 +115,9 @@ public class Janso_subListAction implements jansoAction {
 		pageInfo.setListCount(listCount);
 		pageInfo.setMaxPage(maxPage);
 		pageInfo.setPage(page);
-		pageInfo.setStartPage(currentBlock);	
+		pageInfo.setStartPage(startPage);	
 		
-		request.setAttribute("directory", directory);
+	
 		request.setAttribute("pageInfo", pageInfo);
 		request.setAttribute("search", psearch);
 		request.setAttribute("articleList", articleList);

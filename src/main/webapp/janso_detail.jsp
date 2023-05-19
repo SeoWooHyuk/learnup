@@ -15,13 +15,14 @@
   	ArrayList<String> categortList = (ArrayList<String>)request.getAttribute("Facility_categoriesArray");
  	String addres = (String)request.getAttribute("addres"); //js보낼 주소
  	
+ 	ArrayList<Janso_review> reviewall =(ArrayList<Janso_review>)request.getAttribute("reviewall");
+ 	double avgstar =  (double)request.getAttribute("avgstar");
+
  %> 
     <c:set var="addr" value="<%=addres%>"/>
 	<c:set var="room" value="${article}"/>
 	<c:set var="roombuy" value="${articlelist}"/>
-	
-	<c:forEach var="roombuy2" items="${articleList}"/>
-	<c:set var="roombuy" value="${roombuy2.my_date}"/>
+
 	<c:set var="nickname" value="${Nickname}"/>
 	<c:set var="email" value="${Email}"/>
 
@@ -130,7 +131,7 @@ var articleList = <%= new Gson().toJson(request.getAttribute("articleList")) %>;
 						
             </div>
 -->
-            <div class="move_left">
+            <div class="move_left" style="z-index: 99">
                 <div class="move_wrap">
                     <ul>
                  		<a href="#intro1" id="la"><li class="la">공간소개</li></a>
@@ -237,8 +238,55 @@ var articleList = <%= new Gson().toJson(request.getAttribute("articleList")) %>;
                 <div id="intro6"><h1>이용후기</h1></div>
                 <div class="intro_boxs_0" >  
                     <div id ="p_box" >  
-                    	<div id="review_box2"> </div>
-              			<div id="review_box"> </div>
+<section id="writeForm">                
+<form action="janso_detailreviewinsert.learnup.com" method="post" name="boardform">
+		<div class="star_junsu_title">
+		이용후기<span style="color: blue"><%=reviewall.size()  %></span>개 
+		<span class="dot"></span> 평균평점<span style="color: blue"><%= avgstar %></span>점 
+		<% if(nickname != null){%>
+		<input type="submit" value="리뷰작성" style="float: right;" class="custom-btn btn-2" id="forsub"/>
+	
+		</div>  
+			<input type="hidden" name="nickname" value="${nickname}" />
+			<input type="hidden" name="room_number" value="${room.room_number}">
+			<input type="hidden" name="review_re_ref" value=""> 
+			<input type="hidden" name="review_re_lev" value="">
+			<input type="hidden" name="review_re_seq" value="">
+			
+			<table border="0">
+			
+			<thead>
+			<tr>
+			<td colspan="2" style="width: 150px; height: 50px; font-size: 18px;">별점을 입력하세요</td>
+			<td style="width: 400px">
+			    <div class="star_junsu">
+                <fieldset class="rating1">
+				    <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+				    <input type="radio" id="star4half" name="rating" value="4.5" /><label class="half1" for="star4half" title="Pretty good - 4.5 stars"></label>
+				    <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+				    <input type="radio" id="star3half" name="rating" value="3.5" /><label class="half1" for="star3half" title="Meh - 3.5 stars"></label>
+				    <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
+				    <input type="radio" id="star2half" name="rating" value="2.5" /><label class="half1" for="star2half" title="Kinda bad - 2.5 stars"></label>
+				    <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+				    <input type="radio" id="star1half" name="rating" value="1.5" /><label class="half1" for="star1half" title="Meh - 1.5 stars"></label>
+				    <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+				    <input type="radio" id="starhalf" name="rating" value="0.5" /><label class="half1" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+				</fieldset>			
+            	</div>
+			
+			
+			</td>
+			</tr>
+			<tr>
+			<td colspan="3" ><textarea id="writes" name="writes" style="width: 100%; height: 100px; border: 2px solid #8041D9; resize : none; font-size: 1.5em;" required></textarea></td>
+			</tr>
+			</thead>
+			</table>
+				<%} %>
+</form>
+</section>
+                    
+              			<div id="review_box""> </div>
                      </div>
                 </div>
             </div>
@@ -357,8 +405,12 @@ var articleList = <%= new Gson().toJson(request.getAttribute("articleList")) %>;
 	            <span class="righth3_de" >빠르고 확실한 예약을 위해 </span>
 	            <span class="righth3_de">런업에서 온라인 결제를 진행해주세요</span>
              	
-             	<button type="submit" id="sub" class="paybtn"  >결제하기</button> 
+             	<%if(nickname != null) {%>
              	
+             	<button type="submit" id="sub" class="paybtn"  >결제하기</button> 
+             	<%}else{%>
+             	<button type="button" id="sub" class="paybtn"  >로그인 후 결제가능</button> 
+             	<%} %>
              	    
     			 </form> 
             </div>

@@ -679,7 +679,7 @@
 <!--  등록된장소 전체보기-->
 <section class="headercetioncss3">
     <div class="hea3-0">
-        <a href="janso_subpage.learnup.com?page=1&searchs=&keworld=" class="hea3-1" > 등록된장소전체보기</a>
+        <a href="janso_subpage.learnup.com?page=1" class="hea3-1" > 등록된장소전체보기</a>
     </div>
 </section>
 <!--  등록된장소 전체보기-->

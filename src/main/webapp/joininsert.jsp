@@ -38,8 +38,8 @@ String pw = jip.pw();
     ResultSet rs = null;
     
     try {
-        Class.forName("com.mysql.jdbc.Driver");
-        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/learnup?serverTimezone=UTC", "root", "1324");
+    	Class.forName("com.mysql.cj.jdbc.Driver");
+		conn = DriverManager.getConnection("jdbc:mysql://"+ip+"/learnup?useUnicode=true&characterEncoding=utf8",id,pw);
         if (conn == null) {
             throw new Exception("데이터베이스에 연결할 수 없습니다.");
         }
@@ -66,7 +66,7 @@ String pw = jip.pw();
             pstmt.setString(8, access1);
             pstmt.setString(9, access2);
             pstmt.executeUpdate();
-            %><script>alert("회원가입이 완료 되었습니다."); location.href="/learnuped/";</script><%
+            %><script>alert("회원가입이 완료 되었습니다."); location.href="/learnup";</script><%
         }
     } catch (Exception e) {
     	%><script>alert("입력 정보를 다시 확인해주세요."); history.back();</script><%

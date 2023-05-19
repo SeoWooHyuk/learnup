@@ -8,18 +8,25 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import vo.JspfileIp;
 import vo.NoticedataType;
 
 public class Noticedata {
+	JspfileIp jip = new JspfileIp();
+	String ip = jip.ipcheck();
+	String id = jip.id();
+	String pw = jip.pw();
+	String forname = "com.mysql.cj.jdbc.Driver";
+	
 	Connection conn = null;
 	Statement stmt = null;
 	
 	public void connect(){
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/learnup", "root", "1324");
+			Class.forName(forname);
+			 conn = DriverManager.getConnection("jdbc:mysql://"+ip+":3306/learnup?useUnicode=true&characterEncoding=utf8",id,pw);
 		}catch(Exception e) {
-			System.out.println(e+"¿À·ùÀÔ´Ï´Ù.");
+			System.out.println(e+"ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½.");
 		}
 	}
 	
@@ -41,7 +48,7 @@ public class Noticedata {
 					+ "values('"+data.getTitle()+"', '"+data.getText()+"', '"+data.getNickname()+"', '"+data.getFile()+"')";
 			stmt.executeUpdate(recordadd);
 		}catch(Exception e){
-			System.out.println(e+"¿À·ùÀÔ´Ï´Ù.");
+			System.out.println(e+"ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½.");
 		}finally {
 			try {
 				diconnect();
@@ -56,9 +63,9 @@ public class Noticedata {
 		try{
 	   		connect();
 	   		if(conn==null)
-	   			throw new Exception("µ¥ÀÌÅÍº£ÀÌ½º¿¡ ¿¬°áÇÒ ¼ö ¾ø½À´Ï´Ù");
+	   			throw new Exception("ï¿½ï¿½ï¿½ï¿½ï¿½Íºï¿½ï¿½Ì½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½");
 	   		stmt = conn.createStatement();
-	   		rs = stmt.executeQuery("select @rownum:=@rownum+1 as 'number', noticenum, title, nickname, text, file, date_format(createdate, '%Y³â %m¿ù %dÀÏ') as 'date' from notice where (@rownum:=0)=0");
+	   		rs = stmt.executeQuery("select @rownum:=@rownum+1 as 'number', noticenum, title, nickname, text, file, date_format(createdate, '%Yï¿½ï¿½ %mï¿½ï¿½ %dï¿½ï¿½') as 'date' from notice where (@rownum:=0)=0");
 	   		while(rs.next())
 	   		{
 	   			data = new NoticedataType();
@@ -71,7 +78,7 @@ public class Noticedata {
 	   			s.add(data);
 	   		}
 	    }catch(Exception e){
-	    	System.out.print("°á°ú°¡ ¾ø½À´Ï´Ù");
+	    	System.out.print("ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½");
 	   	}finally{
 	   		try{
 	   			diconnect();
@@ -89,10 +96,10 @@ public class Noticedata {
 	   		connect();
 	   		if(conn==null)
 	   		{
-	   			throw new Exception("µ¥ÀÌÅÍº£ÀÌ½º¿¡ ¿¬°áÇÒ ¼ö ¾ø½À´Ï´Ù");
+	   			throw new Exception("ï¿½ï¿½ï¿½ï¿½ï¿½Íºï¿½ï¿½Ì½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½");
 	   		}
 	   		stmt = conn.createStatement();
-	   		rs = stmt.executeQuery("select noticenum, title, nickname, text, date_format(createdate, '%Y³â %m¿ù %dÀÏ') as 'date' from notice where title like '%"+tt+"%'");
+	   		rs = stmt.executeQuery("select noticenum, title, nickname, text, date_format(createdate, '%Yï¿½ï¿½ %mï¿½ï¿½ %dï¿½ï¿½') as 'date' from notice where title like '%"+tt+"%'");
 	   		while(rs.next())
 	   		{
 	   			data = new NoticedataType();
@@ -104,7 +111,7 @@ public class Noticedata {
 	   			s.add(data);
 	   		}
 	    }catch(Exception e){
-	    	System.out.print("°á°ú°¡ ¾ø½À´Ï´Ù");
+	    	System.out.print("ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½");
 	   	}finally{
 	   		try{
 	   			diconnect();
@@ -121,9 +128,9 @@ public class Noticedata {
 		try{
 	   		connect();
 	   		if(conn==null)
-	   			throw new Exception("µ¥ÀÌÅÍº£ÀÌ½º¿¡ ¿¬°áÇÒ ¼ö ¾ø½À´Ï´Ù");
+	   			throw new Exception("ï¿½ï¿½ï¿½ï¿½ï¿½Íºï¿½ï¿½Ì½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½");
 	   		stmt = conn.createStatement();
-	   		rs = stmt.executeQuery("select @rownum:=@rownum+1 as 'num', noticenum, title, nickname, text, file, date_format(createdate, '%Y³â %m¿ù %dÀÏ %T') as 'date' from learnup.notice where title='"+title+"' and (@rownum:=0)=0;");
+	   		rs = stmt.executeQuery("select @rownum:=@rownum+1 as 'num', noticenum, title, nickname, text, file, date_format(createdate, '%Yï¿½ï¿½ %mï¿½ï¿½ %dï¿½ï¿½ %T') as 'date' from learnup.notice where title='"+title+"' and (@rownum:=0)=0;");
 	   		if(rs.next())
 	   		{
 	   			data.setNum(rs.getInt("num"));
@@ -135,7 +142,7 @@ public class Noticedata {
 	   			data.setCreatedate(rs.getString("date"));
 	   		}
 	    }catch(Exception e){
-	    	System.out.print("°á°ú°¡ ¾ø½À´Ï´Ù");
+	    	System.out.print("ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½");
 	   	}finally{
 	   		try{
 	   			diconnect();
@@ -151,9 +158,9 @@ public class Noticedata {
 		try{
 	   		connect();
 	   		if(conn==null)
-	   			throw new Exception("µ¥ÀÌÅÍº£ÀÌ½º¿¡ ¿¬°áÇÒ ¼ö ¾ø½À´Ï´Ù");
+	   			throw new Exception("ï¿½ï¿½ï¿½ï¿½ï¿½Íºï¿½ï¿½Ì½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½");
 	   		stmt = conn.createStatement();
-	   		rs = stmt.executeQuery("select noticenum, title, nickname, text, date_format(createdate, '%Y³â %m¿ù %dÀÏ %T') as 'date' from learnup.notice where noticenum<"+number+" order by noticenum desc limit 1");
+	   		rs = stmt.executeQuery("select noticenum, title, nickname, text, date_format(createdate, '%Yï¿½ï¿½ %mï¿½ï¿½ %dï¿½ï¿½ %T') as 'date' from learnup.notice where noticenum<"+number+" order by noticenum desc limit 1");
 	   		if(rs.next())
 	   		{
 	   			data.setNoticenum(rs.getInt("noticenum"));
@@ -163,7 +170,7 @@ public class Noticedata {
 	   			data.setCreatedate(rs.getString("date"));
 	   		}
 	    }catch(Exception e){
-	    	System.out.print("°á°ú°¡ ¾ø½À´Ï´Ù");
+	    	System.out.print("ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½");
 	   	}finally{
 	   		try{
 	   			diconnect();
@@ -179,9 +186,9 @@ public class Noticedata {
 		try{
 	   		connect();
 	   		if(conn==null)
-	   			throw new Exception("µ¥ÀÌÅÍº£ÀÌ½º¿¡ ¿¬°áÇÒ ¼ö ¾ø½À´Ï´Ù");
+	   			throw new Exception("ï¿½ï¿½ï¿½ï¿½ï¿½Íºï¿½ï¿½Ì½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½");
 	   		stmt = conn.createStatement();
-	   		rs = stmt.executeQuery("select noticenum, title, nickname, text, date_format(createdate, '%Y³â %m¿ù %dÀÏ %T') as 'date' from learnup.notice where noticenum>"+number+" order by noticenum limit 1");
+	   		rs = stmt.executeQuery("select noticenum, title, nickname, text, date_format(createdate, '%Yï¿½ï¿½ %mï¿½ï¿½ %dï¿½ï¿½ %T') as 'date' from learnup.notice where noticenum>"+number+" order by noticenum limit 1");
 	   		if(rs.next())
 	   		{
 	   			data.setNoticenum(rs.getInt("noticenum"));
@@ -191,7 +198,7 @@ public class Noticedata {
 	   			data.setCreatedate(rs.getString("date"));
 	   		}
 	    }catch(Exception e){
-	    	System.out.print("°á°ú°¡ ¾ø½À´Ï´Ù");
+	    	System.out.print("ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½");
 	   	}finally{
 	   		try{
 	   			diconnect();
@@ -209,7 +216,7 @@ public class Noticedata {
 			String data = "delete from notice where noticenum = '"+ no +"'"; 
 			stmt.executeUpdate(data);
 		}catch(Exception e) {
-			System.out.println(e+"¿À·ùÀÔ´Ï´Ù.");
+			System.out.println(e+"ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½.");
 		}finally {
 			try {
 				diconnect();
@@ -227,12 +234,12 @@ public class Noticedata {
 		    pstmt.setInt(3, no.getNoticenum());
 		    pstmt.executeUpdate();
 		} catch (Exception e) {
-		    System.out.println(e + "¿À·ùÀÔ´Ï´Ù.");
+		    System.out.println(e + "ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½.");
 		} finally {
 		    try {
 		        diconnect();
 		    } catch (Exception e) {
-		        // Ã³¸®ÇÒ ÀÛ¾÷
+		        // Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½Û¾ï¿½
 		    }
 		}
 	}

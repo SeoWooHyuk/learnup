@@ -2,6 +2,13 @@
 <% request.setCharacterEncoding("UTF-8"); %>
 <% response.setCharacterEncoding("UTF-8"); %>
 <%@page import="java.sql.*" %>
+<%@page import="vo.*" %>
+<%
+JspfileIp jip = new JspfileIp();
+String ip = jip.ipcheck();
+String id = jip.id();
+String pw = jip.pw();
+%>
 <%
 	Connection conn = null;
 	Statement stmt = null;
@@ -10,7 +17,7 @@
 	try{
 		String email = request.getParameter("email");
 		Class.forName("com.mysql.cj.jdbc.Driver");
-		conn = DriverManager.getConnection("jdbc:mysql://13.209.8.123:3306/learnup", "mybatis", "mybatis1234");
+		conn = DriverManager.getConnection("jdbc:mysql://"+ip+"/learnup?useUnicode=true&characterEncoding=utf8",id,pw);
 		if(conn == null){
 			throw new Exception("데이터베이스에 연결할 수 없습니다.");
 		}

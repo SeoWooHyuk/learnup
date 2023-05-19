@@ -15,9 +15,11 @@
  	<meta name="viewport" content="width=device-width, initial-scale=1">
     <title>상세페이지</title>
     <link rel='stylesheet' type='text/css' media='screen' href='./css/janso_sub.css' >
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    
+    
     <script src="./js/janso_sub.js"> </script>
  <!--      <script src="./js/janso_sub.slide.js"> </script> -->
 
@@ -40,6 +42,13 @@
 	int maxPage=pageInfo.getMaxPage();
 	int startPage=pageInfo.getStartPage();
 	int endPage=pageInfo.getEndPage();
+	
+	int pnum = 1;
+
+	if(request.getParameter("pernums")!=null){
+		pnum = Integer.parseInt(request.getParameter("pernums"));
+	}
+	
  %> 
  
  
@@ -281,10 +290,8 @@
                 <div  action="janso_subpage.learnup.com?page=<%=nowPage%>" class="search_form"style="float :left;">
                     <form class="search">
                 	 <input type="hidden"  name="page" value="<%=nowPage%>" ">
-                	  <input type="hidden"  name="keworld" value="" ">
-					<input class="searchTerm" placeholder="   검색하세여"  name = "searchs" /><input class="searchButton" type="submit" />
-					
-				  </form>
+					<input class="searchTerm" placeholder="   검색하세여"  name = "searchs" value="<%= psearch.getSearch()  %>"/><input class="searchButton" type="submit" />
+				
                 </div>
                       <div class="link">
                           <ul>
@@ -297,14 +304,14 @@
             </div>
             <!-- 인원수 -->
             <div class="personnumber">
-            	<span style="float: left; text-align: center; line-height: 35px; margin-right: 25px; font-weight: bold; padding-left: 20px  " >인원수</span>
-            	 <div class="input-number" min="1" max="10">
+            	<span style="float: left; text-align: center; line-height: 35px; margin-right: 25px; font-weight: bold; padding-left: 20px  " >최대허용 인원수검색</span>
+            	 <div class="input-number" min="1" max="50">
             	   <button class="input-number-decrement" type="button" data-decrement></button>
-				    <input type="text" value="1">
+				    <input id="pernums" name="pernums" type="text" value="<%=pnum %>">
 				   <button class="input-number-increment" type="button" data-increment></button>
-				  
 				  </div>
             </div>
+                </form>
 
  <div class="productbox">
   <!-- 셀렉들어오는곳 -->
@@ -333,7 +340,7 @@
 	</a> 
 	</div>
 
-<a href="janso_detail.learnup.com" style=" text-decoration: none; box-sizing: border-box;">		
+<a href="janso_detail.learnup.com?roomnumber=<%=articleList.get(i).getRoom_number() %>" style=" text-decoration: none; box-sizing: border-box;">		
 <div class="box-0-2">
 	<div class="box-0-2_box">
     	<strong style="font-size: 15px;" ><%= articleList.get(i).getRoom_title() %>룸</strong> 
@@ -377,6 +384,7 @@
  
 
 <!--그위 빈공간 -->
+	
 <section style="height: 80px;">
   <div style=" margin-top: 15px; height: 75px;">
                  <div class="pageContainer">   
@@ -385,20 +393,24 @@
        			 <%if(nowPage<=1){ %>
        			  <li><a href=""></a></li>
        			 <%}else{ %>
-		          <li><a href="janso_subpage.learnup.com?&keworld=&page=<%=nowPage-1 %>&searchs="><</a></li>
+		          <li><a href="janso_subpage.learnup.com?page=<%=nowPage-1 %>"> < </a></li>
 		          <%} %>
 		          
 				<%for(int a=startPage; a<=endPage;a++){ %>
 						
-				   <li><a href="janso_subpage.learnup.com?&keworld=&page=<%=a%>&searchs=<%=psearch.getSearch()%> "><%=a %></a></li>
+					<%if(psearch.getSearch() == "") {%>	
+				   	    <li><a href="janso_subpage.learnup.com?page=<%=a%>&pernums=<%=pnum %>"><%=a %></a></li>
+				   <%}else{ %>
+				    <li><a href="janso_subpage.learnup.com?page=<%=a%>&searchs=<%=psearch.getSearch()%>&pernums=<%=pnum %>"><%=a %></a></li>
+				   <%} %>
 					
 				<%} %>
 		    		
 		    		
 		    		<%if(nowPage>=maxPage){ %>
-					 <li><a href=""></a></li>
+					  <li><a href=""></a></li>
 					<%}else{ %>
-		          <li><a href="janso_subpage.learnup.com?keworld=&page=<%=nowPage+1 %>&searchs=">></a></li>
+		          <li><a href="janso_subpage.learnup.com?page=<%=nowPage+1 %>"> > </a></li>
 		          <%} %>
 		          
         		</ul>
