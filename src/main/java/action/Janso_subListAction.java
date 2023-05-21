@@ -32,7 +32,7 @@ public class Janso_subListAction implements jansoAction {
 		ServletContext context = request.getServletContext();
 	
 		int page=1;
-		int pageSize=9;
+		int pageSize=12;
 		
 
 		String searchs = "";
