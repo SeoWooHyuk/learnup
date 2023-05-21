@@ -342,11 +342,21 @@ var articleList = <%= new Gson().toJson(request.getAttribute("articleList")) %>;
 			      
 		    </div>
 		    
+		 <!--  
+		      <div class= timenumber">
+             <div><span class="addperson_title">추가 예약시간</span><span class="addperson_note">(${room.room_price}원/${room.reservationtime}시간) 최대가능 예약시간 ${room.close_time - room.open_time + 1}시간</span></div>
+            	 <div class="input-number2" min="0" max="${room.close_time - room.open_time + 1} ">
+            	   <button  id="input-number-decrement2" class="input-number-decrement2" type="button" data-decrement2></button>
+				    <input id="timez" name="timez" type="text" value="0">
+				   <button id="input-number-increment2" class="input-number-increment2" type="button" data-increment2></button>
+				  </div>
+            </div>
+		    
+		-->         
+		    
+		    
+		    
 		    <!-- 장소구매 인설트 -->
-		    <script type="text/javascript">
-		    
-		    
-		    </script>
 			   
             <div class="personnumber">
              <div><span class="addperson_title">추가 예약인원</span><span class="addperson_note">(최대${room.max_personnel}명, 인원 추가당 ${room.personnel_price}원/1인)</span></div>
@@ -360,7 +370,16 @@ var articleList = <%= new Gson().toJson(request.getAttribute("articleList")) %>;
             </div>
             
             
- 
+            <!--  
+            <div class="addperson">
+            	<div><span class="addperson_title">총 예약인원</span><span class="addperson_note">(최대20명, 10명 초과시 10,000원/1인)</span></div>
+            	<div class="addperson_text_wrap">
+	            	<span class="plusbtn">-</span>
+	            	<span><input type="text" class="addperson_text" placeholder="10" value=""></span>
+	            	<span class="minusbtn">+</span>
+            	</div>
+            </div>
+           -->
         
             <div>
             	<div>

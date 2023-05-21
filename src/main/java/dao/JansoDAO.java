@@ -105,9 +105,8 @@ public class JansoDAO {
 			ArrayList<Janso_product_registration> articleList = new ArrayList<Janso_product_registration>();
 			Janso_product_registration janso = null;
 			int startrow=(startpage-1)*9; 
-			
-			
 			//System.out.println(startrow);
+			
 			for (int i = 0; i < keword.length; i++) {
 			    if (keword[i] != null) {
 			    	search = keword[i];
@@ -115,7 +114,7 @@ public class JansoDAO {
 			}	
 			
 			
-String sql="select * from room_product_registration  where max_personnel between 0 and "+pnum+" and  (room_title like '%"+ search+"%' or room_categories like '%"+ search+"%' ) order by room_number ASC  limit "+startrow+", "+pageSize +" ";
+			String sql="select * from room_product_registration  where max_personnel between 0 and "+pnum+" and  (room_title like '%"+ search+"%' or room_categories like '%"+ search+"%' ) order by room_number ASC  limit "+startrow+", "+pageSize +" ";
 			
 //String	sql2 ="select * from room_product_registration where if( '"+search +"' != '' , room_title like'%"+search+"%', room_categories like '%"+keword[0]+"%' or room_categories like '%"+keword[1]+"%' or room_categories like '%"+keword[2]+"%' or room_categories like '%"+keword[3]+"%' or room_categories like '%"+keword[4]+"%' or room_categories like '%"+keword[5]+"%' or room_categories like '%"+keword[6]+"%' or room_categories like '%"+keword[7]+"%') and max_personnel between 0 and 999 order by room_number ASC  limit "+startrow+","+pageSize+" ";		
 

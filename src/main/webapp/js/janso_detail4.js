@@ -281,10 +281,11 @@ geocoder.addressSearch(chDate, function(result, status) {
         map.setCenter(coords);
     } 
 });    
-});
+
+
 
 //인원수 체크
-$(document).ready(function() {
+  $(document).ready(function() {
     function InputNumber(element) {
       this.$el = $(element);
       this.$input = this.$el.find("[type=text]");
@@ -356,7 +357,78 @@ $('#input-number-decrement, #input-number-increment').on('click', function() {
 
 });
 
+/* 예약시간 체크*/  
+/*  
 
+ $(document).ready(function() {
+    function InputNumber2(element) {
+      this.$el = $(element);
+      this.$input = this.$el.find("[type=text]");
+      this.$inc = this.$el.find("[data-increment2]");
+      this.$dec = this.$el.find("[data-decrement2]");
+      this.min = this.$el.attr("min") || false;
+      this.max = this.$el.attr("max") || false;
+      this.init();
+
+    }
+
+    InputNumber2.prototype = {
+      init: function () {
+        this.$dec.on("click", $.proxy(this.decrement2, this));
+        this.$inc.on("click", $.proxy(this.increment2, this));
+      },
+
+      increment2: function (e) {
+        var value = this.$input[0].value;
+        value++;
+        if (!this.max || value <= this.max) {
+          this.$input[0].value = value + (time3*1)-1;
+        }
+      },
+
+      decrement2: function (e) {
+        var value = this.$input[0].value;
+        value--;
+        if (!this.min || value >= this.min) {
+          this.$input[0].value = value - (time3*1)+1;
+        }
+      }
+    };
+
+    $.fn.inputNumber2 = function (option) {
+      return this.each(function () {
+        var $this = $(this),
+          data = $this.data("inputNumber2");
+
+        if (!data) {
+          $this.data("inputNumber2", (data = new InputNumber2(this)));
+        }
+      });
+    };
+
+    $.fn.inputNumber2.Constructor = InputNumber2;
+
+    $(".input-number2").inputNumber2();
+  });
+  
+  
+$(document).ready(function() {
+   var pprice =  personnel_price.replace(",", "")*1;  
+    var rprice =  room_price.replace(",", "")*1;  
+    var totalPriced =  rprice + pprice * persons;
+    
+$('#input-number-decrement2, #input-number-increment2').on('click', function() {
+    timez = $('#timez').val(); 
+     
+    
+
+    $("#priceto").empty();
+    $('#priceto').append(totalPriced);
+  });
+ 
+});
+*/
+});
 
 $(document).ready(function(){
 		
@@ -386,5 +458,39 @@ $.ajax({
   }
 });
 
+
+
+
+/*
+//리뷰 인설트 
+$(document).ready(function(){
+var nick1 =nickname;
+var roomnssd1 = roomsnums;
+
+
+
+	
+$.ajax({
+  url: "janso_detailreviewin.learnup.com",
+  type: "GET",
+  data: {
+    nick1: nick1,
+    roomnssd1: roomnssd1
+  }, // 전송할 데이터 설정
+  success: function(response) {
+    // 요청이 성공한 경우에 대한 처리
+    // response 변수에 응답으로 받은 내용이 들어 있습니다.
+    // 여기서는 해당 내용을 원하는 방식으로 처리할 수 있습니다.
+    $("#review_box2").html(response);
+  
+  },
+  error: function(xhr, status, error) {
+    // 요청이 실패한 경우에 대한 처리
+  }
+});
+
+});
+
+*/
 
 });

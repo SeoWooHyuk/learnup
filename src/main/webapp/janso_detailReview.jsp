@@ -106,9 +106,10 @@ label {
 }
 </style>
 
-<style type="text/css">
 
-/****** Style Star Rating Widget *****/
+
+<style type="text/css">
+/*별점 입력 창*/
 
 .rating1 {
   border: none;
@@ -139,13 +140,13 @@ label {
   cursor:pointer;
 }
 
-/***** CSS Magic to Highlight Stars on Hover *****/
+
 
 .rating1 > input:checked ~ label, /* show gold star when clicked */
 .rating1:not(:checked) > label:hover, /* hover current star */
 .rating1:not(:checked) > label:hover ~ label {
   color: #ffd700;
-} /* hover previous stars in list */
+} 
 
 .rating1 > input:checked + label:hover, /* hover current star when changing rating */
 .rating1 > input:checked ~ label:hover,
