@@ -41,7 +41,7 @@ public class Janso_subListAction implements jansoAction {
 			searchs=( request.getParameter("searchs"));
 		}
 		
-		int pnum = 30;
+		int pnum = 20;
 
 		if(request.getParameter("pernums")!=null){
 			pnum = Integer.parseInt(request.getParameter("pernums"));
@@ -53,19 +53,21 @@ public class Janso_subListAction implements jansoAction {
 		}
 		
 		String[] keyword  = new String[8];
-		keyword[0] = " ";
-		keyword[1] = " ";
-		keyword[2] = " ";
-		keyword[3] = " "; 
-		keyword[4] = " ";
-		keyword[5] = " ";
-		keyword[6] = " ";
-		keyword[7] = " ";
+		keyword[0] = null;
+		keyword[1] = null;
+		keyword[2] = null;
+		keyword[3] = null; 
+		keyword[4] = null;
+		keyword[5] = null;
+		keyword[6] = null;
+		keyword[7] = null;
+		
 		
 		
 		if(request.getParameter("keworld")!=null){
 			keyword[0] = request.getParameter("keworld");
 		}
+		
 		
 		if(request.getParameter("keworld1")!=null){
 			keyword[1] = request.getParameter("keworld1");
@@ -117,7 +119,7 @@ public class Janso_subListAction implements jansoAction {
 		pageInfo.setPage(page);
 		pageInfo.setStartPage(startPage);	
 		
-	
+		request.setAttribute("pnum", pnum);
 		request.setAttribute("pageInfo", pageInfo);
 		request.setAttribute("search", psearch);
 		request.setAttribute("articleList", articleList);

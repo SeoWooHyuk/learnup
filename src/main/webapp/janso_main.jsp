@@ -99,7 +99,7 @@
     <div class="bt-boxs">
 
         <div  class="bt-box">
-            <a href="janso_subpage.learnup.com?page=1&searchs=&keworld=강의실" style=" text-decoration: none; box-sizing: border-box;">
+            <a href="janso_subpage.learnup.com?page=1&keworld=강의실" style=" text-decoration: none; box-sizing: border-box;">
                 <img src="./image//lecture.svg" alt="">
                 <div class="keyword" style="font-size: 20px;">
                     강의실
@@ -108,7 +108,7 @@
         </div>
 
         <div  class="bt-box">
-            <a href="janso_subpage.learnup.com?page=1&searchs=&keworld1=스터디룸"  style=" text-decoration: none; box-sizing: border-box;">
+            <a href="janso_subpage.learnup.com?page=1&keworld1=스터디룸"  style=" text-decoration: none; box-sizing: border-box;">
                 <img src="./image//study.svg" alt="">
                 <div class="keyword" style="font-size: 20px;">
                     스터디룸

@@ -43,7 +43,7 @@
 	int startPage=pageInfo.getStartPage();
 	int endPage=pageInfo.getEndPage();
 	
-	int pnum = 1;
+	int pnum = (int)request.getAttribute("pnum");
 
 	if(request.getParameter("pernums")!=null){
 		pnum = Integer.parseInt(request.getParameter("pernums"));
