@@ -97,6 +97,11 @@ public class Janso_subListAction implements jansoAction {
 			keyword[7] = request.getParameter("keworld7");
 		}
 		
+		for (int i = 0; i < keyword.length; i++) {
+		    if (keyword[i] != null) {
+		    	searchs = keyword[i];
+		    }
+		}	
 		
 		Janso_ListService janso_ListService = new Janso_ListService();
 		int listCount = janso_ListService.getListCount(searchs , pnum);
