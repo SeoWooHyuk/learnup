@@ -23,7 +23,55 @@
      <script src="./js/janso_sub._slide.js"> </script>
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400&display=swap" rel="stylesheet">
 </head>
+<style type="text/css">
+	@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+ /*평점*/
+.star_junsu{
+   
+    text-align: center;
+    border-style: none;
+}
+.star_junsu_title{
+	font-size:14pt;
+	font-weight:bold;
+	height: 40px;
+}
+fieldset,
+label {
+  margin: 0;
+  padding: 0;
+}
+.rating {
+  border: none;
+  left : -260px;
+  text-align: center;
+  margin-top:0px;
+}
 
+.rating > input {
+  display: none;
+
+}
+.rating > label:before {
+  margin: 5px;
+  font-size: 1.75em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.rating > .half:before {
+  content: "\f089";
+  position: absolute;
+}
+
+.rating > label {
+  color: #ddd;
+  float: right;
+  cursor:pointer;
+}
+
+</style>
 <body>
 <!-- 헤더 -->
  <%@include file ="./header.jsp" %>
@@ -225,13 +273,196 @@
                      <span style="font-size: 12px; position: absolute  ; line-height: 23.9px;"><%= articleListall.get(i).getRoom_address() %></span>
                 </div>
                 <div class="box-0-2_box">
-                    <div style="float: left;">
-                        <strong style="float: left; font-size: 12px"><%=articleListall.get(i).getRoom_price() %></strong>
-                        <span style="font-size: 12px">원/1시간</span>
+                    <div style="float: left; font-size: 12px; line-height: 24.5px">
+                    <%=articleListall.get(i).getRoom_price() %> 원/1시간
+                    </div> 
+                    <div style="float: right; font-size: 12px; line-height: 24.5px">
+                     평점/<%=  Double.parseDouble(String.format("%.2f", articleListall.get(i).getStar())) %>
                     </div> 
                     <div style="float: right; ">
-                        <strong style="font-size: 12px;">평점:</strong> 
-                        <span style="font-size: 12px;">★★★★☆ 4/5</span>
+  					<div class="star_junsu" >
+              		<%
+					double inputValue = articleListall.get(i).getStar();
+					%>
+					
+					
+						<% 	if (inputValue <= 0.0) { %>
+						       	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars"></label>
+								<label class = "full"  title="Kinda bad - 2 stars"></label>
+								<label class="half"  title="Meh - 1.5 stars"></label>
+								<label class = "full"  title="Sucks big time - 1 star" ></label>
+								<label class="half" title="Sucks big time - 0.5 stars" ></label>
+								</fieldset>			
+				            	</div>
+		
+						<%	} else if (inputValue <= 0.5 || inputValue < 1.0) { %>
+    						   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars"></label>
+								<label class = "full"  title="Kinda bad - 2 stars"></label>
+								<label class="half"  title="Meh - 1.5 stars"></label>
+								<label class = "full"  title="Sucks big time - 1 star" ></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+						<%	} else if (inputValue <= 1.0  || inputValue < 1.5) { %>
+						 	   <div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars"></label>
+								<label class = "full"  title="Kinda bad - 2 stars"></label>
+								<label class="half"  title="Meh - 1.5 stars"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+				
+						<%	} else if (inputValue <= 1.5 || inputValue < 2.0 ) { %>
+				 	 	   		<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars"></label>
+								<label class = "full"  title="Kinda bad - 2 stars"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+					
+						<%	} else if (inputValue <= 2.0 || inputValue < 2.5) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+						
+						<%	} else if (inputValue <= 2.5 || inputValue < 3.0) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+					
+						<%	} else if (inputValue <= 3.0 || inputValue < 3.5) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>	
+					
+						<%	} else if (inputValue <= 3.5 || inputValue < 4.0) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"style=" color: #ffd700;"></label>
+								<label class = "full"  title="Meh - 3 stars"style=" color: #ffd700;"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+					
+						<%	} else if (inputValue <= 4.0 || inputValue < 4.5) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"style=" color: #ffd700;"></label>
+								<label class="half" title="Meh - 3.5 stars"style=" color: #ffd700;"></label>
+								<label class = "full"  title="Meh - 3 stars"style=" color: #ffd700;"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+						
+						<%	}else if (inputValue <= 4.5 ) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"style=" color: #ffd700;"></label>
+								<label class = "full"  title="Pretty good - 4 stars"style=" color: #ffd700;"></label>
+								<label class="half" title="Meh - 3.5 stars"style=" color: #ffd700;"></label>
+								<label class = "full"  title="Meh - 3 stars"style=" color: #ffd700;"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+							
+						<%	}else if (inputValue == 5.0) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"style=" color: #ffd700;"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"style=" color: #ffd700;"></label>
+								<label class = "full"  title="Pretty good - 4 stars"style=" color: #ffd700;"></label>
+								<label class="half" title="Meh - 3.5 stars"style=" color: #ffd700;"></label>
+								<label class = "full"  title="Meh - 3 stars"style=" color: #ffd700;"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+						<%}%>
+							
+            			</div> 
                     </div>     
                 </div>
                 <!-- <p style="margin: 0; padding-left: 5px; padding-top: 25px;">가격</p> -->
@@ -290,7 +521,7 @@
 			 		 </a> 
                 </div>
    
-   <a href="janso_detail.learnup.com?roomnumber=<%=articleList.get(b).getRoom_number()%>" style=" text-decoration: none; box-sizing: border-box;">		
+   				<a href="janso_detail.learnup.com?roomnumber=<%=articleList.get(b).getRoom_number()%>" style=" text-decoration: none; box-sizing: border-box;">		
                 <div class="box-0-2">
                     <div class="box-0-2_box">
                    <strong style="font-size: 18px;" ><%= articleList.get(b).getRoom_title() %>룸</strong> 
@@ -302,14 +533,197 @@
                      <span style="font-size: 12px; position: absolute  ; line-height: 23.9px;"><%= articleList.get(b).getRoom_address() %></span>
                 </div>
                 <div class="box-0-2_box">
-                    <div style="float: left;">
-                        <strong style="float: left; font-size: 12px"><%=articleList.get(b).getRoom_price() %></strong>
-                        <span style="font-size: 12px">원/1시간</span>
+                    <div style="float: left; font-size: 12px; line-height: 24.5px">
+                    <%=articleList.get(b).getRoom_price() %> 원/1시간
                     </div> 
+                    <div style="float: right; font-size: 12px; line-height: 24.5px">
+                     평점/<%=  Double.parseDouble(String.format("%.2f", articleList.get(b).getStar())) %>
+                    </div>
                     <div style="float: right; ">
-                        <strong style="font-size: 12px;">평점:</strong> 
-                        <span style="font-size: 12px;">★★★★☆ 4/5</span>
-                    </div>     
+  					<div class="star_junsu" >
+              		<%
+					double inputValue = articleList.get(b).getStar();
+					%>
+					
+					
+						<% 	if (inputValue <= 0.0) { %>
+						       	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars"></label>
+								<label class = "full"  title="Kinda bad - 2 stars"></label>
+								<label class="half"  title="Meh - 1.5 stars"></label>
+								<label class = "full"  title="Sucks big time - 1 star" ></label>
+								<label class="half" title="Sucks big time - 0.5 stars" ></label>
+								</fieldset>			
+				            	</div>
+		
+						<%	} else if (inputValue <= 0.5 || inputValue < 1.0) { %>
+    						   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars"></label>
+								<label class = "full"  title="Kinda bad - 2 stars"></label>
+								<label class="half"  title="Meh - 1.5 stars"></label>
+								<label class = "full"  title="Sucks big time - 1 star" ></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+						<%	} else if (inputValue <= 1.0  || inputValue < 1.5) { %>
+						 	   <div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars"></label>
+								<label class = "full"  title="Kinda bad - 2 stars"></label>
+								<label class="half"  title="Meh - 1.5 stars"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+				
+						<%	} else if (inputValue <= 1.5 || inputValue < 2.0 ) { %>
+				 	 	   		<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars"></label>
+								<label class = "full"  title="Kinda bad - 2 stars"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+					
+						<%	} else if (inputValue <= 2.0 || inputValue < 2.5) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+						
+						<%	} else if (inputValue <= 2.5 || inputValue < 3.0) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+					
+						<%	} else if (inputValue <= 3.0 || inputValue < 3.5) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>	
+					
+						<%	} else if (inputValue <= 3.5 || inputValue < 4.0) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"style=" color: #ffd700;"></label>
+								<label class = "full"  title="Meh - 3 stars"style=" color: #ffd700;"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+					
+						<%	} else if (inputValue <= 4.0 || inputValue < 4.5) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"style=" color: #ffd700;"></label>
+								<label class="half" title="Meh - 3.5 stars"style=" color: #ffd700;"></label>
+								<label class = "full"  title="Meh - 3 stars"style=" color: #ffd700;"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+						
+						<%	}else if (inputValue <= 4.5 ) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"style=" color: #ffd700;"></label>
+								<label class = "full"  title="Pretty good - 4 stars"style=" color: #ffd700;"></label>
+								<label class="half" title="Meh - 3.5 stars"style=" color: #ffd700;"></label>
+								<label class = "full"  title="Meh - 3 stars"style=" color: #ffd700;"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+							
+						<%	}else if (inputValue == 5.0) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"style=" color: #ffd700;"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"style=" color: #ffd700;"></label>
+								<label class = "full"  title="Pretty good - 4 stars"style=" color: #ffd700;"></label>
+								<label class="half" title="Meh - 3.5 stars"style=" color: #ffd700;"></label>
+								<label class = "full"  title="Meh - 3 stars"style=" color: #ffd700;"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+						<%}%>
+							
+            			</div> 
+                    </div>      
                 </div>
                     <!-- <p style="margin: 0; padding-left: 5px; padding-top: 25px;">가격</p> -->
                 </div> 
@@ -357,14 +771,197 @@
                      <span style="font-size: 12px; position: absolute  ; line-height: 23.9px;"><%= articleList2.get(b).getRoom_address() %></span>
                 </div>
                 <div class="box-0-2_box">
-                    <div style="float: left;">
-                        <strong style="float: left; font-size: 12px"><%=articleList2.get(b).getRoom_price() %></strong>
-                        <span style="font-size: 12px">원/1시간</span>
+                    <div style="float: left; font-size: 12px; line-height: 24.5px">
+                    <%=articleList2.get(b).getRoom_price() %> 원/1시간
                     </div> 
+                    <div style="float: right; font-size: 12px; line-height: 24.5px">
+                     평점/<%=  Double.parseDouble(String.format("%.2f", articleList2.get(b).getStar())) %>
+                    </div>
                     <div style="float: right; ">
-                        <strong style="font-size: 12px;">평점:</strong> 
-                        <span style="font-size: 12px;">★★★★☆ 4/5</span>
-                    </div>     
+  					<div class="star_junsu" >
+              		<%
+					double inputValue = articleList2.get(b).getStar();
+					%>
+					
+					
+						<% 	if (inputValue <= 0.0) { %>
+						       	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars"></label>
+								<label class = "full"  title="Kinda bad - 2 stars"></label>
+								<label class="half"  title="Meh - 1.5 stars"></label>
+								<label class = "full"  title="Sucks big time - 1 star" ></label>
+								<label class="half" title="Sucks big time - 0.5 stars" ></label>
+								</fieldset>			
+				            	</div>
+		
+						<%	} else if (inputValue <= 0.5 || inputValue < 1.0) { %>
+    						   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars"></label>
+								<label class = "full"  title="Kinda bad - 2 stars"></label>
+								<label class="half"  title="Meh - 1.5 stars"></label>
+								<label class = "full"  title="Sucks big time - 1 star" ></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+						<%	} else if (inputValue <= 1.0  || inputValue < 1.5) { %>
+						 	   <div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars"></label>
+								<label class = "full"  title="Kinda bad - 2 stars"></label>
+								<label class="half"  title="Meh - 1.5 stars"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+				
+						<%	} else if (inputValue <= 1.5 || inputValue < 2.0 ) { %>
+				 	 	   		<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars"></label>
+								<label class = "full"  title="Kinda bad - 2 stars"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+					
+						<%	} else if (inputValue <= 2.0 || inputValue < 2.5) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+						
+						<%	} else if (inputValue <= 2.5 || inputValue < 3.0) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+					
+						<%	} else if (inputValue <= 3.0 || inputValue < 3.5) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>	
+					
+						<%	} else if (inputValue <= 3.5 || inputValue < 4.0) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"style=" color: #ffd700;"></label>
+								<label class = "full"  title="Meh - 3 stars"style=" color: #ffd700;"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+					
+						<%	} else if (inputValue <= 4.0 || inputValue < 4.5) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"style=" color: #ffd700;"></label>
+								<label class="half" title="Meh - 3.5 stars"style=" color: #ffd700;"></label>
+								<label class = "full"  title="Meh - 3 stars"style=" color: #ffd700;"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+						
+						<%	}else if (inputValue <= 4.5 ) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"style=" color: #ffd700;"></label>
+								<label class = "full"  title="Pretty good - 4 stars"style=" color: #ffd700;"></label>
+								<label class="half" title="Meh - 3.5 stars"style=" color: #ffd700;"></label>
+								<label class = "full"  title="Meh - 3 stars"style=" color: #ffd700;"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+							
+						<%	}else if (inputValue == 5.0) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"style=" color: #ffd700;"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"style=" color: #ffd700;"></label>
+								<label class = "full"  title="Pretty good - 4 stars"style=" color: #ffd700;"></label>
+								<label class="half" title="Meh - 3.5 stars"style=" color: #ffd700;"></label>
+								<label class = "full"  title="Meh - 3 stars"style=" color: #ffd700;"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+						<%}%>
+							
+            			</div> 
+                    </div>      
                 </div>
                     <!-- <p style="margin: 0; padding-left: 5px; padding-top: 25px;">가격</p> -->
                 </div> 
@@ -412,14 +1009,197 @@
                      <span style="font-size: 12px; position: absolute  ; line-height: 23.9px;"><%= articleList3.get(b).getRoom_address() %></span>
                 </div>
                 <div class="box-0-2_box">
-                    <div style="float: left;">
-                        <strong style="float: left; font-size: 12px"><%=articleList3.get(b).getRoom_price() %></strong>
-                        <span style="font-size: 12px">원/1시간</span>
+                     <div style="float: left; font-size: 12px; line-height: 24.5px">
+                    <%=articleList3.get(b).getRoom_price() %> 원/1시간
                     </div> 
+                    <div style="float: right; font-size: 12px; line-height: 24.5px">
+                     평점/<%=  Double.parseDouble(String.format("%.2f", articleList3.get(b).getStar())) %>
+                    </div>
                     <div style="float: right; ">
-                        <strong style="font-size: 12px;">평점:</strong> 
-                        <span style="font-size: 12px;">★★★★☆ 4/5</span>
-                    </div>     
+  					<div class="star_junsu" >
+              		<%
+					double inputValue = articleList3.get(b).getStar();
+					%>
+					
+					
+						<% 	if (inputValue <= 0.0) { %>
+						       	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars"></label>
+								<label class = "full"  title="Kinda bad - 2 stars"></label>
+								<label class="half"  title="Meh - 1.5 stars"></label>
+								<label class = "full"  title="Sucks big time - 1 star" ></label>
+								<label class="half" title="Sucks big time - 0.5 stars" ></label>
+								</fieldset>			
+				            	</div>
+		
+						<%	} else if (inputValue <= 0.5 || inputValue < 1.0) { %>
+    						   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars"></label>
+								<label class = "full"  title="Kinda bad - 2 stars"></label>
+								<label class="half"  title="Meh - 1.5 stars"></label>
+								<label class = "full"  title="Sucks big time - 1 star" ></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+						<%	} else if (inputValue <= 1.0  || inputValue < 1.5) { %>
+						 	   <div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars"></label>
+								<label class = "full"  title="Kinda bad - 2 stars"></label>
+								<label class="half"  title="Meh - 1.5 stars"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+				
+						<%	} else if (inputValue <= 1.5 || inputValue < 2.0 ) { %>
+				 	 	   		<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars"></label>
+								<label class = "full"  title="Kinda bad - 2 stars"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+					
+						<%	} else if (inputValue <= 2.0 || inputValue < 2.5) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+						
+						<%	} else if (inputValue <= 2.5 || inputValue < 3.0) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+					
+						<%	} else if (inputValue <= 3.0 || inputValue < 3.5) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>	
+					
+						<%	} else if (inputValue <= 3.5 || inputValue < 4.0) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"style=" color: #ffd700;"></label>
+								<label class = "full"  title="Meh - 3 stars"style=" color: #ffd700;"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+					
+						<%	} else if (inputValue <= 4.0 || inputValue < 4.5) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"style=" color: #ffd700;"></label>
+								<label class="half" title="Meh - 3.5 stars"style=" color: #ffd700;"></label>
+								<label class = "full"  title="Meh - 3 stars"style=" color: #ffd700;"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+						
+						<%	}else if (inputValue <= 4.5 ) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"style=" color: #ffd700;"></label>
+								<label class = "full"  title="Pretty good - 4 stars"style=" color: #ffd700;"></label>
+								<label class="half" title="Meh - 3.5 stars"style=" color: #ffd700;"></label>
+								<label class = "full"  title="Meh - 3 stars"style=" color: #ffd700;"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+							
+						<%	}else if (inputValue == 5.0) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"style=" color: #ffd700;"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"style=" color: #ffd700;"></label>
+								<label class = "full"  title="Pretty good - 4 stars"style=" color: #ffd700;"></label>
+								<label class="half" title="Meh - 3.5 stars"style=" color: #ffd700;"></label>
+								<label class = "full"  title="Meh - 3 stars"style=" color: #ffd700;"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+						<%}%>
+							
+            			</div> 
+                    </div>      
                 </div>
                     <!-- <p style="margin: 0; padding-left: 5px; padding-top: 25px;">가격</p> -->
                 </div> 
@@ -469,14 +1249,197 @@
                      <span style="font-size: 12px; position: absolute  ; line-height: 23.9px;"><%= articleList4.get(b).getRoom_address() %></span>
                 </div>
                 <div class="box-0-2_box">
-                    <div style="float: left;">
-                        <strong style="float: left; font-size: 12px"><%=articleList4.get(b).getRoom_price() %></strong>
-                        <span style="font-size: 12px">원/1시간</span>
+                    <div style="float: left; font-size: 12px; line-height: 24.5px">
+                    <%=articleList4.get(b).getRoom_price() %> 원/1시간
                     </div> 
+                    <div style="float: right; font-size: 12px; line-height: 24.5px">
+                     평점/<%=  Double.parseDouble(String.format("%.2f", articleList4.get(b).getStar())) %>
+                    </div>
                     <div style="float: right; ">
-                        <strong style="font-size: 12px;">평점:</strong> 
-                        <span style="font-size: 12px;">★★★★☆ 4/5</span>
-                    </div>     
+  					<div class="star_junsu" >
+              		<%
+					double inputValue = articleList4.get(b).getStar();
+					%>
+					
+					
+						<% 	if (inputValue <= 0.0) { %>
+						       	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars"></label>
+								<label class = "full"  title="Kinda bad - 2 stars"></label>
+								<label class="half"  title="Meh - 1.5 stars"></label>
+								<label class = "full"  title="Sucks big time - 1 star" ></label>
+								<label class="half" title="Sucks big time - 0.5 stars" ></label>
+								</fieldset>			
+				            	</div>
+		
+						<%	} else if (inputValue <= 0.5 || inputValue < 1.0) { %>
+    						   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars"></label>
+								<label class = "full"  title="Kinda bad - 2 stars"></label>
+								<label class="half"  title="Meh - 1.5 stars"></label>
+								<label class = "full"  title="Sucks big time - 1 star" ></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+						<%	} else if (inputValue <= 1.0  || inputValue < 1.5) { %>
+						 	   <div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars"></label>
+								<label class = "full"  title="Kinda bad - 2 stars"></label>
+								<label class="half"  title="Meh - 1.5 stars"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+				
+						<%	} else if (inputValue <= 1.5 || inputValue < 2.0 ) { %>
+				 	 	   		<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars"></label>
+								<label class = "full"  title="Kinda bad - 2 stars"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+					
+						<%	} else if (inputValue <= 2.0 || inputValue < 2.5) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+						
+						<%	} else if (inputValue <= 2.5 || inputValue < 3.0) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+					
+						<%	} else if (inputValue <= 3.0 || inputValue < 3.5) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>	
+					
+						<%	} else if (inputValue <= 3.5 || inputValue < 4.0) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"style=" color: #ffd700;"></label>
+								<label class = "full"  title="Meh - 3 stars"style=" color: #ffd700;"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+					
+						<%	} else if (inputValue <= 4.0 || inputValue < 4.5) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"style=" color: #ffd700;"></label>
+								<label class="half" title="Meh - 3.5 stars"style=" color: #ffd700;"></label>
+								<label class = "full"  title="Meh - 3 stars"style=" color: #ffd700;"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+						
+						<%	}else if (inputValue <= 4.5 ) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"style=" color: #ffd700;"></label>
+								<label class = "full"  title="Pretty good - 4 stars"style=" color: #ffd700;"></label>
+								<label class="half" title="Meh - 3.5 stars"style=" color: #ffd700;"></label>
+								<label class = "full"  title="Meh - 3 stars"style=" color: #ffd700;"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+							
+						<%	}else if (inputValue == 5.0) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"style=" color: #ffd700;"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"style=" color: #ffd700;"></label>
+								<label class = "full"  title="Pretty good - 4 stars"style=" color: #ffd700;"></label>
+								<label class="half" title="Meh - 3.5 stars"style=" color: #ffd700;"></label>
+								<label class = "full"  title="Meh - 3 stars"style=" color: #ffd700;"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+						<%}%>
+							
+            			</div> 
+                    </div>      
                 </div>
                     <!-- <p style="margin: 0; padding-left: 5px; padding-top: 25px;">가격</p> -->
                 </div> 
@@ -526,14 +1489,197 @@
                      <span style="font-size: 12px; position: absolute  ; line-height: 23.9px;"><%= articleList5.get(b).getRoom_address() %></span>
                 </div>
                 <div class="box-0-2_box">
-                    <div style="float: left;">
-                        <strong style="float: left; font-size: 12px"><%=articleList5.get(b).getRoom_price() %></strong>
-                        <span style="font-size: 12px">원/1시간</span>
+                    <div style="float: left; font-size: 12px; line-height: 24.5px">
+                    <%=articleList5.get(b).getRoom_price() %> 원/1시간
                     </div> 
+                    <div style="float: right; font-size: 12px; line-height: 24.5px">
+                     평점/<%=  Double.parseDouble(String.format("%.2f", articleList5.get(b).getStar())) %>
+                    </div>
                     <div style="float: right; ">
-                        <strong style="font-size: 12px;">평점:</strong> 
-                        <span style="font-size: 12px;">★★★★☆ 4/5</span>
-                    </div>     
+  					<div class="star_junsu" >
+              		<%
+					double inputValue = articleList5.get(b).getStar();
+					%>
+					
+					
+						<% 	if (inputValue <= 0.0) { %>
+						       	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars"></label>
+								<label class = "full"  title="Kinda bad - 2 stars"></label>
+								<label class="half"  title="Meh - 1.5 stars"></label>
+								<label class = "full"  title="Sucks big time - 1 star" ></label>
+								<label class="half" title="Sucks big time - 0.5 stars" ></label>
+								</fieldset>			
+				            	</div>
+		
+						<%	} else if (inputValue <= 0.5 || inputValue < 1.0) { %>
+    						   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars"></label>
+								<label class = "full"  title="Kinda bad - 2 stars"></label>
+								<label class="half"  title="Meh - 1.5 stars"></label>
+								<label class = "full"  title="Sucks big time - 1 star" ></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+						<%	} else if (inputValue <= 1.0  || inputValue < 1.5) { %>
+						 	   <div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars"></label>
+								<label class = "full"  title="Kinda bad - 2 stars"></label>
+								<label class="half"  title="Meh - 1.5 stars"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+				
+						<%	} else if (inputValue <= 1.5 || inputValue < 2.0 ) { %>
+				 	 	   		<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars"></label>
+								<label class = "full"  title="Kinda bad - 2 stars"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+					
+						<%	} else if (inputValue <= 2.0 || inputValue < 2.5) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+						
+						<%	} else if (inputValue <= 2.5 || inputValue < 3.0) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+					
+						<%	} else if (inputValue <= 3.0 || inputValue < 3.5) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>	
+					
+						<%	} else if (inputValue <= 3.5 || inputValue < 4.0) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"style=" color: #ffd700;"></label>
+								<label class = "full"  title="Meh - 3 stars"style=" color: #ffd700;"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+					
+						<%	} else if (inputValue <= 4.0 || inputValue < 4.5) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"style=" color: #ffd700;"></label>
+								<label class="half" title="Meh - 3.5 stars"style=" color: #ffd700;"></label>
+								<label class = "full"  title="Meh - 3 stars"style=" color: #ffd700;"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+						
+						<%	}else if (inputValue <= 4.5 ) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"style=" color: #ffd700;"></label>
+								<label class = "full"  title="Pretty good - 4 stars"style=" color: #ffd700;"></label>
+								<label class="half" title="Meh - 3.5 stars"style=" color: #ffd700;"></label>
+								<label class = "full"  title="Meh - 3 stars"style=" color: #ffd700;"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+							
+						<%	}else if (inputValue == 5.0) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"style=" color: #ffd700;"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"style=" color: #ffd700;"></label>
+								<label class = "full"  title="Pretty good - 4 stars"style=" color: #ffd700;"></label>
+								<label class="half" title="Meh - 3.5 stars"style=" color: #ffd700;"></label>
+								<label class = "full"  title="Meh - 3 stars"style=" color: #ffd700;"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+						<%}%>
+							
+            			</div> 
+                    </div>   
                 </div>
                     <!-- <p style="margin: 0; padding-left: 5px; padding-top: 25px;">가격</p> -->
                 </div> 
@@ -585,14 +1731,197 @@
                      <span style="font-size: 12px; position: absolute  ; line-height: 23.9px;"><%= articleList6.get(b).getRoom_address() %></span>
                 </div>
                 <div class="box-0-2_box">
-                    <div style="float: left;">
-                        <strong style="float: left; font-size: 12px"><%=articleList6.get(b).getRoom_price() %></strong>
-                        <span style="font-size: 12px">원/1시간</span>
+                    <div style="float: left; font-size: 12px; line-height: 24.5px">
+                    <%=articleList6.get(b).getRoom_price() %> 원/1시간
                     </div> 
+                    <div style="float: right; font-size: 12px; line-height: 24.5px">
+                     평점/<%=  Double.parseDouble(String.format("%.2f", articleList6.get(b).getStar())) %>
+                    </div>
                     <div style="float: right; ">
-                        <strong style="font-size: 12px;">평점:</strong> 
-                        <span style="font-size: 12px;">★★★★☆ 4/5</span>
-                    </div>     
+  					<div class="star_junsu" >
+              		<%
+					double inputValue = articleList6.get(b).getStar();
+					%>
+					
+					
+						<% 	if (inputValue <= 0.0) { %>
+						       	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars"></label>
+								<label class = "full"  title="Kinda bad - 2 stars"></label>
+								<label class="half"  title="Meh - 1.5 stars"></label>
+								<label class = "full"  title="Sucks big time - 1 star" ></label>
+								<label class="half" title="Sucks big time - 0.5 stars" ></label>
+								</fieldset>			
+				            	</div>
+		
+						<%	} else if (inputValue <= 0.5 || inputValue < 1.0) { %>
+    						   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars"></label>
+								<label class = "full"  title="Kinda bad - 2 stars"></label>
+								<label class="half"  title="Meh - 1.5 stars"></label>
+								<label class = "full"  title="Sucks big time - 1 star" ></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+						<%	} else if (inputValue <= 1.0  || inputValue < 1.5) { %>
+						 	   <div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars"></label>
+								<label class = "full"  title="Kinda bad - 2 stars"></label>
+								<label class="half"  title="Meh - 1.5 stars"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+				
+						<%	} else if (inputValue <= 1.5 || inputValue < 2.0 ) { %>
+				 	 	   		<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars"></label>
+								<label class = "full"  title="Kinda bad - 2 stars"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+					
+						<%	} else if (inputValue <= 2.0 || inputValue < 2.5) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+						
+						<%	} else if (inputValue <= 2.5 || inputValue < 3.0) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+					
+						<%	} else if (inputValue <= 3.0 || inputValue < 3.5) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>	
+					
+						<%	} else if (inputValue <= 3.5 || inputValue < 4.0) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"style=" color: #ffd700;"></label>
+								<label class = "full"  title="Meh - 3 stars"style=" color: #ffd700;"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+					
+						<%	} else if (inputValue <= 4.0 || inputValue < 4.5) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"style=" color: #ffd700;"></label>
+								<label class="half" title="Meh - 3.5 stars"style=" color: #ffd700;"></label>
+								<label class = "full"  title="Meh - 3 stars"style=" color: #ffd700;"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+						
+						<%	}else if (inputValue <= 4.5 ) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"style=" color: #ffd700;"></label>
+								<label class = "full"  title="Pretty good - 4 stars"style=" color: #ffd700;"></label>
+								<label class="half" title="Meh - 3.5 stars"style=" color: #ffd700;"></label>
+								<label class = "full"  title="Meh - 3 stars"style=" color: #ffd700;"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+							
+						<%	}else if (inputValue == 5.0) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"style=" color: #ffd700;"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"style=" color: #ffd700;"></label>
+								<label class = "full"  title="Pretty good - 4 stars"style=" color: #ffd700;"></label>
+								<label class="half" title="Meh - 3.5 stars"style=" color: #ffd700;"></label>
+								<label class = "full"  title="Meh - 3 stars"style=" color: #ffd700;"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+						<%}%>
+							
+            			</div> 
+                    </div>   
                 </div>
                     <!-- <p style="margin: 0; padding-left: 5px; padding-top: 25px;">가격</p> -->
                 </div> 
@@ -643,14 +1972,197 @@
                      <span style="font-size: 12px; position: absolute  ; line-height: 23.9px;"><%= articleList7.get(b).getRoom_address() %></span>
                 </div>
                 <div class="box-0-2_box">
-                    <div style="float: left;">
-                        <strong style="float: left; font-size: 12px"><%=articleList7.get(b).getRoom_price() %></strong>
-                        <span style="font-size: 12px">원/1시간</span>
+                    <div style="float: left; font-size: 12px; line-height: 24.5px">
+                    <%=articleList7.get(b).getRoom_price() %> 원/1시간
                     </div> 
+                    <div style="float: right; font-size: 12px; line-height: 24.5px">
+                     평점/<%=  Double.parseDouble(String.format("%.2f", articleList7.get(b).getStar())) %>
+                    </div>
                     <div style="float: right; ">
-                        <strong style="font-size: 12px;">평점:</strong> 
-                        <span style="font-size: 12px;">★★★★☆ 4/5</span>
-                    </div>     
+  					<div class="star_junsu" >
+              		<%
+					double inputValue = articleList7.get(b).getStar();
+					%>
+					
+					
+						<% 	if (inputValue <= 0.0) { %>
+						       	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars"></label>
+								<label class = "full"  title="Kinda bad - 2 stars"></label>
+								<label class="half"  title="Meh - 1.5 stars"></label>
+								<label class = "full"  title="Sucks big time - 1 star" ></label>
+								<label class="half" title="Sucks big time - 0.5 stars" ></label>
+								</fieldset>			
+				            	</div>
+		
+						<%	} else if (inputValue <= 0.5 || inputValue < 1.0) { %>
+    						   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars"></label>
+								<label class = "full"  title="Kinda bad - 2 stars"></label>
+								<label class="half"  title="Meh - 1.5 stars"></label>
+								<label class = "full"  title="Sucks big time - 1 star" ></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+						<%	} else if (inputValue <= 1.0  || inputValue < 1.5) { %>
+						 	   <div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars"></label>
+								<label class = "full"  title="Kinda bad - 2 stars"></label>
+								<label class="half"  title="Meh - 1.5 stars"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+				
+						<%	} else if (inputValue <= 1.5 || inputValue < 2.0 ) { %>
+				 	 	   		<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars"></label>
+								<label class = "full"  title="Kinda bad - 2 stars"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+					
+						<%	} else if (inputValue <= 2.0 || inputValue < 2.5) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+						
+						<%	} else if (inputValue <= 2.5 || inputValue < 3.0) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+					
+						<%	} else if (inputValue <= 3.0 || inputValue < 3.5) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"></label>
+								<label class = "full"  title="Meh - 3 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>	
+					
+						<%	} else if (inputValue <= 3.5 || inputValue < 4.0) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"></label>
+								<label class="half" title="Meh - 3.5 stars"style=" color: #ffd700;"></label>
+								<label class = "full"  title="Meh - 3 stars"style=" color: #ffd700;"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+					
+						<%	} else if (inputValue <= 4.0 || inputValue < 4.5) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"></label>
+								<label class = "full"  title="Pretty good - 4 stars"style=" color: #ffd700;"></label>
+								<label class="half" title="Meh - 3.5 stars"style=" color: #ffd700;"></label>
+								<label class = "full"  title="Meh - 3 stars"style=" color: #ffd700;"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+						
+						<%	}else if (inputValue <= 4.5 ) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"style=" color: #ffd700;"></label>
+								<label class = "full"  title="Pretty good - 4 stars"style=" color: #ffd700;"></label>
+								<label class="half" title="Meh - 3.5 stars"style=" color: #ffd700;"></label>
+								<label class = "full"  title="Meh - 3 stars"style=" color: #ffd700;"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+							
+						<%	}else if (inputValue == 5.0) { %>
+						  	   	<div class="star_junsu">
+				                <fieldset class="rating">
+								<label class = "full"  title="Awesome - 5 stars"style=" color: #ffd700;"></label>
+								<label class="half"  title="Pretty good - 4.5 stars"style=" color: #ffd700;"></label>
+								<label class = "full"  title="Pretty good - 4 stars"style=" color: #ffd700;"></label>
+								<label class="half" title="Meh - 3.5 stars"style=" color: #ffd700;"></label>
+								<label class = "full"  title="Meh - 3 stars"style=" color: #ffd700;"></label>
+								<label class="half"  title="Kinda bad - 2.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Kinda bad - 2 stars" style=" color: #ffd700;"></label>
+								<label class="half"  title="Meh - 1.5 stars" style=" color: #ffd700;"></label>
+								<label class = "full"  title="Sucks big time - 1 star" style=" color: #ffd700;"></label>
+								<label class="half" title="Sucks big time - 0.5 stars" style=" color: #ffd700;"></label>
+								</fieldset>			
+				            	</div>
+						<%}%>
+							
+            			</div> 
+                    </div>   
                 </div>
                     <!-- <p style="margin: 0; padding-left: 5px; padding-top: 25px;">가격</p> -->
                 </div> 

@@ -26,6 +26,8 @@ public class Janso_product_registration {
  private String  sub_img3;
  private String  sub_img4;
  
+ private double  star;
+ 
  
 public int getRoom_number() {
 	return room_number;
@@ -158,6 +160,12 @@ public String getSub_img4() {
 }
 public void setSub_img4(String sub_img4) {
 	this.sub_img4 = sub_img4;
+}
+public double getStar() {
+	return star;
+}
+public void setStar(double star) {
+	this.star = star;
 }
 
  

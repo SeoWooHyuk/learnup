@@ -149,7 +149,7 @@
 	    </div> 
 		<div style="float: right; ">
 			<strong >평점:</strong> 
-			<span>★★★★☆ 4/5</span>
+			<span>★★★★☆ 4/5 <%=articleList.get(i).getStar() %></span>
 		</div>     
 	</div>
 </div>

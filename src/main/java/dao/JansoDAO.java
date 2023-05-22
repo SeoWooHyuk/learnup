@@ -13,38 +13,53 @@ import javax.sql.DataSource;
 import vo.*;
 
 public class JansoDAO {
-
-	DataSource ds;
-	Connection con;
-	private static JansoDAO jansoDAO;
-
-	private JansoDAO() {
-	}
-
-	public static JansoDAO getInstance(){
-		if(jansoDAO == null){
-			jansoDAO = new JansoDAO();
-		}
-		return jansoDAO;
-	}
-
-	public void setConnection(Connection con){
-		this.con = con;
-	}
 	
-	/*
-	public int selectListCount() {
+		DataSource ds;
+		Connection con;
+		private static JansoDAO jansoDAO;
+	
+		private JansoDAO() {
+		}
+	
+		public static JansoDAO getInstance(){
+			if(jansoDAO == null){
+				jansoDAO = new JansoDAO();
+			}
+			return jansoDAO;
+		}
+	
+		public void setConnection(Connection con){
+			this.con = con;
+		}
+		
+	 
+	//장서 서브 페이징
+	public int selectListCount(String searchs ,int pnum) {
 
 		int listCount= 0;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-
+		String SQL = "";
+		//System.out.println(searchs+"다오 서브리스트 검색");
+		if(searchs.equals(""))
+		{
+			SQL ="select count(*) from room_product_registration where max_personnel between 0  and "+pnum +" ";
+		}else
+		{
+			SQL = "select count(*) from room_product_registration where room_title like '%"+searchs+"%' or  room_categories like '%"+searchs+"%' and  max_personnel between 0 and '"+pnum +"' ";
+		}
+	
 		try{
-			pstmt=con.prepareStatement("select count(*) from room_product_registration");
-			rs = pstmt.executeQuery();
+			
+		  	Statement stmt = null;
+	    	stmt = con.prepareStatement(SQL);
 
+			rs = stmt.executeQuery(SQL);
+			
 			if(rs.next()){
 				listCount=rs.getInt(1);
+				
+				System.out.println(listCount+"다오 서브리스트 카운트");
 			}
 		}catch(Exception ex){
 
@@ -53,127 +68,88 @@ public class JansoDAO {
 			close(pstmt);
 		}
 
+	  
 		return listCount;
 
 	}
 	
-	*/
-	 
-		public int selectListCount(String searchs ,int pnum) {
-
-			int listCount= 0;
-			PreparedStatement pstmt = null;
-			ResultSet rs = null;
-			String SQL = "";
-			//System.out.println(searchs+"다오 서브리스트 검색");
-			if(searchs.equals(""))
-			{
-				SQL ="select count(*) from room_product_registration where max_personnel between 0  and "+pnum +" ";
-			}else
-			{
-				SQL = "select count(*) from room_product_registration where room_title like '%"+searchs+"%' or  room_categories like '%"+searchs+"%' and  max_personnel between 0 and '"+pnum +"' ";
-			}
+	//장소상품 페이지
+	public ArrayList<Janso_product_registration> Janso_subpageList(String search,  int pnum , int startpage, int pageSize, String[] keword){
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ArrayList<Janso_product_registration> articleList = new ArrayList<Janso_product_registration>();
+		Janso_product_registration janso = null;
+		int startrow=(startpage-1)*9; 
+		//System.out.println(startrow);
 		
-			try{
-				
-			  	Statement stmt = null;
-		    	stmt = con.prepareStatement(SQL);
-
-				rs = stmt.executeQuery(SQL);
-				
-				if(rs.next()){
-					listCount=rs.getInt(1);
-					
-					System.out.println(listCount+"다오 서브리스트 카운트");
-				}
-			}catch(Exception ex){
-
-			}finally{
-				close(rs);
-				close(pstmt);
-			}
-
-		  
-			return listCount;
-
-		}
+		for (int i = 0; i < keword.length; i++) {
+		    if (keword[i] != null) {
+		    	search = keword[i];
+		    }
+		}	
 		
-		//장소상품 페이지
-		public ArrayList<Janso_product_registration> Janso_subpageList(String search,  int pnum , int startpage, int pageSize, String[] keword){
-			PreparedStatement pstmt = null;
-			ResultSet rs = null;
-			ArrayList<Janso_product_registration> articleList = new ArrayList<Janso_product_registration>();
-			Janso_product_registration janso = null;
-			int startrow=(startpage-1)*9; 
-			//System.out.println(startrow);
-			
-			for (int i = 0; i < keword.length; i++) {
-			    if (keword[i] != null) {
-			    	search = keword[i];
-			    }
-			}	
-			
-			
-			String sql="select * from room_product_registration  where max_personnel between 0 and "+pnum+" and  (room_title like '%"+ search+"%' or room_categories like '%"+ search+"%' ) order by room_number ASC  limit "+startrow+", "+pageSize +" ";
-			
+		
+		String sql="select e.*, r.star from room_product_registration  e left JOIN (SELECT room_number, sum(review_Evaluation) / count(review_Evaluation) as star FROM room_review GROUP BY room_number) r  ON e.room_number = r.room_number  where max_personnel between 0 and "+pnum+" and  (room_title like '%"+ search+"%' or room_categories like '%"+ search+"%' ) order by room_number ASC  limit "+startrow+", "+pageSize +" ";
+		
 //String	sql2 ="select * from room_product_registration where if( '"+search +"' != '' , room_title like'%"+search+"%', room_categories like '%"+keword[0]+"%' or room_categories like '%"+keword[1]+"%' or room_categories like '%"+keword[2]+"%' or room_categories like '%"+keword[3]+"%' or room_categories like '%"+keword[4]+"%' or room_categories like '%"+keword[5]+"%' or room_categories like '%"+keword[6]+"%' or room_categories like '%"+keword[7]+"%') and max_personnel between 0 and 999 order by room_number ASC  limit "+startrow+","+pageSize+" ";		
 
+		
+	    try{
+	    	
+	    	Statement stmt = null;
+	    	stmt = con.prepareStatement(sql);
+
+			rs = stmt.executeQuery(sql);
+
+			while(rs.next()){
+				janso = new Janso_product_registration();
+				
+				janso.setEmail(rs.getString("email"));
+				janso.setRoom_number(rs.getInt("room_number")); 
 			
-		    try{
-		    	
-		    	Statement stmt = null;
-		    	stmt = con.prepareStatement(sql);
-
-				rs = stmt.executeQuery(sql);
-
-				while(rs.next()){
-					janso = new Janso_product_registration();
-					
-					janso.setEmail(rs.getString("email"));
-					janso.setRoom_number(rs.getInt("room_number")); 
+				janso.setRoom_title(rs.getString("room_title"));
+				janso.setRoom_categories(rs.getString("room_categories"));
+				janso.setRoom_area(rs.getString("room_area"));
+				janso.setFacility_categories(rs.getString("facility_categories"));
+				janso.setRoom_address(rs.getString("room_address"));
+				janso.setReservationtime(rs.getString("reservationtime"));
 				
-					janso.setRoom_title(rs.getString("room_title"));
-					janso.setRoom_categories(rs.getString("room_categories"));
-					janso.setRoom_area(rs.getString("room_area"));
-					janso.setFacility_categories(rs.getString("facility_categories"));
-					janso.setRoom_address(rs.getString("room_address"));
-					janso.setReservationtime(rs.getString("reservationtime"));
-					
-					janso.setMin_personnel(rs.getString("min_personnel"));
-					janso.setMax_personnel(rs.getString("max_personnel"));
-					
-					janso.setOpen_time(rs.getString("open_time"));
-					janso.setClose_time(rs.getString("close_time"));
-					
-					janso.setHoliday(rs.getString("holiday"));
-					
-					janso.setRoom_price(rs.getString("room_price"));
-					
-					janso.setPersonnel_price(rs.getString("personnel_price"));
-					janso.setRoom_introduction(rs.getString("room_introduction"));
-					janso.setRoom_precautions(rs.getString("room_precautions"));
-					
-					janso.setMain_img(rs.getString("main_img"));
-					janso.setSub_img1(rs.getString("sub_img1"));
-					janso.setSub_img2(rs.getString("sub_img2"));
-					janso.setSub_img3(rs.getString("sub_img3"));
-					janso.setSub_img4(rs.getString("sub_img4"));
+				janso.setMin_personnel(rs.getString("min_personnel"));
+				janso.setMax_personnel(rs.getString("max_personnel"));
+				
+				janso.setOpen_time(rs.getString("open_time"));
+				janso.setClose_time(rs.getString("close_time"));
+				
+				janso.setHoliday(rs.getString("holiday"));
+				
+				janso.setRoom_price(rs.getString("room_price"));
+				
+				janso.setPersonnel_price(rs.getString("personnel_price"));
+				janso.setRoom_introduction(rs.getString("room_introduction"));
+				janso.setRoom_precautions(rs.getString("room_precautions"));
+				
+				janso.setMain_img(rs.getString("main_img"));
+				janso.setSub_img1(rs.getString("sub_img1"));
+				janso.setSub_img2(rs.getString("sub_img2"));
+				janso.setSub_img3(rs.getString("sub_img3"));
+				janso.setSub_img4(rs.getString("sub_img4"));
+				janso.setStar(rs.getDouble("star"));
 
 
-					articleList.add(janso);
-				}
-
-			}catch(Exception ex){
-			}finally{
-				close(rs);
-				close(pstmt);
+				articleList.add(janso);
 			}
-		   
 
-			return articleList;
-
+		}catch(Exception ex){
+		}finally{
+			close(rs);
+			close(pstmt);
 		}
-				
+	   
+
+		return articleList;
+
+	}
+			
 
 	
 	//장소 대여자 등록
@@ -331,12 +307,13 @@ public class JansoDAO {
 
 		}
 		
-		
-		//장소 대여자 상품 셀렉 전채 셀렉
+		//장소대여자 전체셀렉 빽업
+		/*
 		public ArrayList<Janso_product_registration> Janso_product_registrationListall(){
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
-			String board_list_sql="select * from room_product_registration";
+		//	String SQL="select * from room_product_registration";
+			String SQL="SELECT e.*, r.star FROM room_product_registration e left JOIN (SELECT room_number, sum(review_Evaluation) / count(review_Evaluation) as star FROM room_review GROUP BY room_number) r  ON e.room_number = r.room_number order by room_number asc";
 			
 			
 			ArrayList<Janso_product_registration> articleList = new ArrayList<Janso_product_registration>();
@@ -344,7 +321,7 @@ public class JansoDAO {
 	
 
 			try{
-				pstmt = con.prepareStatement(board_list_sql);
+				pstmt = con.prepareStatement(SQL);
 				rs = pstmt.executeQuery();
 
 				while(rs.next()){
@@ -381,6 +358,72 @@ public class JansoDAO {
 					janso.setSub_img4(rs.getString("sub_img4"));
 
 
+				
+					articleList.add(janso);
+				}
+
+			}catch(Exception ex){
+			}finally{
+				close(rs);
+				close(pstmt);
+			}
+
+			return articleList;
+
+		}
+		*/
+		
+		
+		//장소 대여자 상품 셀렉 전채 셀렉
+		public ArrayList<Janso_product_registration> Janso_product_registrationListall(){
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+		//	String SQL="select * from room_product_registration";
+			String SQL="SELECT e.*, r.star FROM room_product_registration e left JOIN (SELECT room_number, sum(review_Evaluation) / count(review_Evaluation) as star FROM room_review GROUP BY room_number) r  ON e.room_number = r.room_number order by room_number asc";
+			
+			
+			ArrayList<Janso_product_registration> articleList = new ArrayList<Janso_product_registration>();
+			Janso_product_registration janso = null;
+	
+
+			try{
+				pstmt = con.prepareStatement(SQL);
+				rs = pstmt.executeQuery();
+
+				while(rs.next()){
+					janso = new Janso_product_registration();
+					
+					janso.setEmail(rs.getString("email"));
+					janso.setRoom_number(rs.getInt("room_number")); 
+				
+					janso.setRoom_title(rs.getString("room_title"));
+					janso.setRoom_categories(rs.getString("room_categories"));
+					janso.setRoom_area(rs.getString("room_area"));
+					janso.setFacility_categories(rs.getString("facility_categories"));
+					janso.setRoom_address(rs.getString("room_address"));
+					janso.setReservationtime(rs.getString("reservationtime"));
+					
+					janso.setMin_personnel(rs.getString("min_personnel"));
+					janso.setMax_personnel(rs.getString("max_personnel"));
+					
+					janso.setOpen_time(rs.getString("open_time"));
+					janso.setClose_time(rs.getString("close_time"));
+					
+					janso.setHoliday(rs.getString("holiday"));
+					
+					janso.setRoom_price(rs.getString("room_price"));
+					
+					janso.setPersonnel_price(rs.getString("personnel_price"));
+					janso.setRoom_introduction(rs.getString("room_introduction"));
+					janso.setRoom_precautions(rs.getString("room_precautions"));
+					
+					janso.setMain_img(rs.getString("main_img"));
+					janso.setSub_img1(rs.getString("sub_img1"));
+					janso.setSub_img2(rs.getString("sub_img2"));
+					janso.setSub_img3(rs.getString("sub_img3"));
+					janso.setSub_img4(rs.getString("sub_img4"));
+
+					janso.setStar(rs.getDouble("star"));
 				
 					articleList.add(janso);
 				}
@@ -405,7 +448,7 @@ public class JansoDAO {
 			//System.out.println(addp+"dao임");
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
-			String board_list_sql="select * from room_product_registration where room_address like ? ";
+			String board_list_sql="SELECT e.*, r.star FROM room_product_registration e left JOIN (SELECT room_number, sum(review_Evaluation) / count(review_Evaluation) as star FROM room_review GROUP BY room_number) r  ON e.room_number = r.room_number where room_address like ? order by room_number asc ";
 			
 			
 			ArrayList<Janso_product_registration> articleList = new ArrayList<Janso_product_registration>();
@@ -449,7 +492,8 @@ public class JansoDAO {
 					janso.setSub_img2(rs.getString("sub_img2"));
 					janso.setSub_img3(rs.getString("sub_img3"));
 					janso.setSub_img4(rs.getString("sub_img4"));
-
+					janso.setStar(rs.getDouble("star"));
+					
 
 				
 					articleList.add(janso);
@@ -471,7 +515,7 @@ public class JansoDAO {
 			//System.out.println(addp+"dao임");
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
-			String board_list_sql="select * from room_product_registration where room_address like ? ";
+			String board_list_sql="SELECT e.*, r.star FROM room_product_registration e left JOIN (SELECT room_number, sum(review_Evaluation) / count(review_Evaluation) as star FROM room_review GROUP BY room_number) r  ON e.room_number = r.room_number where room_address like ? order by room_number asc";
 			
 			
 			ArrayList<Janso_product_registration> articleList = new ArrayList<Janso_product_registration>();
@@ -515,6 +559,7 @@ public class JansoDAO {
 					janso.setSub_img2(rs.getString("sub_img2"));
 					janso.setSub_img3(rs.getString("sub_img3"));
 					janso.setSub_img4(rs.getString("sub_img4"));
+					janso.setStar(rs.getDouble("star"));
 
 
 				
@@ -537,7 +582,7 @@ public class JansoDAO {
 					//System.out.println(addp+"dao임");
 					PreparedStatement pstmt = null;
 					ResultSet rs = null;
-					String board_list_sql="select * from room_product_registration where room_address like ? ";
+					String board_list_sql="SELECT e.*, r.star FROM room_product_registration e left JOIN (SELECT room_number, sum(review_Evaluation) / count(review_Evaluation) as star FROM room_review GROUP BY room_number) r  ON e.room_number = r.room_number where room_address like ? order by room_number asc";
 					
 					
 					ArrayList<Janso_product_registration> articleList = new ArrayList<Janso_product_registration>();
@@ -581,7 +626,7 @@ public class JansoDAO {
 							janso.setSub_img2(rs.getString("sub_img2"));
 							janso.setSub_img3(rs.getString("sub_img3"));
 							janso.setSub_img4(rs.getString("sub_img4"));
-
+							janso.setStar(rs.getDouble("star"));
 
 						
 							articleList.add(janso);
@@ -602,7 +647,7 @@ public class JansoDAO {
 					//System.out.println(addp+"dao임");
 					PreparedStatement pstmt = null;
 					ResultSet rs = null;
-					String board_list_sql="select * from room_product_registration where room_address like ? OR room_address like ? ";
+					String board_list_sql="SELECT e.*, r.star FROM room_product_registration e left JOIN (SELECT room_number, sum(review_Evaluation) / count(review_Evaluation) as star FROM room_review GROUP BY room_number) r  ON e.room_number = r.room_number where room_address like ? OR room_address like ? order by room_number asc ";
 					
 					
 					ArrayList<Janso_product_registration> articleList = new ArrayList<Janso_product_registration>();
@@ -647,7 +692,7 @@ public class JansoDAO {
 							janso.setSub_img2(rs.getString("sub_img2"));
 							janso.setSub_img3(rs.getString("sub_img3"));
 							janso.setSub_img4(rs.getString("sub_img4"));
-
+							janso.setStar(rs.getDouble("star"));
 
 						
 							articleList.add(janso);
@@ -670,7 +715,7 @@ public class JansoDAO {
 					//System.out.println(addp2+"dao임");
 					PreparedStatement pstmt = null;
 					ResultSet rs = null;
-					String board_list_sql="select * from room_product_registration where room_address like ? OR room_address like ? ";
+					String board_list_sql="SELECT e.*, r.star FROM room_product_registration e left JOIN (SELECT room_number, sum(review_Evaluation) / count(review_Evaluation) as star FROM room_review GROUP BY room_number) r  ON e.room_number = r.room_number where room_address like ? OR room_address like ? order by room_number asc ";
 					
 					
 					ArrayList<Janso_product_registration> articleList = new ArrayList<Janso_product_registration>();
@@ -715,7 +760,7 @@ public class JansoDAO {
 							janso.setSub_img2(rs.getString("sub_img2"));
 							janso.setSub_img3(rs.getString("sub_img3"));
 							janso.setSub_img4(rs.getString("sub_img4"));
-
+							janso.setStar(rs.getDouble("star"));
 
 						
 							articleList.add(janso);
@@ -737,7 +782,7 @@ public class JansoDAO {
 					//System.out.println(addp+"dao임");
 					PreparedStatement pstmt = null;
 					ResultSet rs = null;
-					String board_list_sql="select * from room_product_registration where room_address like ? or room_address like ?";
+					String board_list_sql="SELECT e.*, r.star FROM room_product_registration e left JOIN (SELECT room_number, sum(review_Evaluation) / count(review_Evaluation) as star FROM room_review GROUP BY room_number) r  ON e.room_number = r.room_number where room_address like ? OR room_address like ? order by room_number asc";
 					
 					
 					ArrayList<Janso_product_registration> articleList = new ArrayList<Janso_product_registration>();
@@ -782,7 +827,7 @@ public class JansoDAO {
 							janso.setSub_img2(rs.getString("sub_img2"));
 							janso.setSub_img3(rs.getString("sub_img3"));
 							janso.setSub_img4(rs.getString("sub_img4"));
-
+							janso.setStar(rs.getDouble("star"));
 
 						
 							articleList.add(janso);
@@ -804,7 +849,7 @@ public class JansoDAO {
 					//System.out.println(addp+"dao임");
 					PreparedStatement pstmt = null;
 					ResultSet rs = null;
-					String board_list_sql="select * from room_product_registration where room_address like ? ";
+					String board_list_sql="SELECT e.*, r.star FROM room_product_registration e left JOIN (SELECT room_number, sum(review_Evaluation) / count(review_Evaluation) as star FROM room_review GROUP BY room_number) r  ON e.room_number = r.room_number where room_address like ? order by room_number asc";
 					
 					
 					ArrayList<Janso_product_registration> articleList = new ArrayList<Janso_product_registration>();
@@ -848,7 +893,7 @@ public class JansoDAO {
 							janso.setSub_img2(rs.getString("sub_img2"));
 							janso.setSub_img3(rs.getString("sub_img3"));
 							janso.setSub_img4(rs.getString("sub_img4"));
-
+							janso.setStar(rs.getDouble("star"));
 
 						
 							articleList.add(janso);
