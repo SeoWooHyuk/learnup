@@ -74,13 +74,14 @@ public class JansoDAO {
 	}
 	
 	//장소상품 페이지
-	public ArrayList<Janso_product_registration> Janso_subpageList(String search,  int pnum , int startpage, int pageSize, String[] keword){
+	public ArrayList<Janso_product_registration> Janso_subpageList(String search,  int pnum , int startpage, int pageSize, String[] keword, int priceup){
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		ArrayList<Janso_product_registration> articleList = new ArrayList<Janso_product_registration>();
 		Janso_product_registration janso = null;
 		int startrow=(startpage-1)*9; 
-		//System.out.println(startrow);
+		String sql= "";
+		
 		
 		for (int i = 0; i < keword.length; i++) {
 		    if (keword[i] != null) {
@@ -88,10 +89,23 @@ public class JansoDAO {
 		    }
 		}	
 		
+		System.out.println(priceup + "다오 고가순");
 		
-		String sql="select e.*, r.star from room_product_registration  e left JOIN (SELECT room_number, sum(review_Evaluation) / count(review_Evaluation) as star FROM room_review GROUP BY room_number) r  ON e.room_number = r.room_number  where max_personnel between 0 and "+pnum+" and  (room_title like '%"+ search+"%' or room_categories like '%"+ search+"%' ) order by room_number ASC  limit "+startrow+", "+pageSize +" ";
-		
-//String	sql2 ="select * from room_product_registration where if( '"+search +"' != '' , room_title like'%"+search+"%', room_categories like '%"+keword[0]+"%' or room_categories like '%"+keword[1]+"%' or room_categories like '%"+keword[2]+"%' or room_categories like '%"+keword[3]+"%' or room_categories like '%"+keword[4]+"%' or room_categories like '%"+keword[5]+"%' or room_categories like '%"+keword[6]+"%' or room_categories like '%"+keword[7]+"%') and max_personnel between 0 and 999 order by room_number ASC  limit "+startrow+","+pageSize+" ";		
+		//CAST(room_price AS signed integer)
+		if(priceup == 0)
+		{
+			sql="select e.*, r.star from room_product_registration  e left JOIN (SELECT room_number, sum(review_Evaluation) / count(review_Evaluation) as star FROM room_review GROUP BY room_number) r  ON e.room_number = r.room_number  where max_personnel between 0 and "+pnum+" and  (room_title like '%"+ search+"%' or room_categories like '%"+ search+"%' ) order by room_number asc limit "+startrow+", "+pageSize +" ";
+		}
+		else if(priceup == 1)
+		{
+			sql="select e.*, r.star from room_product_registration  e left JOIN (SELECT room_number, sum(review_Evaluation) / count(review_Evaluation) as star FROM room_review GROUP BY room_number) r  ON e.room_number = r.room_number  where max_personnel between 0 and "+pnum+" and  (room_title like '%"+ search+"%' or room_categories like '%"+ search+"%' ) order by  CAST(room_price AS signed integer) desc limit "+startrow+", "+pageSize +" ";
+		}
+		else if(priceup == 2)
+		{
+		    sql="select e.*, r.star from room_product_registration  e left JOIN (SELECT room_number, sum(review_Evaluation) / count(review_Evaluation) as star FROM room_review GROUP BY room_number) r  ON e.room_number = r.room_number  where max_personnel between 0 and "+pnum+" and  (room_title like '%"+ search+"%' or room_categories like '%"+ search+"%' ) order by  CAST(room_price AS signed integer) asc limit "+startrow+", "+pageSize +" ";
+		}
+	
+			
 
 		
 	    try{

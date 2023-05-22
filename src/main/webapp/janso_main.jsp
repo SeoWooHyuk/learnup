@@ -156,10 +156,10 @@ label {
         </div>
 
         <div  class="bt-box">
-            <a href="janso_subpage.learnup.com?page=1&keworld1=스터디룸"  style=" text-decoration: none; box-sizing: border-box;">
+            <a href="janso_subpage.learnup.com?page=1&keworld1=스터디"  style=" text-decoration: none; box-sizing: border-box;">
                 <img src="./image//study.svg" alt="">
                 <div class="keyword" style="font-size: 20px;">
-                    스터디룸
+                    스터디
                 </div>     
             </a>
         </div>
@@ -200,10 +200,10 @@ label {
 
 
         <div  class="bt-box">
-            <a href="janso_subpage.learnup.com?page=1&searchs=&keworld6=파티룸" style=" text-decoration: none; box-sizing: border-box;">
+            <a href="janso_subpage.learnup.com?page=1&searchs=&keworld6=파티" style=" text-decoration: none; box-sizing: border-box;">
                 <img src="./image//gathering.svg" alt="">
                 <div class="keyword" style="font-size: 20px;">
-                    파티룸
+                    파티
                 </div>     
             </a>
         </div>
@@ -264,7 +264,7 @@ label {
             <a href="janso_detail.learnup.com?roomnumber=<%=articleListall.get(i).getRoom_number()%>" style=" text-decoration: none; box-sizing: border-box;">
             <div class="box-0-2">
                 <div class="box-0-2_box">
-                  <strong style="font-size: 18px;" ><%= articleListall.get(i).getRoom_title() %>룸</strong> 
+                  <strong style="font-size: 18px;" ><%= articleListall.get(i).getRoom_title() %></strong> 
                    <span>(최소인원 <%=articleListall.get(i).getMin_personnel() %>명/ </span>    
                    <span> 최대인원 <%=articleListall.get(i).getMax_personnel() %>명) </span>
                 </div>
@@ -464,7 +464,7 @@ label {
 							
             			</div> 
                     </div>     
-                </div>
+            </div>
                 <!-- <p style="margin: 0; padding-left: 5px; padding-top: 25px;">가격</p> -->
             </div>
         </a>
@@ -524,7 +524,7 @@ label {
    				<a href="janso_detail.learnup.com?roomnumber=<%=articleList.get(b).getRoom_number()%>" style=" text-decoration: none; box-sizing: border-box;">		
                 <div class="box-0-2">
                     <div class="box-0-2_box">
-                   <strong style="font-size: 18px;" ><%= articleList.get(b).getRoom_title() %>룸</strong> 
+                   <strong style="font-size: 18px;" ><%= articleList.get(b).getRoom_title() %></strong> 
                    <span>(최소인원 <%=articleList.get(b).getMin_personnel() %>명/ </span>    
                    <span> 최대인원 <%=articleList.get(b).getMax_personnel() %>명) </span>
                 </div>
@@ -762,7 +762,7 @@ label {
    <a href="janso_detail.learnup.com?roomnumber=<%=articleList2.get(b).getRoom_number()%>" style=" text-decoration: none; box-sizing: border-box;">		
                 <div class="box-0-2">
                     <div class="box-0-2_box">
-                   <strong style="font-size: 18px;" ><%= articleList2.get(b).getRoom_title() %>룸</strong> 
+                   <strong style="font-size: 18px;" ><%= articleList2.get(b).getRoom_title() %></strong> 
                    <span>(최소인원 <%=articleList2.get(b).getMin_personnel() %>명/ </span>    
                    <span> 최대인원 <%=articleList2.get(b).getMax_personnel() %>명) </span>
                 </div>
@@ -1000,7 +1000,7 @@ label {
    <a href="janso_detail.learnup.com?roomnumber=<%=articleList3.get(b).getRoom_number()%>" style=" text-decoration: none; box-sizing: border-box;">		
                 <div class="box-0-2">
                     <div class="box-0-2_box">
-                   <strong style="font-size: 18px;" ><%= articleList3.get(b).getRoom_title() %>룸</strong> 
+                   <strong style="font-size: 18px;" ><%= articleList3.get(b).getRoom_title() %></strong> 
                    <span>(최소인원 <%=articleList3.get(b).getMin_personnel() %>명/ </span>    
                    <span> 최대인원 <%=articleList3.get(b).getMax_personnel() %>명) </span>
                 </div>
@@ -1240,7 +1240,7 @@ label {
    <a href="janso_detail.learnup.com?roomnumber=<%=articleList4.get(b).getRoom_number()%>" style=" text-decoration: none; box-sizing: border-box;">		
                 <div class="box-0-2">
                     <div class="box-0-2_box">
-                   <strong style="font-size: 18px;" ><%= articleList4.get(b).getRoom_title() %>룸</strong> 
+                   <strong style="font-size: 18px;" ><%= articleList4.get(b).getRoom_title() %></strong> 
                    <span>(최소인원 <%=articleList4.get(b).getMin_personnel() %>명/ </span>    
                    <span> 최대인원 <%=articleList4.get(b).getMax_personnel() %>명) </span>
                 </div>
@@ -1480,7 +1480,7 @@ label {
    <a href="janso_detail.learnup.com?roomnumber=<%=articleList5.get(b).getRoom_number()%>" style=" text-decoration: none; box-sizing: border-box;">		
                 <div class="box-0-2">
                     <div class="box-0-2_box">
-                   <strong style="font-size: 18px;" ><%= articleList5.get(b).getRoom_title() %>룸</strong> 
+                   <strong style="font-size: 18px;" ><%= articleList5.get(b).getRoom_title() %></strong> 
                    <span>(최소인원 <%=articleList5.get(b).getMin_personnel() %>명/ </span>    
                    <span> 최대인원 <%=articleList5.get(b).getMax_personnel() %>명) </span>
                 </div>
@@ -1722,7 +1722,7 @@ label {
    <a href="janso_detail.learnup.com?roomnumber=<%=articleList6.get(b).getRoom_number()%>" style=" text-decoration: none; box-sizing: border-box;">		
                 <div class="box-0-2">
                     <div class="box-0-2_box">
-                   <strong style="font-size: 18px;" ><%= articleList6.get(b).getRoom_title() %>룸</strong> 
+                   <strong style="font-size: 18px;" ><%= articleList6.get(b).getRoom_title() %></strong> 
                    <span>(최소인원 <%=articleList6.get(b).getMin_personnel() %>명/ </span>    
                    <span> 최대인원 <%=articleList6.get(b).getMax_personnel() %>명) </span>
                 </div>
@@ -1963,7 +1963,7 @@ label {
    <a href="janso_detail.learnup.com?roomnumber=<%=articleList7.get(b).getRoom_number()%>" style=" text-decoration: none; box-sizing: border-box;">		
                 <div class="box-0-2">
                     <div class="box-0-2_box">
-                   <strong style="font-size: 18px;" ><%= articleList7.get(b).getRoom_title() %>룸</strong> 
+                   <strong style="font-size: 18px;" ><%= articleList7.get(b).getRoom_title() %></strong> 
                    <span>(최소인원 <%=articleList7.get(b).getMin_personnel() %>명/ </span>    
                    <span> 최대인원 <%=articleList7.get(b).getMax_personnel() %>명) </span>
                 </div>

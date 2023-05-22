@@ -33,11 +33,11 @@ public class Janso_subListAction implements jansoAction {
 	
 		int page=1;
 		int pageSize=12;
-		
+		int priceup = 0;  //고가순 저가순
 
-		String searchs = "";
+		String searchs = ""; //검색기능
 		
-		if(request.getParameter("searchs")!=null){
+		if(request.getParameter("searchs")!=null){ 
 			searchs=( request.getParameter("searchs"));
 		}
 		
@@ -48,8 +48,14 @@ public class Janso_subListAction implements jansoAction {
 		}
 		
 		
-		if(request.getParameter("page")!=null){
-			page=Integer.parseInt(request.getParameter("page"));
+		if(request.getParameter("priceup")!=null){ //고가순 저가순
+			priceup=Integer.parseInt(request.getParameter("priceup"));
+		}
+		
+		System.out.println(priceup);
+		
+		if(request.getParameter("searchs")!=null){
+			searchs=( request.getParameter("searchs"));
 		}
 		
 		String[] keyword  = new String[8];
@@ -106,7 +112,7 @@ public class Janso_subListAction implements jansoAction {
 		Janso_ListService janso_ListService = new Janso_ListService();
 		int listCount = janso_ListService.getListCount(searchs , pnum);
 		
-		articleList = janso_ListService.getsubArticleList(searchs ,pnum ,   page , pageSize , keyword);
+		articleList = janso_ListService.getsubArticleList(searchs ,pnum ,   page , pageSize , keyword ,priceup);
 		int maxPage=(int)((double)listCount/pageSize+0.95); 
    		//int startPage = (((int) ((double)page / 10 + 0.9)) - 1) * 10 + 1;
    	    int startPage = page % pageSize == 0 ? page / pageSize : (page / pageSize) + 1;
