@@ -20,7 +20,12 @@
 	DecimalFormat df;
 	df = new DecimalFormat("###,###");
 	String category = request.getParameter("category");
+	
+	out.print(articleList.size());
 %>
+
+
+
 <!DOCTYPE html>
 <html>
 <head>

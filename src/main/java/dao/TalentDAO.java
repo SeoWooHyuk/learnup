@@ -57,7 +57,7 @@ public class TalentDAO {
 					"values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			
 			pstmt = con.prepareStatement(sql);
-			System.out.println("µ¥ÀÌÅÍº£ÀÌ½º ÀÌ¸ŞÀÏ : " + talent.getEmail());
+			System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½Íºï¿½ï¿½Ì½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ : " + talent.getEmail());
 			pstmt.setString(1, talent.getEmail());
 			pstmt.setInt(2, num);
 			pstmt.setString(3, talent.getTitle());
@@ -80,7 +80,7 @@ public class TalentDAO {
 			} else {
 			    pstmt.setNull(8, java.sql.Types.VARCHAR);
 			}
-			System.out.println("ÀÌ¹ÌÁö ÀÌ¸§ : " + talent.getImage());
+			System.out.println("ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ : " + talent.getImage());
 			pstmt.setString(9, talent.getImage());
 			
 			if (talent.getImage_1() != null) {
@@ -139,10 +139,10 @@ public class TalentDAO {
 
 			insertCount=pstmt.executeUpdate();
 			
-			System.out.println("talent insert ¿Ï·á µÇ¾ú½À´Ï´Ù.");
+			System.out.println("talent insert ï¿½Ï·ï¿½ ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
 
 		}catch(Exception ex){
-			System.out.println(ex+"talent insert ¿À·ùÀÔ´Ï´Ù.");
+			System.out.println(ex+"talent insert ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½.");
 		}finally{
 			close(rs);
 			close(pstmt);
@@ -172,10 +172,10 @@ public class TalentDAO {
 				
 				pstmt.executeUpdate();
 				
-				System.out.println("talent version 1°³ insert ¿Ï·á µÇ¾ú½À´Ï´Ù.");
+				System.out.println("talent version 1ï¿½ï¿½ insert ï¿½Ï·ï¿½ ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
 
 		}catch(Exception ex){
-			System.out.println(ex+"talent version insert ¿À·ùÀÔ´Ï´Ù.");
+			System.out.println(ex+"talent version insert ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½.");
 		}finally{
 			close(rs);
 			close(pstmt);
@@ -215,13 +215,19 @@ public class TalentDAO {
 		int startrow=(page-1)*24;
 
 		try{
-			System.out.println(startrow);
+			System.out.println(startrow + "ì‹œì‘ì ");
+			System.out.println(category + "ì¹´í…Œê³ ë¦¬");
 			pstmt = con.prepareStatement(board_list_sql);
 			pstmt.setInt(1, category);
 			pstmt.setInt(2, startrow);
 			rs = pstmt.executeQuery();
-
 			while(rs.next()){
+				System.out.println(startrow + "ëŒì•„ê°€ë¼");
+				System.out.println(rs.getString("title") + "");
+				System.out.println(rs.getInt("category"));
+				System.out.println(rs.getString("image"));
+				System.out.println(rs.getString("nickname"));
+				System.out.println(rs.getInt("vers_price"));
 				talent = new TalentDataType();
 				talent.setProduct_num(rs.getInt("product_num"));
 				talent.setTitle(rs.getString("title"));
@@ -230,15 +236,11 @@ public class TalentDAO {
 				talent.setNickname(rs.getString("nickname"));
 				talent.setPrice(rs.getInt("vers_price"));
 				articleList.add(talent);
-				System.out.println(rs.getString("title"));
-				System.out.println(rs.getInt("category"));
-				System.out.println(rs.getString("image"));
-				System.out.println(rs.getString("nickname"));
-				System.out.println(rs.getInt("vers_price"));
+				
 			}
 
 		}catch(Exception ex){
-			System.out.println(ex+"¿À·ùÀÔ´Ï´Ù.");
+			System.out.println(ex+"ì˜¤ë¥˜ì„");
 		}finally{
 			close(rs);
 			close(pstmt);
@@ -257,7 +259,7 @@ public class TalentDAO {
 //			pstmt=con.prepareStatement(sql);
 //			updateCount = pstmt.executeUpdate();
 //		}catch(SQLException ex){
-//			System.out.println(ex+"¿À·ùÀÔ´Ï´Ù.");
+//			System.out.println(ex+"ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½.");
 //		}
 //		finally{
 //			close(pstmt);
@@ -331,10 +333,10 @@ public class TalentDAO {
 				talentDataType.setPrice(rs.getInt("vers_price"));
 				talentDataType.setVers_date(rs.getInt("vers_date"));
 				talentDataType.setRecruit_num(rs.getInt("recruit_num"));
-				System.out.println("¼¿·º¿Ï·áµÊ.");
+				System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ï¿½.");
 			}
 		}catch(Exception ex){
-			System.out.println(ex+"¿À·ùÀÔ´Ï´Ù.");
+			System.out.println(ex+"ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½.");
 		}finally{
 			close(rs);
 			close(pstmt);
@@ -352,7 +354,7 @@ public class TalentDAO {
 		try{
 			sql="insert into learnup.order(email, product_num, order_money, buy_way) values(?,?,?,?)";
 			pstmt = con.prepareStatement(sql);
-			System.out.println("µ¥ÀÌÅÍº£ÀÌ½º ÀÌ¸ŞÀÏ : " + buy.getEmail());
+			System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½Íºï¿½ï¿½Ì½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ : " + buy.getEmail());
 			pstmt.setString(1, buy.getEmail());
 			pstmt.setInt(2, buy.getProduct_num());
 			pstmt.setInt(3, buy.getOrder_money());
@@ -360,10 +362,10 @@ public class TalentDAO {
 
 			insertCount=pstmt.executeUpdate();
 			
-			System.out.println("talent buy ¿Ï·á µÇ¾ú½À´Ï´Ù.");
+			System.out.println("talent buy ï¿½Ï·ï¿½ ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
 
 		}catch(Exception ex){
-			System.out.println(ex+"talent buy ¿À·ùÀÔ´Ï´Ù.");
+			System.out.println(ex+"talent buy ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½.");
 		}finally{
 			close(rs);
 			close(pstmt);
@@ -386,9 +388,9 @@ public class TalentDAO {
 
 			insertCount=pstmt.executeUpdate();
 			
-			System.out.println("talent Âò ¿Ï·á µÇ¾ú½À´Ï´Ù.");
+			System.out.println("talent ï¿½ï¿½ ï¿½Ï·ï¿½ ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
 		}catch(Exception ex){
-			System.out.println(ex+"talent Âò ¿À·ùÀÔ´Ï´Ù.");
+			System.out.println(ex+"talent ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½.");
 		}finally{
 			close(rs);
 			close(pstmt);
@@ -411,10 +413,10 @@ public class TalentDAO {
 			pstmt.setInt(2, like.getProduct_num());
 
 			insertCount=pstmt.executeUpdate();
-			System.out.println("talent Âò ¿Ï·á µÇ¾ú½À´Ï´Ù.");
+			System.out.println("talent ï¿½ï¿½ ï¿½Ï·ï¿½ ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
 			
 		}catch(Exception ex){
-			System.out.println(ex+"talent Âò ¿À·ùÀÔ´Ï´Ù.");
+			System.out.println(ex+"talent ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½.");
 		}finally{
 			close(rs);
 			close(pstmt);

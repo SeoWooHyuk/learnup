@@ -22,7 +22,7 @@ public class TalentListService {
 
 	public ArrayList<TalentDataType> getArticleList(int category,int page, int limit) throws Exception {
 
-		System.out.println("¼­ºñ½º ÆäÀÌÁö : "+page);
+		System.out.println("ì¥ì†ŒíŒë§¤ : "+page);
 		ArrayList<TalentDataType> articleList = null;
 		Connection con = getConnection();
 		TalentDAO talentDAO = TalentDAO.getInstance();

@@ -125,9 +125,10 @@ label {
                       <div class="link">
                           <ul>
                               <li><a href="janso_subpage.learnup.com?page=<%=nowPage%>&searchs=<%= psearch.getSearch() %>&pernums=<%=pnum %>&priceup=0">기본순</a></li>
+                              <li><a href="janso_subpage.learnup.com?page=<%=nowPage%>&searchs=<%= psearch.getSearch() %>&pernums=<%=pnum %>&priceup=1">최신등록순</a></li>
                               <li><a href="">추천순</a></li>
-                              <li><a href="janso_subpage.learnup.com?page=<%=nowPage%>&searchs=<%= psearch.getSearch() %>&pernums=<%=pnum %>&priceup=1">고가순</a></li>
-                              <li><a href="janso_subpage.learnup.com?page=<%=nowPage%>&searchs=<%= psearch.getSearch() %>&pernums=<%=pnum %>&priceup=2">저가순</a></li>
+                              <li><a href="janso_subpage.learnup.com?page=<%=nowPage%>&searchs=<%= psearch.getSearch() %>&pernums=<%=pnum %>&priceup=3">고가순</a></li>
+                              <li><a href="janso_subpage.learnup.com?page=<%=nowPage%>&searchs=<%= psearch.getSearch() %>&pernums=<%=pnum %>&priceup=4">저가순</a></li>
                           </ul>
                       </div>
                 </div>

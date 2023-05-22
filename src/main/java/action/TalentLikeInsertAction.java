@@ -28,7 +28,7 @@ public class TalentLikeInsertAction implements TalentAction {
 			response.setContentType("text/html;charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
-			out.println("alert('·Î±×ÀÎ ÈÄ °¡´ÉÇÕ´Ï´Ù.')");
+			out.println("alert('ëŒì•„ê°€ë¼.')");
 			out.println("history.back();");
 			out.println("</script>");
 		}else {

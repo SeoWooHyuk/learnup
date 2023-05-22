@@ -27,7 +27,7 @@ import vo.TalentPageInfo;
 			page=Integer.parseInt(request.getParameter("page"));
 		}
 
-		System.out.println("æ◊º« ∆‰¿Ã¡ˆ : "+page);
+		System.out.println("Ïû¨Îä•ÌåêÎß§: "+page);
 		TalentListService talentListService = new TalentListService();
 		int listCount=talentListService.getListCount();
 		articleList = talentListService.getArticleList(category, page, limit);
@@ -36,6 +36,8 @@ import vo.TalentPageInfo;
    	    int endPage = startPage+10-1;
 
    		if (endPage> maxPage) endPage= maxPage;
+   		
+   		System.out.println(articleList.size() + "ÏÇ¨Ïù¥ÏßÄ");
 
    		TalentPageInfo pageInfo = new TalentPageInfo();
    		pageInfo.setEndPage(endPage);

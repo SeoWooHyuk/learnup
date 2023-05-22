@@ -98,9 +98,13 @@ public class JansoDAO {
 		}
 		else if(priceup == 1)
 		{
+			sql="select e.*, r.star from room_product_registration  e left JOIN (SELECT room_number, sum(review_Evaluation) / count(review_Evaluation) as star FROM room_review GROUP BY room_number) r  ON e.room_number = r.room_number  where max_personnel between 0 and "+pnum+" and  (room_title like '%"+ search+"%' or room_categories like '%"+ search+"%' ) order by room_number desc limit "+startrow+", "+pageSize +" ";
+		}
+		else if(priceup == 3)
+		{
 			sql="select e.*, r.star from room_product_registration  e left JOIN (SELECT room_number, sum(review_Evaluation) / count(review_Evaluation) as star FROM room_review GROUP BY room_number) r  ON e.room_number = r.room_number  where max_personnel between 0 and "+pnum+" and  (room_title like '%"+ search+"%' or room_categories like '%"+ search+"%' ) order by  CAST(room_price AS signed integer) desc limit "+startrow+", "+pageSize +" ";
 		}
-		else if(priceup == 2)
+		else if(priceup == 4)
 		{
 		    sql="select e.*, r.star from room_product_registration  e left JOIN (SELECT room_number, sum(review_Evaluation) / count(review_Evaluation) as star FROM room_review GROUP BY room_number) r  ON e.room_number = r.room_number  where max_personnel between 0 and "+pnum+" and  (room_title like '%"+ search+"%' or room_categories like '%"+ search+"%' ) order by  CAST(room_price AS signed integer) asc limit "+startrow+", "+pageSize +" ";
 		}
