@@ -86,6 +86,8 @@ label {
 	int endPage=pageInfo.getEndPage();
 	
 	int pnum = (int)request.getAttribute("pnum");
+	
+	int priceup = (int)request.getAttribute("priceup");
 
 	if(request.getParameter("pernums")!=null){
 		pnum = Integer.parseInt(request.getParameter("pernums"));
@@ -413,9 +415,9 @@ label {
 				<%for(int a=startPage; a<=endPage;a++){ %>
 						
 					<%if(psearch.getSearch() == "") {%>	
-				   	    <li><a href="janso_subpage.learnup.com?page=<%=a%>&pernums=<%=pnum %>"><%=a %></a></li>
+				   	    <li><a href="janso_subpage.learnup.com?page=<%=a%>&pernums=<%=pnum %>&priceup = <%=priceup%>"><%=a %></a></li>
 				   <%}else{ %>
-				    <li><a href="janso_subpage.learnup.com?page=<%=a%>&searchs=<%=psearch.getSearch()%>&pernums=<%=pnum %>"><%=a %></a></li>
+				    <li><a href="janso_subpage.learnup.com?page=<%=a%>&searchs=<%=psearch.getSearch()%>&pernums=<%=pnum%>"><%=a %></a></li>
 				   <%} %>
 					
 				<%} %>

@@ -130,6 +130,7 @@ public class Janso_subListAction implements jansoAction {
 		pageInfo.setPage(page);
 		pageInfo.setStartPage(startPage);	
 		
+		request.setAttribute("priceup", priceup);
 		request.setAttribute("pnum", pnum);
 		request.setAttribute("pageInfo", pageInfo);
 		request.setAttribute("search", psearch);
