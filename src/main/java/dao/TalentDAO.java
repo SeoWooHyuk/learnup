@@ -214,20 +214,13 @@ public class TalentDAO {
 		TalentDataType talent = null;
 		int startrow=(page-1)*24;
 
+		System.out.println(category +"카테고리");
 		try{
-			System.out.println(startrow + "시작점");
-			System.out.println(category + "카테고리");
 			pstmt = con.prepareStatement(board_list_sql);
 			pstmt.setInt(1, category);
 			pstmt.setInt(2, startrow);
 			rs = pstmt.executeQuery();
 			while(rs.next()){
-				System.out.println(startrow + "돌아가라");
-				System.out.println(rs.getString("title") + "");
-				System.out.println(rs.getInt("category"));
-				System.out.println(rs.getString("image"));
-				System.out.println(rs.getString("nickname"));
-				System.out.println(rs.getInt("vers_price"));
 				talent = new TalentDataType();
 				talent.setProduct_num(rs.getInt("product_num"));
 				talent.setTitle(rs.getString("title"));

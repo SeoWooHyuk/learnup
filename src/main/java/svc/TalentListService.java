@@ -22,12 +22,14 @@ public class TalentListService {
 
 	public ArrayList<TalentDataType> getArticleList(int category,int page, int limit) throws Exception {
 
-		System.out.println("장소판매 : "+page);
+		System.out.println("재능판매 : "+page);
 		ArrayList<TalentDataType> articleList = null;
 		Connection con = getConnection();
 		TalentDAO talentDAO = TalentDAO.getInstance();
 		talentDAO.setConnection(con);
 		articleList = talentDAO.selectArticleList(category, page, limit);
+		
+		System.out.println(articleList.size()+"재능판매 서비스 단 사이즈크기");
 		close(con);
 		return articleList;
 

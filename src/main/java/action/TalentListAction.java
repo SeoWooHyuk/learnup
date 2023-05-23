@@ -37,7 +37,7 @@ import vo.TalentPageInfo;
 
    		if (endPage> maxPage) endPage= maxPage;
    		
-   		System.out.println(articleList.size() + "사이지");
+   		System.out.println(listCount + "리스트카운트");
 
    		TalentPageInfo pageInfo = new TalentPageInfo();
    		pageInfo.setEndPage(endPage);

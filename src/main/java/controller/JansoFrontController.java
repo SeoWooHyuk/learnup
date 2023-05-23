@@ -93,6 +93,13 @@ public class JansoFrontController extends javax.servlet.http.HttpServlet
 			}
 		}
 		
+		//장소 서브페이지
+		else if(command.equals("/janso_subpageajax.learnup.com"))
+		{
+			forward= new ActionForward(); 
+			forward.setPath("/janso_subpageajax.jsp");
+		}
+		
 		//장소 디테일 페이지 
 		else if(command.equals("/janso_detail.learnup.com"))
 		{

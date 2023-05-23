@@ -365,7 +365,7 @@ var roomnssd = roomsnums;
 
 console.log(roomnssd);
 console.log(nick);
-	
+
 //리뷰 뷰
 $.ajax({
   url: "janso_detailreview.learnup.com",
