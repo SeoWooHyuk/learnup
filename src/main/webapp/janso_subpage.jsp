@@ -93,7 +93,10 @@ label {
 		pnum = Integer.parseInt(request.getParameter("pernums"));
 	}
 	
+	
+	
  %> 
+
  
  
 <%@include file ="./header.jsp" %>
@@ -415,9 +418,9 @@ label {
 				<%for(int a=startPage; a<=endPage;a++){ %>
 						
 					<%if(psearch.getSearch() == "") {%>	
-				   	    <li><a href="janso_subpage.learnup.com?page=<%=a%>&pernums=<%=pnum %>&priceup = <%=priceup%>"><%=a %></a></li>
+				   	    <li><a href="janso_subpage.learnup.com?page=<%=a%>&pernums=<%=pnum %>&priceup=<%=priceup%>"><%=a %></a></li>
 				   <%}else{ %>
-				    <li><a href="janso_subpage.learnup.com?page=<%=a%>&searchs=<%=psearch.getSearch()%>&pernums=<%=pnum%>"><%=a %></a></li>
+				    <li><a href="janso_subpage.learnup.com?page=<%=a%>&searchs=<%=psearch.getSearch()%>&pernums=<%=pnum%>&priceup=<%=priceup%>"><%=a %></a></li>
 				   <%} %>
 					
 				<%} %>

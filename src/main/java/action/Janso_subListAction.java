@@ -47,6 +47,10 @@ public class Janso_subListAction implements jansoAction {
 			pnum = Integer.parseInt(request.getParameter("pernums"));
 		}
 		
+		if(request.getParameter("page")!=null){
+			page = Integer.parseInt(request.getParameter("page"));
+		}
+		
 		
 		if(request.getParameter("priceup")!=null){ //고가순 저가순
 			priceup=Integer.parseInt(request.getParameter("priceup"));
