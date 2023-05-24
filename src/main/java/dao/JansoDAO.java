@@ -59,7 +59,7 @@ public class JansoDAO {
 			if(rs.next()){
 				listCount=rs.getInt(1);
 				
-				System.out.println(listCount+"다오 서브리스트 카운트");
+				//System.out.println(listCount+"다오 서브리스트 카운트");
 			}
 		}catch(Exception ex){
 
@@ -79,7 +79,7 @@ public class JansoDAO {
 		ResultSet rs = null;
 		ArrayList<Janso_product_registration> articleList = new ArrayList<Janso_product_registration>();
 		Janso_product_registration janso = null;
-		int startrow=(startpage-1)*9; 
+		int startrow=(startpage-1)*12; 
 		String sql= "";
 		
 		
@@ -89,7 +89,7 @@ public class JansoDAO {
 		    }
 		}	
 		
-		System.out.println(priceup + "다오 고가순");
+		//System.out.println(priceup + "다오 고가순");
 		
 		//CAST(room_price AS signed integer)
 		if(priceup == 0)

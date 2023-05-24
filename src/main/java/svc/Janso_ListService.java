@@ -133,7 +133,7 @@ public ArrayList<Janso_product_registration> getArticleListall() throws Exceptio
 		jansoDAO.setConnection(con);
 		listCount = jansoDAO.selectListCount(searchs , pnum);
 		close(con);
-		System.out.println(searchs + "서브리스트 기본");
+	//	System.out.println(searchs + "서브리스트 기본");
 		return listCount;
 		
 	}
@@ -141,7 +141,7 @@ public ArrayList<Janso_product_registration> getArticleListall() throws Exceptio
 	public ArrayList<Janso_product_registration> getsubArticleList(String searchs, int pnum ,  int startpage,int pageSize, String[] keyword, int priceup ) throws Exception{ //서브리스트 셀렉
 	
 		
-		System.out.println(searchs + "서브리스트 페이지검색키워드");
+	//	System.out.println(searchs + "서브리스트 페이지검색키워드");
 		ArrayList<Janso_product_registration> articleList = null;
 		Connection con = getConnection();
 		JansoDAO jansoDAO = JansoDAO.getInstance();

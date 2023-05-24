@@ -56,7 +56,7 @@ public class Janso_subListAction implements jansoAction {
 			priceup=Integer.parseInt(request.getParameter("priceup"));
 		}
 		
-		System.out.println(priceup);
+		//System.out.println(priceup);
 		
 		if(request.getParameter("searchs")!=null){
 			searchs=( request.getParameter("searchs"));
@@ -123,6 +123,12 @@ public class Janso_subListAction implements jansoAction {
    	    int endPage =  startPage + pageSize - 1;
    	    
    	    if (endPage> maxPage) endPage= maxPage;
+   	    
+   	    
+   	    System.out.println(listCount);
+   	    System.out.println(startPage);
+   	    System.out.println(endPage);
+   	    System.out.println(maxPage);
    	    
    	    PageSearch psearch = new PageSearch();
    	    psearch.setSearch(searchs);
