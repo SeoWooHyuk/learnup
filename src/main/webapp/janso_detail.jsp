@@ -35,32 +35,32 @@
 	
 	
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script language=JavaScript src="${common_context_path_url}js/janso_detail.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script language=JavaScript src="${common_context_path_url}js/janso_detail.js"></script>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f1342a3ffd93979d7f9852ea40201756&libraries=services"></script> <!-- 카카오지도라인센스스크립트 -->
+	
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/janso_detail.css">
 
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f1342a3ffd93979d7f9852ea40201756&libraries=services"></script>
-   
-		<script src="js/datepicker.min.js"></script>
-    	<script src="js/datepicker.ko.js"></script>
-    	
-    	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
-		<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>	
-	
-	
-	
 	<script src="js/datepicker.min.js"></script>
-    <script src="js/datepicker.ko.js"></script>
-    <link rel="stylesheet" href="css/datepicker.min.css">
-    
-
-
-	 
-	 
+   	<script src="js/datepicker.ko.js"></script>
+   	<link rel="stylesheet" href="css/datepicker.min.css">
+    	
+   	<!--  
+   	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>	
 	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.13.18/jquery.timepicker.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.13.18/jquery.timepicker.min.js"></script>
 	
-
+	-->
+	
+	<!-- flatpickr CSS 파일 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  
+  <!-- flatpickr JS 파일 -->
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+	
 </head>
  <style>
 	@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
@@ -336,7 +336,10 @@ var articleList = <%= new Gson().toJson(request.getAttribute("articleList")) %>;
 		      
 		      <div id="main">
 			        <div>
-			            <input id="timepicker" name="timepicker" class="timepicker"  multiple/>
+			            <input id="timepicker" name="timepicker" class="timepicker" type="text" multiple/>
+			            
+			            
+						
 			        </div>
 			    </div>
 			      

@@ -25,6 +25,7 @@ $('#myForm').submit(function(event) {
   
 });
  
+//타입피커 
 var time1s =  time1 + ":00";
 var time2s =  time2 + ":00";
 var time3s =  time3 *60;
@@ -41,8 +42,26 @@ $('.timepicker').timepicker({
 	    dropdown: true,
 	    scrollbar: true,
 });
-	
-	
+
+//---------------------------
+/*
+$('.timepicker').timepicker({
+    timeFormat: 'H:mm',  
+    step: 60, 
+    minTime: "10:00",  
+    maxTime: "15:00",  
+    dynamic: false,
+    dropdown: true,
+    scrollbar: true,
+    disableTimeRanges: [
+        ['10:00', '11:00'],
+        ['14:00', '15:00']
+    ]
+});
+*/
+
+
+//---------------------------	
 //달력부	
 const str = holiday;
 var array = new Array();

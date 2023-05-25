@@ -19,103 +19,16 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.13.18/jquery.timepicker.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.13.18/jquery.timepicker.min.js"></script>
 
-<style>
-
-
-body {margin:0;}
-
-.review-list {
-  .review{
-    .header {
-      height: 60px;
-      line-height: 60px;
-      overflow: hidden;
-      label {
-        margin-left: 9px;
-        font-size: 16px;
-      }
-      span {
-        float: right;
-        margin-right: 10px;
-        font-size: 13px
-      }
-    }
-    .item {
-      background-color: #eee;
-      display: flex;
-      display: -webkit-flex;
-      position: relative;
-      margin-bottom: 9px;
-      img {
-        margin: 9px;
-        width: 100px;
-        height: 100px;
-      }
-      .info {
-        flex: 1;
-        -webkit-flex: 1;
-        h1 {
-          font-size: 14px;
-          color: #666;
-        }
-        h2 {
-          font-size: 12px;
-          color: #666;
-        }
-        p {
-          font-size: 13px;
-          i {
-            font-style: normal;
-            font-size: 16px;
-          }
-        }
-        .btn {
-          display: block;
-          width: 60px;
-          height: 25px;
-          line-height: 25px;
-          text-align: center;
-          border: solid 1px #999;
-          border-radius: 2px;
-          font-size: 14px;
-          float: right;
-          margin-right: 20px;
-        }
-      }
-    }
-  }
-} 
-
-</style>
-</head>
-<body>
-
-<div class="review-list">
-  <div class="review">
-    <div class="item">
-      <img src="https://img.alicdn.com/bao/uploaded/i4/TB1ownfKpXXXXbYXFXXXXXXXXXX_!!0-item_pic.jpg_430x430q90.jpg" style="width: 25px; height: 25px" />
-      <div class="info">
-        <h1>三星手机全网通</h1>
-        <h2>三星手机全网通</h2>
-        <p>共1件商品 合计：&yen;<i>99</i>.80 (含运费&yen;0.00)</p>
-        <span class="btn">评价</span>
-      </div>
-    </div>
-    <div class="item">
-      <img src="https://img.alicdn.com/bao/uploaded/i4/TB1ownfKpXXXXbYXFXXXXXXXXXX_!!0-item_pic.jpg_430x430q90.jpg" />
-      <div class="info">
-        <h1>三星手机全网通</h1>
-        <h2>三星手机全网通</h2>
-        <p>共1件商品 合计：&yen;<i>99</i>.80 (含运费&yen;0.00)</p>
-        <span class="btn">评价</span>
-      </div>
-    </div>
-  </div>
-  
 
 
 
-<!--  ㅁㅇㄴㅁㅇㄴㅁㅇㄴㅁㅇㄴㅁㅇㄴㅁㅇㄴㅁㅇㄴㅁㅇㄴㅁㅇㄴㅁㅇㄴㅁㅇㄴㅁㅇㄴㅁㅇㄴㅁㅇㄴㅁㅇㄴㅁㅇㄴㅁㅇㄴㅁㅇㄴㅁㅇㄴㅁㅇㄴㅁㅇ -->
+
+
+.
+
+
+
+
     <div id="main">
         <div>
            

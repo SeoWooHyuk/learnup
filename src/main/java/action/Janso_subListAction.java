@@ -125,11 +125,7 @@ public class Janso_subListAction implements jansoAction {
    	    if (endPage> maxPage) endPage= maxPage;
    	    
    	    
-   	    System.out.println(listCount);
-   	    System.out.println(startPage);
-   	    System.out.println(endPage);
-   	    System.out.println(maxPage);
-   	    
+
    	    PageSearch psearch = new PageSearch();
    	    psearch.setSearch(searchs);
 
